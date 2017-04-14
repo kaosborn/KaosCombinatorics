@@ -9,7 +9,7 @@
     <Company>github.com/kaosborn</Company>
     <Product>KaosCombinatorics</Product>
     <Description>Combinatorics library for .NET</Description>
-    <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/wiki</PackageProjectUrl>
     <Copyright>Copyright © github.com/kaosborn 2009-2017</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
