@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="0908d812-b502-4da7-a452-66e043c6bb70" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        The Kaos.Combinatorics library contains four combinatorics classes and one static support class.
+        See the namespace summary for details.
+      </para>
+      <para>
+        This library is built as a .NET Standard project with multi-targeting.
+        All targets are available in the distributed NuGet package or as individual .dll files.
+        Current targets are:
+      </para>
+      <list class="bullet">
+        <listItem>
+          <para>
+            .NET Standard 1.0.
+            Use this for any .NET Core application or any full .NET Framework application at or above 4.5.
+          </para>
+        </listItem>
+        <listItem>
+          <para>Full .NET Framework 4.0.</para>
+        </listItem>
+        <listItem>
+          <para>Full .NET Framework 3.5.</para>
+        </listItem>
+      </list>
+    </introduction>
+    
+    <section>
+      <title>Distribution</title>
+    <content>
+      <para>
+        Source and binary hosting was formerly at CodePlex.com known under the KwCombinatorics project.
+        Current hosting of full source code and documentation is provided by GitHub.com.
+        Binary hosting is provided by NuGet.org.  This includes .xml files to support intellisense.
+      </para>
+    </content>
+    </section>
+
+    <section>
+      <title>Build environment</title>
+    <content>
+      <para>
+        This library was built using Visual Studio 2017 Community Edition.
+        Test is performed by MSTest with code coverage of 100%.
+        There is an additional dependency on Sandcastle Help File Builder for building documentation.
+      </para>
+    </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="378c61fc-81bd-4a4b-bc4d-93a809330c60" />
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Combinatorics</linkText>
+        <linkAlternateText>overview</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Combinatorics</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Combination</linkText>
+        <linkAlternateText>Combination class</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Combination</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Combination#Number_of_combinations_with_repetition</linkText>
+        <linkAlternateText>Multicombination class</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Combination%23Number_of_combinations_with_repetition</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Permutation</linkText>
+        <linkAlternateText>Permutation class</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Permutation</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Cartesian_product</linkText>
+        <linkAlternateText>Product class</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Cartesian_product</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>wikipedia.org/wiki/Eight_queens_puzzle</linkText>
+        <linkAlternateText>Permutation application</linkAlternateText>
+        <linkUri>https://en.wikipedia.org/wiki/Eight_queens_puzzle</linkUri>
+      </externalLink>
+
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

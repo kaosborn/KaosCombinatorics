@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.0;net40;net35</TargetFrameworks>
+    <RootNamespace>Kaos.Combinatorics</RootNamespace>
+    <PackageId>Kaos.Combinatorics</PackageId>
+    <Version>0.5.0</Version>
+    <Authors>Kasey O.</Authors>
+    <Company>github.com/kaosborn</Company>
+    <Product>KaosCombinatorics</Product>
+    <Description>Combinatorics library for .NET</Description>
+    <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/wiki</PackageProjectUrl>
+    <Copyright>Copyright © github.com/kaosborn 2009-2017</Copyright>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReleaseNotes>For documentation see https://github.com/kaosborn/KaosCombinatorics/wiki</PackageReleaseNotes>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
+    <PackageTags>combination combinatorics math multicombination numerics permutation permute product variation</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.0\Combinatorics.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

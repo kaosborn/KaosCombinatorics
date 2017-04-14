@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="378c61fc-81bd-4a4b-bc4d-93a809330c60" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction></introduction>
+
+    <section>
+      <title>Version 1.2 (2009-03-03)</title>
+      <content>
+        <list class="bullet">
+          <listItem><para>Implements generic IEquatable interface.</para></listItem>
+            <listItem><para>Implements proper null tests for comparison operators.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 1.3 (2012-01-05)</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>Updates build environment to Visual Studio 2010.</para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 1.4 (2012-03-23)</title>
+      <content>
+        <list class="bullet">
+            <listItem><para>Adds increment, decrement operators for all classes.</para></listItem>
+            <listItem><para>Fixes bugs on empty sequences.</para></listItem>
+            <listItem><para>Renames many parameters.</para></listItem>
+            <listItem><para>Adds minor optimizations.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 2.2 (2012-04-01)</title>
+      <content>
+        <list class="bullet">
+          <listItem><para>Adds Multicombination.GetRowsForPicks (startPicks, stopPicks).</para></listItem>
+          <listItem><para>Adds CopyTo (array) to all combinatorics.</para></listItem>
+          <listItem><para>Removes Multicombination.GetRows (picks, startRank).</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 2.3 (2012-04-17)</title>
+      <content>
+        <list class="bullet">
+          <listItem><para>Adds Permutation.Backtrack method.</para></listItem>
+          <listItem><para>Multicombination ranking constructor accepts unsorted data.</para></listItem>
+          <listItem><para>Combination ranking constructor accepts unsorted data.</para></listItem>
+          <listItem><para>Fixes numeric overflow bug in Combination.Rank setter.</para></listItem>
+          <listItem><para>Fixes missing numeric overflow checks in Product constructors.</para></listItem>
+          <listItem><para>Fixes missing bounds checks in Product ranking constructor.</para></listItem>
+          <listItem><para>Removes increment and decrement operators.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 2.4 (2012-07-01)</title>
+      <content>
+        <list class="bullet">
+          <listItem><para>Optimizes Combination.Rank setter.</para></listItem>
+          <listItem><para>Optimizes Multicombination.Rank setter.</para></listItem>
+          <listItem><para>Adds methods Combinatoric.BinomialCoefficient, Combinatoric.Factorial.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 4.0 (2012-11-14)</title>
+      <content>
+        <para>
+          This release makes several changes to the Permutation class to add support for plain changes.
+          There are also several breaking changes to improve API readability.
+        </para>
+        <list class="bullet">
+          <listItem><para>Adds Permutation.Choices property to support k-permutations.</para></listItem>
+          <listItem><para>Adds Permutation constructors to support k-permutations.</para></listItem>
+          <listItem><para>Adds property Permutation.PlainChange.</para></listItem>
+          <listItem><para>Adds property Permutation.Swaps.</para></listItem>
+          <listItem><para>Adds method Permutation.GetRowsForAllPicks.</para></listItem>
+          <listItem><para>Adds method Permutation.GetRowsOfPlainChanges.</para></listItem>
+          <listItem><para>Renamed all Height properties to RowCount.</para></listItem>
+          <listItem><para>Renamed Permutation.Width to Picks.</para></listItem>
+          <listItem><para>Renamed Permutation.MaxWidth to MaxChoices.</para></listItem>
+          <listItem><para>Renamed Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</para></listItem>
+          <listItem><para>Removed Permutation (int, long) constructor.</para></listItem>
+          <listItem><para>Removed ICloneable base class and Clone methods from all combinatorics.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 4.1 (2017)</title>
+      <content>
+        <list class="bullet">
+          <listItem><para>Renames namespace from Kw to Kaos.</para></listItem>
+          <listItem><para>Updates build environment to Visual Studio 2017.</para></listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>Version 5.1 (2017)</title>
+        <content>
+      <list class="bullet">
+        <listItem><para>Adds .NET Standard 1.1 build.</para></listItem>
+      </list>
+      </content>
+    </section>
+
+    <relatedTopics></relatedTopics>
+
+  </developerConceptualDocument>
+</topic>
