@@ -87,32 +87,29 @@
           <listItem><para>Adds property Permutation.Swaps.</para></listItem>
           <listItem><para>Adds method Permutation.GetRowsForAllPicks.</para></listItem>
           <listItem><para>Adds method Permutation.GetRowsOfPlainChanges.</para></listItem>
-          <listItem><para>Renamed all Height properties to RowCount.</para></listItem>
-          <listItem><para>Renamed Permutation.Width to Picks.</para></listItem>
-          <listItem><para>Renamed Permutation.MaxWidth to MaxChoices.</para></listItem>
-          <listItem><para>Renamed Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</para></listItem>
-          <listItem><para>Removed Permutation (int, long) constructor.</para></listItem>
-          <listItem><para>Removed ICloneable base class and Clone methods from all combinatorics.</para></listItem>
+          <listItem><para>Renames all Height properties to RowCount.</para></listItem>
+          <listItem><para>Renames Permutation.Width to Picks.</para></listItem>
+          <listItem><para>Renames Permutation.MaxWidth to MaxChoices.</para></listItem>
+          <listItem><para>Renames Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</para></listItem>
+          <listItem><para>Removes Permutation (int, long) constructor.</para></listItem>
+          <listItem><para>Removes ICloneable base class and Clone methods from all combinatorics.</para></listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 4.1 (2017)</title>
+      <title>Version 5.0 (2017-04-14)</title>
       <content>
+        <para>
+          This release updates tooling to 2017.
+          The new .NET Standard has been embraced for compatibility and future-proofing.
+          Development now requires Visual Studio 2017 with the repository changed to Git.
+        </para>
         <list class="bullet">
           <listItem><para>Renames namespace from Kw to Kaos.</para></listItem>
+          <listItem><para>Changes binary to .NET Standard 1.0 multi-targeted to .NET 3.5, .NET 4.0.</para></listItem>
           <listItem><para>Updates build environment to Visual Studio 2017.</para></listItem>
         </list>
-      </content>
-    </section>
-
-    <section>
-      <title>Version 5.1 (2017)</title>
-        <content>
-      <list class="bullet">
-        <listItem><para>Adds .NET Standard 1.1 build.</para></listItem>
-      </list>
       </content>
     </section>
 

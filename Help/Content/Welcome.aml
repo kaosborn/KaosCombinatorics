@@ -8,14 +8,14 @@
       </para>
       <para>
         This library is built as a .NET Standard project with multi-targeting.
-        All targets are available in the distributed NuGet package or as individual .dll files.
+        All targeted binaries are available in the distributed NuGet package or as individual .dll files.
         Current targets are:
       </para>
       <list class="bullet">
         <listItem>
           <para>
-            .NET Standard 1.0.
-            Use this for any .NET Core application or any full .NET Framework application at or above 4.5.
+            .NETStandard 1.0.
+            Use this for any .NET Core application or any .NET Framework application at or above 4.5.
           </para>
         </listItem>
         <listItem>
@@ -31,9 +31,11 @@
       <title>Distribution</title>
     <content>
       <para>
-        Source and binary hosting was formerly at CodePlex.com known under the KwCombinatorics project.
-        Current hosting of full source code and documentation is provided by GitHub.com.
-        Binary hosting is provided by NuGet.org.  This includes .xml files to support intellisense.
+        Source and binary hosting was formerly at CodePlex.com as the KwCombinatorics project.
+        Current hosting of full source code and documentation is at GitHub.com.
+        Primary binary hosting is now at NuGet.org.
+        This includes .xml files to support intellisense.
+        Complete documentation is available for download at GitHub.com as a .chm file.
       </para>
     </content>
     </section>
@@ -42,9 +44,9 @@
       <title>Build environment</title>
     <content>
       <para>
-        This library was built using Visual Studio 2017 Community Edition.
-        Test is performed by MSTest with code coverage of 100%.
+        This library requires Visual Studio 2017 Community Edition to build.
         There is an additional dependency on Sandcastle Help File Builder for building documentation.
+        Test is performed by MSTest with code coverage of 100%.
       </para>
     </content>
     </section>
