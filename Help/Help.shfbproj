@@ -37,7 +37,7 @@
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <HelpFileVersion>0.5.1.0</HelpFileVersion>
+    <HelpFileVersion>5.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
     <SyntaxFilters>C#</SyntaxFilters>
@@ -62,7 +62,7 @@
 &lt;li&gt;Define a subclass of the combinatoric and override &lt;b&gt;ToString()&lt;/b&gt;.&lt;/li&gt;</NamespaceSummaryItem>
     </NamespaceSummaries>
     <ProjectSummary>Free to use and share.</ProjectSummary>
-    <CopyrightText>Copyright &amp;#169%3b 2009-2017 Kasey Osborn %28github.com/kaosborn%29</CopyrightText>
+    <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2017 Kasey O. %28github.com/kaosborn%29</CopyrightText>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
