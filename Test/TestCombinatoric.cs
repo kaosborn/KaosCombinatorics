@@ -24,9 +24,8 @@ namespace CombinatoricsTest
         // Returns as many complete rows of Pascal's triangle as possible.
         static List<long[]> BuildPascalsTriangle()
         {
-            var pascals = new List<long[]>();
+            var pascals = new List<long[]> { new long[] { 1 } };
 
-            pascals.Add (new long[] { 1 });
             try
             {
                 for (int n = 1; ; ++n)
@@ -62,7 +61,7 @@ namespace CombinatoricsTest
                     }
                     catch (OverflowException)
                     {
-                        //TODO System.Diagnostics.Debug.WriteLine ("Ignoring OverflowException: n={0}, k={1}", n, k);
+                        System.Diagnostics.Debug.WriteLine ("Ignoring OverflowException: n={0}, k={1}", n, k);
                     }
                 }
         }

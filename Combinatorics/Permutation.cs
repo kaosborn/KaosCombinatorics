@@ -204,7 +204,7 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of (k-)permutations.
         private long rank;      // Row index.
 
-        #region Constructors
+#region Constructors
 
         /// <summary>
         /// Make an empty <see cref="Permutation"/>.
@@ -373,9 +373,9 @@ namespace Kaos.Combinatorics
             Construct (this, source);
         }
 
-        #endregion
+#endregion
 
-        #region Private static methods
+#region Private static methods
 
         // On entry: source may be unvalidated
         // On exit: pn will have correct rank, rowcount for source data
@@ -424,7 +424,7 @@ namespace Kaos.Combinatorics
         private static long CalcRank (int[] elements, int choices)
         {
             long result = 0;
-            bool[] isUsed = new bool[choices];
+            var isUsed = new bool[choices];
 
             //
             // Perform ranking:
@@ -436,7 +436,7 @@ namespace Kaos.Combinatorics
 
                 int digit = 0;
                 for (int ei2 = 0; ei2 < elements[ei1]; ++ei2)
-                    if (!isUsed[ei2])
+                    if (! isUsed[ei2])
                         ++digit;
 
                 result += digit * Combinatoric.Factorial (choices - ei1 - 1);
@@ -527,9 +527,9 @@ namespace Kaos.Combinatorics
             }
         }
         
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary
         /// >Number of available choices for the elements of the <see cref="Permutation"/>.
@@ -654,8 +654,6 @@ namespace Kaos.Combinatorics
                     long divisor = Combinatoric.Factorial (fi);
                     int quotient = (int) (value / divisor);
                     long remainder = value - quotient * divisor;
-
-                    //TODO CUT factoradic[fi] = (int)Math.DivRem(value, Combinatoric.Factorial(fi), out value);
                     factoradic[fi] = quotient;
                     value = remainder;
                 }
@@ -663,7 +661,7 @@ namespace Kaos.Combinatorics
                 // Build the permutation from the diminishing factoradic.
                 for (int fi = Choices - 1; fi >= Choices - Picks; --fi)
                     for (int newAtom = 0; ; ++newAtom)
-                        if (!isUsed[newAtom])
+                        if (! isUsed[newAtom])
                             if (factoradic[fi] > 0)
                                 --factoradic[fi];
                             else
@@ -731,9 +729,9 @@ namespace Kaos.Combinatorics
             get { return data[index]; }
         }
 
-        #endregion
+#endregion
 
-        #region Instance methods
+#region Instance methods
 
         /// <summary>
         /// Advance <see cref="Rank"/> a minimum while changing element at <em>nodeIndex</em>.
@@ -1054,7 +1052,7 @@ namespace Kaos.Combinatorics
             if (RowCount == 0)
                 return ("{ }");
 
-            StringBuilder result = new StringBuilder ("{ ");
+            var result = new StringBuilder ("{ ");
 
             for (int ei = 0;;)
             {
@@ -1068,13 +1066,12 @@ namespace Kaos.Combinatorics
             }
 
             result.Append (" }");
-
             return result.ToString();
         }
 
-        #endregion
+#endregion
 
-        #region Static methods
+#region Static methods
 
         /// <summary>
         /// Apply a <see cref="Permutation"/> sequence to rearrange the supplied list or array.
@@ -1100,7 +1097,7 @@ namespace Kaos.Combinatorics
             if (source.Count < arrangement.Picks)
                 throw new ArgumentException ("Not enough supplied values.", "source");
 
-            List<T> result = new List<T> (arrangement.Picks);
+            var result = new List<T> (arrangement.Picks);
 
             for (int ai = 0; ai < arrangement.Picks; ++ai)
                 result.Add (source[arrangement[ai]]);
@@ -1193,6 +1190,6 @@ namespace Kaos.Combinatorics
             get { return Combinatoric.factorial.Length - 1; }
         }
 
-        #endregion
+#endregion
     }
 }

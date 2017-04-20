@@ -106,7 +106,7 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of products.
         private long rank;      // Row index.
 
-        #region Constructors
+#region Constructors
 
         /// <summary>
         /// Make an empty <see cref="Product"/>.
@@ -196,8 +196,7 @@ namespace Kaos.Combinatorics
         /// <exception cref="ArgumentOutOfRangeException"
         /// >When any column size less than 0.
         /// </exception>
-        public Product (int[] sizes, long rank)
-            : this (sizes)
+        public Product (int[] sizes, long rank) : this (sizes)
         {
             Rank = rank;
         }
@@ -221,8 +220,7 @@ namespace Kaos.Combinatorics
         /// <exception cref="ArgumentOutOfRangeException">
         /// When any column size less than 0. When <em>source</em> data is not valid.
         /// </exception>
-        public Product (int[] sizes, int[] source)
-            : this (sizes)
+        public Product (int[] sizes, int[] source) : this (sizes)
         {
             if (source == null)
                 throw new ArgumentNullException ("source");
@@ -239,9 +237,9 @@ namespace Kaos.Combinatorics
             }
         }
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary>
         /// Row index of the join in the lexicographically ordered <see cref="Product"/> table.
@@ -254,10 +252,7 @@ namespace Kaos.Combinatorics
         /// </example>
         public long Rank
         {
-            get
-            {
-                return rank;
-            }
+            get { return rank; }
             set
             {
                 if (RowCount == 0)
@@ -324,7 +319,7 @@ namespace Kaos.Combinatorics
 
         #endregion
 
-        #region Instance methods
+#region Instance methods
 
         /// <summary>Compare 2 <see cref="Product"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
@@ -478,7 +473,7 @@ namespace Kaos.Combinatorics
             if (RowCount == 0)
                 return ("{ }");
 
-            StringBuilder result = new StringBuilder ("{ ");
+            var result = new StringBuilder ("{ ");
 
             for (int ei = 0; ; )
             {
@@ -492,13 +487,12 @@ namespace Kaos.Combinatorics
             }
 
             result.Append (" }");
-
             return result.ToString();
         }
 
-        #endregion
+#endregion
 
-        #region Static methods
+#region Static methods
 
         /// <summary>
         /// Apply a <see cref="Product"/> sequence to select from the supplied lists or arrays.
@@ -607,6 +601,6 @@ namespace Kaos.Combinatorics
         public static bool operator <= (Product param1, Product param2)
         { return ! (param1 > param2); }
 
-        #endregion
+#endregion
     }
 }

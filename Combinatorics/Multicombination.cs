@@ -125,7 +125,7 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of k-multicombinations.
         private long rank;      // Row index.
 
-        #region Constructors
+#region Constructors
 
         /// <summary>
         /// Make an empty <see cref="Multicombination"/>.
@@ -305,9 +305,9 @@ namespace Kaos.Combinatorics
             }
         }
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary>
         /// The available number of integers to choose from.
@@ -608,7 +608,7 @@ namespace Kaos.Combinatorics
             if (RowCount == 0)
                 return ("{ }");
 
-            StringBuilder result = new StringBuilder ("{ ");
+            var result = new StringBuilder ("{ ");
 
             for (int ei = 0;;)
             {
@@ -622,13 +622,12 @@ namespace Kaos.Combinatorics
             }
 
             result.Append (" }");
-
             return result.ToString();
         }
 
-        #endregion
+#endregion
 
-        #region Static methods
+#region Static methods
 
         /// <summary>
         /// Apply a <see cref="Multicombination"/> sequence to rearrange the supplied list or array.
@@ -657,7 +656,7 @@ namespace Kaos.Combinatorics
             if (source.Count < arrangement.Choices)
                 throw new ArgumentException ("Not enough supplied values.", "source");
 
-            List<T> result = new List<T> (arrangement.Picks);
+            var result = new List<T> (arrangement.Picks);
 
             for (int ei = 0; ei < arrangement.Picks; ++ei)
                 result.Add (source[arrangement[ei]]);
@@ -686,7 +685,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied sequences are not equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Multicombination param1, Multicombination param2)
-        { return !(param1 == param2); }
+        { return ! (param1 == param2); }
 
 
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is less than
@@ -711,7 +710,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator >= (Multicombination param1, Multicombination param2)
-        { return !(param1 < param2); }
+        { return ! (param1 < param2); }
 
 
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is greater than
@@ -736,8 +735,8 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator <= (Multicombination param1, Multicombination param2)
-        { return !(param1 > param2); }
+        { return ! (param1 > param2); }
 
-        #endregion
+#endregion
     }
 }

@@ -123,7 +123,7 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of k-combinations.
         private long rank;      // Row index.
 
-        #region Constructors
+#region Constructors
 
         /// <summary>
         /// Make an empty <see cref="Combination"/>.
@@ -306,9 +306,9 @@ namespace Kaos.Combinatorics
             }
         }
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
 
         /// <summary>
         /// The available number of integers to choose from.
@@ -410,9 +410,9 @@ namespace Kaos.Combinatorics
             get { return data[index]; }
         }
 
-        #endregion
+#endregion
 
-        #region Instance methods
+#region Instance methods
 
         /// <summary>Compare two <see cref="Combination"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
@@ -594,7 +594,7 @@ namespace Kaos.Combinatorics
             if (RowCount == 0)
                 return ("{ }");
 
-            StringBuilder result = new StringBuilder ("{ ");
+            var result = new StringBuilder ("{ ");
 
             for (int ei = 0;;)
             {
@@ -608,13 +608,12 @@ namespace Kaos.Combinatorics
             }
 
             result.Append (" }");
-
             return result.ToString();
         }
 
-        #endregion
+#endregion
 
-        #region Static methods
+#region Static methods
 
         /// <summary>
         /// Apply a <see cref="Combination"/> sequence to rearrange the supplied list or array.
@@ -672,7 +671,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied sequences are not equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Combination param1, Combination param2)
-        { return !(param1 == param2); }
+        { return ! (param1 == param2); }
 
 
         /// <summary>Indicate whether the left <see cref="Combination"/> is less than
@@ -697,7 +696,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator >= (Combination param1, Combination param2)
-        { return !(param1 < param2); }
+        { return ! (param1 < param2); }
 
 
         /// <summary>Indicate whether the left <see cref="Combination"/> is greater than
@@ -722,8 +721,8 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator <= (Combination param1, Combination param2)
-        { return !(param1 > param2); }
+        { return ! (param1 > param2); }
 
-        #endregion
+#endregion
     }
 }

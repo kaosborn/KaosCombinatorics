@@ -846,7 +846,7 @@ namespace CombinatoricsTest
 
             foreach (Permutation p in source.GetRows())
             {
-                if (!firstRank.HasValue)
+                if (! firstRank.HasValue)
                     firstRank = p.Rank;
 
                 ++actualCount;
