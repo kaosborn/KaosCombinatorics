@@ -652,10 +652,8 @@ namespace Kaos.Combinatorics
                 for (int fi = Choices - 1; fi >= 0; --fi)
                 {
                     long divisor = Combinatoric.Factorial (fi);
-                    int quotient = (int) (value / divisor);
-                    long remainder = value - quotient * divisor;
-                    factoradic[fi] = quotient;
-                    value = remainder;
+                    int quotient = factoradic[fi] = (int) (value / divisor);
+                    value -= quotient * divisor;
                 }
 
                 // Build the permutation from the diminishing factoradic.
