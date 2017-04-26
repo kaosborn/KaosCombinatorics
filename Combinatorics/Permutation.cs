@@ -261,7 +261,7 @@ namespace Kaos.Combinatorics
                 this.data[ei] = ei;
 
             this.choices = choices;
-            this.rowCount = choices == 0? 0 : Combinatoric.factorial[choices];
+            this.rowCount = choices == 0? 0 : Combinatoric.Factorial (choices);
             this.rank = 0;
         }
 
@@ -1187,7 +1187,7 @@ namespace Kaos.Combinatorics
         /// </returns>
         static public int MaxChoices
         {
-            get { return Combinatoric.factorial.Length - 1; }
+            get { return Combinatoric.FactorialLength - 1; }
         }
 
 #endregion
