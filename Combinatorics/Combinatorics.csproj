@@ -8,17 +8,17 @@
     <Authors>Kasey O.</Authors>
     <Company>github.com/kaosborn</Company>
     <Product>KaosCombinatorics</Product>
-    <Description>Combinatorics library for .NET</Description>
+    <Description>Combinatorics library to generate permutations, combinations, multi-combinations, and products. Distributed as .NET Standard 1.0 multi-targeted to .NET 3.5 and .NET 4.0.</Description>
     <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/wiki</PackageProjectUrl>
-    <Copyright>Copyright © github.com/kaosborn 2009-2017</Copyright>
+    <Copyright>Copyright © 2009-2017 github.com/kaosborn</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>For documentation see https://github.com/kaosborn/KaosCombinatorics/wiki</PackageReleaseNotes>
+    <PackageReleaseNotes>See https://kaosborn.github.io/help/KaosCombinatorics/index.html for complete documentation.  See https://github.com/kaosborn/KaosCombinatorics for issue tracking.</PackageReleaseNotes>
     <AssemblyVersion>5.0.0.0</AssemblyVersion>
     <FileVersion>5.0.0.0</FileVersion>
-    <PackageTags>combination combinatorics math multicombination numerics permutation permute product variation</PackageTags>
+    <PackageTags>combination combinatorics multicombination math numerics permutation permute product variation</PackageTags>
     <AssemblyName>KaosCombinatorics</AssemblyName>
   </PropertyGroup>
 
