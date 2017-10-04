@@ -1,4 +1,5 @@
-## KaosCombinatorics
+![logo](Images/KaosCombinatorics-256.png)
+# KaosCombinatorics
 
 ### Overview
 
@@ -18,21 +19,59 @@ or by supplying the rank to a constructor.
 Ranking is where an array of integers is supplied to a constructor.
 The Rank property will then contain its position in the ordered table.
 
+This library is built as a .NET Standard project multitargeted to:
+
+* .NET Standard 1.0.
+* .NET Framework 4.0.
+* .NET Framework 3.5.
+
+### Library download and installation
+
+KaosCombinatorics may be installed in Visual Studio via NuGet:
+
+1. Click **Manage NuGet Packages**.
+2. Select package source of **nuget.org**.
+3. Click **Browse** and input **Kaos.Combinatorics**.
+4. The package should appear. Click **Install**.
+As a multitargeted package, the appropriate binary will be selected for your program.
+
+Direct downloads are also available at NuGet.org and GitHub.com:
+
+https://www.nuget.org/packages/Kaos.Combinatorics/
+
+https://github.com/kaosborn/KaosCombinatorics/releases/
+
+As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
+A project may then reference the extracted platform-specific `.dll` directly.
+
 ### Documentation
 
-For complete project documentation:
+Installing as a NuGet package will provide IntelliSense and object browser documentation as a `.xml` file.
+For complete documentation, see:
 
-https://kaosborn.github.io/help/KaosCombinatorics/index.html
+https://kaosborn.github.io/help/KaosCombinatorics/
 
 An offline version of this documentation is also provided as a `.chm` file:
 
-https://github.com/kaosborn/KaosCombinatorics/releases
+https://github.com/kaosborn/KaosCombinatorics/releases/
+
+Examples may also be viewed here:
+
+https://github.com/kaosborn/KaosCombinatorics/wiki/
 
 ### Project status
 
 This project is stable and code complete.
 
+### Build environment
+
+Complete source code with embedded XML documentation is hosted at GitHub.com.
+Building the solution requires Visual Studio 2017 Community Edition or greater.
+Building documentation requires Sandcastle Help File Builder.
+
 ### Project layout
+
+This repository is a single Visual Studio solution with additional files in the root.
 
 * The `Bench` folder contains console programs that exercise classes in this library.
 
@@ -41,11 +80,11 @@ This project is stable and code complete.
 * The `Combinatorics` folder contains all source code and the build.
 Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
-This library is Multi-targetted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
+This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
 
 * The `Help` folder contains a [Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB)
 project that produces documentation from embedded XML comments.
 Output is a Microsoft Help v1 file with a `.chm` extension and a static web site.
 
 * The `Test` folder contains unit tests and some short running stress tests.
-Code coverage is 100%.
+Test engine is MSTest. Code coverage is 100%.
