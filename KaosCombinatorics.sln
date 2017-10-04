@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E7F15A7C-80B8-42CD-8609-1FAB0657BC92}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinCoBench01", "Bench\BinCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFull350", "Bench\ConFull350\ConFull350.csproj", "{691C365C-8CB8-427D-85A8-C355656C878D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorics", "Combinatorics\Combinatorics.csproj", "{C95FE743-22DF-475C-92F9-6DAEA6900B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Combinatorics", "Combinatorics\Combinatorics.csproj", "{C95FE743-22DF-475C-92F9-6DAEA6900B85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample05", "Examples\Combination\CnExample05\CnExample05.csproj", "{A6786BB8-E92D-422C-94C7-CF64CA95C161}"
 EndProject
@@ -88,6 +88,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFull400", "Bench\ConFull400\ConFull400.csproj", "{55E31108-49D3-49E2-935E-64FE8EEDA1A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConCore", "Bench\ConCore\ConCore.csproj", "{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{86ACCB1D-B00D-4E9C-8C90-FCDD12D1D50D}"
+	ProjectSection(SolutionItems) = preProject
+		Images\KaosCombinatorics-064.png = Images\KaosCombinatorics-064.png
+		Images\KaosCombinatorics-256.png = Images\KaosCombinatorics-256.png
+		Images\KaosCombinatorics.svg = Images\KaosCombinatorics.svg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -281,5 +288,8 @@ Global
 		{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0224A9F-09EE-4562-8513-B59A2B23A404}
 	EndGlobalSection
 EndGlobal
