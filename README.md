@@ -16,7 +16,7 @@ The primary classes are:
 Two key features this library provides are **unranking** and **ranking** for every combinatoric.
 Unranking is the ability to quickly retrieve any row in the combinatoric's lexicographically ordered table by setting its Rank property,
 or by supplying the rank to a constructor.
-Ranking is where an array of integers is supplied to a constructor.
+Ranking is where the elements of a combinatoric are supplied as an array of integers to a constructor.
 The Rank property will then contain its position in the ordered table.
 
 This library is built as a .NET Standard project multitargeted to:
@@ -25,9 +25,17 @@ This library is built as a .NET Standard project multitargeted to:
 * .NET Framework 4.0.
 * .NET Framework 3.5.
 
-### Library download and installation
+### Installation
 
-KaosCombinatorics may be installed in Visual Studio via NuGet:
+To install using Package Manager:
+
+`Install-Package Kaos.Combinatorics -Version 5.0.0`
+
+To install using .NET CLI:
+
+`dotnet add package Kaos.Combinatorics --version 5.0.0`
+
+To install using the Visual Studio gallery:
 
 1. Click **Manage NuGet Packages**.
 2. Select package source of **nuget.org**.
@@ -35,13 +43,15 @@ KaosCombinatorics may be installed in Visual Studio via NuGet:
 4. The package should appear. Click **Install**.
 As a multitargeted package, the appropriate binary will be selected for your program.
 
-Direct downloads are also available at NuGet.org and GitHub.com:
+To install using a direct reference to a `.dll` binary:
+
+1. Download the `.nuget` package from either:
 
 https://www.nuget.org/packages/Kaos.Combinatorics/
-
+-or-
 https://github.com/kaosborn/KaosCombinatorics/releases/
 
-As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
+2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
 A project may then reference the extracted platform-specific `.dll` directly.
 
 ### Documentation
@@ -59,7 +69,7 @@ Examples may also be viewed here:
 
 https://github.com/kaosborn/KaosCombinatorics/wiki/
 
-### Project status
+### Status
 
 This project is stable and code complete.
 
@@ -69,7 +79,7 @@ Complete source code with embedded XML documentation is hosted at GitHub.com.
 Building the solution requires Visual Studio 2017 Community Edition or greater.
 Building documentation requires Sandcastle Help File Builder.
 
-### Project layout
+### Repository layout
 
 This repository is a single Visual Studio solution with additional files in the root.
 
@@ -85,6 +95,8 @@ This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
 * The `Help` folder contains a [Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB)
 project that produces documentation from embedded XML comments.
 Output is a Microsoft Help v1 file with a `.chm` extension and a static web site.
+
+* The `Images` folder contains the logo `.svg` file and its `.png` conversions (by Edge).
 
 * The `Test` folder contains unit tests and some short running stress tests.
 Test engine is MSTest. Code coverage is 100%.
