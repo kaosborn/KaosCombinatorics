@@ -1,4 +1,4 @@
-![logo](Images/KaosCombinatorics-256.png)
+![logo](Images/KaosCombinatorics-248.png)
 # KaosCombinatorics
 
 ### Overview
