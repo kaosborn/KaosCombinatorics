@@ -1,10 +1,11 @@
 ![logo](Images/KaosCombinatorics-248.png)
 # KaosCombinatorics
 
-### Overview
-
-KaosCombinatorics is a .NET library that contains four combinatoric generating classes and one supporting class.
-These generated combinations of numbers may be used to permute (rearrange) other lists of objects.
+KaosCombinatorics is a .NET library that provides classes
+for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, and products
+that are ordered and ranked.
+These sequences of integers may be used to permute (rearrange) other lists of objects.
+Features ranking, unranking, backtracking, plain changes, and more.
 
 The primary classes are:
 
@@ -29,11 +30,11 @@ This library is built as a .NET Standard project multitargeted to:
 
 To install using Package Manager:
 
-`Install-Package Kaos.Combinatorics -Version 5.0.0`
+* **`Install-Package Kaos.Combinatorics -Version 5.0.0`**
 
-To install using .NET CLI:
+To install using the .NET CLI:
 
-`dotnet add package Kaos.Combinatorics --version 5.0.0`
+* **`dotnet add package Kaos.Combinatorics --version 5.0.0`**
 
 To install using the Visual Studio gallery:
 
@@ -41,15 +42,14 @@ To install using the Visual Studio gallery:
 2. Select package source of **nuget.org**.
 3. Click **Browse** and input **Kaos.Combinatorics**.
 4. The package should appear. Click **Install**.
-As a multitargeted package, the appropriate binary will be selected for your program.
+As a multitargeted package, the appropriate binary will be installed for your program.
 
 To install using a direct reference to a `.dll` binary:
 
 1. Download the `.nuget` package from either:
 
-https://www.nuget.org/packages/Kaos.Combinatorics/
--or-
-https://github.com/kaosborn/KaosCombinatorics/releases/
+  * https://www.nuget.org/packages/Kaos.Combinatorics/
+  * https://github.com/kaosborn/KaosCombinatorics/releases/
 
 2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
 A project may then reference the extracted platform-specific `.dll` directly.
@@ -59,27 +59,32 @@ A project may then reference the extracted platform-specific `.dll` directly.
 Installing as a NuGet package will provide IntelliSense and object browser documentation as a `.xml` file.
 For complete documentation, see:
 
-https://kaosborn.github.io/help/KaosCombinatorics/
+* https://kaosborn.github.io/help/KaosCombinatorics/
 
-An offline version of this documentation is also provided as a `.chm` file:
+An offline version of this documentation is also provided as a `.chm` file.
+This file may need to be unblocked using the file properties dialog:
 
-https://github.com/kaosborn/KaosCombinatorics/releases/
+* https://github.com/kaosborn/KaosCombinatorics/releases/
 
 Examples may also be viewed here:
 
-https://github.com/kaosborn/KaosCombinatorics/wiki/
+* https://github.com/kaosborn/KaosCombinatorics/wiki/
 
-### Status
+### Build
 
-This project is stable and code complete.
+Complete source code with embedded XML documentation is hosted at GitHub:
 
-### Build environment
+* https://github.com/kaosborn/KaosCombinatorics/releases/
 
-Complete source code with embedded XML documentation is hosted at GitHub.com.
-Building the solution requires Visual Studio 2017 Community Edition or greater.
-Building documentation requires Sandcastle Help File Builder.
+Building the library requires Visual Studio 2017 Community Edition or greater:
 
-### Repository layout
+* https://www.visualstudio.com/downloads/
+
+Building documentation requires Sandcastle Help File Builder:
+
+* https://github.com/EWSoftware/SHFB/releases/
+
+### Layout
 
 This repository is a single Visual Studio solution with additional files in the root.
 
