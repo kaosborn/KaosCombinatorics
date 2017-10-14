@@ -8,18 +8,28 @@
     <Authors>Kasey O.</Authors>
     <Company>github.com/kaosborn</Company>
     <Product>KaosCombinatorics</Product>
-    <Description>Combinatorics library to generate permutations, combinations, multi-combinations, and products. Distributed as .NET Standard 1.0 multi-targeted to .NET 3.5 and .NET 4.0.</Description>
+    <Description>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, and products that are ordered and ranked. These sequences of integers may be used to permute (rearrange) other lists of objects. Features ranking, unranking, backtracking, plain changes, and more.</Description>
     <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/wiki</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
     <Copyright>Copyright © 2009-2017 github.com/kaosborn</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageReleaseNotes>See https://kaosborn.github.io/help/KaosCombinatorics/index.html for complete documentation.  See https://github.com/kaosborn/KaosCombinatorics for issue tracking.</PackageReleaseNotes>
+    <PackageReleaseNotes>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, and products that are ordered and ranked. These sequences of integers may be used to permute (rearrange) other lists of objects. Features ranking, unranking, backtracking, plain changes, and more.
+
+Primary types provided are:
+Kaos.Combinatorics.Combination
+Kaos.Combinatorics.Multicombination
+Kaos.Combinatorics.Permutation
+Kaos.Combinatorics.Product
+
+For complete documentation:
+https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <AssemblyVersion>5.0.0.0</AssemblyVersion>
     <FileVersion>5.0.0.0</FileVersion>
-    <PackageTags>combination combinatorics multicombination math numerics permutation permute product variation</PackageTags>
+    <PackageTags>combination combinatorics multicombination discreet math numerics permutation permute product variation</PackageTags>
     <AssemblyName>KaosCombinatorics</AssemblyName>
+    <PackageIconUrl>https://raw.githubusercontent.com/kaosborn/KaosCombinatorics/master/Images/KaosCombinatorics-064.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
