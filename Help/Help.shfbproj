@@ -37,7 +37,7 @@
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <HelpFileVersion>5.0.0</HelpFileVersion>
+    <HelpFileVersion>5.0.0.3</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
     <SyntaxFilters>C#</SyntaxFilters>
@@ -60,7 +60,8 @@
 &lt;li&gt;Map each element to a different value using the combinatoric's default enumerator or its indexer.&lt;/li&gt;
 &lt;li&gt;Use the &lt;b&gt;Permute&lt;/b&gt; method and output the rearranged values.&lt;/li&gt;
 &lt;li&gt;Define a subclass of the combinatoric and override &lt;b&gt;ToString()&lt;/b&gt;.&lt;/li&gt;</NamespaceSummaryItem>
-<NamespaceSummaryItem name="(global)" isDocumented="True" /></NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="True" />
+    </NamespaceSummaries>
     <ProjectSummary>Free to use and share.</ProjectSummary>
     <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2017 Kasey O. %28github.com/kaosborn%29</CopyrightText>
   </PropertyGroup>
