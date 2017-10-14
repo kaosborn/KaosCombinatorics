@@ -49,9 +49,9 @@
     <HelpTitle>Kaos.Combinatorics Library</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="Kaos.Combinatorics" isDocumented="True" xmlns="">&lt;para&gt;The KwCombinatorics library consists of 4 classes that provide 4 different approaches to generating ordered sequences of numbers.  These sequences may be used to permute (rearrange) other lists of objects.  Combinatorics are useful for software testing by allowing the generation of various types of possible combinations of input.  Other uses include solving mathematical problems, games of chance, and cryptography. &lt;/para&gt;
+      <NamespaceSummaryItem name="Kaos.Combinatorics" isDocumented="True">&lt;para&gt;The KaosCombinatorics library consists of 4 classes that provide 4 different approaches to generating ordered sequences of numbers.  These sequences may be used to permute (rearrange) other lists of objects.  Combinatorics are useful for software testing by allowing the generation of various types of possible combinations of input.  Other uses include solving mathematical problems, games of chance, and cryptography. &lt;/para&gt;
 
-&lt;para&gt;2 key features this library provides are unranking and ranking for every combinatoric. Unranking is the ability to quickly retrieve any row in the combinatoric's lexicographically ordered table by setting its &lt;b&gt;Rank&lt;/b&gt; property, or by supplying the rank to a constructor. Ranking is where an array of integers is supplied to a conbinatoric's constructor giving its place in the ordered table by accessing the &lt;b&gt;Rank&lt;/b&gt; property.&lt;/para&gt;
+&lt;para&gt;Two key features this library provides are unranking and ranking for every combinatoric. Unranking is the ability to quickly retrieve any row in the combinatoric's lexicographically ordered table by setting its &lt;b&gt;Rank&lt;/b&gt; property, or by supplying the rank to a constructor. Ranking is where an array of integers is supplied to a conbinatoric's constructor giving its place in the ordered table by accessing the &lt;b&gt;Rank&lt;/b&gt; property.&lt;/para&gt;
 
 &lt;para&gt;As with the &lt;b&gt;Rank&lt;/b&gt; property, the classes in this library have an identical interface wherever possible so that the techniques used on one class can be applied to the others. Each class makes available a sequence of zero-based integers which represents the current row of its combinatoric. The elements of this row may be accessed using the class's &lt;b&gt;indexer&lt;/b&gt; or default &lt;b&gt;enumerator&lt;/b&gt;. Each class has a GetRows method for enumerating over a table with the given starting row. Each class has a &lt;b&gt;RowCount&lt;/b&gt; property that returns the range of values of &lt;b&gt;Rank&lt;/b&gt;. All classes except &lt;b&gt;Product&lt;/b&gt; have &lt;b&gt;Choices&lt;/b&gt; and &lt;b&gt;Picks&lt;/b&gt; properties where &lt;b&gt;Picks&lt;/b&gt; is the number of elements in the combinatoric taken from a possible number of &lt;b&gt;Choices&lt;/b&gt;.&lt;/para&gt;
 
@@ -60,7 +60,7 @@
 &lt;li&gt;Map each element to a different value using the combinatoric's default enumerator or its indexer.&lt;/li&gt;
 &lt;li&gt;Use the &lt;b&gt;Permute&lt;/b&gt; method and output the rearranged values.&lt;/li&gt;
 &lt;li&gt;Define a subclass of the combinatoric and override &lt;b&gt;ToString()&lt;/b&gt;.&lt;/li&gt;</NamespaceSummaryItem>
-    </NamespaceSummaries>
+<NamespaceSummaryItem name="(global)" isDocumented="True" /></NamespaceSummaries>
     <ProjectSummary>Free to use and share.</ProjectSummary>
     <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2017 Kasey O. %28github.com/kaosborn%29</CopyrightText>
   </PropertyGroup>
