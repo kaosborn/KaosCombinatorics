@@ -4,116 +4,117 @@
     <introduction></introduction>
 
     <section>
-      <title>Version 1.2 (2009-03-03)</title>
+      <title>KwCombinatorics version 1.2 (2009-03-03)</title>
       <content>
         <list class="bullet">
-          <listItem><para>Implements generic IEquatable interface.</para></listItem>
-            <listItem><para>Implements proper null tests for comparison operators.</para></listItem>
+          <listItem>Implements generic IEquatable interface.</listItem>
+          <listItem>Implements proper null tests for comparison operators.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 1.3 (2012-01-05)</title>
+      <title>KwCombinatorics version 1.3 (2012-01-05)</title>
       <content>
         <list class="bullet">
-          <listItem>
-            <para>Updates build environment to Visual Studio 2010.</para>
-          </listItem>
+          <listItem>Updates build environment to Visual Studio 2010.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 1.4 (2012-03-23)</title>
+      <title>KwCombinatorics version 1.4 (2012-03-23)</title>
       <content>
         <list class="bullet">
-            <listItem><para>Adds increment, decrement operators for all classes.</para></listItem>
-            <listItem><para>Fixes bugs on empty sequences.</para></listItem>
-            <listItem><para>Renames many parameters.</para></listItem>
-            <listItem><para>Adds minor optimizations.</para></listItem>
+          <listItem>Adds increment, decrement operators for all classes.</listItem>
+          <listItem>Fixes bugs on empty sequences.</listItem>
+          <listItem>Renames many parameters.</listItem>
+          <listItem>Adds minor optimizations.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 2.2 (2012-04-01)</title>
+      <title>KwCombinatorics version 2.2 (2012-04-01)</title>
       <content>
         <list class="bullet">
-          <listItem><para>Adds Multicombination.GetRowsForPicks (startPicks, stopPicks).</para></listItem>
-          <listItem><para>Adds CopyTo (array) to all combinatorics.</para></listItem>
-          <listItem><para>Removes Multicombination.GetRows (picks, startRank).</para></listItem>
+          <listItem>Adds Multicombination.GetRowsForPicks (startPicks, stopPicks).</listItem>
+          <listItem>Adds CopyTo (array) to all combinatorics.</listItem>
+          <listItem>Removes Multicombination.GetRows (picks, startRank).</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 2.3 (2012-04-17)</title>
+      <title>KwCombinatorics version 2.3 (2012-04-17)</title>
       <content>
         <list class="bullet">
-          <listItem><para>Adds Permutation.Backtrack method.</para></listItem>
-          <listItem><para>Multicombination ranking constructor accepts unsorted data.</para></listItem>
-          <listItem><para>Combination ranking constructor accepts unsorted data.</para></listItem>
-          <listItem><para>Fixes numeric overflow bug in Combination.Rank setter.</para></listItem>
-          <listItem><para>Fixes missing numeric overflow checks in Product constructors.</para></listItem>
-          <listItem><para>Fixes missing bounds checks in Product ranking constructor.</para></listItem>
-          <listItem><para>Removes increment and decrement operators.</para></listItem>
+          <listItem>Adds Permutation.Backtrack method.</listItem>
+          <listItem>Multicombination ranking constructor accepts unsorted data.</listItem>
+          <listItem>Combination ranking constructor accepts unsorted data.</listItem>
+          <listItem>Fixes numeric overflow bug in Combination.Rank setter.</listItem>
+          <listItem>Fixes missing numeric overflow checks in Product constructors.</listItem>
+          <listItem>Fixes missing bounds checks in Product ranking constructor.</listItem>
+          <listItem>Removes increment and decrement operators.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 2.4 (2012-07-01)</title>
+      <title>KwCombinatorics version 2.4 (2012-07-01)</title>
       <content>
         <list class="bullet">
-          <listItem><para>Optimizes Combination.Rank setter.</para></listItem>
-          <listItem><para>Optimizes Multicombination.Rank setter.</para></listItem>
-          <listItem><para>Adds methods Combinatoric.BinomialCoefficient, Combinatoric.Factorial.</para></listItem>
+          <listItem>Optimizes Combination.Rank setter.</listItem>
+          <listItem>>Optimizes Multicombination.Rank setter.</listItem>
+          <listItem>Adds methods Combinatoric.BinomialCoefficient, Combinatoric.Factorial.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 4.0 (2012-11-14)</title>
+      <title>KwCombinatorics version 4.0 (2012-11-14)</title>
       <content>
         <para>
           This release makes several changes to the Permutation class to add support for plain changes.
           There are also several breaking changes to improve API readability.
         </para>
         <list class="bullet">
-          <listItem><para>Adds Permutation.Choices property to support k-permutations.</para></listItem>
-          <listItem><para>Adds Permutation constructors to support k-permutations.</para></listItem>
-          <listItem><para>Adds property Permutation.PlainChange.</para></listItem>
-          <listItem><para>Adds property Permutation.Swaps.</para></listItem>
-          <listItem><para>Adds method Permutation.GetRowsForAllPicks.</para></listItem>
-          <listItem><para>Adds method Permutation.GetRowsOfPlainChanges.</para></listItem>
-          <listItem><para>Renames all Height properties to RowCount.</para></listItem>
-          <listItem><para>Renames Permutation.Width to Picks.</para></listItem>
-          <listItem><para>Renames Permutation.MaxWidth to MaxChoices.</para></listItem>
-          <listItem><para>Renames Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</para></listItem>
-          <listItem><para>Removes Permutation (int, long) constructor.</para></listItem>
-          <listItem><para>Removes ICloneable base class and Clone methods from all combinatorics.</para></listItem>
+          <listItem>Adds Permutation.Choices property to support k-permutations.</listItem>
+          <listItem>Adds Permutation constructors to support k-permutations.</listItem>
+          <listItem>Adds property Permutation.PlainChange.</listItem>
+          <listItem>Adds property Permutation.Swaps.</listItem>
+          <listItem>Adds method Permutation.GetRowsForAllPicks.</listItem>
+          <listItem>Adds method Permutation.GetRowsOfPlainChanges.</listItem>
+          <listItem>Renames all Height properties to RowCount.</listItem>
+          <listItem>Renames Permutation.Width to Picks.</listItem>
+          <listItem>Renames Permutation.MaxWidth to MaxChoices.</listItem>
+          <listItem>Renames Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</listItem>
+          <listItem>Removes Permutation (int, long) constructor.</listItem>
+          <listItem>Removes ICloneable base class and Clone methods from all combinatorics.</listItem>
         </list>
       </content>
     </section>
 
     <section>
-      <title>Version 5.0 (2017-04-14)</title>
+      <title>KaosCombinatorics version 5.0 (2017-04-14)</title>
       <content>
         <para>
           This release updates tooling to 2017.
           The new .NET Standard has been embraced for compatibility and future-proofing.
           Development now requires Visual Studio 2017 with the repository changed to Git.
+          Binary now hosted at NuGet.org.
         </para>
         <list class="bullet">
-          <listItem><para>Renames namespace from Kw to Kaos.</para></listItem>
-          <listItem><para>Changes binary to .NET Standard 1.0 multi-targeted to .NET 3.5, .NET 4.0.</para></listItem>
-          <listItem><para>Updates build environment to Visual Studio 2017.</para></listItem>
+          <listItem>Renames namespace from Kw to Kaos.</listItem>
+          <listItem>Changes binary to .NET Standard 1.0 multitargeted to .NET 3.5, .NET 4.0.</listItem>
+          <listItem>Updates build environment to Visual Studio 2017.</listItem>
         </list>
       </content>
     </section>
 
-    <relatedTopics></relatedTopics>
+    <relatedTopics>
+      <link xlink:href="0908d812-b502-4da7-a452-66e043c6bb70"/>
+    </relatedTopics>
 
   </developerConceptualDocument>
 </topic>
