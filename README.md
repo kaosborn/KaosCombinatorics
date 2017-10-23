@@ -2,17 +2,17 @@
 # KaosCombinatorics
 
 KaosCombinatorics is a .NET library that provides classes
-for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, and products
+for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products
 that are ordered and ranked.
 These sequences of integers may be used to permute (rearrange) other lists of objects.
 Features ranking, unranking, backtracking, plain changes, and more.
 
-The primary classes are:
+Primary types provided are:
 
-* `Combination`: An ascending sequence of non-repeating picks from a supplied number of choices.
-* `Multicombination`: An ascending sequence of repeating picks from a supplied number of choices.
-* `Permutation`: An arrangement of all or a subset of values from a supplied range.
-* `Product`: A join of values from a supplied array of ranges.
+* `Combination` - an ascending sequence of distinct picks from a supplied range.
+* `Multicombination` - an ascending sequence of repeating picks from a supplied range.
+* `Permutation` - a specific arrangement of distinct picks from a supplied range.
+* `Product` - a join of values from a supplied array of ranges.
 
 Two key features this library provides are **unranking** and **ranking** for every combinatoric.
 Unranking is the ability to quickly retrieve any row in the combinatoric's lexicographically ordered table by setting its Rank property,
@@ -26,7 +26,7 @@ This library is built as a .NET Standard project multitargeted to:
 * .NET Framework 4.0.
 * .NET Framework 3.5.
 
-### Installation
+### Library installation
 
 To install using Package Manager:
 
@@ -48,8 +48,8 @@ To install using a direct reference to a `.dll` binary:
 
 1. Download the `.nuget` package from either:
 
-  * https://www.nuget.org/packages/Kaos.Combinatorics/
-  * https://github.com/kaosborn/KaosCombinatorics/releases/
+   * https://www.nuget.org/packages/Kaos.Combinatorics/
+   * https://github.com/kaosborn/KaosCombinatorics/releases/
 
 2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
 A project may then reference the extracted platform-specific `.dll` directly.
@@ -84,7 +84,7 @@ Building documentation requires Sandcastle Help File Builder:
 
 * https://github.com/EWSoftware/SHFB/releases/
 
-### Layout
+### Repository layout
 
 This repository is a single Visual Studio solution with additional files in the root.
 
