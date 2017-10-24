@@ -13,15 +13,16 @@ using System.Text;
 namespace Kaos.Combinatorics
 {
     /// <summary>
-    /// Represents an arrangement of distinct values taken from a supplied number of choices.
+    /// Represents a specific arrangement of distinct picks from a supplied range.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Unlike combinations, the arrangement of the elements of a permutation is significant.
-    /// 
-    /// Permutations typically contain all of the available choices. In contrast,
-    /// <em>k</em>-permutations contain arrangements that pick fewer elements than the
-    /// available choices. 
+    /// The defining variables of a permutation
+    /// are <em>n</em> which is the number of possible choices
+    /// and <em>k</em> which is the number of distinct picks from those choices.
+    /// When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-permutation
+    /// also known as a variation.
+    /// Permutations are contrasted to combinations where the arrangement is generally not significant (except for ranking).
     /// </para>
     /// <para>
     /// The <see cref="Permutation"/> class uses the inherent sequencing of the elements
@@ -204,10 +205,10 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of (k-)permutations.
         private long rank;      // Row index.
 
-#region Constructors
+        #region Constructors
 
         /// <summary>
-        /// Make an empty <see cref="Permutation"/>.
+        /// Initializes an empty permutation instance.
         /// </summary>
         public Permutation()
         {
@@ -219,7 +220,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a copy of a <see cref="Permutation"/>.
+        /// Initializes a new instance that is copied from the supplied permutation.
         /// </summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -238,8 +239,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Permutation"/> of all the supplied number of
-        /// <em>choices</em> with a <see cref="Rank"/> of 0.
+        /// Initializes a new permutation of <see cref="Rank"/> 0 with the supplied number of elements.
         /// </summary>
         /// <param name="choices">Number of elements in the sequence.</param>
         /// <example>
@@ -267,16 +267,20 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Permutation"/> with <em>picks</em> number of elements taken
-        /// from a possible number of <em>choices</em> of <see cref="Rank"/> 0.
+        /// Initializes a new permutation of <see cref="Rank"/> 0
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to choose from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
+        /// <remarks>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-permutation also known as a variation.
+        /// </remarks>
         /// <example>
         /// <code source="..\Examples\Permutation\PnExample06\PnExample06.cs" lang="cs" />
         /// </example>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>picks</em> less than 0, greater than 20, or greater than <em>choices</em>;
+        /// When <em>picks</em> less than 0 or greater than <em>choices</em>;
         /// when <em>choices</em> greater than 20.
         /// </exception>
         public Permutation (int choices, int picks) : this (choices, picks, 0)
@@ -284,18 +288,25 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Permutation"/> with <em>picks</em> number of elements taken
-        /// from a possible number of <em>choices</em> of the supplied <em>rank</em>.
+        /// Initializes a new permutation of the supplied <em>rank</em>
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <remarks>
-        /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
-        /// it will be normalized to the valid range. For example, a value of -1 will
-        /// produce the last row in the ordered table.
+        /// <para>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-permutation also known as a variation.
+        /// </para>
+        /// <para>
+        /// If <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
+        /// it will be normalized to the valid range.
+        /// For example, a value of -1 will produce the last row in the ordered table.
+        /// </para>
         /// </remarks>
         /// <param name="choices">Number of values to choose from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
-        /// <param name="rank">Initial row index in the lexicographically ordered <see cref="Permutation"/> table.</param>
+        /// <param name="rank">Row index in the ordered <see cref="Permutation"/> table.</param>
         /// <example>
+        /// This is an example of a <em>k</em>-permutation.
         /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
         /// </example>
         /// <exception cref="ArgumentOutOfRangeException">
@@ -321,7 +332,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Permutation"/> from the supplied elements.
+        /// Initializes a new permutation from the elements supplied in <em>source</em>.
         /// </summary>
         /// <param name="source">Array of integers.</param>
         /// <example>
@@ -346,12 +357,12 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Permutation"/> from the supplied elements taken from the
-        /// available number of <em>choices</em>.
+        /// Initializes a new permutation from the elements supplied in <em>source</em>
+        /// picked from the supplied number of <em>choices</em>.
         /// </summary>
         /// <remarks>
-        /// Supplying a value for <em>choices</em> that is greater than the number of
-        /// elements in <em>source</em> will create a <em>k</em>-permutation.
+        /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+        /// will instantiate a <em>k</em>-permutation.
         /// </remarks>
         /// <param name="source">Array of integers with elements in the range (0..<em>choices</em>-1).</param>
         /// <param name="choices">Number of values that <em>source</em> may pick from.</param>

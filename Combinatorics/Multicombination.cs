@@ -13,30 +13,27 @@ using System.Text;
 namespace Kaos.Combinatorics
 {
     /// <summary>
-    /// Represents an ascending sequence of repeatable picks from a supplied number of choices.
+    /// Represents an ascending sequence of repeating picks from a supplied range.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <em>k</em>-multicombinations are also known as pick-multicombinations or
-    /// <em>k</em>-combinations with repetitions.
-    /// 
-    /// The defining variables are <em>n</em> which is the number of possible choices and
-    /// <em>k</em> which is the number of repeatable picks from those choices.
-    /// 
-    /// This is contrasted to <em>k</em>-combinations where the picks may not repeat.
+    /// The defining variables of a multicombination
+    /// are <em>n</em> which is the number of possible choices
+    /// and <em>k</em> which is the number of repeatable picks from those choices.
+    /// When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-multicombination
+    /// also known as a <em>k</em>-combination with repetition.
+    /// Multicombinations are contrasted to combinations where the values in the sequence do not repeat.
     /// </para>
     /// <para>
     /// The <see cref="Multicombination"/> class produces <em>k</em>-multicombinations with
     /// ascending elements that may repeat as many as <em>k</em> times. 
-    /// 
-    /// While sequence order of the elements is not a requirement of <em>k</em>-multicombinations,
+    /// While sequence order of the elements is not a general requirement of multicombinations,
     /// producing an ascending sequence allows ranking the rows into an ordered table.
     /// </para>
     /// <para>
     /// Use the <see cref="Picks"/> property to get the number of elements (<em>k</em>)
     /// of a <see cref="Multicombination"/> taken from a possible number of
     /// <see cref="Choices"/> (<em>n</em>).
-    /// 
     /// Use the <see cref="RowCount"/> property to get the number of distinct possible
     /// <see cref="Multicombination"/> sequences.
     /// 
@@ -125,10 +122,10 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of k-multicombinations.
         private long rank;      // Row index.
 
-#region Constructors
+        #region Constructors
 
         /// <summary>
-        /// Make an empty <see cref="Multicombination"/>.
+        /// Initializes an empty multicombination instance.
         /// </summary>
         public Multicombination()
         {
@@ -138,9 +135,9 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-        
+
         /// <summary>
-        /// Make a copy of a <see cref="Multicombination"/>.
+        /// Initializes a new instance that is copied from the supplied multicombination.
         /// </summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -159,8 +156,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Multicombination"/> from the supplied
-        /// <em>choices</em> of the same <em>Picks</em>.
+        /// Initializes a new multicombination of <see cref="Rank"/> 0 with the supplied number of elements.
         /// </summary>
         /// <param name="choices">Number of elements in the sequence.</param>
         /// <exception cref="ArgumentOutOfRangeException">
@@ -179,11 +175,15 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Multicombination"/> from the supplied
-        /// <em>choices</em> and <em>picks</em> of <see cref="Rank"/> 0.
+        /// Initializes a new multicombination of <see cref="Rank"/> 0
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
+        /// <remarks>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+        /// </remarks>
         /// <example>
         /// <code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs" />
         /// </example>
@@ -210,17 +210,23 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Multicombination"/> from the supplied
-        /// <em>choices</em> and <em>picks</em> of the supplied <em>rank</em>.
+        /// Initializes a new multicombination of the supplied <em>rank</em>
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <remarks>
+        /// <para>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+        /// </para>
+        /// <para>
         /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
-        /// it will be normalized to the valid range. For example, a value of -1 will
-        /// produce the last row in the ordered table.
+        /// it will be normalized to the valid range.
+        /// For example, a value of -1 will produce the last row in the ordered table.
+        /// </para>
         /// </remarks>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
-        /// <param name="rank">Initial row index in the ordered <see cref="Multicombination"/> table.</param>
+        /// <param name="rank">Row index in the ordered <see cref="Multicombination"/> table.</param>
         /// <example>
         /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
         /// </example>
@@ -247,10 +253,15 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Multicombination"/> from the supplied elements.
+        /// Initializes a new multicombination from elements supplied in <em>source</em>
+        /// picked from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="source">Array of integers.</param>
+        /// <remarks>
+        /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+        /// will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+        /// </remarks>
         /// <example>
         /// <code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs" />
         /// </example>

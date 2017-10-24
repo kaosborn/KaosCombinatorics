@@ -13,23 +13,21 @@ using System.Text;
 namespace Kaos.Combinatorics
 {
     /// <summary>
-    /// Represents an ascending sequence of non-repeating picks from a supplied number of choices.
+    /// Represents an ascending sequence of distinct picks from a supplied range.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// <em>K</em>-combinations are also known as pick-combinations.
-    /// 
-    /// The defining variables are <em>n</em> which is the number of possible choices and
-    /// <em>k</em> which is the number of non-repeatable picks from those choices.
-    /// 
-    /// This is contrasted to <em>k</em>-multicombinations where the elements in a row may repeat.
+    /// The defining variables of a combination
+    /// are <em>n</em> which is the number of possible choices
+    /// and <em>k</em> which is the number of distinct picks from those choices.
+    /// When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-combination
+    /// also known as a pick-combination.
+    /// Combinations are contrasted to multicombinations where the values in the sequence may repeat.
     /// </para>
     /// <para>
-    /// The <see cref="Combination"/> class produces <em>k</em>-combinations with ascending
-    /// elements.
-    /// 
-    /// While sequence order of the elements is not a requirement of <em>k</em>-combinations,
-    /// producing an ascending sequence allows ranking the rows into an ordered table.
+    /// The <see cref="Combination"/> class produces <em>k</em>-combinations with ascending elements.
+    /// While sequence order of the elements is not a general requirement of combinations,
+    /// producing an ascending sequence allows ranking the sequences into an ordered table.
     /// </para>
     /// <para>
     /// Use the <see cref="Picks"/> property to get the number of elements (<em>k</em>)
@@ -123,10 +121,10 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of k-combinations.
         private long rank;      // Row index.
 
-#region Constructors
+        #region Constructors
 
         /// <summary>
-        /// Make an empty <see cref="Combination"/>.
+        /// Initializes an empty combination instance.
         /// </summary>
         public Combination()
         {
@@ -138,7 +136,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a copy of a <see cref="Combination"/>.
+        /// Initializes a new instance that is copied from the supplied combination.
         /// </summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -157,8 +155,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Combination"/> from the supplied
-        /// <em>choices</em> of all <see cref="Picks"/> of <see cref="Rank"/> 0.
+        /// Initializes a new combination of <see cref="Rank"/> 0 with the supplied number of elements.
         /// </summary>
         /// <param name="choices">Number of elements in the sequence.</param>
         /// <exception cref="ArgumentOutOfRangeException">
@@ -180,11 +177,15 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Combination"/> from the supplied
-        /// <em>choices</em> and <em>picks</em> of <see cref="Rank"/> 0.
+        /// Initializes a new combination of <see cref="Rank"/> 0
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
+        /// <remarks>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-combination also known as a pick-combination.
+        /// </remarks>
         /// <example>
         /// <code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs" />
         /// </example>
@@ -214,17 +215,23 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Combination"/> from the supplied
-        /// <em>choices</em> and <em>picks</em> of the supplied <em>rank</em>.
+        /// Initializes a new combination of the supplied <em>rank</em>
+        /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
         /// </summary>
         /// <remarks>
+        /// <para>
+        /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+        /// will instantiate a <em>k</em>-combination also known as a pick-combination.
+        /// <para>
+        /// </para>
         /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
-        /// it will be normalized to the valid range. For example, a value of -1 will
-        /// produce the last row in the ordered table.
+        /// it will be normalized to the valid range.
+        /// For example, a value of -1 will produce the last row in the ordered table.
+        /// </para>
         /// </remarks>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
-        /// <param name="rank">Initial row index in the ordered <see cref="Combination"/> table.</param>
+        /// <param name="rank">Row index in the ordered <see cref="Combination"/> table.</param>
         /// <example>
         /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
         /// </example>
@@ -251,10 +258,15 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Combination"/> from the supplied elements.
+        /// Initializes a new combination from elements supplied in <em>source</em>
+        /// picked from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="source">Array of integers.</param>
+        /// <remarks>
+        /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+        /// will instantiate a <em>k</em>-combination also known as a pick-combination.
+        /// </remarks>
         /// <example>
         /// <code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs" />
         /// </example>

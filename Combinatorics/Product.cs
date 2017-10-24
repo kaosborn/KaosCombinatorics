@@ -18,7 +18,7 @@ namespace Kaos.Combinatorics
     /// <remarks>
     /// <para>
     /// A cartesian product is a set of sets where each subset is constructed by picking
-    /// 1 element from each of a given number of sets. This process of joining elements to
+    /// one element from each of a given number of sets. This process of joining elements to
     /// form new sets is repeated until all possible distinct joins are made.
     /// </para>
     /// <para>
@@ -106,10 +106,10 @@ namespace Kaos.Combinatorics
         private long rowCount;  // Row count of the table of products.
         private long rank;      // Row index.
 
-#region Constructors
+        #region Constructors
 
         /// <summary>
-        /// Make an empty <see cref="Product"/>.
+        /// Initializes an empty product instance.
         /// </summary>
         public Product()
         {
@@ -121,7 +121,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a copy of a <see cref="Product"/>.
+        /// Initializes a new instance that is copied from the supplied product.
         /// </summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -141,8 +141,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Product"/> from the supplied
-        /// column <em>sizes</em> of <see cref="Rank"/> 0.
+        /// Initializes a new product of <see cref="Rank"/> 0 with the supplied <em>sizes</em> of columns.
         /// </summary>
         /// <param name="sizes">Size of each column.</param>
         /// <example>
@@ -180,16 +179,16 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Product"/> from the supplied column <em>sizes</em> of the
-        /// supplied <em>rank</em>.
+        /// Initializes a new product of the supplied <em>rank</em>
+        /// with the supplied <em>sizes</em> of columns.
         /// </summary>
         /// <remarks>
         /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
-        /// it will be normalized to the valid range. For example, a value of -1 will
-        /// produce the last row in the ordered table.
+        /// it will be normalized to the valid range.
+        /// For example, a value of -1 will produce the last row in the ordered table.
         /// </remarks>
         /// <param name="sizes">Size of each column.</param>
-        /// <param name="rank">Initial row index.</param>
+        /// <param name="rank">Row index in the ordered <see cref="Product"/> table.</param>
         /// <exception cref="ArgumentNullException"
         /// >When <em>sizes</em> is <b>null</b>.
         /// </exception>
@@ -203,8 +202,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Make a new <see cref="Product"/> of the supplied column <em>sizes</em>
-        /// from the supplied values.
+        /// Initializes a new product of the supplied values
+        /// with the supplied <em>sizes</em> of columns.
         /// </summary>
         /// <param name="sizes">Size of each column.</param>
         /// <param name="source">Integer values for the columns.</param>
@@ -218,7 +217,7 @@ namespace Kaos.Combinatorics
         /// When <em>source</em> length does not match <em>sizes</em> length.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// When any column size less than 0. When <em>source</em> data is not valid.
+        /// When any column size less than zero; when <em>source</em> contains invalid values.
         /// </exception>
         public Product (int[] sizes, int[] source) : this (sizes)
         {
