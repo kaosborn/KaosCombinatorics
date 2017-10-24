@@ -13,7 +13,7 @@
     <RootNamespace>Help</RootNamespace>
     <Name>Help</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>KaosCombinatorics</HtmlHelpName>
     <Language>en-US</Language>
@@ -27,8 +27,7 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.0\KaosCombinatorics.dll" />
-      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.0\KaosCombinatorics.xml" />
+      <DocumentationSource sourceFile="..\Combinatorics\Combinatorics.csproj" />
     </DocumentationSources>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
