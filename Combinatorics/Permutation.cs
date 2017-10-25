@@ -384,9 +384,9 @@ namespace Kaos.Combinatorics
             Construct (this, source);
         }
 
-#endregion
+        #endregion
 
-#region Private static methods
+        #region Private static methods
 
         // On entry: source may be unvalidated
         // On exit: pn will have correct rank, rowcount for source data
@@ -537,10 +537,10 @@ namespace Kaos.Combinatorics
                 elements[ip] = ei;
             }
         }
-        
-#endregion
 
-#region Properties
+        #endregion
+
+        #region Properties
 
         /// <summary
         /// >Number of available choices for the elements of the <see cref="Permutation"/>.
@@ -549,10 +549,7 @@ namespace Kaos.Combinatorics
         /// If no <em>picks</em> value was specified when constructing this
         /// <see cref="Permutation"/>, then this is also the number of elements.
         /// </remarks>
-        public int Choices
-        {
-            get { return choices; }
-        }
+        public int Choices => choices;
 
 
         /// <summary
@@ -562,10 +559,7 @@ namespace Kaos.Combinatorics
         /// Also known as <em>k</em>. If value is less than <em>Choices</em>,
         /// then this is a <em>k</em>-permutation.
         /// </remarks>
-        public int Picks
-        {
-            get { return data.Length; }
-        }
+        public int Picks => data.Length;
 
 
         /// <summary>
@@ -686,10 +680,7 @@ namespace Kaos.Combinatorics
         /// <summary>
         /// Returns number of distinct possible arrangements of this <see cref="Permutation"/>.
         /// </summary>
-        public long RowCount
-        {
-            get { return rowCount; }
-        }
+        public long RowCount => rowCount;
 
 
         /// <summary>
@@ -733,14 +724,11 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
         /// </exception>
-        public int this[int index]
-        {
-            get { return data[index]; }
-        }
+        public int this[int index] => data[index];
 
-#endregion
+        #endregion
 
-#region Instance methods
+        #region Instance methods
 
         /// <summary>
         /// Advance <see cref="Rank"/> a minimum while changing element at <em>nodeIndex</em>.
@@ -815,8 +803,7 @@ namespace Kaos.Combinatorics
         /// <summary>Compare 2 <see cref="Permutation"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
-        public int CompareTo (object obj)
-        { return CompareTo (obj as Permutation); }
+        public int CompareTo (object obj) => CompareTo (obj as Permutation);
 
 
         /// <summary>Compare 2 <see cref="Permutation"/>s.</summary>
@@ -856,6 +843,7 @@ namespace Kaos.Combinatorics
             this.data.CopyTo (array, 0);
         }
 
+
         /// <summary>
         /// Indicate whether 2 <see cref="Permutation"/>s have the same value.
         /// </summary>
@@ -863,8 +851,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj)
-        { return Equals (obj as Permutation); }
+        public override bool Equals (object obj) => Equals (obj as Permutation);
 
 
         /// <summary>
@@ -875,22 +862,16 @@ namespace Kaos.Combinatorics
         /// <b>true</b> if <em>other</em> has the same value as this instance;
         /// otherwise, <b>false</b>.
         /// </returns>
-        public bool Equals (Permutation other)
-        {
-            return (object) other != null && other.Rank == Rank && other.Picks == Picks;
-        }
+        public bool Equals (Permutation other) => (object) other != null && other.Rank == Rank && other.Picks == Picks;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        { return GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
 
         /// <summary>Enumerate all elements of a <see cref="Permutation"/>.</summary>
-        /// <returns>
-        /// An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Permutation"/>.
-        /// </returns>
+        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Permutation"/>.</returns>
         /// <example>
         /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
         /// </example>
@@ -903,8 +884,7 @@ namespace Kaos.Combinatorics
 
         /// <summary>Get the hash oode of the <see cref="Permutation"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
-        public override int GetHashCode()
-        { return unchecked ((int) Rank); }
+        public override int GetHashCode() => unchecked ((int) Rank);
 
 
         /// <summary>
@@ -964,6 +944,7 @@ namespace Kaos.Combinatorics
                 }
             }
         }
+
 
         /// <summary>
         /// Iterate thru all rows of all <see cref="Permutation"/> tables for every
@@ -1078,9 +1059,9 @@ namespace Kaos.Combinatorics
             return result.ToString();
         }
 
-#endregion
+        #endregion
 
-#region Static methods
+        #region Static methods
 
         /// <summary>
         /// Apply a <see cref="Permutation"/> sequence to rearrange the supplied list or array.
@@ -1177,6 +1158,7 @@ namespace Kaos.Combinatorics
                 return param1.CompareTo (param2) > 0;
         }
 
+
         /// <summary>Indicate whether the left permutation is less than or equal to
         /// the right permutation.</summary>
         /// <param name="param1">A <see cref="Permutation"/>.</param>
@@ -1194,11 +1176,8 @@ namespace Kaos.Combinatorics
         /// The maximum number of elements that may be in any <see cref="Permutation"/>
         /// due to Int64 computational limitations.
         /// </returns>
-        static public int MaxChoices
-        {
-            get { return Combinatoric.FactorialLength - 1; }
-        }
+        static public int MaxChoices => Combinatoric.FactorialLength - 1;
 
-#endregion
+        #endregion
     }
 }

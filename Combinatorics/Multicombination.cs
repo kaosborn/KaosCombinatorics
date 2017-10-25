@@ -316,9 +316,9 @@ namespace Kaos.Combinatorics
             }
         }
 
-#endregion
+        #endregion
 
-#region Properties
+        #region Properties
 
         /// <summary>
         /// The available number of integers to choose from.
@@ -326,10 +326,7 @@ namespace Kaos.Combinatorics
         /// <remarks>
         /// Also known as <em>n</em>.
         /// </remarks>
-        public int Choices
-        {
-            get { return choices; }
-        }
+        public int Choices => choices;
 
 
         /// <summary>
@@ -338,10 +335,7 @@ namespace Kaos.Combinatorics
         /// <remarks>
         /// Also known as <em>k</em>.
         /// </remarks>
-        public int Picks
-        {
-            get { return data.Length; }
-        }
+        public int Picks => data.Length;
 
 
         /// <summary>
@@ -398,10 +392,7 @@ namespace Kaos.Combinatorics
         /// <summary>
         /// Count of distinct sequences in the <see cref="Multicombination"/> table.
         /// </summary>
-        public long RowCount
-        {
-            get { return rowCount; }
-        }
+        public long RowCount => rowCount;
 
 
         /// <summary>
@@ -415,10 +406,7 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
         /// </exception>
-        public int this[int index]
-        {
-            get { return data[index]; }
-        }
+        public int this[int index] => data[index];
 
         #endregion
 
@@ -505,7 +493,7 @@ namespace Kaos.Combinatorics
                 && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
         }
 
-        
+
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -636,9 +624,9 @@ namespace Kaos.Combinatorics
             return result.ToString();
         }
 
-#endregion
+        #endregion
 
-#region Static methods
+        #region Static methods
 
         /// <summary>
         /// Apply a <see cref="Multicombination"/> sequence to rearrange the supplied list or array.
@@ -675,7 +663,7 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-        
+
         /// <summary>Indicate whether 2 <see cref="Multicombination"/>s are equal.</summary>
         /// <param name="param1">A <see cref="Multicombination"/> sequence.</param>
         /// <param name="param2">A <see cref="Multicombination"/> sequence.</param>
@@ -748,6 +736,6 @@ namespace Kaos.Combinatorics
         public static bool operator <= (Multicombination param1, Multicombination param2)
         { return ! (param1 > param2); }
 
-#endregion
+        #endregion
     }
 }

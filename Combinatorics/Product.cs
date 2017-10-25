@@ -238,7 +238,7 @@ namespace Kaos.Combinatorics
 
 #endregion
 
-#region Properties
+        #region Properties
 
         /// <summary>
         /// Row index of the join in the lexicographically ordered <see cref="Product"/> table.
@@ -318,7 +318,7 @@ namespace Kaos.Combinatorics
 
         #endregion
 
-#region Instance methods
+        #region Instance methods
 
         /// <summary>Compare 2 <see cref="Product"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
@@ -489,9 +489,9 @@ namespace Kaos.Combinatorics
             return result.ToString();
         }
 
-#endregion
+        #endregion
 
-#region Static methods
+        #region Static methods
 
         /// <summary>
         /// Apply a <see cref="Product"/> sequence to select from the supplied lists or arrays.
@@ -600,6 +600,6 @@ namespace Kaos.Combinatorics
         public static bool operator <= (Product param1, Product param2)
         { return ! (param1 > param2); }
 
-#endregion
+        #endregion
     }
 }
