@@ -4,30 +4,30 @@
     <introduction>
       <para>
         KaosCombinatorics is a .NET library that provides classes
-        for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, and products
+        for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products
         that are ordered and ranked.
         These sequences of integers may be used to permute (rearrange) other lists of objects.
         Features ranking, unranking, backtracking, plain changes, and more.
       </para>
       <para>
-        The primary classes provided are:
+        The primary types provided are:
       </para>
       <list class="bullet">
         <listItem>
-            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Combination</codeEntityReference>
-            - an ascending sequence of non-repeating picks from a supplied number of choices.
+            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Combination</codeEntityReference> -
+            an ascending sequence of distinct picks from a supplied range.
         </listItem>
         <listItem>
-            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Multicombination</codeEntityReference>
-            - an ascending sequence of repeatable picks from a supplied number of choices. 
+            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Multicombination</codeEntityReference> -
+            an ascending sequence of repeating picks from a supplied range.
         </listItem>
         <listItem>
-            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Permutation</codeEntityReference>
-            - an arrangement of distinct values taken from a supplied number of choices. 
+            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Permutation</codeEntityReference> -
+            a specific arrangement of distinct picks from a supplied range.
         </listItem>
         <listItem>
-            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Product</codeEntityReference>
-            - a join of values taken from a supplied array of ranges.
+            <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Product</codeEntityReference> -
+            a join of values taken from a supplied array of ranges.
         </listItem>
       </list>
       <para>
@@ -41,7 +41,7 @@
     </introduction>
     
     <section>
-      <title>Installation</title>
+      <title>Library installation</title>
     <content>
         <para>To install using Package Manager:</para>
         <list class="bullet">
@@ -133,7 +133,8 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
       <title>Build</title>
       <content>
         <para>
-          Complete source code with embedded XML documentation is hosted at GitHub:
+          Complete source code with embedded XML documentation is hosted at GitHub.
+          This repository is a single Visual Studio solution with additional files in the root:
           <list class="bullet">
             <listItem>
               <externalLink>

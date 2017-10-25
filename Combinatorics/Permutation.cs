@@ -227,7 +227,7 @@ namespace Kaos.Combinatorics
         public Permutation (Permutation source)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             this.data = new int[source.data.Length];
             source.data.CopyTo (this.data, 0);
@@ -251,10 +251,10 @@ namespace Kaos.Combinatorics
         public Permutation (int choices)
         {
             if (choices < 0)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             if (choices > MaxChoices)
-                throw new ArgumentOutOfRangeException ("choices", "Value is greater than maximum allowed.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is greater than maximum allowed.");
 
             this.data = new int[choices];
             for (int ei = 0; ei < choices; ++ei)
@@ -316,13 +316,13 @@ namespace Kaos.Combinatorics
         public Permutation (int choices, int picks, long rank)
         {
             if (picks < 0)
-                throw new ArgumentOutOfRangeException ("picks", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
 
             if (picks > choices)
-                throw new ArgumentOutOfRangeException ("picks", "Value is greater than choices.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
 
             if (choices > MaxChoices)
-                throw new ArgumentOutOfRangeException ("choices", "Value is greater than maximum allowed.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is greater than maximum allowed.");
 
             this.data = new int[picks];
             this.choices = choices;
@@ -349,7 +349,7 @@ namespace Kaos.Combinatorics
         public Permutation (int[] source)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             this.choices = source.Length;
             Construct (this, source);
@@ -378,7 +378,7 @@ namespace Kaos.Combinatorics
         public Permutation (int[] source, int choices)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             this.choices = choices;
             Construct (this, source);
@@ -393,10 +393,10 @@ namespace Kaos.Combinatorics
         static private void Construct (Permutation pn, int[] source)
         {
             if (source.Length > MaxChoices)
-                throw new ArgumentOutOfRangeException ("source", "Too many values.");
+                throw new ArgumentOutOfRangeException (nameof (source), "Too many values.");
 
             if (pn.choices < 0 || pn.choices > MaxChoices)
-                throw new ArgumentOutOfRangeException ("choices");
+                throw new ArgumentOutOfRangeException (nameof (choices));
 
             pn.data = new int[source.Length];
             source.CopyTo (pn.data, 0);
@@ -405,10 +405,10 @@ namespace Kaos.Combinatorics
             for (int ei = 0; ei < pn.Picks; ++ei)
             {
                 if (pn.data[ei] < 0 || pn.data[ei] >= pn.Choices)
-                    throw new ArgumentOutOfRangeException ("source", "Value is out of range.");
+                    throw new ArgumentOutOfRangeException (nameof (source), "Value is out of range.");
 
                 if (isUsed[pn.data[ei]])
-                    throw new ArgumentException ("Value is repeated.", "source");
+                    throw new ArgumentException ("Value is repeated.", nameof (source));
                 isUsed[pn.data[ei]] = true;
             }
 
@@ -754,7 +754,7 @@ namespace Kaos.Combinatorics
                 throw new InvalidOperationException ("Choices and Picks must be equal.");
 
             if (nodeIndex < 0 || nodeIndex >= this.data.Length)
-                throw new ArgumentOutOfRangeException ("nodeIndex", "Value is out of range.");
+                throw new ArgumentOutOfRangeException (nameof (nodeIndex), "Value is out of range.");
 
             Array.Sort (this.data, nodeIndex + 1, this.data.Length - nodeIndex - 1);
             for (int tailIndex = nodeIndex+1; tailIndex < this.data.Length; ++tailIndex)
@@ -835,7 +835,7 @@ namespace Kaos.Combinatorics
         public void CopyTo (int[] array)
         {
             if (array == null)
-                throw new ArgumentNullException ("array");
+                throw new ArgumentNullException (nameof (array));
 
             if (array.Length < this.data.Length)
                 throw new ArgumentException ("Destination array is not long enough.");
@@ -1079,13 +1079,13 @@ namespace Kaos.Combinatorics
         public static List<T> Permute<T> (Permutation arrangement, IList<T> source)
         {
             if (arrangement == null)
-                throw new ArgumentNullException ("arrangement");
+                throw new ArgumentNullException (nameof (arrangement));
 
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             if (source.Count < arrangement.Picks)
-                throw new ArgumentException ("Not enough supplied values.", "source");
+                throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             var result = new List<T> (arrangement.Picks);
 

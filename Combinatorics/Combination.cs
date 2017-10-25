@@ -143,7 +143,7 @@ namespace Kaos.Combinatorics
         public Combination (Combination source)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             this.data = new int[source.data.Length];
             source.data.CopyTo (this.data, 0);
@@ -164,7 +164,7 @@ namespace Kaos.Combinatorics
         public Combination (int choices)
         {
             if (choices < 0)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             this.data = new int[choices];
             for (int ki = 0; ki < this.data.Length; ++ki)
@@ -196,13 +196,13 @@ namespace Kaos.Combinatorics
         public Combination (int choices, int picks)
         {
             if (choices < 0)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             if (picks < 0)
-                throw new ArgumentOutOfRangeException ("picks", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
 
             if (picks > choices)
-                throw new ArgumentOutOfRangeException ("picks", "Value is greater than choices.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
 
             this.data = new int[picks];
             for (int ki = 0; ki < picks; ++ki)
@@ -242,13 +242,13 @@ namespace Kaos.Combinatorics
         public Combination (int choices, int picks, long rank)
         {
             if (choices < 0)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             if (picks < 0)
-                throw new ArgumentOutOfRangeException ("picks", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
 
             if (picks > choices)
-                throw new ArgumentOutOfRangeException ("picks", "Value is greater than choices.");
+                throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
 
             this.data = new int[picks];
             this.choices = choices;
@@ -278,13 +278,13 @@ namespace Kaos.Combinatorics
         public Combination (int choices, int[] source)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             if (choices < 0)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than zero.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             if (choices < source.Length)
-                throw new ArgumentOutOfRangeException ("choices", "Value is less than picks.");
+                throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than picks.");
 
             this.data = new int[source.Length];
             source.CopyTo (this.data, 0);
@@ -296,11 +296,11 @@ namespace Kaos.Combinatorics
             for (int ki = 0; ki < Picks; ++ki)
             {
                 if (this.data[ki] < 0 || this.data[ki] >= choices)
-                    throw new ArgumentOutOfRangeException ("source", "Element is out of range.");
+                    throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
 
                 if (ki > 0)
                     if (this.data[ki] == this.data[ki-1])
-                        throw new ArgumentOutOfRangeException ("source", "Elements must be unique.");
+                        throw new ArgumentOutOfRangeException (nameof (source), "Elements must be unique.");
             }
 
             //
@@ -461,7 +461,7 @@ namespace Kaos.Combinatorics
         public void CopyTo (int[] array)
         {
             if (array == null)
-                throw new ArgumentNullException ("array");
+                throw new ArgumentNullException (nameof (array));
 
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
@@ -634,13 +634,13 @@ namespace Kaos.Combinatorics
         public static List<T> Permute<T> (Combination arrangement, IList<T> source)
         {
             if (arrangement == null)
-                throw new ArgumentNullException ("arrangement");
+                throw new ArgumentNullException (nameof (arrangement));
 
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             if (source.Count < arrangement.Choices)
-                throw new ArgumentException ("Not enough supplied values.", "source");
+                throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             List<T> result = new List<T> (arrangement.Picks);
 

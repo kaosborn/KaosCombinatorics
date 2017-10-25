@@ -128,7 +128,7 @@ namespace Kaos.Combinatorics
         public Product (Product source)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             this.sizes = new int[source.sizes.Length];
             this.factors = new long[source.factors.Length];
@@ -159,7 +159,7 @@ namespace Kaos.Combinatorics
         public Product (int[] sizes)
         {
             if (sizes == null)
-                throw new ArgumentNullException ("sizes");
+                throw new ArgumentNullException (nameof (sizes));
 
             this.sizes = new int[sizes.Length];
             sizes.CopyTo (this.sizes, 0);
@@ -170,7 +170,7 @@ namespace Kaos.Combinatorics
             for (int ei = this.sizes.Length - 1; ei >= 0; --ei)
             {
                 if (this.sizes[ei] < 0)
-                    throw new ArgumentOutOfRangeException ("sizes", "Value is less than zero.");
+                    throw new ArgumentOutOfRangeException (nameof (sizes), "Value is less than zero.");
 
                 this.factors[ei] = this.rowCount;
                 this.rowCount = checked (this.rowCount * this.sizes[ei]);
@@ -222,15 +222,15 @@ namespace Kaos.Combinatorics
         public Product (int[] sizes, int[] source) : this (sizes)
         {
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             if (sizes.Length != source.Length)
-                throw new ArgumentException ("Length is not valid.", "source");
+                throw new ArgumentException ("Length is not valid.", nameof (source));
 
             for (int si = 0; si < source.Length; ++si)
             {
                 if (source[si] < 0 || source[si] >= sizes[si])
-                    throw new ArgumentOutOfRangeException ("source", "Element is out of range.");
+                    throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
 
                 this.rank = this.rank * sizes[si] + source[si];
             }
@@ -360,7 +360,7 @@ namespace Kaos.Combinatorics
         public void CopyTo (int[] array)
         {
             if (array == null)
-                throw new ArgumentNullException ("array");
+                throw new ArgumentNullException (nameof (array));
 
             if (array.Length < Width)
                 throw new ArgumentException ("Destination array is not long enough.");
@@ -511,13 +511,13 @@ namespace Kaos.Combinatorics
         public static List<T> Permute<T> (Product arrangement, IList<IList<T>> source)
         {
             if (arrangement == null)
-                throw new ArgumentNullException ("arrangement");
+                throw new ArgumentNullException (nameof (arrangement));
 
             if (source == null)
-                throw new ArgumentNullException ("source");
+                throw new ArgumentNullException (nameof (source));
 
             if (source.Count < arrangement.Width)
-                throw new ArgumentException ("Not enough supplied values.", "source");
+                throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             List<T> result = new List<T> (arrangement.Width);
 
