@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Multicombination.cs
 //
-// Copyright © 2009-2017 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2018 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
