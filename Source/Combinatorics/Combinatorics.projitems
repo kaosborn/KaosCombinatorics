@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2310be6c-9775-4e31-bc54-ca64ca9b31e1</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Combinatorics</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Combination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Combinatoric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Multicombination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Permutation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Product.cs" />
+  </ItemGroup>
+</Project>
