@@ -202,7 +202,12 @@ namespace CombinatoricsTest
         [TestMethod]
         public void Test_Ctor2b_LongCombo()
         {
-            for (int choices = 1; choices < 500; ++choices)
+#if STRESS
+            const int maxChoices = 500;
+#else
+            const int maxChoices = 50;
+#endif
+            for (int choices = 1; choices < maxChoices; ++choices)
             {
                 int[] array = new int[choices];
                 for (int ki = 0; ki < choices; ++ki)
@@ -235,8 +240,12 @@ namespace CombinatoricsTest
         [TestMethod]
         public void StressCombination_Ctor2b()
         {
-            // Use higher values for maxChoices for a long running test.
-            int maxChoices = 16;
+            // Use higher maxChoices values for a longer running test.
+#if STRESS
+            const int maxChoices = 16;
+#else
+            const int maxChoices = 5;
+#endif
             int counter = 0;
 
             for (int choices = 0; choices <= maxChoices; ++choices)

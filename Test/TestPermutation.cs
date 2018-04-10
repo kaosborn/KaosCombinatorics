@@ -176,8 +176,12 @@ namespace CombinatoricsTest
         [TestMethod]
         public void StressPermutation_Ctor1b()
         {
-            // Use higher values for maxWidth for a long running test.
-            int maxWidth = 8;
+            // Use higher maxWidth values for a longer running test.
+#if STRESS
+            const int maxWidth = 8;
+#else
+            const int maxWidth = 5;
+#endif
             long counter = 0;
 
             for (int w = 1; w <= maxWidth; ++w)
@@ -558,8 +562,13 @@ namespace CombinatoricsTest
         [TestMethod]
         public void StressPermutation_Swaps()
         {
-            // Use higher values for n for a long running test.
-            for (int n = 1; n <= 7; ++n)
+            // Use higher maxWidth values for a longer running test.
+#if STRESS
+            const int maxWidth = 7;
+#else
+            const int maxWidth = 5;
+#endif
+            for (int n = 1; n <= maxWidth; ++n)
                 for (int k = 1; k <= n; ++k)
                 {
                     var pn = new Permutation (n, k);
@@ -938,8 +947,13 @@ namespace CombinatoricsTest
         [TestMethod]
         public void Stress_GetRowsOfPlainChanges()
         {
-            // Higher values of n may be used for stress, but will allocate more space.
-            for (int n = 1; n < 8; ++n)
+            // Higher maxWidth values may be used for stress, but will allocate more space.
+#if STRESS
+            const int maxWidth = 8;
+#else
+            const int maxWidth = 6;
+#endif
+            for (int n = 1; n < maxWidth; ++n)
             {
                 long rc = n == 0? 0 : Combinatoric.Factorial (n);
                 var mat = new int[rc][];

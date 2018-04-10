@@ -256,8 +256,12 @@ namespace CombinatoricsTest
         [TestMethod]
         public void StressMulticombination_Ctor2b()
         {
-            // Use higher values for maxChoices for a long running test.  Slows at 9.
-            int maxChoices = 7;
+            // Use higher maxChoices values for a longer running test.
+#if STRESS
+            const int maxChoices = 7;
+#else
+            const int maxChoices = 4;
+#endif
             int counter = 0;
 
             for (int choices = 1; choices <= maxChoices; ++choices)

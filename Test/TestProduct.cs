@@ -231,9 +231,12 @@ namespace CombinatoricsTest
         [TestMethod]
         public void StressProduct_Ctor2b()
         {
-            // Use higher values for maxSizes, sizeFactor for a long running test.
-            const int maxSizes = 5;
-            const int sizeFactor = 10;
+            // Use higher maxSizes, sizeFactor values for a longer running test.
+#if STRESS
+            const int maxSizes = 5, sizeFactor = 10;
+#else
+            const int maxSizes = 3, sizeFactor = 5;
+#endif
             long counter = 0;
 
             for (int sizeNum = 1; sizeNum < maxSizes; ++sizeNum)
