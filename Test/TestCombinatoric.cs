@@ -95,6 +95,14 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
+        [ExpectedException (typeof (OverflowException))]
+        public void Crash_BinomialCoefficient_Overflow()
+        {
+            long zz = Combinatoric.BinomialCoefficient (67, 34);
+        }
+
+
+        [TestMethod]
         [ExpectedException (typeof (IndexOutOfRangeException))]
         public void Test_Factorial_IndexOutOfRangeException()
         {
