@@ -496,12 +496,16 @@ namespace CombinatoricsTest
             Combination c0 = null;
             Combination c520 = new Combination (5, 2, 0);
             Combination c521 = new Combination (5, 2, 1);
+            Combination c621 = new Combination (6, 2, 1);
 
             int actual1 = c520.CompareTo (c0);
             Assert.IsTrue (actual1 > 0);
 
             int actual2 = c520.CompareTo (c521);
             Assert.IsTrue (actual2 < 0);
+
+            int actual3 = c521.CompareTo (c621);
+            Assert.IsTrue (actual3 != 0);
         }
 
 

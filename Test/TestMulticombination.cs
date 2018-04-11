@@ -451,6 +451,7 @@ namespace CombinatoricsTest
             Multicombination mcNull = null;
             Multicombination mc520 = new Multicombination (5, 2, 0);
             Multicombination mc521 = new Multicombination (5, 2, 1);
+            Multicombination mc421 = new Multicombination (4, 2, 1);
 
             int actual1 = mc520.CompareTo (mcNull);
             Assert.IsTrue (actual1 > 0);
@@ -463,6 +464,9 @@ namespace CombinatoricsTest
 
             int actual4 = mc521.CompareTo (mc520);
             Assert.IsTrue (actual4 > 0);
+
+            int actual5 = mc521.CompareTo (mc421);
+            Assert.IsTrue (actual5 != 0);
         }
 
 
