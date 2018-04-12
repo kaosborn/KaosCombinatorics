@@ -256,6 +256,14 @@ namespace CombinatoricsTest
             Permutation pn = new Permutation (source, nn);
         }
 
+        [TestMethod]
+        [ExpectedException (typeof (ArgumentOutOfRangeException))]
+        public void Crash_Ctor2B_ArgumentOutOfRange2()
+        {
+            var source = new int[] { 3, 2, 1, 0 };
+            Permutation pn = new Permutation (source, -1);
+        }
+
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
@@ -539,6 +547,37 @@ namespace CombinatoricsTest
 
             pn.Rank = -1;
             Assert.AreEqual (0, pn.Rank);
+        }
+
+
+        [TestMethod]
+        public void Unit_Rank4()
+        {
+            Permutation pn = new Permutation (4);
+
+            pn.Rank = 23;
+            Assert.AreEqual (23, pn.Rank);
+
+            pn.Rank = 24;
+            Assert.AreEqual (0, pn.Rank);
+
+            pn.Rank = -23;
+            Assert.AreEqual (1, pn.Rank);
+
+            pn.Rank = -24;
+            Assert.AreEqual (0, pn.Rank);
+
+            pn.Rank = -25;
+            Assert.AreEqual (23, pn.Rank);
+
+            pn.Rank = -47;
+            Assert.AreEqual (1, pn.Rank);
+
+            pn.Rank = -48;
+            Assert.AreEqual (0, pn.Rank);
+
+            pn.Rank = -97;
+            Assert.AreEqual (23, pn.Rank);
         }
 
 
