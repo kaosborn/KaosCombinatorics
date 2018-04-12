@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
@@ -8,16 +9,45 @@ namespace CombinatoricsTest
     [TestClass]
     public class TestCombinatoric
     {
+        // This reflection cheat is necessary for complete code coverage.
+        private void ResetCombinatoric()
+        {
+            Type ct = typeof (Combinatoric);
+
+            FieldInfo fiN = ct.GetField ("pascalsTriangleMaxN", BindingFlags.Static|BindingFlags.NonPublic);
+            fiN.SetValue (null, -1);
+
+            FieldInfo fiT = ct.GetField ("pascalsTriangle", BindingFlags.Static|BindingFlags.NonPublic);
+            fiT.SetValue (null, null);
+        }
+
         #region Test static methods
 
         [TestMethod]
-        public void Test_BinomialCoefficient0()
+        public void Unit_BinomialCoefficient1()
         {
-            long bc1 = Combinatoric.BinomialCoefficient (1, -1);
-            long bc2 = Combinatoric.BinomialCoefficient (1, 2);
+            ResetCombinatoric();
 
+            long bc1 = Combinatoric.BinomialCoefficient (1, -1);
             Assert.AreEqual (0, bc1);
+
+            long bc2 = Combinatoric.BinomialCoefficient (1, 2);
             Assert.AreEqual (0, bc2);
+
+            long bc3 = Combinatoric.BinomialCoefficient (65, 4);
+            Assert.AreEqual (677040, bc3);
+
+            long bc4 = Combinatoric.BinomialCoefficient (66, 33);
+            Assert.AreEqual (7219428434016265740, bc4);
+        }
+
+        [TestMethod]
+        public void Unit_BinomialCoefficient2()
+        {
+            ResetCombinatoric();
+
+            long bc5 = Combinatoric.BinomialCoefficient (80, 3);
+            Assert.AreEqual (82160, bc5);
         }
 
 
@@ -45,7 +75,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_BinomialCoefficient1()
+        public void Unit_BinomialCoefficient3()
         {
             var bcTable = BuildPascalsTriangle();
             long counter = 0;
@@ -66,9 +96,8 @@ namespace CombinatoricsTest
                 }
         }
 
-
         [TestMethod]
-        public void Test_BinomialCoefficient2()
+        public void Unit_BinomialCoefficient4()
         {
             var bcTable = BuildPascalsTriangle();
             int n = bcTable.Count;
