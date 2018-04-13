@@ -8,6 +8,29 @@ namespace CombinatoricsTest
     [TestClass]
     public class TestPermutation
     {
+        #region Support methods
+
+        private static int GetBubbleSortSwaps (Permutation pn)
+        {
+            int result = 0;
+            var val = new int[pn.Picks];
+            pn.CopyTo (val);
+
+            for (int j = 1; j < val.Length; ++j)
+                for (int i = val.Length - 1; i >= j; --i)
+                    if (val[i] < val[i-1])
+                    {
+                        var temp = val[i];
+                        val[i] = val[i-1];
+                        val[i-1] = temp;
+                        ++result;
+                    }
+
+            return result;
+        }
+
+        #endregion
+
         #region Test constructors
 
         [TestMethod]
@@ -622,26 +645,6 @@ namespace CombinatoricsTest
                 }
         }
 
-
-        private static int GetBubbleSortSwaps (Permutation pn)
-        {
-            int result = 0;
-            var val = new int[pn.Picks];
-            pn.CopyTo (val);
-
-            for (int j = 1; j < val.Length; ++j)
-                for (int i = val.Length - 1; i >= j; --i)
-                    if (val[i] < val[i-1])
-                    {
-                        var temp = val[i];
-                        val[i] = val[i-1];
-                        val[i-1] = temp;
-                        ++result;
-                    }
-
-            return result;
-        }
-        
         #endregion
 
         #region Test instance methods

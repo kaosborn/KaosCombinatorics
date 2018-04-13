@@ -9,6 +9,8 @@ namespace CombinatoricsTest
     [TestClass]
     public class TestCombinatoric
     {
+        #region Support methods
+
         // This reflection cheat is necessary for complete code coverage.
         private void ResetCombinatoric()
         {
@@ -21,7 +23,39 @@ namespace CombinatoricsTest
             fiT.SetValue (null, null);
         }
 
+        // Returns as many complete rows of Pascal's triangle as possible.
+        private static List<long[]> BuildPascalsTriangle()
+        {
+            var pascals = new List<long[]> { new long[] { 1 } };
+
+            try
+            {
+                for (int n = 1; ; ++n)
+                {
+                    var row = new long[n+1];
+                    row[0] = 1;
+                    for (int k = 1; k <= n - 1; ++k)
+                        row[k] = checked (pascals[n-1][k-1] + pascals[n-1][k]);
+                    row[n] = 1;
+                    pascals.Add (row);
+                }
+            }
+            catch (OverflowException) { /* expected once */ }
+
+            return pascals;
+        }
+
+        #endregion
+
         #region Test static methods
+
+        [TestMethod]
+        [ExpectedException (typeof (OverflowException))]
+        public void Crash_BinomialCoefficient_Overflow()
+        {
+            long zz = Combinatoric.BinomialCoefficient (67, 34);
+        }
+
 
         [TestMethod]
         public void Unit_BinomialCoefficient1()
@@ -51,48 +85,16 @@ namespace CombinatoricsTest
         }
 
 
-        // Returns as many complete rows of Pascal's triangle as possible.
-        static List<long[]> BuildPascalsTriangle()
-        {
-            var pascals = new List<long[]> { new long[] { 1 } };
-
-            try
-            {
-                for (int n = 1; ; ++n)
-                {
-                    var row = new long[n+1];
-                    row[0] = 1;
-                    for (int k = 1; k <= n - 1; ++k)
-                        row[k] = checked (pascals[n-1][k-1] + pascals[n-1][k]);
-                    row[n] = 1;
-                    pascals.Add (row);
-                }
-            }
-            catch (OverflowException) { }
-
-            return pascals;
-        }
-
-
         [TestMethod]
         public void Unit_BinomialCoefficient3()
         {
             var bcTable = BuildPascalsTriangle();
-            long counter = 0;
 
             for (int n = 0; n < bcTable.Count; ++n)
                 for (int k = 0; k < bcTable[n].Length; ++k)
                 {
-                    try
-                    {
-                        long bc = Combinatoric.BinomialCoefficient (n, k);
-                        Assert.AreEqual (bcTable[n][k], bc, "n=" + n + ", k=" + k);
-                        ++counter;
-                    }
-                    catch (OverflowException)
-                    {
-                        System.Diagnostics.Debug.WriteLine ("Ignoring OverflowException: n={0}, k={1}", n, k);
-                    }
+                    long bc = Combinatoric.BinomialCoefficient (n, k);
+                    Assert.AreEqual (bcTable[n][k], bc, "n=" + n + ", k=" + k);
                 }
         }
 
@@ -120,14 +122,6 @@ namespace CombinatoricsTest
 
                 Assert.AreEqual (expected, actual, "k=" + k);
             }
-        }
-
-
-        [TestMethod]
-        [ExpectedException (typeof (OverflowException))]
-        public void Crash_BinomialCoefficient_Overflow()
-        {
-            long zz = Combinatoric.BinomialCoefficient (67, 34);
         }
 
 
