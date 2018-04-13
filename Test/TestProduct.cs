@@ -289,15 +289,23 @@ namespace CombinatoricsTest
         {
             Product pt = new Product (new int[] { 3, 4 });
 
-            long expectedRank = 5;
-            pt.Rank = expectedRank;
-            long actualRank = pt.Rank;
-            Assert.AreEqual (expectedRank, actualRank);
+            pt.Rank = 5;
+            Assert.AreEqual (5, pt.Rank);
 
-            expectedRank = pt.RowCount - 1;
+            pt.Rank = pt.RowCount * -2 - 1;
+            Assert.AreEqual (pt.RowCount-1, pt.Rank);
+
+            pt.Rank = pt.RowCount * -2;
+            Assert.AreEqual (0, pt.Rank);
+
+            pt.Rank = pt.RowCount * -1 - 1;
+            Assert.AreEqual (pt.RowCount-1, pt.Rank);
+
+            pt.Rank = pt.RowCount * -1;
+            Assert.AreEqual (0, pt.Rank);
+
             pt.Rank = -1;
-            actualRank = pt.Rank;
-            Assert.AreEqual (expectedRank, actualRank);
+            Assert.AreEqual (pt.RowCount-1, pt.Rank);
         }
 
 
