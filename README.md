@@ -92,16 +92,19 @@ This repository is a single Visual Studio solution with additional files in the 
 
 * The `Examples` folder contains console programs that provide examples for documentation.
 
-* The `Combinatorics` folder contains all source code and the build.
+* The `Combinatorics` folder contains the primary build of the class library.
 Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
 This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
 
 * The `Help` folder contains a [Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB)
 project that produces documentation from embedded XML comments.
-Output is a Microsoft Help v1 file with a `.chm` extension and a static web site.
+Output is a Microsoft Help v1 file with a `.chm` extension and (optionally) a static web site.
 
 * The `Images` folder contains the logo `.svg` file and its `.png` conversions (by Edge).
 
+* The `Source` folder contains all source code for KaosCombinatorics.
+All source is in a shared project which is referenced by the library projects.
+
 * The `Test` folder contains unit tests and some short running stress tests.
-Test engine is MSTest. Code coverage is 100%.
+Test engine is MSTest. Line and branch coverage is 100%.
