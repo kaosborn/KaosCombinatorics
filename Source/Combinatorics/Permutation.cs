@@ -500,13 +500,10 @@ namespace Kaos.Combinatorics
             int n = elements.Length;
             long pr = 0;
 
-            if (n <= 1)
-                return 0;
-
             for (int ei = 1; ei < n; ++ei)
             {
                 int xr = 0;
-                for (int i = 0; i < n; ++i)
+                for (int i = 0;; ++i)
                     if (elements[i] <= ei)
                     {
                         ++xr;
