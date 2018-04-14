@@ -470,6 +470,15 @@ namespace CombinatoricsTest
             Assert.AreEqual (0, pn1.PlainRank);
             Assert.AreEqual (1, pn4.PlainRank);
             Assert.AreEqual (Combinatoric.Factorial (5) - 2, pn5.PlainRank);
+
+            pn5.PlainRank = pn5.RowCount * -2 - 1;
+            Assert.AreEqual (pn5.RowCount-1, pn5.PlainRank);
+
+            pn5.PlainRank = pn5.RowCount * -2;
+            Assert.AreEqual (0, pn5.PlainRank);
+
+            pn5.PlainRank = pn5.RowCount * -2 + 1;
+            Assert.AreEqual (1, pn5.PlainRank);
         }
 
 
