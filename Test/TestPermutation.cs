@@ -34,7 +34,7 @@ namespace CombinatoricsTest
         #region Test constructors
 
         [TestMethod]
-        public void Test_Interfaces()
+        public void UnitPn_Inheritance()
         {
             Permutation pn = new Permutation (7);
 
@@ -47,7 +47,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor0()
+        public void UnitPn_Ctor0()
         {
             Permutation pn0 = new Permutation();
             Assert.AreEqual (0, pn0.Choices);
@@ -59,7 +59,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1a_ArgumentNullException()
+        public void CrashPn_Ctor1A_ArgumentNull()
         {
             Permutation nullus = null;
             Permutation pn = new Permutation (nullus);
@@ -67,7 +67,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1a1()
+        public void UnitPn_Ctor1A1()
         {
             int n = 9;
 
@@ -86,7 +86,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1b_ArgumentOutOfRangeException1()
+        public void CrashPn_Ctor1B_ArgumentOutOfRange1()
         {
             Permutation pn = new Permutation (-1);
         }
@@ -94,14 +94,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1b_ArgumentOutOfRangeException2()
+        public void CrashPn_Ctor1B_ArgumentOutOfRange2()
         {
             Permutation pn = new Permutation (100);
         }
 
 
         [TestMethod]
-        public void Test_Ctor1b0()
+        public void UnitPn_Ctor1B0()
         {
             Permutation pn0 = new Permutation (0);
             Assert.AreEqual (0, pn0.Choices);
@@ -112,7 +112,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1b()
+        public void UnitPn_Ctor1B()
         {
             for (int ei = 1; ei <= Permutation.MaxChoices; ++ei)
             {
@@ -130,7 +130,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1c_ArgumentNullException()
+        public void CrashPn_Ctor1C_ArgumentNull()
         {
             int[] nullus = null;
             Permutation pn = new Permutation (nullus);
@@ -139,7 +139,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Ctor1c_ArgumentException1()
+        public void CrashPn_Ctor1C_Argument1()
         {
             int[] source = new int[] { 0, 2, 1, 1 };
             Permutation pn = new Permutation (source);
@@ -148,7 +148,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Ctor1c_ArgumentException2()
+        public void CrashPn_Ctor1C_Argument2()
         {
             int[] source = new int[] { 2, 1, 1 };
             Permutation pn = new Permutation (source);
@@ -157,7 +157,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1c_ArgumentOutOfRangeException1()
+        public void CrashPn_Ctor1C_ArgumentOutOfRange1()
         {
             int[] source = new int[] { 2, 0, 3 };
             Permutation pn = new Permutation (source);
@@ -166,7 +166,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1c_ArgumentOutOfRangeException2()
+        public void CrashPn_Ctor1C_ArgumentOutOfRange2()
         {
             int[] source = new int[] { -1, 0, 1 };
             Permutation pn = new Permutation (source);
@@ -175,7 +175,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1c_ArgumentOutOfRangeException3()
+        public void CrashPn_Ctor1C_ArgumentOutOfRange3()
         {
             int[] source = new int[Permutation.MaxChoices + 1];
             for (int i = 0; i < source.Length; ++i)
@@ -186,7 +186,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1c()
+        public void UnitPn_Ctor1C()
         {
             int[] source = new int[] { 2, 1, 0 };
             Permutation pn = new Permutation (source);
@@ -197,7 +197,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void StressPermutation_Ctor1b()
+        public void StressPn_Ctor1B()
         {
             // Use higher maxWidth values for a longer running test.
 #if STRESS
@@ -229,7 +229,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2a0()
+        public void UnitPn_Ctor2A0()
         {
             Permutation pn0 = new Permutation (0, 0);
 
@@ -241,7 +241,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2a1()
+        public void UnitPn_Ctor2A1()
         {
             for (int ei = 1; ei <= Permutation.MaxChoices; ++ei)
             {
@@ -260,7 +260,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException()
+        public void CrashPn_Ctor2B_ArgumentOutOfRange1()
         {
             var source = new int[Permutation.MaxChoices + 1];
             for (int i = 0; i < source.Length; ++i)
@@ -272,7 +272,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2bArgumentOutOfRangeException()
+        public void CrashPn_Ctor2B_ArgumentOutOfRange2()
         {
             int nn=99;
             int[] source = new int[] { 5, 4, 1, 0 };
@@ -281,7 +281,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Crash_Ctor2B_ArgumentOutOfRange2()
+        public void CrashPn_Ctor2B_ArgumentOutOfRange3()
         {
             var source = new int[] { 3, 2, 1, 0 };
             Permutation pn = new Permutation (source, -1);
@@ -290,14 +290,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2bArgumentNullException()
+        public void CrashPn_Ctor2B_ArgumentNull()
         {
             Permutation pn = new Permutation (null, 9);
         }
 
 
         [TestMethod]
-        public void Test_Ctor2b0()
+        public void UnitPn_Ctor2B0()
         {
             int n = 4;
             int[] source = new int[] { };
@@ -312,7 +312,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b()
+        public void UnitPn_Ctor2B()
         {
             int nn=6;
             int[] source = new int[] { 5, 4, 1, 0 };
@@ -330,7 +330,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3ArgumentOutOfRangeException1a()
+        public void CrashPn_Ctor3_ArgumentOutOfRange1A()
         {
             Permutation pn = new Permutation (-1, 1, 0);
         }
@@ -338,7 +338,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3ArgumentOutOfRangeException1b()
+        public void CrashPn_Ctor3_ArgumentOutOfRange1B()
         {
             Permutation pn = new Permutation (1, -1, 0);
         }
@@ -346,7 +346,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3ArgumentOutOfRangeException2a()
+        public void CrashPn_Ctor3_ArgumentOutOfRange2A()
         {
             Permutation pn = new Permutation (3, 5, 0);
         }
@@ -354,7 +354,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3ArgumentOutOfRangeException3a()
+        public void CrashPn_Ctor3_ArgumentOutOfRange3A()
         {
             Permutation pn = new Permutation (5, 21, 0);
         }
@@ -362,14 +362,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3ArgumentOutOfRangeException3b()
+        public void CrashPn_Ctor3_ArgumentOutOfRange3B()
         {
             Permutation pn = new Permutation (21, 5, 0);
         }
 
 
         [TestMethod]
-        public void Test_Ctor3a1()
+        public void UnitPn_Ctor3A1()
         {
             int nn=6, kk=4;
             long rr = 351;
@@ -387,7 +387,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a2()
+        public void UnitPn_Ctor3A2()
         {
             Permutation pn1 = new Permutation (choices: 3, picks: 3, rank: 9);
             Assert.AreEqual (3, pn1.Rank);
@@ -398,7 +398,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a_LastRank()
+        public void UnitPn_Ctor3ALastRank()
         {
             for (int nn = 1; nn <= Permutation.MaxChoices; ++nn)
             {
@@ -420,7 +420,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (InvalidOperationException))]
-        public void Test_PlainRankInvalidOperationException1()
+        public void CrashPn_PlainRank_InvalidOperation1()
         {
             var pn54 = new Permutation (choices:5, picks:4);
             pn54.PlainRank = 1;
@@ -429,7 +429,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (InvalidOperationException))]
-        public void Test_PlainRankInvalidOperationException2()
+        public void CrashPn_PlainRank_InvalidOperation2()
         {
             var pn54 = new Permutation (choices: 5, picks: 4);
             long plainRank = pn54.PlainRank;
@@ -437,7 +437,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_PlainRankGet()
+        public void UnitPn_PlainRankGet()
         {
             var pn0 = new Permutation (0);
             var pn1 = new Permutation (1);
@@ -454,7 +454,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_PlainRankSet()
+        public void UnitPn_PlainRankSet()
         {
             var pn0 = new Permutation (0);
             var pn1 = new Permutation (1);
@@ -483,7 +483,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void TestPlainRankMany()
+        public void UnitPn_PlainRankMany()
         {
             var expected = new int[][][]
             {
@@ -525,7 +525,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankIncrement()
+        public void UnitPn_RankIncrement()
         {
             Permutation pn = new Permutation (choices:4, picks:4, rank:4);
 
@@ -538,7 +538,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankDecrement()
+        public void UnitPn_RankDecrement()
         {
             Permutation pn = new Permutation (choices:4, picks:4, rank:5);
 
@@ -551,7 +551,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank0()
+        public void UnitPn_Rank0()
         {
             Permutation pn = new Permutation();
 
@@ -567,7 +567,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank1()
+        public void UnitPn_Rank1()
         {
             Permutation pn = new Permutation (1);
 
@@ -583,7 +583,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Unit_Rank4()
+        public void UnitPn_Rank4()
         {
             Permutation pn = new Permutation (4);
 
@@ -614,7 +614,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Swaps1()
+        public void UnitPn_Swaps1()
         {
             var pn0 = new Permutation();
             Assert.AreEqual (0, pn0.Swaps);
@@ -631,7 +631,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void StressPermutation_Swaps()
+        public void StressPn_Swaps()
         {
             // Use higher maxWidth values for a longer running test.
 #if STRESS
@@ -660,7 +660,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (InvalidOperationException))]
-        public void Test_Backtrack_InvalidOperationException()
+        public void CrashPn_Backtrack_InvalidOperation()
         {
             var pn = new Permutation (choices:4, picks:2);
             pn.Backtrack (1);
@@ -669,7 +669,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Backtrack_ArgumentOutOfRangeException1()
+        public void CrashPn_Backtrack_ArgumentOutOfRange1()
         {
             var pn = new Permutation (2);
             pn.Backtrack (-1);
@@ -678,7 +678,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Backtrack_ArgumentOutOfRangeException2()
+        public void CrashPn_Backtrack_ArgumentOutOfRange2()
         {
             var pn = new Permutation (2);
             pn.Backtrack (2);
@@ -686,7 +686,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Backtrack1()
+        public void UnitPn_Backtrack1()
         {
             var pn1 = new Permutation (new int[] { 2, 1, 0 });
             var pn2 = new Permutation (new int[] { 2, 1, 0 });
@@ -719,7 +719,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_CopyTo_ArgumentNullException()
+        public void CrashPn_CopyTo_ArgumentNull()
         {
             Permutation pn = new Permutation (choices:3, picks:3, rank:4);
 
@@ -730,7 +730,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_CopyTo_ArgumentException()
+        public void CrashPn_CopyTo_Argument()
         {
             Permutation pn = new Permutation (choices:3, picks:3, rank:4);
 
@@ -740,7 +740,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CopyTo1()
+        public void UnitPn_CopyTo1()
         {
             Permutation pn = new Permutation (choices:3, picks:3, rank:5);
 
@@ -754,7 +754,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareToOBJECT()
+        public void UnitPn_oCompareTo()
         {
             var objectSortedList = new System.Collections.SortedList();
             objectSortedList.Add (new Permutation (choices:8, picks:8, rank:2), 0);
@@ -774,7 +774,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareTo()
+        public void UnitPn_CompareTo()
         {
             Permutation p0 = null;
             Permutation p520 = new Permutation (choices:5, picks:5, rank:0);
@@ -789,7 +789,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetHashCode()
+        public void UnitPn_GetHashCode()
         {
             Permutation source = new Permutation (3);
             int hash = source.GetHashCode();
@@ -797,7 +797,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOBJECT()
+        public void UnitPn_oEquals()
         {
             Permutation p0 = null;
             Permutation p30a = new Permutation (3);
@@ -818,7 +818,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Equals()
+        public void UnitPn_Equals()
         {
             Permutation p0 = null;
             Permutation p30a = new Permutation (3);
@@ -834,7 +834,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOtherType()
+        public void UnitPn_EqualsOtherType()
         {
             var p54 = new Permutation (5, 4, 1);
             string s = "Mazzy";
@@ -845,7 +845,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumeratorOBJECT()
+        public void UnitPn_oGetEnumerator()
         {
             Permutation perm = new Permutation (7);
 
@@ -864,7 +864,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumerator()
+        public void UnitPn_GetEnumerator()
         {
             int order = 6;
             Permutation p0 = new Permutation (choices:order, picks:order, rank:-1);
@@ -881,7 +881,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsEmpty()
+        public void UnitPn_GetRowsEmpty()
         {
             Permutation source = new Permutation();
 
@@ -894,7 +894,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRows()
+        public void UnitPn_GetRows()
         {
             int order = 3;
             long startRank = 2;
@@ -920,7 +920,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForAllChoices()
+        public void UnitPn_GetRowsForAllChoices()
         {
             int[][] expected = new int[][]
             {
@@ -947,7 +947,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForAllPicks()
+        public void UnitPn_GetRowsForAllPicks()
         {
             int[][] expected = new int[][]
             {
@@ -976,7 +976,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (InvalidOperationException))]
-        public void Test_GetRowsOfPlainChangesInvalidOperationException2()
+        public void CrashPn_GetRowsOfPlainChanges_InvalidOperation2()
         {
             var pn54 = new Permutation (choices: 5, picks: 4);
 
@@ -986,7 +986,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsOfPlainChanges0()
+        public void UnitPn_GetRowsOfPlainChanges0()
         {
             foreach (var pn in new Permutation (0).GetRowsOfPlainChanges())
             {
@@ -996,7 +996,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Stress_GetRowsOfPlainChanges()
+        public void StressPn_GetRowsOfPlainChanges()
         {
             // Higher maxWidth values may be used for stress, but will allocate more space.
 #if STRESS
@@ -1045,34 +1045,28 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ToString0()
+        public void UnitPn_ToString0()
         {
             Permutation permu = new Permutation();
-
             string actual = permu.ToString();
-
             Assert.AreEqual ("{ }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString1()
+        public void UnitPn_ToString1()
         {
             Permutation permu = new Permutation (1);
-
             string actual = permu.ToString();
-
             Assert.AreEqual ("{ 0 }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString3()
+        public void UnitPn_ToString3()
         {
             Permutation permu = new Permutation (3);
-
             string actual = permu.ToString();
-
             Assert.AreEqual ("{ 0, 1, 2 }", actual);
         }
 
@@ -1082,7 +1076,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException1()
+        public void CrashPn_Permute_ArgumentNull1()
         {
             Permutation nullSource = null;
             string[] pattern = new string[] { "A", "B", "C" };
@@ -1092,7 +1086,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException2()
+        public void CrashPn_Permute_ArgumentNull2()
         {
             Permutation source = new Permutation (3);
             string[] nullPattern = null;
@@ -1102,7 +1096,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Permute_ArgumentException()
+        public void CrashPn_Permute_Argument()
         {
             Permutation source = new Permutation (4);
             string[] pattern = new string[] { "A", "B", "C" };
@@ -1112,7 +1106,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Permute()
+        public void UnitPn_Permute()
         {
             Permutation p0 = new Permutation (3);
             string[] pat = new string[] { "A", "B", "C" };
@@ -1137,7 +1131,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ComparisonOps()
+        public void UnitPn_ComparisonOps()
         {
             Permutation p0 = null;
             Permutation q0 = null;

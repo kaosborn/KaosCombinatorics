@@ -11,7 +11,7 @@ namespace CombinatoricsTest
         #region Test constructors
 
         [TestMethod]
-        public void Test_Interfaces()
+        public void UnitCn_Inheritance()
         {
             Combination cn = new Combination (4, 2);
 
@@ -24,7 +24,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor0()
+        public void UnitCn_Ctor0()
         {
             Combination cn0 = new Combination();
             Assert.AreEqual (0, cn0.Choices);
@@ -41,7 +41,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1a_ArgumentNullException()
+        public void CrashCn_Ctor1A_ArgumentNull()
         {
             Combination nullSource = null;
             Combination cn = new Combination (nullSource);
@@ -49,7 +49,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1a()
+        public void UnitCn_Ctor1A()
         {
             int n = 5, k = 3, r = 2;
             Combination cn1 = new Combination (n, k, r);
@@ -63,14 +63,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1b_ArgumentOutOfRangeException()
+        public void CrashCn_Ctor1B_ArgumentOutOfRange()
         {
             Combination cn = new Combination (-3);
         }
 
 
         [TestMethod]
-        public void Test_Ctor1b1()
+        public void UnitCn_Ctor1B1()
         {
             int n = 999;
 
@@ -84,7 +84,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1b2()
+        public void UnitCn_Ctor1B2()
         {
             int n = 0;
             Combination cn = new Combination (n);
@@ -98,7 +98,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException1()
+        public void CrashCn_Ctor2A_ArgumentOutOfRange1()
         {
             Combination cn = new Combination (-2, 3);
         }
@@ -106,7 +106,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException2()
+        public void CrashCn_Ctor2A_ArgumentOutOfRange2()
         {
             Combination cn = new Combination (2, -3);
         }
@@ -114,7 +114,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException3()
+        public void CrashCn_Ctor2A_ArgumentOutOfRange3()
         {
             Combination cn = new Combination (2, 3);
         }
@@ -122,14 +122,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (OverflowException))]
-        public void Test_Ctor2a_OverflowException()
+        public void CrashCn_Ctor2A_Overflow()
         {
             Combination cn = new Combination (90, 45);
         }
 
 
         [TestMethod]
-        public void Test_Ctor2a()
+        public void CrashCn_Ctor2A()
         {
             Combination cn00 = new Combination (0, 0);
             Assert.AreEqual (0, cn00.RowCount);
@@ -149,7 +149,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2b_ArgumentNullException()
+        public void CrashCn_Ctor2B_ArgumentNull()
         {
             int[] nullus = null;
             Combination cn = new Combination (1, nullus);
@@ -158,7 +158,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException1()
+        public void CrashCn_Ctor2B_ArgumentOutOfRange1()
         {
             int[] array = new int[1];
 
@@ -167,7 +167,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException2()
+        public void CrashCn_Ctor2B_ArgumentOutOfRange2()
         {
             int[] array = new int[2];
             Combination cn = new Combination (1, array);
@@ -176,7 +176,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException4()
+        public void CrashCn_Ctor2B_ArgumentOutOfRange4()
         {
             int[] array = new int[] { -1, 0 };
             Combination cn = new Combination (2, array);
@@ -184,7 +184,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException5()
+        public void CrashCn_Ctor2B_ArgumentOutOfRange5()
         {
             int[] array = new int[] { 0, 0 };
             Combination cn = new Combination (2, array);
@@ -192,7 +192,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException6()
+        public void CrashCn_Ctor2B_ArgumentOutOfRange6()
         {
             int[] array = new int[] { 1 };
             Combination cn = new Combination (1, array);
@@ -200,7 +200,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b_LongCombo()
+        public void UnitCn_Ctor2BLongCombo()
         {
 #if STRESS
             const int maxChoices = 500;
@@ -222,7 +222,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b1()
+        public void UnitCn_Ctor2B1()
         {
             int n = 6;
 
@@ -238,7 +238,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void StressCombination_Ctor2b()
+        public void StressCn_Ctor2B()
         {
             // Use higher maxChoices values for a longer running test.
 #if STRESS
@@ -272,7 +272,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException1()
+        public void CrashCn_Ctor3A_ArgumentOutOfRange1()
         {
             Combination cn = new Combination (-2, 3, 1);
         }
@@ -280,7 +280,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException2()
+        public void CrashCn_Ctor3A_ArgumentOutOfRange2()
         {
             Combination cn = new Combination (2, 3, 0);
         }
@@ -288,14 +288,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException3()
+        public void CrashCn_Ctor3A_ArgumentOutOfRange3()
         {
             Combination cn = new Combination (2, -1, 0);
         }
 
 
         [TestMethod]
-        public void Test_Ctor3a0a()
+        public void UnitCn_Ctor3A0A()
         {
             Combination cn = new Combination (2, 0, 0);
 
@@ -305,7 +305,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a0b()
+        public void UnitCn_Ctor3A0B()
         {
             Combination cn = new Combination (0, 0, 1);
             Assert.AreEqual (0, cn.Rank);
@@ -314,7 +314,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a0c()
+        public void UnitCn_Ctor3AC()
         {
             Combination cn = new Combination (4, 0, 9);
 
@@ -324,10 +324,9 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a()
+        public void UnitCn_Ctor3A()
         {
             Combination cn = new Combination (6, 3, 12);
-
             Assert.AreEqual (1, cn[0]);
             Assert.AreEqual (2, cn[1]);
             Assert.AreEqual (5, cn[2]);
@@ -340,7 +339,7 @@ namespace CombinatoricsTest
         #region Test properties
 
         [TestMethod]
-        public void Test_Properties()
+        public void UnitCn_Properties()
         {
             int n = 8;
             int k = 3;
@@ -358,7 +357,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank0()
+        public void UnitCn_Rank0()
         {
             Combination cn0 = new Combination();
 
@@ -374,7 +373,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank1()
+        public void UnitCn_Rank1()
         {
             Combination cn1 = new Combination (1);
 
@@ -390,7 +389,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank2()
+        public void UnitCn_Rank2()
         {
             Combination cn = new Combination (6, 4);
 
@@ -406,7 +405,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankIncrement()
+        public void UnitCn_RankIncrement()
         {
             Combination cn = new Combination (4, 3, 1);
 
@@ -419,7 +418,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankDecrement()
+        public void UnitCn_RankDecrement()
         {
             Combination cn = new Combination (4, 3, 1);
 
@@ -436,10 +435,9 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_CopyTo_ArgumentNullException()
+        public void CrashCn_CopyTo_ArgumentNull()
         {
             Combination cn = new Combination (3, 3, 4);
-
             int[] nullTarget = null;
             cn.CopyTo (nullTarget);
         }
@@ -447,17 +445,16 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_CopyTo_ArgumentException()
+        public void CrashCn_CopyTo_Argument()
         {
             Combination cn = new Combination (3, 3, 4);
-
             int[] nullTarget = new int[2];
             cn.CopyTo (nullTarget);
         }
 
 
         [TestMethod]
-        public void Test_CopyTo1()
+        public void UnitCn_CopyTo1()
         {
             Combination cn3 = new Combination (3, 3, 4);
 
@@ -471,7 +468,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareToOBJECT()
+        public void UnitCn_oCompareTo()
         {
             var objectSortedList = new System.Collections.SortedList();
             objectSortedList.Add (new Combination (8, 2), 0);
@@ -491,7 +488,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareTo()
+        public void UnitCn_CompareTo()
         {
             Combination c0 = null;
             Combination c520 = new Combination (5, 2, 0);
@@ -510,7 +507,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOBJECT()
+        public void UnitCn_oEquals()
         {
             Combination c0 = null;
             Combination c438a = new Combination (4, 3, 8);
@@ -531,7 +528,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Equals()
+        public void UnitCn_Equals()
         {
             Combination c0 = null;
             Combination c438a = new Combination (4, 3, 8);
@@ -547,7 +544,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOtherType()
+        public void UnitCn_EqualsOtherType()
         {
             Combination c54 = new Combination (5, 4, 1);
             string s = "Zappa";
@@ -558,7 +555,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumeratorOBJECT()
+        public void UnitCn_oGetEnumerator()
         {
             Combination cn = new Combination (7, 7);
 
@@ -577,7 +574,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumerator()
+        public void UnitCn_GetEnumerator()
         {
             int n = 10;
             int k = 9;
@@ -595,7 +592,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetHash()
+        public void UnitCn_GetHash()
         {
             Combination cn = new Combination (5);
             int hash = cn.GetHashCode();
@@ -603,7 +600,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsEmpty()
+        public void UnitCn_GetRowsEmpty()
         {
             Combination cn = new Combination();
 
@@ -615,7 +612,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRows()
+        public void UnitCn_GetRows()
         {
             int[,] expected = new int[,]
             { { 0, 1, 2 },
@@ -648,7 +645,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForAllPicksEmpty()
+        public void UnitCn_GetRowsForAllPicksEmpty()
         {
             Combination cn = new Combination();
 
@@ -660,7 +657,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForAllPicks()
+        public void UnitCn_GetRowsForAllPicks()
         {
             int[][] expected = new int[][]
                 { new int[] { 0 }, new int[] { 1 }, new int[] { 2 },
@@ -686,34 +683,28 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ToString0()
+        public void UnitCn_ToString0()
         {
             Combination cn = new Combination();
-
             string actual = cn.ToString();
-
             Assert.AreEqual ("{ }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString1()
+        public void UnitCn_ToString1()
         {
             Combination cn = new Combination(1);
-
             string actual = cn.ToString();
-
             Assert.AreEqual ("{ 0 }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString3()
+        public void UnitCn_ToString3()
         {
             Combination cn = new Combination (3);
-
             string actual = cn.ToString();
-
             Assert.AreEqual ("{ 0, 1, 2 }", actual);
         }
 
@@ -723,7 +714,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException1()
+        public void CrashCn_Permute_ArgumentNull1()
         {
             Combination cn = null;
             string[] letters = new string[] { "A", "B" };
@@ -733,7 +724,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException2()
+        public void CrashCn_Permute_ArgumentNull2()
         {
             Combination cn = new Combination (2);
             string[] nullSource = null;
@@ -743,7 +734,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Permute_ArgumentException()
+        public void CrashCn_Permute_Argument()
         {
             Combination cn = new Combination (6, 3);
             string[] letters = new string[] { "A", "B", "C", "D" };
@@ -754,7 +745,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Permute()
+        public void UnitCn_Permute()
         {
             string[] expected = new string[] { "ABC", "ABD", "ACD", "BCD" };
             string[] letters = new string[] { "A", "B", "C", "D" };
@@ -775,7 +766,7 @@ namespace CombinatoricsTest
 
         
         [TestMethod]
-        public void Test_ComparisonOps()
+        public void UnitCn_ComparisonOps()
         {
             Combination c0 = null;
             Combination d0 = null;

@@ -127,14 +127,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (IndexOutOfRangeException))]
-        public void Test_Factorial_IndexOutOfRangeException()
+        public void Crash_Factorial_IndexOutOfRange()
         {
             long f = Combinatoric.Factorial (21);
         }
 
 
         [TestMethod]
-        public void Test_Factorial()
+        public void Unit_Factorial()
         {
             Assert.AreEqual (1, Combinatoric.Factorial (0));
 

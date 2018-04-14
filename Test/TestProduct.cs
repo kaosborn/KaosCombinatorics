@@ -11,7 +11,7 @@ namespace CombinatoricsTest
         #region Test constructors
 
         [TestMethod]
-        public void Test_Interfaces()
+        public void UnitPt_Inheritance()
         {
             Product pt = new Product (new int[] { 2, 3, 4 });
 
@@ -24,7 +24,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor0()
+        public void UnitPt_Ctor0()
         {
             Product pt0 = new Product();
             Assert.AreEqual (0, pt0.RowCount);
@@ -34,7 +34,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1a_ArgumentNullException()
+        public void CrashPt_Ctor1A_ArgumentNull()
         {
             Product ptNull = null;
             Product pt = new Product (ptNull);
@@ -43,7 +43,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1b_ArgumentNullException()
+        public void CrashPt_Ctor1B_ArgumentNull()
         {
             int[] nullSizes = null;
             Product pt = new Product (nullSizes);
@@ -52,7 +52,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1b_ArgumentOutOfRangeException()
+        public void CrashPt_Ctor1B_ArgumentOutOfRange()
         {
             int[] sizes = new int[] { 2, -4, 3 };
             Product pt = new Product (sizes);
@@ -60,7 +60,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1b()
+        public void UnitPt_Ctor1B()
         {
             int[,] expected2by3 = new int[,] { { 0, 0 }, { 0, 1 }, { 0, 2 }, { 1, 0 }, { 1, 1 }, { 1, 2 } };
 
@@ -90,7 +90,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2a_ArgumentNullException()
+        public void CrashPt_Ctor2A_ArgumentNull()
         {
             int[] nullSizes = null;
             Product pt = new Product (nullSizes, 0);
@@ -99,7 +99,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException()
+        public void CrashPt_Ctor2A_ArgumentOutOfRange()
         {
             int[] sizes = new int[] { 2, -4, 3 };
             Product pt = new Product (sizes, 0);
@@ -107,7 +107,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2a_Valid()
+        public void UnitPt_Ctor2A_Valid()
         {
             int[] sizes = new int[] { 2, 4, 3 };
             Product pt = new Product (sizes, 20);
@@ -119,7 +119,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2b_ArgumentNullException1()
+        public void CrashPt_Ctor2B_ArgumentNull1()
         {
             int[] nullSizes = null;
             int[] source = new int[] { 1, 2, 3 };
@@ -129,7 +129,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2b_ArgumentNullException2()
+        public void CrashPt_Ctor2B_ArgumentNull2()
         {
             int[] sizes = new int[] { 2, 3, 4 };
             int[] nullSource = null;
@@ -139,7 +139,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException1()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange1()
         {
             int[] sizes = new int[] { 2, -4, 3 };
             int[] source = new int[] { 0, 0, 0 };
@@ -149,7 +149,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException2()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange2()
         {
             int[] sizes = new int[] { 2, -4, 3 };
             int[] source = new int[] { 1, -1, 2 };
@@ -158,7 +158,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException3()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange3()
         {
             int[] sizes = new int[] { 2, 4, 3 };
             int[] source = new int[] { 1, 4, 2 };
@@ -168,7 +168,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException4()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange4()
         {
             int[] sizes = new int[] { 2, 0, 3 };
             int[] source = new int[] { 1, 0, 2 };
@@ -178,7 +178,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException5()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange5()
         {
             int[] sizes = new int[] { 2, 3, 4 };
             int[] source = new int[] { 1, -1, 2 };
@@ -188,7 +188,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException6()
+        public void CrashPt_Ctor2B_ArgumentOutOfRange6()
         {
             int[] sizes = new int[] { 2, 3, 4 };
             int[] source = new int[] { 1, 1 };
@@ -197,7 +197,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2ba()
+        public void UnitPt_Ctor2BA()
         {
             int[] sizes = new int[] { 2, 0, 2 };
             Product pt = new Product (sizes);
@@ -210,7 +210,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2bc()
+        public void UnitPt_Ctor2BC()
         {
             int[] sizes = new int[] { 10, 20, 30 };
             int[] source = new int[sizes.Length];
@@ -229,7 +229,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void StressProduct_Ctor2b()
+        public void StressPt_Ctor2B()
         {
             // Use higher maxSizes, sizeFactor values for a longer running test.
 #if STRESS
@@ -272,7 +272,7 @@ namespace CombinatoricsTest
         #region Test properties
 
         [TestMethod]
-        public void Test_RankEmpty()
+        public void UnitPt_RankEmpty()
         {
             Product pt0 = new Product (new int[] { 5, 0, 3 });
 
@@ -285,7 +285,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank()
+        public void UnitPt_Rank()
         {
             Product pt = new Product (new int[] { 3, 4 });
 
@@ -310,7 +310,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankIncrement()
+        public void UnitPt_RankIncrement()
         {
             Product pt = new Product (new int[] { 3, 5 });
             pt.Rank = 7;
@@ -324,7 +324,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankDecrement()
+        public void UnitPt_RankDecrement()
         {
             Product pt = new Product (new int[] { 3, 5 });
             pt.Rank = 0;
@@ -339,7 +339,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (DivideByZeroException))]
-        public void Test_Index_DivideByZero()
+        public void CrashPt_Index_DivideByZero()
         {
             Product pt = new Product (new int[] { 4, 0, 2 });
 
@@ -348,7 +348,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Index()
+        public void UnitPt_Index()
         {
             Product pt = new Product (new int[] { 4, 3, 2 });
             pt.Rank = 23;
@@ -363,7 +363,7 @@ namespace CombinatoricsTest
         #region Test instance methods
 
         [TestMethod]
-        public void Test_CompareToOBJECT()
+        public void UnitPt_oCompareTo()
         {
             var objectSortedList = new System.Collections.SortedList();
 
@@ -392,7 +392,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareTo()
+        public void UnitPt_CompareTo()
         {
             Product pt0 = null;
             Product pt16 = new Product (new int[] { 2, 3, 4 }); pt16.Rank = 16;
@@ -408,7 +408,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_CopyTo_ArgumentNullException()
+        public void CrashPt_CopyTo_ArgumentNull()
         {
             Product pt = new Product (new int[] { 3, 2, 4 }, 6);
 
@@ -419,7 +419,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_CopyTo_ArgumentException()
+        public void CrashPt_CopyTo_Argument()
         {
             Product pt = new Product (new int[] { 3, 2, 4 }, 6);
 
@@ -429,7 +429,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CopyTo1()
+        public void UnitPt_CopyTo()
         {
             Product pt3 = new Product (new int[] { 3, 4, 5 }, 22);
 
@@ -443,7 +443,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Equals_OBJECT()
+        public void UnitPt_oEquals()
         {
             Product p0 = null;
             Product p16a = new Product (new int[] { 2, 3, 4 }); p16a.Rank = 16;
@@ -464,7 +464,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Equals()
+        public void UnitPt_Equals()
         {
             Product p0 = null;
             Product p16a = new Product (new int[] { 2, 3, 4 }); p16a.Rank = 16;
@@ -480,7 +480,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOtherType()
+        public void UnitPt_EqualsOtherType()
         {
             Product p234 = new Product (new int[] { 2, 3, 4 });
             string s = "Roxy";
@@ -491,7 +491,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumeratorOBJECT()
+        public void UnitPt_oGetEnumerator()
         {
             Product pt = new Product (new int[] { 2, 3, 4 });
             pt.Rank = 6;
@@ -511,7 +511,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumerator()
+        public void UnitPt_GetEnumerator()
         {
             Product pt = new Product (new int[] { 3, 4, 5 });
 
@@ -530,7 +530,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetHashCode()
+        public void UnitPt_GetHashCode()
         {
             Product pt = new Product();
             int hash = pt.GetHashCode();
@@ -538,7 +538,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsEmpty()
+        public void UnitPt_GetRowsEmpty()
         {
             Product pt = new Product (new int[] { 2, 0, 3 });
 
@@ -553,7 +553,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRows()
+        public void UnitPt_GetRows()
         {
             Product pt = new Product (new int[] { 2, 3 });
 
@@ -578,17 +578,16 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (IndexOutOfRangeException))]
-        public void Test_Size_IndexOutOfRangeException()
+        public void CrashPt_Size_IndexOutOfRange()
         {
             int[] sz = new int[] { 2, 3, 4 };
             Product pt = new Product (sz);
-
-            int s1 = pt.Size (5);
+            int zz = pt.Size (5);
         }
 
 
         [TestMethod]
-        public void Test_Size()
+        public void UnitPt_Size()
         {
             int[] sz = new int[] { 3, 2, 4 };
             Product pt = new Product (sz);
@@ -599,36 +598,30 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ToString0()
+        public void UnitPt_ToString0()
         {
             Product pt = new Product (new int[] { });
-
             string actual = pt.ToString();
-
             Assert.AreEqual ("{ }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString1()
+        public void UnitPt_ToString1()
         {
             Product pt = new Product (new int[] { 2 });
             pt.Rank = 1;
-
             string actual = pt.ToString();
-
             Assert.AreEqual ("{ 1 }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString3()
+        public void UnitPt_ToString3()
         {
             Product pt = new Product (new int[] { 4, 3, 2 });
             pt.Rank = 23;
-
             string actual = pt.ToString();
-
             Assert.AreEqual ("{ 3, 2, 1 }", actual);
         }
 
@@ -638,7 +631,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException1()
+        public void CrashPt_Permute_ArgumentNull1()
         {
             Product pt = new Product (new int[] { 2, 3 });
             object[][] nullSource = null;
@@ -648,7 +641,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException2()
+        public void CrashPt_Permute_ArgumentNull2()
         {
             Product ptNull = null;
             object[][] source = new object[][] { new string[] { "A", "B" }, new string[] { "X", "Y", "Z" } };
@@ -658,7 +651,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Permute_ArgumentException()
+        public void CrashPt_Permute_Argument()
         {
             Product pt = new Product (new int[] { 2, 3 });
             object[][] source = new object[][] { new string[] { "A", "B" } };
@@ -668,7 +661,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Permute_ArgumentOutOfRangeException()
+        public void CrashPt_Permute_ArgumentOutOfRange()
         {
             Product pt = new Product (new int[] { 3 });
             pt.Rank = 2;
@@ -678,7 +671,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Permute()
+        public void UnitPt_Permute()
         {
             string[] set1 = new string[] { "A", "B", "C" };
             string[] set2 = new string[] { "X", "Y" };
@@ -699,7 +692,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Comparisons()
+        public void UnitPt_Comparisons()
         {
             int[] dims1 = new int[] { 2, 3 };
 

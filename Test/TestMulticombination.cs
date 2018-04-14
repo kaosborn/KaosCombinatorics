@@ -11,7 +11,7 @@ namespace CombinatoricsTest
         #region Test constructors
 
         [TestMethod]
-        public void Test_Interfaces()
+        public void UnitMc_Inheritance()
         {
             Multicombination mc = new Multicombination (4, 2);
 
@@ -24,7 +24,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor0()
+        public void UnitMc_Ctor0()
         {
             Multicombination mc = new Multicombination();
 
@@ -43,7 +43,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor1a_ArgumentNullException()
+        public void CrashMc_Ctor1A_ArgumentNull()
         {
             Multicombination nullSource = null;
             Multicombination mc = new Multicombination (nullSource);
@@ -51,7 +51,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1a()
+        public void UnitMc_Ctor1A()
         {
             Multicombination smc = new Multicombination (5, 3, 1);
 
@@ -66,15 +66,15 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor1b_ArgumentOutOfRangeException()
+        public void CrashMc_Ctor1B_ArgumentOutOfRange()
         {
             int n = -1;
-            Multicombination mc = new Multicombination (n);
+            Multicombination zz = new Multicombination (n);
         }
 
 
         [TestMethod]
-        public void Test_Ctor1b1()
+        public void UnitMc_Ctor1B1()
         {
             int n = 3;
             Multicombination mc = new Multicombination (n);
@@ -87,7 +87,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor1b2()
+        public void UnitMc_Ctor1b2()
         {
             int n = 0;
             Multicombination mc = new Multicombination (n);
@@ -101,7 +101,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException1()
+        public void CrashMc_Ctor2A_ArgumentOutOfRangeA()
         {
             Multicombination mc = new Multicombination (-2, 3);
         }
@@ -109,7 +109,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException2a()
+        public void CrashMc_Ctor2A_ArgumentOutOfRange2A()
         {
             Multicombination mc = new Multicombination (2, -3);
         }
@@ -117,14 +117,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2a_ArgumentOutOfRangeException2b()
+        public void CrashMc_Ctor2A_ArgumentOutOfRange2B()
         {
             Multicombination mc = new Multicombination (0, 1);
         }
 
 
         [TestMethod]
-        public void Test_Ctor2a1()
+        public void UnitMc_Ctor2A1()
         {
             int n = 5;
             int k = 0;
@@ -139,7 +139,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2a2()
+        public void UnitMc_Ctor2A2()
         {
             int n = 5;
             int k = 3;
@@ -155,7 +155,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Ctor2b_ArgumentNullException()
+        public void CrashMc_Ctor2B_ArgumentNull()
         {
             int[] nullus = null;
             Multicombination mc = new Multicombination (1, nullus);
@@ -164,17 +164,16 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException1()
+        public void CrashMc_Ctor2B_ArgumentOutOfRange1()
         {
             int[] array = new int[1];
-
             Multicombination mc = new Multicombination (-1, array);
         }
 
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException4()
+        public void CrashMc_Ctor2B_ArgumentOutOfRange4()
         {
             int[] array = new int[] { -1, 0 };
             Multicombination mc = new Multicombination (2, array);
@@ -183,7 +182,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException5()
+        public void CrashMc_Ctor2B_ArgumentOutOfRange5()
         {
             int[] array = new int[] { 1 };
             Multicombination mc = new Multicombination (1, array);
@@ -192,7 +191,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor2b_ArgumentOutOfRangeException6()
+        public void CrashMc_Ctor2B_ArgumentOutOfRange6()
         {
             int[] array = new int[] { 0 };
             Multicombination mc = new Multicombination (0, array);
@@ -200,7 +199,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b_ChoicesWithoutPicks()
+        public void UnitMc_Ctor2BChoicesWithoutPicks()
         {
             int[] array = new int[] { };
             Multicombination mc = new Multicombination (1, array);
@@ -208,18 +207,16 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b1_Empty()
+        public void UnitMc_Ctor2B1Empty()
         {
             int[] array = new int[] { };
-
             Multicombination mc = new Multicombination (0, array);
-
             Assert.AreEqual (0, mc.RowCount);
         }
 
 
         [TestMethod]
-        public void Test_Ctor2b1()
+        public void UnitMc_Ctor2B1()
         {
             int n = 4;
             int[] mcVals1 = new int[] { 1, 0, 0 };
@@ -234,7 +231,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor2b2()
+        public void UnitMc_Ctor2B2()
         {
             int n = 5;
             int[] mcVals1 = new int[] { 3, 3, 2, 1, 2, 0 };
@@ -254,7 +251,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void StressMulticombination_Ctor2b()
+        public void StressMc_Ctor2B()
         {
             // Use higher maxChoices values for a longer running test.
 #if STRESS
@@ -289,7 +286,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException1()
+        public void CrashMc_Ctor3A_ArgumentOutOfRange1()
         {
             Multicombination mc = new Multicombination (-2, 3, 1);
         }
@@ -297,7 +294,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException2()
+        public void CrashMc_Ctor3A_ArgumentOutOfRange2()
         {
             Multicombination mc = new Multicombination (2, -3, 0);
         }
@@ -305,14 +302,14 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_Ctor3a_ArgumentOutOfRangeException3()
+        public void CrashMc_Ctor3A_ArgumentOutOfRange3()
         {
             Multicombination mc = new Multicombination (0, 1, 1);
         }
 
 
         [TestMethod]
-        public void Test_Ctor3a3a()
+        public void UnitMc_Ctor3A3A()
         {
             Multicombination mc = new Multicombination (0, 0, 1);
             Assert.AreEqual (0, mc.Rank);
@@ -321,20 +318,18 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Ctor3a3b()
+        public void UnitMc_Ctor3A3B()
         {
             Multicombination mc = new Multicombination (4, 0, 9);
-
             Assert.AreEqual (0, mc.Rank);
             Assert.AreEqual (0, mc.RowCount);
         }
 
 
         [TestMethod]
-        public void Test_Ctor3a3c()
+        public void UnitMc_Ctor3A3C()
         {
             Multicombination mc = new Multicombination (4, 3, 14);
-
             Assert.AreEqual (1, mc[0]);
             Assert.AreEqual (2, mc[1]);
             Assert.AreEqual (3, mc[2]);
@@ -342,13 +337,12 @@ namespace CombinatoricsTest
             Assert.AreEqual (20, mc.RowCount);
         }
 
-
         #endregion
 
         #region Test properties
 
         [TestMethod]
-        public void Test_Rank0()
+        public void UnitMc_Rank0()
         {
             Multicombination mc = new Multicombination();
 
@@ -364,7 +358,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank1()
+        public void UnitMc_Rank1()
         {
             Multicombination mc = new Multicombination (1);
 
@@ -380,7 +374,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Rank2()
+        public void UnitMc_Rank2()
         {
             Multicombination mc = new Multicombination (6, 4);
 
@@ -396,7 +390,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankIncrement()
+        public void UnitMc_RankIncrement()
         {
             Multicombination mc = new Multicombination (4, 3, 1);
 
@@ -409,7 +403,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_RankDecrement()
+        public void UnitMc_RankDecrement()
         {
             Multicombination mc = new Multicombination (4, 3, 1);
 
@@ -425,7 +419,7 @@ namespace CombinatoricsTest
         #region Test instance methods
 
         [TestMethod]
-        public void Test_CompareToOBJECT()
+        public void UnitMc_oCompareTo()
         {
             var objectSortedList = new System.Collections.SortedList();
             int[][] pairs = new int[][] { new int[] { 16, 2 }, new int[] { 12, 0 }, new int[] { 14, 1 } };
@@ -446,7 +440,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_CompareTo()
+        public void UnitMc_CompareTo()
         {
             Multicombination mcNull = null;
             Multicombination mc520 = new Multicombination (5, 2, 0);
@@ -472,10 +466,9 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_CopyTo_ArgumentNullException()
+        public void CrashMc_CopyTo_ArgumentNull()
         {
             Multicombination mc = new Multicombination (3, 3, 4);
-            
             int[] nullTarget = null;
             mc.CopyTo (nullTarget);
         }
@@ -483,17 +476,16 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_CopyTo_ArgumentException()
+        public void CrashMc_CopyTo_Argument()
         {
             Multicombination mc = new Multicombination (3, 3, 4);
-
             int[] nullTarget = new int[2];
             mc.CopyTo (nullTarget);
         }
 
 
         [TestMethod]
-        public void Test_CopyTo1()
+        public void UnitMc_CopyTo1()
         {
             Multicombination mc3 = new Multicombination (3, 3, 4);
             
@@ -507,7 +499,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_EqualsOBJECT()
+        public void UnitMc_oEquals()
         {
             Multicombination mcNull = null;
             Multicombination mc438a = new Multicombination (4, 3, 8);
@@ -528,7 +520,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Equals()
+        public void UnitMc_Equals()
         {
             Multicombination nullMc = null;
             Multicombination c438a = new Multicombination (4, 3, 8);
@@ -544,7 +536,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumeratorOBJECT()
+        public void UnitMc_oGetEnumerator()
         {
             int picks = 3;
             Multicombination mc = new Multicombination (5, picks, 20);
@@ -565,7 +557,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetEnumerator()
+        public void UnitMc_GetEnumerator()
         {
             int picks = 3;
             Multicombination mc = new Multicombination (5, picks, 20);
@@ -585,7 +577,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetHash()
+        public void UnitMc_GetHash()
         {
             Multicombination mc5 = new Multicombination (5);
             int hash = mc5.GetHashCode();
@@ -593,7 +585,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRows0Empty()
+        public void UnitMc_GetRows0Empty()
         {
             Multicombination mc = new Multicombination();
 
@@ -605,7 +597,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRows0()
+        public void UnitMc_GetRows0()
         {
             int[,] expected = new int[,]
             {
@@ -644,8 +636,8 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        [ExpectedException (typeof(ArgumentOutOfRangeException))]
-        public void Test_GetRowsForPicks_ArgumentOutOfRangeException1()
+        [ExpectedException (typeof (ArgumentOutOfRangeException))]
+        public void CrashMc_GetRowsForPicks_ArgumentOutOfRange1()
         {
             Multicombination mc2 = new Multicombination (2, 3);
 
@@ -657,7 +649,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void Test_GetRowsForPicks_ArgumentOutOfRangeException2()
+        public void CrashMc_GetRowsForPicks_ArgumentOutOfRange2()
         {
             Multicombination mc2 = new Multicombination (2, 3);
 
@@ -668,7 +660,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForPicksEmpty1()
+        public void UnitMc_GetRowsForPicksEmpty1()
         {
             Multicombination mc0 = new Multicombination (0, 0);
 
@@ -680,7 +672,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForPicksEmpty2()
+        public void UnitMc_GetRowsForPicksEmpty2()
         {
             Multicombination mc2 = new Multicombination (2, 3);
 
@@ -692,7 +684,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForPicks1()
+        public void UnitMc_GetRowsForPicksA()
         {
             Multicombination mc2 = new Multicombination (2, 0);
 
@@ -705,7 +697,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForPicks2()
+        public void UnitMc_GetRowsForPicksB()
         {
             Multicombination mc2 = new Multicombination (2, 5);
 
@@ -718,7 +710,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_GetRowsForPicks3()
+        public void UnitMc_GetRowsForPicksC()
         {
             int[][] expected = new int[][]
                 { new int[] { 0 }, new int[] { 1 },
@@ -747,34 +739,28 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ToString0()
+        public void UnitMc_ToString0()
         {
             Multicombination mc = new Multicombination();
-
             string actual = mc.ToString();
-
             Assert.AreEqual ("{ }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString1()
+        public void UnitMc_ToString1()
         {
             Multicombination mc = new Multicombination (1);
-
             string actual = mc.ToString();
-
             Assert.AreEqual ("{ 0 }", actual);
         }
 
 
         [TestMethod]
-        public void Test_ToString3()
+        public void UnitMc_ToString3()
         {
             Multicombination mc = new Multicombination (5, 3, 20);
-
             string actual = mc.ToString();
-
             Assert.AreEqual ("{ 1, 2, 3 }", actual);
         }
 
@@ -785,7 +771,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException1()
+        public void CrashMc_Permute_ArgumentNull1()
         {
             Multicombination mcNull = null;
             string[] letters = new string[] { "A", "B" };
@@ -795,7 +781,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentNullException))]
-        public void Test_Permute_ArgumentNullException2()
+        public void CrashMc_Permute_ArgumentNull2()
         {
             Multicombination mc = new Multicombination (2);
             string[] nullSource = null;
@@ -805,7 +791,7 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void Test_Permute_ArgumentException()
+        public void CrashMc_Permute_Argument()
         {
             Multicombination mc = new Multicombination (6);
             string[] letters = new string[] { "A", "B", "C", "D" };
@@ -816,7 +802,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_Permute()
+        public void UnitMc_Permute()
         {
             string[] expected = new string[] { "AAA", "AAB", "ABB", "BBB" };
             string[] letters = new string[] { "A", "B" };
@@ -837,7 +823,7 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void Test_ComparisonOps()
+        public void UnitMc_ComparisonOps()
         {
             Multicombination c0 = null;
             Multicombination d0 = null;
