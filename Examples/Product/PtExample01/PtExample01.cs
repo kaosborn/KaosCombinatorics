@@ -11,10 +11,10 @@ namespace ExampleApp
 
             var pt = new Product (sizes);
 
-            Console.WriteLine ("    ( " + String.Join (", ", sizes) + " )\n");
+            Console.WriteLine ($"    ( {String.Join (", ", sizes)} )\n");
 
             foreach (var row in pt.GetRows())
-                Console.WriteLine ("{0,2}: {1}", row.Rank, row);
+                Console.WriteLine ($"{row.Rank,2}: {row}");
         }
 
         /* Output:

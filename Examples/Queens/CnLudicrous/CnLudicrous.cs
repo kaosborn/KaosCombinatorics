@@ -15,6 +15,7 @@
 //     10                  overflow
 //
 //     * = untested
+//
 
 using System;
 using System.Collections.Generic;
@@ -82,18 +83,18 @@ namespace ExampleApp
             // Number of queens:
             int nq = 8;
 
-            Console.WriteLine ("Solve {0}-Queens with pick-combinations:\n", nq);
+            Console.WriteLine ($"Solve {nq}-Queens with pick-combinations:\n");
 
             long solutions = 0;
             foreach (var layout in new NQueens (nq).GetSolutions())
             {
                 Console.Write (layout);
                 if (++solutions % 100 == 0)
-                    Console.Write (" -  {0}", solutions);
+                    Console.Write ($" -  {solutions}");
                 Console.WriteLine();
             }
 
-            Console.WriteLine ("\nmethod=Ludicrous, solutions={0}, tries={1}", solutions, NQueens.Tries);
+            Console.WriteLine ($"\nmethod=Ludicrous, solutions={solutions}, tries={NQueens.Tries}");
         }
     }
 }

@@ -9,19 +9,16 @@ namespace ExampleApp
         static void Main()
         {
             // Create a k-permutation:
-
-            var pn = new Permutation (choices: 8, picks: 4, rank: 601);
-            Console.WriteLine ("n={0}, k={1}, rank={2}:\n", pn.Choices, pn.Picks, pn.Rank);
+            var pn = new Permutation (choices:8, picks:4, rank:601);
+            Console.WriteLine ($"n={pn.Choices}, k={pn.Picks}, rank={pn.Rank}:\n");
 
             // Access elements using the default enumerator:
-
             var text = String.Concat (pn.Select (ei => (char) ('A' + ei)));
-            Console.WriteLine (text + "\n");
+            Console.WriteLine ($"{text}\n");
 
             // Access elements using the indexer:
-
             for (int i = 0; i < pn.Picks; ++i)
-                Console.WriteLine ("Element at {0} is {1}", i, pn[i]);
+                Console.WriteLine ($"Element at {i} is {pn[i]}");
         }
 
         /* Output:

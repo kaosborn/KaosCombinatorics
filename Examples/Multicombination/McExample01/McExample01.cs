@@ -9,10 +9,10 @@ namespace ExampleApp
         {
             var mc = new Multicombination (choices:4, picks:3);
 
-            Console.WriteLine ("n={0}, k={1}:\n", mc.Choices, mc.Picks);
+            Console.WriteLine ($"n={mc.Choices}, k={mc.Picks}:\n");
 
             foreach (var row in mc.GetRows())
-                Console.WriteLine ("{0,2}:  {1}", row.Rank, row);
+                Console.WriteLine ($"{row.Rank,2}:  {row}");
         }
 
         /* Output:

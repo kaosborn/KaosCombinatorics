@@ -14,7 +14,6 @@
 //      9         352     387420489
 //     10         724   10000000000
 //
-//
 
 using System;
 using System.Linq;
@@ -38,7 +37,7 @@ namespace ExampleApp
             // Number of queens:
             int nq = 8;
 
-            Console.WriteLine ("Solve {0}-Queens with a cartesian product:\n", nq);
+            Console.WriteLine ($"Solve {nq}-Queens with a cartesian product:\n");
 
             long tries = 0;
             long solutions = 0;
@@ -52,12 +51,12 @@ namespace ExampleApp
                         .Select (qx => ((char) ('a'+qx)).ToString() + (layout[qx]+1))));
 
                     if (++solutions % 100 == 0)
-                        Console.Write ("  -  {0}", solutions);
+                        Console.Write ($"  -  {solutions}");
                     Console.WriteLine();
                 }
             }
 
-            Console.WriteLine ("\nmethod=BruteForce, solutions={0}, tries={1}", solutions, tries);
+            Console.WriteLine ($"\nmethod=BruteForce, solutions={solutions}, tries={tries}");
         }
     }
 }

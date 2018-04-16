@@ -34,7 +34,7 @@ namespace ExampleApp
             foreach (var row in new Permutation (things.Count).GetRows())
             {
                 foreach (var mix in Permutation.Permute (row, things))
-                    Console.Write ("{0} ", mix);
+                    Console.Write ($"{mix} ");
                 Console.WriteLine();
             }
         }

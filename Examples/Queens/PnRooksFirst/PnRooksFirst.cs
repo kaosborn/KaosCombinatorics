@@ -15,6 +15,7 @@
 //     10         724       3628800
 //     15     2279184 1307674368000 *
 //     * = untested
+//
 
 using System;
 using Kaos.Combinatorics;
@@ -37,7 +38,7 @@ namespace ExampleApp
             // Number of queens:
             int nq = 8;
 
-            Console.WriteLine ("Solve {0}-Queens with non-backtracking permutations:\n", nq);
+            Console.WriteLine ($"Solve {nq}-Queens with non-backtracking permutations:\n");
 
             long tries = 0;
             long solutions = 0;
@@ -49,12 +50,12 @@ namespace ExampleApp
                     for (int i = 0; i < layout.Choices; ++i)
                         Console.Write (((char) ('a'+i)).ToString() + (layout[i]+1) + " ");
                     if (++solutions % 100 == 0)
-                        Console.Write (" -  {0}", solutions);
+                        Console.Write ($" -  {solutions}");
                     Console.WriteLine();
                 }
             }
 
-            Console.WriteLine ("\nmethod=RooksFirst, solutions={0}, tries={1}", solutions, tries);
+            Console.WriteLine ($"\nmethod=RooksFirst, solutions={solutions}, tries={tries}");
         }
     }
 }

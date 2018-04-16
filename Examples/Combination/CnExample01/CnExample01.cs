@@ -9,10 +9,10 @@ namespace ExampleApp
         {
             var cn = new Combination (choices:6, picks:3);
 
-            Console.WriteLine ("n={0}, k={1}:\n", cn.Choices, cn.Picks);
+            Console.WriteLine ($"n={cn.Choices}, k={cn.Picks}:\n");
 
             foreach (var row in cn.GetRows())
-                Console.WriteLine ("{0,2}:  {1}", row.Rank, row);
+                Console.WriteLine ($"{row.Rank,2}:  {row}");
         }
 
         /* Output:

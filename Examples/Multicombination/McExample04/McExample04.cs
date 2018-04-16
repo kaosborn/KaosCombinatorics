@@ -8,25 +8,20 @@ namespace ExampleApp
         static void Main()
         {
             // Create a k-multicombination of the supplied rank:
-
             var mc = new Multicombination (choices:6, picks:4, rank:25);
-            Console.WriteLine ("{0}  n={1}, k={2}, rank={3}\n", mc, mc.Choices, mc.Picks, mc.Rank);
+            Console.WriteLine ($"{mc}  n={mc.Choices}, k={mc.Picks}, rank={mc.Rank}\n");
 
-            // Assign -1 to get the last rank, treat row like a string:
-
+            // Assign -1 to get the last rank:
             mc.Rank = -1;
-            string text = mc.ToString() + "  n=" + mc.Choices + ", k=" + mc.Picks + ", last=" + mc.Rank;
-            Console.WriteLine (text);
+            Console.WriteLine ($"{mc}  n={mc.Choices}, k={mc.Picks}, last={mc.Rank}\n");
 
             // Rank will always stay in bounds:
-
             mc.Rank = mc.Rank + 1;
-            Console.WriteLine ("\n{0}  n={1}, k={2}, rank={3}", mc, mc.Choices, mc.Picks, mc.Rank);
+            Console.WriteLine ($"{mc}  n={mc.Choices}, k={mc.Picks}, rank={mc.Rank}\n");
 
             // Create a k-multicombination of n=9 from the supplied picks:
-
             mc = new Multicombination (9, new int[] { 1, 1, 3, 8 });
-            Console.WriteLine ("\n{0}  n={1}, k={2}, rank={3}", mc, mc.Choices, mc.Picks, mc.Rank);
+            Console.WriteLine ($"{mc}  n={mc.Choices}, k={mc.Picks}, rank={mc.Rank}");
         }
 
         /* Output:

@@ -8,25 +8,20 @@ namespace ExampleApp
         static void Main()
         {
             // Create a permutation of the supplied rank:
+            var pn = new Permutation (choices:8, picks:8, rank:119);
+            Console.WriteLine ($"{pn}  rank={pn.Rank}\n");
 
-            var pn = new Permutation (choices:8, picks:8, rank: 119);
-            Console.WriteLine ("{0}  rank={1}", pn, pn.Rank);
-
-            // Assign -1 to get the last rank, treat row like a string:
-
+            // Assign -1 to get the last rank:
             pn.Rank = -1;
-            string text = pn.ToString() + "  last=" + pn.Rank;
-            Console.WriteLine ("\n" + text);
+            Console.WriteLine ($"{pn}  last={pn.Rank}\n");
 
             // Rank will always stay in bounds:
-
             pn.Rank = pn.Rank + 1;
-            Console.WriteLine ("\n{0}  rank={1}", pn, pn.Rank);
+            Console.WriteLine ($"{pn}  rank={pn.Rank}\n");
 
             // Create a permutation from the supplied sequence:
-
             pn = new Permutation (new int[] { 6, 4, 2, 0, 7, 5, 3, 1 });
-            Console.WriteLine ("\n{0}  rank={1}", pn, pn.Rank);
+            Console.WriteLine ($"{pn}  rank={pn.Rank}");
         }
 
         /* Output:

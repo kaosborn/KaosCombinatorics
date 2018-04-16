@@ -9,19 +9,16 @@ namespace ExampleApp
         static void Main()
         {
             // Create a k-multicombination:
-
             var mc = new Multicombination (choices:9, picks:7, rank:5973);
-            Console.WriteLine ("n={0}, k={1}, rank={2}:\n", mc.Choices, mc.Picks, mc.Rank);
+            Console.WriteLine ($"n={mc.Choices}, k={mc.Picks}, rank={mc.Rank}:\n");
 
             // Access elements using the default enumerator:
-
             var text = String.Concat (mc.Select (ei => (char) ('A' + ei)));
-            Console.WriteLine (text + "\n");
+            Console.WriteLine ($"{text}\n");
 
             // Access elements using the indexer:
-
             for (int i = 0; i < mc.Picks; ++i)
-                Console.WriteLine ("Element at {0} is {1}", i, mc[i]);
+                Console.WriteLine ($"Element at {i} is {mc[i]}");
         }
 
         /* Output:

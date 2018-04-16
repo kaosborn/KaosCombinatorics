@@ -9,10 +9,10 @@ namespace ExampleApp
         {
             var pn = new Permutation (4);
 
-            Console.WriteLine ("Plain changes, n={0}:\n", pn.Choices);
+            Console.WriteLine ($"Plain changes, n={pn.Choices}:\n");
 
             foreach (var row in pn.GetRowsOfPlainChanges())
-                Console.WriteLine ("{0,2}: {1}  Swaps={2}, Rank={3}", row.PlainRank, row, row.Swaps, row.Rank);
+                Console.WriteLine ($"{row.PlainRank,2}: {row}  Swaps={row.Swaps}, Rank={row.Rank}");
         }
 
         /* Output:

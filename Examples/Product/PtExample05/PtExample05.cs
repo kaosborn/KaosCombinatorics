@@ -12,18 +12,15 @@ namespace ExampleApp
             long rank = 925;
 
             // Create a cartesian product row:
-
             var pt = new Product (sizes, rank);
 
             // Access elements using the default enumerator:
-
             var text = String.Concat (pt.Select (ei => (char) ('A' + ei)));
-            Console.WriteLine (text + "\n");
+            Console.WriteLine ($"{text}\n");
 
             // Access elements using the indexer:
-
             for (int i = 0; i < pt.Width; ++i)
-                Console.WriteLine ("Element at {0} is {1}", i, pt[i]);
+                Console.WriteLine ($"Element at {i} is {pt[i]}");
         }
 
         /* Output:

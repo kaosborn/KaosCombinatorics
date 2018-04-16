@@ -21,7 +21,7 @@ namespace ExampleApp
         static void Main()
         {
             foreach (var row in new LettersXYZ().GetRowsForPicks (1, 4))
-                Console.WriteLine ("Rank {0,2}:  {1}", row.Rank, row);
+                Console.WriteLine ($"Rank {row.Rank,2}:  {row}");
         }
 
         /* Output:

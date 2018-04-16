@@ -7,12 +7,12 @@ namespace ExampleApp
     {
         static void Main()
         {
-            var pn = new Permutation (choices: 4);
+            var pn = new Permutation (choices:4);
 
-            Console.WriteLine ("n={0}:\n", pn.Choices);
+            Console.WriteLine ($"n={pn.Choices}:\n");
 
             foreach (var row in pn.GetRows())
-                Console.WriteLine ("{0,2}:  {1}", row.Rank, row);
+                Console.WriteLine ($"{row.Rank,2}:  {row}");
         }
 
         /* Output:

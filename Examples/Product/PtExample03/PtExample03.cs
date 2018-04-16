@@ -41,7 +41,7 @@ namespace ExampleApp
             foreach (var row in new Product (counts).GetRows())
             {
                 foreach (object coloredThing in Product.Permute (row, lists))
-                    Console.Write ("{0} ", coloredThing);
+                    Console.Write ($"{coloredThing} ");
                 Console.WriteLine();
             }
         }
