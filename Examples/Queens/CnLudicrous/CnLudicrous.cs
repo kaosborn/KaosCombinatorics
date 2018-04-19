@@ -21,7 +21,6 @@ using System;
 using System.Collections.Generic;
 using Kaos.Combinatorics;
 
-
 namespace ExampleApp
 {
     class NQueens : Combination
@@ -35,13 +34,11 @@ namespace ExampleApp
         {
             for (int pi1 = 0; pi1 < Picks; ++pi1)
             {
-                int qy1,
-                    qx1 = Math.DivRem (this[pi1], Picks, out qy1);
+                int qx1 = Math.DivRem (this[pi1], Picks, out int qy1);
 
                 for (int pi2 = pi1+1; pi2 < Picks; ++pi2)
                 {
-                    int qy2,
-                        qx2 = Math.DivRem (this[pi2], Picks, out qy2);
+                    int qx2 = Math.DivRem (this[pi2], Picks, out int qy2);
                     int dx = qx2 - qx1,
                         dy = qy2 - qy1;
 
@@ -67,8 +64,7 @@ namespace ExampleApp
             string result = "";
             for (int pi = 0; pi < Picks; ++pi)
             {
-                int qy,
-                    qx = Math.DivRem (this[pi], Picks, out qy);
+                int qx = Math.DivRem (this[pi], Picks, out int qy);
                 result += ((char) ('a'+qx)).ToString() + (qy+1) + " ";
             }
             return result;
