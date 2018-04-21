@@ -18,7 +18,7 @@ namespace ExampleApp
         public override string ToString() { return name; }
     }
 
-    static class PtExample03
+    class PtExample03
     {
         static void Main()
         {

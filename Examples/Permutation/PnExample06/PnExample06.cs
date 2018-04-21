@@ -3,7 +3,7 @@ using Kaos.Combinatorics;
 
 namespace ExampleApp
 {
-    static class PnExample06
+    class PnExample06
     {
         static void Main()
         {

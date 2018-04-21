@@ -3,7 +3,7 @@ using Kaos.Combinatorics;
 
 namespace ExampleApp
 {
-    static class McExample04
+    class McExample04
     {
         static void Main()
         {

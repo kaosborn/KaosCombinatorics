@@ -27,7 +27,7 @@ namespace ExamleApp
         }
     }
 
-    static class PtExample02
+    class PtExample02
     {
         static void Main()
         {

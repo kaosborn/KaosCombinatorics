@@ -17,7 +17,7 @@ namespace ExampleApp
         public override string ToString() { return name; }
     }
 
-    static class CnExample03
+    class CnExample03
     {
         static void Main()
         {

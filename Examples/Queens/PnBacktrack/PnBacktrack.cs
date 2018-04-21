@@ -70,8 +70,7 @@ namespace ExampleApp
         }
     }
 
-
-    static class PnBacktrack
+    class PnBacktrack
     {
         static void Main()
         {

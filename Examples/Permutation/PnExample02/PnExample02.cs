@@ -16,8 +16,7 @@ namespace ExampleApp
         { return String.Join (" ", from ei in this select text[ei]); }
     }
 
-
-    static class PnExample02
+    class PnExample02
     {
         static void Main()
         {

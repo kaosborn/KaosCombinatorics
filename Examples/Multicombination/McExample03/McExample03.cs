@@ -10,7 +10,7 @@ namespace ExampleApp
         public override string ToString() { return name; }
     }
 
-    static class McExample03
+    class McExample03
     {
         static void Main()
         {

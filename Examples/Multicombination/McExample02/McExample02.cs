@@ -16,7 +16,7 @@ namespace ExampleApp
         { return String.Concat (from ei in this select letters[ei]); }
     }
 
-    static class McExample02
+    class McExample02
     {
         static void Main()
         {

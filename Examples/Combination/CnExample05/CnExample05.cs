@@ -4,7 +4,7 @@ using Kaos.Combinatorics;
 
 namespace ExampleApp
 {
-    static class CnExample05
+    class CnExample05
     {
         static void Main()
         {

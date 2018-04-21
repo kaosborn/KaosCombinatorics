@@ -16,7 +16,7 @@ namespace ExampleApp
         { return String.Join (" ", from ei in this select choices[ei]); }
     }
 
-    static class CnExample02
+    class CnExample02
     {
         static void Main()
         {
