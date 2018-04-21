@@ -5,9 +5,9 @@ namespace ExampleApp
 {
     public class Pastry
     {
-        private string name;
-        public Pastry (string newName) { name = newName; }
-        public override string ToString() { return name; }
+        public string Name { get; private set; }
+        public Pastry (string name) { Name = name; }
+        public override string ToString() => Name;
     }
 
     class McExample03
@@ -16,7 +16,6 @@ namespace ExampleApp
         {
             Pastry[] Pastries =
             {
-                new Pastry ("danish"),
                 new Pastry ("eclair"),
                 new Pastry ("strudel"),
                 new Pastry ("donut"),
@@ -24,32 +23,12 @@ namespace ExampleApp
             };
 
             // Use k-multicombinations to get rearrangements of other objects:
-
             foreach (var row in new Multicombination (Pastries.Length, 3).GetRows())
-            {
-                foreach (var treat in Multicombination.Permute (row, Pastries))
-                    Console.Write (treat + " ");
-                Console.WriteLine();
-            }
+                Console.WriteLine (String.Join (" ", Multicombination.Permute (row, Pastries)));
         }
 
         /* Output:
 
-        danish danish danish
-        danish danish eclair
-        danish danish strudel
-        danish danish donut
-        danish danish croissant
-        danish eclair eclair
-        danish eclair strudel
-        danish eclair donut
-        danish eclair croissant
-        danish strudel strudel
-        danish strudel donut
-        danish strudel croissant
-        danish donut donut
-        danish donut croissant
-        danish croissant croissant
         eclair eclair eclair
         eclair eclair strudel
         eclair eclair donut

@@ -5,16 +5,16 @@ namespace ExampleApp
 {
     public class Furniture
     {
-        private string name;
-        public Furniture (string newName) { name = newName; }
-        public override string ToString() { return name; }
+        public string Name { get; private set; }
+        public Furniture (string name) { Name = name; }
+        public override string ToString() => Name;
     }
 
     public class Fruit
     {
-        private string name;
-        public Fruit (string newName) { name = newName; }
-        public override string ToString() { return name; }
+        public string Name { get; private set; }
+        public Fruit (string name) { Name = name; }
+        public override string ToString() => Name;
     }
 
     class CnExample03
@@ -31,13 +31,8 @@ namespace ExampleApp
             };
 
             // Use k-combinations to get rearrangements of other objects:
-
             foreach (var row in new Combination (things.Length, 3).GetRows())
-            {
-                foreach (var thing in Combination.Permute (row, things))
-                    Console.Write (thing + " ");
-                Console.WriteLine();
-            }
+                Console.WriteLine (String.Join (" ", Combination.Permute (row, things)));
         }
 
         /* Output:

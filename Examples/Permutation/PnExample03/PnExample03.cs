@@ -6,16 +6,16 @@ namespace ExampleApp
 {
     public class Furniture
     {
-        private string name;
-        public Furniture (string newName) { name = newName; }
-        public override string ToString() { return name; }
+        public string Name { get; private set; }
+        public Furniture (string name) { Name = name; }
+        public override string ToString() => Name;
     }
 
     public class Fruit
     {
-        private string name;
-        public Fruit (string newName) { name = newName; }
-        public override string ToString() { return name; }
+        public string Name { get; private set; }
+        public Fruit (string name) { Name = name; }
+        public override string ToString() => Name;
     }
 
     class PnExample03
@@ -30,13 +30,8 @@ namespace ExampleApp
             };
 
             // Use permutations to get rearrangements of other objects:
-
             foreach (var row in new Permutation (things.Count).GetRows())
-            {
-                foreach (var mix in Permutation.Permute (row, things))
-                    Console.Write ($"{mix} ");
-                Console.WriteLine();
-            }
+                Console.WriteLine (String.Join (" ", Permutation.Permute (row, things)));
         }
 
         /* Output:
