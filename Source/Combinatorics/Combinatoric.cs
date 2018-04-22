@@ -19,7 +19,7 @@ namespace Kaos.Combinatorics
     /// </remarks>
     public static class Combinatoric
     {
-#region Private static fields
+        #region Private static fields
 
         static private readonly long[] factorial = new long[]
         {
@@ -34,9 +34,9 @@ namespace Kaos.Combinatorics
         static private List<long[]> pascalsTriangle = null;
         static private int pascalsTriangleMaxN = -1;
 
-#endregion
+        #endregion
 
-#region Private static methods
+        #region Private static methods
 
         // Returns as many complete rows of Pascal's triangle as possible.
         static private List<long[]> BuildPascalsTriangle()
@@ -61,9 +61,9 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-#endregion
+        #endregion
 
-#region Public static methods
+        #region Public static methods
 
         /// <summary>
         /// Returns the binomial coefficient of the supplied values.
@@ -165,6 +165,6 @@ namespace Kaos.Combinatorics
             return factorial[value];
         }
 
-#endregion
+        #endregion
     }
 }

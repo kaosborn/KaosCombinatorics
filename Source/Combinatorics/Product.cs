@@ -236,7 +236,7 @@ namespace Kaos.Combinatorics
             }
         }
 
-#endregion
+        #endregion
 
         #region Properties
 

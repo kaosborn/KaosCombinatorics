@@ -478,7 +478,7 @@ namespace Kaos.Combinatorics
         public override bool Equals (object obj)
         { return Equals (obj as Multicombination); }
 
-        
+
         /// <summary>
         /// Indicate whether two <see cref="Multicombination"/>s have the same value.
         /// </summary>
