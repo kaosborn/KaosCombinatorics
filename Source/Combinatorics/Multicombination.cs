@@ -305,7 +305,7 @@ namespace Kaos.Combinatorics
             for (int ki = 0;;)
             {
                 for (; ji < comboElement; ++ji)
-                    rank += Combinatoric.BinomialCoefficient (Choices + Picks - ji - 2, Picks - ki - 1);
+                    this.rank += Combinatoric.BinomialCoefficient (Choices + Picks - ji - 2, Picks - ki - 1);
 
                 ++ki;
                 if (ki >= Picks)
@@ -461,10 +461,10 @@ namespace Kaos.Combinatorics
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
 
-            if (array.Length < this.data.Length)
+            if (array.Length < data.Length)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            this.data.CopyTo (array, 0);
+            data.CopyTo (array, 0);
         }
 
 
@@ -497,7 +497,7 @@ namespace Kaos.Combinatorics
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        { return this.GetEnumerator(); }
+        { return GetEnumerator(); }
 
 
         /// <summary>Enumerate all elements of a <see cref="Multicombination"/>.</summary>
@@ -510,7 +510,7 @@ namespace Kaos.Combinatorics
         public IEnumerator<int> GetEnumerator()
         {
             for (int ei = 0; ei < Picks; ++ei)
-                yield return this.data[ei];
+                yield return data[ei];
         }
 
 
@@ -611,7 +611,7 @@ namespace Kaos.Combinatorics
 
             for (int ei = 0;;)
             {
-                result.Append (this.data[ei]);
+                result.Append (data[ei]);
 
                 ++ei;
                 if (ei >= Picks)

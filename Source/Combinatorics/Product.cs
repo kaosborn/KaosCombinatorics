@@ -308,7 +308,7 @@ namespace Kaos.Combinatorics
         {
             get
             {
-                long rankToElement = this.rank;
+                long rankToElement = Rank;
                 if (index > 0)
                     rankToElement %= factors[index - 1];
 
@@ -456,7 +456,7 @@ namespace Kaos.Combinatorics
         /// When <em>column</em> not in range (0..<see cref="Width"/>-1).
         /// </exception>
         public int Size (int column)
-        { return this.sizes[column]; }
+        { return sizes[column]; }
 
 
         /// <summary>
