@@ -275,19 +275,13 @@ namespace Kaos.Combinatorics
         /// <summary>
         /// Count of distinct joins in the <see cref="Product"/> table.
         /// </summary>
-        public long RowCount
-        {
-            get { return rowCount; }
-        }
+        public long RowCount => rowCount;
 
 
         /// <summary>
         /// Number of columns in the <see cref="Product"/>.
         /// </summary>
-        public int Width
-        {
-            get { return sizes.Length; }
-        }
+        public int Width => sizes.Length;
 
 
         /// <summary>
@@ -325,8 +319,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// A signed integer indicating the sort order of this instance to <em>obj</em>.
         /// </returns>
-        public int CompareTo (object obj)
-        { return CompareTo (obj as Product); }
+        public int CompareTo (object obj) => CompareTo (obj as Product);
 
 
         /// <summary>Compare 2 <see cref="Product"/>s.</summary>
@@ -377,8 +370,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj)
-        { return Equals (obj as Product); }
+        public override bool Equals (object obj) => Equals (obj as Product);
 
 
         /// <summary>
@@ -389,14 +381,12 @@ namespace Kaos.Combinatorics
         /// <b>true</b> if <em>other</em> has the same value as this object;
         /// otherwise, <b>false</b>.
         /// </returns>
-        public bool Equals (Product other)
-        { return (object) other != null && other.Rank == Rank && other.Width == Width; }
+        public bool Equals (Product other) => (object) other != null && other.Rank == Rank && other.Width == Width;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        { return GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
 
         /// <summary>Enumerate all elements of a <see cref="Product"/>.</summary>
@@ -415,8 +405,7 @@ namespace Kaos.Combinatorics
 
         /// <summary>Get the hash oode of the <see cref="Product"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
-        public override int GetHashCode()
-        { return unchecked ((int) rank); }
+        public override int GetHashCode() => unchecked ((int) rank);
 
 
         /// <summary>
@@ -455,8 +444,7 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>column</em> not in range (0..<see cref="Width"/>-1).
         /// </exception>
-        public int Size (int column)
-        { return sizes[column]; }
+        public int Size (int column) => sizes[column];
 
 
         /// <summary>
@@ -474,7 +462,7 @@ namespace Kaos.Combinatorics
 
             var result = new StringBuilder ("{ ");
 
-            for (int ei = 0; ; )
+            for (int ei = 0;;)
             {
                 result.Append (this[ei]);
 
@@ -519,10 +507,9 @@ namespace Kaos.Combinatorics
             if (source.Count < arrangement.Width)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
-            List<T> result = new List<T> (arrangement.Width);
-
-            for (int ai = 0; ai < arrangement.Width; ++ai)
-                result.Add (source[ai][arrangement[ai]]);
+            var result = new List<T> (arrangement.Width);
+            for (int ix = 0; ix < arrangement.Width; ++ix)
+                result.Add (source[ix][arrangement[ix]]);
 
             return result;
         }

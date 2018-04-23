@@ -419,8 +419,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// A signed integer indicating the sort order of this instance to <em>obj</em>.
         /// </returns>
-        public int CompareTo (object obj)
-        { return CompareTo (obj as Combination); }
+        public int CompareTo (object obj) => CompareTo (obj as Combination);
 
 
         /// <summary>Compare two <see cref="Combination"/>s.</summary>
@@ -477,8 +476,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj)
-        { return Equals (obj as Combination); }
+        public override bool Equals (object obj) => Equals (obj as Combination);
 
 
         /// <summary>
@@ -490,16 +488,12 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.
         /// </returns>
         public bool Equals (Combination other)
-        {
-            return (object) other != null
-                && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
-        }
+            => (object) other != null && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        { return GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
 
         /// <summary>Enumerate all elements of a <see cref="Combination"/>.</summary>
@@ -511,15 +505,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            for (int ei = 0; ei < Picks; ++ei)
-                yield return data[ei];
+            foreach (int element in data)
+                yield return element;
         }
 
 
         /// <summary>Get the hash oode of the <see cref="Combination"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
-        public override int GetHashCode()
-        { return unchecked ((int) Rank); }
+        public override int GetHashCode() => unchecked ((int) Rank);
 
 
         /// <summary>
@@ -642,10 +635,9 @@ namespace Kaos.Combinatorics
             if (source.Count < arrangement.Choices)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
-            List<T> result = new List<T> (arrangement.Picks);
-
-            for (int ai = 0; ai < arrangement.Picks; ++ai)
-                result.Add (source[arrangement[ai]]);
+            var result = new List<T> (arrangement.Picks);
+            foreach (int element in arrangement)
+                result.Add (source[element]);
 
             return result;
         }

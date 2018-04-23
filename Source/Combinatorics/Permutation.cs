@@ -702,9 +702,7 @@ namespace Kaos.Combinatorics
             get
             {
                 var elements = new int[Picks];
-                for (int ei = 0; ei < Picks; ++ei)
-                    elements[ei] = this[ei];
-
+                data.CopyTo (elements, 0);
                 return CalcSwapCount (elements, Choices);
             }
         }
@@ -874,8 +872,8 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            for (int ei = 0; ei < Picks; ++ei)
-                yield return data[ei];
+            foreach (int element in data)
+                yield return element;
         }
 
 
@@ -1085,9 +1083,8 @@ namespace Kaos.Combinatorics
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             var result = new List<T> (arrangement.Picks);
-
-            for (int ai = 0; ai < arrangement.Picks; ++ai)
-                result.Add (source[arrangement[ai]]);
+            foreach (int element in arrangement)
+                result.Add (source[element]);
 
             return result;
         }

@@ -288,8 +288,8 @@ namespace Kaos.Combinatorics
             this.choices = choices;
             this.rowCount = Picks == 0? 0 : Combinatoric.BinomialCoefficient (Picks + choices - 1, Picks);
 
-            for (int ki = 0; ki < Picks; ++ki)
-                if (this.data[ki] < 0 || this.data[ki] >= choices)
+            foreach (int element in this.data)
+                if (element < 0 || element >= choices)
                     throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
 
             //
@@ -417,8 +417,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// A signed integer indicating the sort order of this instance to <em>obj</em>.
         /// </returns>
-        public int CompareTo (object obj)
-        { return CompareTo (obj as Multicombination); }
+        public int CompareTo (object obj) => CompareTo (obj as Multicombination);
 
 
         /// <summary>Compare two <see cref="Multicombination"/>s.</summary>
@@ -475,8 +474,7 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj)
-        { return Equals (obj as Multicombination); }
+        public override bool Equals (object obj) => Equals (obj as Multicombination);
 
 
         /// <summary>
@@ -488,16 +486,12 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.
         /// </returns>
         public bool Equals (Multicombination other)
-        {
-            return (object) other != null
-                && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
-        }
+            => (object) other != null && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        { return GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
 
         /// <summary>Enumerate all elements of a <see cref="Multicombination"/>.</summary>
@@ -509,15 +503,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            for (int ei = 0; ei < Picks; ++ei)
-                yield return data[ei];
+            foreach (int element in data)
+                yield return element;
         }
 
 
         /// <summary>Get the hash oode of the <see cref="Multicombination"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
-        public override int GetHashCode()
-        { return unchecked ((int) Rank); }
+        public override int GetHashCode() => unchecked ((int) Rank);
 
 
         /// <summary>
@@ -585,7 +578,7 @@ namespace Kaos.Combinatorics
                 for (;;)
                 {
                     yield return current;
-                    
+
                     current.Rank = current.Rank + 1;
                     if (current.Rank == 0)
                         break;
@@ -656,9 +649,8 @@ namespace Kaos.Combinatorics
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             var result = new List<T> (arrangement.Picks);
-
-            for (int ei = 0; ei < arrangement.Picks; ++ei)
-                result.Add (source[arrangement[ei]]);
+            foreach (int element in arrangement)
+                result.Add (source[element]);
 
             return result;
         }
