@@ -102,19 +102,19 @@ namespace Kaos.Combinatorics
             if (k < 0 || k > n)
                 return 0;
 
-            if (n <= pascalsTriangleMaxN)
-                return pascalsTriangle[n][k];
-
-            if (pascalsTriangle == null)
+            for (;;)
             {
+                if (n <= pascalsTriangleMaxN)
+                    return pascalsTriangle[n][k];
+
+                if (pascalsTriangleMaxN >= 0)
+                    break;
+
                 pascalsTriangle = BuildPascalsTriangle();
                 pascalsTriangleMaxN = pascalsTriangle.Count - 1;
-
-                if (n < pascalsTriangleMaxN)
-                    return pascalsTriangle[n][k];
             }
 
-            // Row is beyond precalculated table so fall back to multiplicative formula:
+            // Fall back to multiplicative formula:
 
             if (k > n - k)
                 k = n - k;
@@ -123,10 +123,7 @@ namespace Kaos.Combinatorics
             long bc = 1;
 
             for (int ki = 1; ki <= k; ++ki)
-            {
-                ++factor;
-                bc = checked (bc * factor) / ki;
-            }
+                bc = checked (bc * unchecked (++factor)) / ki;
 
             return bc;
         }
