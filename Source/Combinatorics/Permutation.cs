@@ -380,6 +380,9 @@ namespace Kaos.Combinatorics
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
 
+            if (choices < 0 || choices > MaxChoices)
+                throw new ArgumentOutOfRangeException (nameof (choices));
+
             this.choices = choices;
             Construct (this, source);
         }
@@ -389,28 +392,26 @@ namespace Kaos.Combinatorics
         #region Private static methods
 
         // On entry: source may be unvalidated
-        // On exit: pn will have correct rank, rowcount for source data
+        // On exit: pn will have correct rank, rowCount for source data
         static private void Construct (Permutation pn, int[] source)
         {
             if (source.Length > MaxChoices)
                 throw new ArgumentOutOfRangeException (nameof (source), "Too many values.");
 
-            if (pn.choices < 0 || pn.choices > MaxChoices)
-                throw new ArgumentOutOfRangeException (nameof (choices));
+            int isUsed = 0;
+            foreach (int element in source)
+            {
+                if (element < 0 || element >= pn.Choices)
+                    throw new ArgumentOutOfRangeException (nameof (source), "Value is out of range.");
+
+                int flag = 1 << element;
+                if ((isUsed & flag) != 0)
+                    throw new ArgumentException ("Value is repeated.", nameof (source));
+                isUsed |= flag;
+            }
 
             pn.data = new int[source.Length];
             source.CopyTo (pn.data, 0);
-
-            bool[] isUsed = new bool[pn.Choices];
-            for (int ei = 0; ei < pn.Picks; ++ei)
-            {
-                if (pn.data[ei] < 0 || pn.data[ei] >= pn.Choices)
-                    throw new ArgumentOutOfRangeException (nameof (source), "Value is out of range.");
-
-                if (isUsed[pn.data[ei]])
-                    throw new ArgumentException ("Value is repeated.", nameof (source));
-                isUsed[pn.data[ei]] = true;
-            }
 
             pn.rowCount = CalcCount (pn.Choices, pn.Picks);
             pn.rank = CalcRank (pn.data, pn.Choices);
@@ -424,10 +425,7 @@ namespace Kaos.Combinatorics
                 return 0;
 
             long result = Combinatoric.Factorial (choices);
-            if (picks < choices)
-                result = result / Combinatoric.Factorial (choices - picks);
-
-            return result;
+            return picks == choices ? result : result / Combinatoric.Factorial (choices - picks);
         }
 
 
@@ -435,28 +433,26 @@ namespace Kaos.Combinatorics
         private static long CalcRank (int[] elements, int choices)
         {
             long result = 0;
-            var isUsed = new bool[choices];
+            int isUsed = 0;
+            int toGo = choices;
 
             //
             // Perform ranking:
             //
 
-            for (int ei1 = 0; ei1 < elements.Length; ++ei1)
+            foreach (int e1 in elements)
             {
-                isUsed[elements[ei1]] = true;
+                isUsed |= 1 << e1;
 
                 int digit = 0;
-                for (int ei2 = 0; ei2 < elements[ei1]; ++ei2)
-                    if (! isUsed[ei2])
+                for (int e2 = 0; e2 < e1; ++e2)
+                    if ((isUsed & 1 << e2) == 0)
                         ++digit;
 
-                result += digit * Combinatoric.Factorial (choices - ei1 - 1);
+                result += digit * Combinatoric.Factorial (--toGo);
             }
 
-            if (elements.Length < choices)
-                result = result / Combinatoric.Factorial (choices - elements.Length);
-
-            return result;
+            return toGo == 0 ? result : result / Combinatoric.Factorial (toGo);
         }
 
 
@@ -646,7 +642,7 @@ namespace Kaos.Combinatorics
                 // Perform unranking:
                 //
 
-                var isUsed = new bool[Choices];
+                int isUsed = 0;
                 var factoradic = new int[Choices];
 
                 // Build the factoradic from the diminishing rank.
@@ -661,13 +657,11 @@ namespace Kaos.Combinatorics
                 // Build the permutation from the diminishing factoradic.
                 for (int fi = Choices - 1; fi >= Choices - Picks; --fi)
                     for (int newAtom = 0; ; ++newAtom)
-                        if (! isUsed[newAtom])
-                            if (factoradic[fi] > 0)
-                                --factoradic[fi];
-                            else
+                        if ((isUsed & 1 << newAtom) == 0)
+                            if (--factoradic[fi] < 0)
                             {
                                 data[Choices - fi - 1] = newAtom;
-                                isUsed[newAtom] = true;
+                                isUsed |= 1 << newAtom;
                                 break;
                             }
             }
