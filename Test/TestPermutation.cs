@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
@@ -96,7 +97,7 @@ namespace CombinatoricsTest
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
         public void CrashPn_Ctor1B_ArgumentOutOfRange2()
         {
-            Permutation pn = new Permutation (100);
+            Permutation pn = new Permutation (21);
         }
 
 
@@ -262,11 +263,8 @@ namespace CombinatoricsTest
         [ExpectedException (typeof (ArgumentOutOfRangeException))]
         public void CrashPn_Ctor2B_ArgumentOutOfRange1()
         {
-            var source = new int[Permutation.MaxChoices + 1];
-            for (int i = 0; i < source.Length; ++i)
-                source[i] = i;
-
-            Permutation pn = new Permutation (source, Permutation.MaxChoices);
+            var source = Enumerable.Range (0, Permutation.MaxChoices+1).ToArray();
+            Permutation pn = new Permutation (source);
         }
 
 
