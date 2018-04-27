@@ -428,9 +428,11 @@ namespace Kaos.Combinatorics
                 for (Product current = (Product) MemberwiseClone();;)
                 {
                     yield return current;
-                    current.Rank = current.Rank + 1;
+                    ++current.rank;
+                    if (current.rank == current.rowCount)
+                        current.rank = 0;
                     if (current.Rank == startRank)
-                        break;
+                        yield break;
                 }
             }
         }
