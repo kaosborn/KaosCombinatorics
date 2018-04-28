@@ -161,20 +161,20 @@ namespace Kaos.Combinatorics
             if (sizes == null)
                 throw new ArgumentNullException (nameof (sizes));
 
-            this.sizes = new int[sizes.Length];
-            sizes.CopyTo (this.sizes, 0);
-
-            this.factors = new long[this.sizes.Length];
+            this.factors = new long[sizes.Length];
             this.rowCount = sizes.Length == 0 ? 0 : 1;
 
-            for (int ei = this.sizes.Length - 1; ei >= 0; --ei)
+            for (int ei = sizes.Length - 1; ei >= 0; --ei)
             {
-                if (this.sizes[ei] < 0)
+                if (sizes[ei] < 0)
                     throw new ArgumentOutOfRangeException (nameof (sizes), "Value is less than zero.");
 
                 this.factors[ei] = this.rowCount;
-                this.rowCount = checked (this.rowCount * this.sizes[ei]);
+                this.rowCount = checked (this.rowCount * sizes[ei]);
             }
+
+            this.sizes = new int[sizes.Length];
+            sizes.CopyTo (this.sizes, 0);
         }
 
 
