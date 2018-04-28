@@ -169,7 +169,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[choices];
             this.choices = choices;
-            this.rowCount = choices == 0? 0 : Combinatoric.BinomialCoefficient (Picks + choices - 1, Picks);
+            CalcRowCount();
             this.rank = 0;
         }
 
@@ -204,7 +204,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[picks];
             this.choices = choices;
-            this.rowCount = picks == 0? 0 : Combinatoric.BinomialCoefficient (picks + choices - 1, picks);
+            CalcRowCount();
             this.rank = 0;
         }
 
@@ -247,7 +247,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[picks];
             this.choices = choices;
-            this.rowCount = picks == 0? 0 : Combinatoric.BinomialCoefficient (picks + choices - 1, picks);
+            CalcRowCount();
             Rank = rank;
         }
 
@@ -286,7 +286,7 @@ namespace Kaos.Combinatorics
             Array.Sort (this.data);
 
             this.choices = choices;
-            this.rowCount = Picks == 0? 0 : Combinatoric.BinomialCoefficient (Picks + choices - 1, Picks);
+            CalcRowCount();
 
             foreach (int element in this.data)
                 if (element < 0 || element >= choices)
@@ -315,6 +315,13 @@ namespace Kaos.Combinatorics
                 comboElement = this.data[ki] - this.data[ki-1] + ji;
             }
         }
+
+        #endregion
+
+        #region Private methods
+
+        private void CalcRowCount()
+            => rowCount = Picks == 0 ? 0 : Combinatoric.BinomialCoefficient (Picks + Choices - 1, Picks);
 
         #endregion
 
@@ -530,7 +537,7 @@ namespace Kaos.Combinatorics
             if (RowCount > 0)
             {
                 long startRank = rank;
-                for (Multicombination current = (Multicombination) MemberwiseClone();;)
+                for (Multicombination current = (Multicombination) MemberwiseClone (); ;)
                 {
                     yield return current;
                     current.Rank = current.Rank + 1;
@@ -572,7 +579,7 @@ namespace Kaos.Combinatorics
             {
                 Multicombination current = (Multicombination) MemberwiseClone();
                 current.data = new int[k];
-                current.rowCount = Combinatoric.BinomialCoefficient (k + choices - 1, k);
+                current.CalcRowCount();
                 current.rank = 0;
 
                 for (;;)
