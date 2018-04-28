@@ -326,7 +326,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[picks];
             this.choices = choices;
-            this.rowCount = CalcCount (choices, picks);
+            CalcRowCount();
             Rank = rank;
         }
 
@@ -352,7 +352,7 @@ namespace Kaos.Combinatorics
                 throw new ArgumentNullException (nameof (source));
 
             this.choices = source.Length;
-            Construct (this, source);
+            Construct (source);
         }
 
 
@@ -384,16 +384,16 @@ namespace Kaos.Combinatorics
                 throw new ArgumentOutOfRangeException (nameof (choices));
 
             this.choices = choices;
-            Construct (this, source);
+            Construct (source);
         }
 
         #endregion
 
-        #region Private static methods
+        #region Private methods
 
         // On entry: source may be unvalidated
-        // On exit: pn will have correct rank, rowCount for source data
-        static private void Construct (Permutation pn, int[] source)
+        // On exit: instance will have rank, rowCount for source data
+        private void Construct (int[] source)
         {
             if (source.Length > MaxChoices)
                 throw new ArgumentOutOfRangeException (nameof (source), "Too many values.");
@@ -401,7 +401,7 @@ namespace Kaos.Combinatorics
             int isUsed = 0;
             foreach (int element in source)
             {
-                if (element < 0 || element >= pn.Choices)
+                if (element < 0 || element >= Choices)
                     throw new ArgumentOutOfRangeException (nameof (source), "Value is out of range.");
 
                 int flag = 1 << element;
@@ -410,37 +410,34 @@ namespace Kaos.Combinatorics
                 isUsed |= flag;
             }
 
-            pn.data = new int[source.Length];
-            source.CopyTo (pn.data, 0);
+            this.data = new int[source.Length];
+            source.CopyTo (this.data, 0);
 
-            pn.rowCount = CalcCount (pn.Choices, pn.Picks);
-            pn.rank = CalcRank (pn.data, pn.Choices);
+            CalcRowCount();
+            CalcRank();
         }
 
 
-        // On entry: choices, picks assumed valid.
-        private static long CalcCount (int choices, int picks)
+        private void CalcRowCount()
         {
-            if (picks == 0)
-                return 0;
-
-            long result = Combinatoric.Factorial (choices);
-            return picks == choices ? result : result / Combinatoric.Factorial (choices - picks);
+            if (Picks == 0)
+                rowCount = 0;
+            else
+            {
+                rowCount = Combinatoric.Factorial (Choices);
+                if (Choices != Picks)
+                    rowCount /= Combinatoric.Factorial (Choices - Picks);
+            }
         }
 
 
-        // On entry: elements & choices assumed valid, picks = elements.Length.
-        private static long CalcRank (int[] elements, int choices)
+        private void CalcRank()
         {
-            long result = 0;
             int isUsed = 0;
-            int toGo = choices;
+            int toGo = Choices;
+            rank = 0;
 
-            //
-            // Perform ranking:
-            //
-
-            foreach (int e1 in elements)
+            foreach (int e1 in data)
             {
                 isUsed |= 1 << e1;
 
@@ -449,10 +446,11 @@ namespace Kaos.Combinatorics
                     if ((isUsed & 1 << e2) == 0)
                         ++digit;
 
-                result += digit * Combinatoric.Factorial (--toGo);
+                rank += digit * Combinatoric.Factorial (--toGo);
             }
 
-            return toGo == 0 ? result : result / Combinatoric.Factorial (toGo);
+            if (toGo != 0)
+                rank /= Combinatoric.Factorial (toGo);
         }
 
 
@@ -603,7 +601,7 @@ namespace Kaos.Combinatorics
                     value = value % RowCount;
 
                 CalcPlainUnrank (data, value);
-                rank = CalcRank (data, Choices);
+                CalcRank();
             }
         }
 
@@ -753,7 +751,7 @@ namespace Kaos.Combinatorics
                 {
                     data[tailIndex] = data[nodeIndex];
                     data[nodeIndex] = swap;
-                    rank = CalcRank (data, choices);
+                    CalcRank();
                     return nodeIndex;
                 }
             }
@@ -774,14 +772,14 @@ namespace Kaos.Combinatorics
                         while (++tailIndex < data.Length)
                             data[tailIndex-1] = data[tailIndex];
                         data[tailIndex-1] = tail;
-                        rank = CalcRank (data, choices);
+                        CalcRank();
                         return nodeIndex;
                     }
                 if (tail > data[nodeIndex])
                 {
                     data[data.Length-1] = data[nodeIndex];
                     data[nodeIndex] = tail;
-                    rank = CalcRank (data, choices);
+                    CalcRank();
                     return nodeIndex;
                 }
                 data[data.Length-1] = tail;
@@ -921,7 +919,7 @@ namespace Kaos.Combinatorics
                 for (int ei = 0; ei < current.data.Length; ++ei)
                     current.data[ei] = ei;
                 current.choices = w;
-                current.rowCount = CalcCount (w, w);
+                current.CalcRowCount();
                 current.rank = 0;
 
                 for (;;)
@@ -951,7 +949,7 @@ namespace Kaos.Combinatorics
                 current.data = new int[w];
                 for (int ei = 0; ei < current.data.Length; ++ei)
                     current.data[ei] = ei;
-                current.rowCount = CalcCount (current.Choices, w);
+                current.CalcRowCount();
                 current.rank = 0;
 
                 for (;;)
@@ -1009,7 +1007,7 @@ namespace Kaos.Combinatorics
                     plainRank = (plainRank + 1) % RowCount;
 
                     CalcPlainUnrank (current.data, plainRank);
-                    current.rank = CalcRank (data, current.Choices);
+                    current.CalcRank();
 
                     if (current.Rank == startRank)
                         yield break;
