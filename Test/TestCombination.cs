@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
@@ -614,33 +615,32 @@ namespace CombinatoricsTest
         [TestMethod]
         public void UnitCn_GetRows()
         {
-            int[,] expected = new int[,]
-            { { 0, 1, 2 },
-              { 0, 1, 3 },
-              { 0, 1, 4 },
-              { 0, 2, 3 },
-              { 0, 2, 4 },
-              { 0, 3, 4 },
-              { 1, 2, 3 },
-              { 1, 2, 4 },
-              { 1, 3, 4 },
-              { 2, 3, 4 }
+            var expect = new int[][]
+            {
+              new int[] { 0,1,2 }, new int[] { 0,1,3 }, new int[] { 0,1,4 }, new int[] { 0,2,3 }, new int[] { 0,2,4 },
+              new int[] { 0,3,4 }, new int[] { 1,2,3 }, new int[] { 1,2,4 }, new int[] { 1,3,4 }, new int[] { 2,3,4 }
             };
 
-            Combination c53 = new Combination (5, 3);
+            long startRank = 2;
+            var cn0 = new Combination (5, 3, startRank);
+            Assert.AreEqual (expect.Length, cn0.RowCount);
+            var beginData = new int[3];
+            cn0.CopyTo (beginData);
 
             long actualCount = 0;
-            foreach (Combination cx in c53.GetRows())
+            foreach (Combination cn in cn0.GetRows())
             {
-                Assert.IsTrue (actualCount < cx.RowCount);
-
-                for (int k = 0; k < cx.Picks; ++k)
-                    Assert.AreEqual (expected[actualCount, k], cx[k]);
-
+                long expectRank = (actualCount + startRank) % expect.Length;
+                Assert.AreEqual (expectRank, cn.Rank);
+                Assert.AreEqual (expectRank, cn0.Rank);
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[cn.Rank], cn));
+                Assert.IsTrue (Enumerable.SequenceEqual (cn, cn0));
                 ++actualCount;
             }
 
-            Assert.AreEqual (c53.RowCount, actualCount);
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, cn0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, cn0));
         }
 
 
@@ -648,37 +648,37 @@ namespace CombinatoricsTest
         public void UnitCn_GetRowsForAllPicksEmpty()
         {
             Combination cn = new Combination();
-
             foreach (Combination row in cn.GetRowsForAllPicks())
-            {
                 Assert.Fail ("Enumeration should be empty");
-            }
         }
 
 
         [TestMethod]
         public void UnitCn_GetRowsForAllPicks()
         {
-            int[][] expected = new int[][]
-                { new int[] { 0 }, new int[] { 1 }, new int[] { 2 },
-                  new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 2 },
-                  new int[] { 0, 1, 2 }
-                };
-
-            Combination cn3 = new Combination (3);
-
-            long counter = 0;
-            foreach (Combination row in cn3.GetRowsForAllPicks())
+            var expect = new int[][]
             {
-                Assert.AreEqual (expected[counter].Length, row.Picks);
+                new int[] { 0 }, new int[] { 1 }, new int[] { 2 }, new int[] { 3 },
+                new int[] { 0,1 }, new int[] { 0,2 }, new int[] { 0,3 },
+                new int[] { 1,2 }, new int[] { 1,3 }, new int[] { 2,3 }
+            };
 
-                for (int k = 0; k < row.Picks; ++k)
-                    Assert.AreEqual (expected[counter][k], row[k]);
+            long startRank = 5;
+            var cn0 = new Combination (4, 2, startRank);
+            var beginData = new int[cn0.Picks];
+            cn0.CopyTo (beginData);
 
-                ++counter;
+            int actualCount = 0;
+            foreach (Combination cn in cn0.GetRowsForAllPicks())
+            {
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[actualCount], cn));
+                Assert.IsTrue (Enumerable.SequenceEqual (cn, cn0));
+                ++actualCount;
             }
 
-            Assert.AreEqual (expected.Length, counter);
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, cn0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, cn0));
         }
 
 

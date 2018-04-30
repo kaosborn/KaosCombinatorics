@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
@@ -597,41 +598,37 @@ namespace CombinatoricsTest
 
 
         [TestMethod]
-        public void UnitMc_GetRows0()
+        public void UnitMc_GetRows()
         {
-            int[,] expected = new int[,]
+            var expect = new int[][]
             {
-                { 0, 0, 0, 0 },
-                { 0, 0, 0, 1 },
-                { 0, 0, 0, 2 },
-                { 0, 0, 1, 1 },
-                { 0, 0, 1, 2 },
-                { 0, 0, 2, 2 },
-                { 0, 1, 1, 1 },
-                { 0, 1, 1, 2 },
-                { 0, 1, 2, 2 },
-                { 0, 2, 2, 2 },
-                { 1, 1, 1, 1 },
-                { 1, 1, 1, 2 },
-                { 1, 1, 2, 2 },
-                { 1, 2, 2, 2 },
-                { 2, 2, 2, 2 }
+                new int[] { 0,0,0,0 }, new int[] { 0,0,0,1 }, new int[] { 0,0,0,2 },
+                new int[] { 0,0,1,1 }, new int[] { 0,0,1,2 }, new int[] { 0,0,2,2 },
+                new int[] { 0,1,1,1 }, new int[] { 0,1,1,2 }, new int[] { 0,1,2,2 },
+                new int[] { 0,2,2,2 }, new int[] { 1,1,1,1 }, new int[] { 1,1,1,2 },
+                new int[] { 1,1,2,2 }, new int[] { 1,2,2,2 }, new int[] { 2,2,2,2 }
             };
 
-            Multicombination mc = new Multicombination (3, 4);
+            long startRank = 2;
+            var mc0 = new Multicombination (3, 4, startRank);
+            Assert.AreEqual (expect.Length, mc0.RowCount);
+            var beginData = new int[4];
+            mc0.CopyTo (beginData);
 
-            long actualCount = 0;
-            foreach (Multicombination row in mc.GetRows())
+            int actualCount = 0;
+            foreach (Multicombination mc in mc0.GetRows())
             {
-                Assert.IsTrue (actualCount < row.RowCount);
-
-                for (int k = 0; k < row.Picks; ++k)
-                    Assert.AreEqual (expected[actualCount, k], row[k]);
-
+                long expectRank = (actualCount + startRank) % expect.Length;
+                Assert.AreEqual (expectRank, mc.Rank);
+                Assert.AreEqual (expectRank, mc0.Rank);
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[expectRank], mc));
+                Assert.IsTrue (Enumerable.SequenceEqual (mc, mc0));
                 ++actualCount;
             }
 
-            Assert.AreEqual (mc.RowCount, actualCount);
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, mc0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, mc0));
         }
 
 
@@ -640,10 +637,8 @@ namespace CombinatoricsTest
         public void CrashMc_GetRowsForPicks_ArgumentOutOfRange1()
         {
             Multicombination mc2 = new Multicombination (2, 3);
-
             foreach (Multicombination row in mc2.GetRowsForPicks (-1, 2))
-            {
-            }
+            { }
         }
 
 
@@ -652,10 +647,8 @@ namespace CombinatoricsTest
         public void CrashMc_GetRowsForPicks_ArgumentOutOfRange2()
         {
             Multicombination mc2 = new Multicombination (2, 3);
-
             foreach (Multicombination row in mc2.GetRowsForPicks (2, 1))
-            {
-            }
+            { }
         }
 
 
@@ -663,11 +656,8 @@ namespace CombinatoricsTest
         public void UnitMc_GetRowsForPicksEmpty1()
         {
             Multicombination mc0 = new Multicombination (0, 0);
-
             foreach (Multicombination row in mc0.GetRowsForPicks (1, 2))
-            {
                 Assert.Fail ("Enumeration should be empty");
-            }
         }
 
 
@@ -675,13 +665,9 @@ namespace CombinatoricsTest
         public void UnitMc_GetRowsForPicksEmpty2()
         {
             Multicombination mc2 = new Multicombination (2, 3);
-
             foreach (Multicombination row in mc2.GetRowsForPicks (0, 0))
-            {
                 Assert.Fail ("Enumeration should be empty");
-            }
         }
-
 
         [TestMethod]
         public void UnitMc_GetRowsForPicksA()
@@ -695,7 +681,6 @@ namespace CombinatoricsTest
             Assert.AreEqual (5, counter);
         }
 
-
         [TestMethod]
         public void UnitMc_GetRowsForPicksB()
         {
@@ -708,33 +693,32 @@ namespace CombinatoricsTest
             Assert.AreEqual (5, counter);
         }
 
-
         [TestMethod]
         public void UnitMc_GetRowsForPicksC()
         {
-            int[][] expected = new int[][]
-                { new int[] { 0 }, new int[] { 1 },
-                  new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 1, 1 },
-                  new int[] { 0, 0, 0}, new int[] { 0, 0, 1 }, new int[] { 0, 1, 1 }, new int[] { 1, 1, 1 }
-                };
-
-            Multicombination mc2 = new Multicombination (2);
-
-            int counter = 0;
-            foreach (Multicombination row in mc2.GetRowsForPicks (1, 3))
+            var expect = new int[][]
             {
-                int[] expectedList = expected[counter];
+                new int[] { 0 }, new int[] { 1 },
+                new int[] { 0,0 }, new int[] { 0,1 }, new int[] { 1,1 },
+                new int[] { 0,0,0 }, new int[] { 0,0,1 }, new int[] { 0,1,1 }, new int[] { 1,1,1 }
+            };
 
-                Assert.AreEqual (expectedList.Length, row.Picks);
+            long startRank = 1;
+            var mc0 = new Multicombination (2, 3, startRank);
+            var beginData = new int[mc0.Picks];
+            mc0.CopyTo (beginData);
 
-                for (int i = 0; i < row.Picks; ++i)
-                {
-                    Assert.AreEqual (expectedList[i], row[i]);
-                }
-                ++counter;
+            int actualCount = 0;
+            foreach (Multicombination mc in mc0.GetRowsForPicks (1, 3))
+            {
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[actualCount], mc));
+                Assert.IsTrue (Enumerable.SequenceEqual (mc, mc0));
+                ++actualCount;
             }
 
-            Assert.AreEqual (expected.Length, counter);
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, mc0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, mc0));
         }
 
 

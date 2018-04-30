@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
@@ -555,24 +556,25 @@ namespace CombinatoricsTest
         [TestMethod]
         public void UnitPt_GetRows()
         {
-            Product pt = new Product (new int[] { 2, 3 });
-
-            int[][] expected = new[]
-            {
-                new int[] { 0, 0 }, new int[] { 0, 1 }, new int[] { 0, 2 },
-                new int[] { 1, 0 }, new int[] { 1, 1 }, new int[] { 1, 2 },
-                new int[] { 9, 9 }
-            };
+            long startRank = 4;
+            Product pt0 = new Product (new int[] { 2,3 }, startRank);
+            long expectRowCount = 2*3;
+            Assert.AreEqual (expectRowCount, pt0.RowCount);
+            var beginData = new int[2];
+            pt0.CopyTo (beginData);
 
             int actualCount = 0;
-
-            foreach (Product row in pt.GetRows())
+            foreach (Product pt in pt0.GetRows())
             {
-                Assert.AreEqual (actualCount / 3, row[0]);
-                Assert.AreEqual (actualCount % 3, row[1]);
+                Assert.AreEqual (((startRank + actualCount) % expectRowCount) / 3, pt[0]);
+                Assert.AreEqual (((startRank + actualCount) % expectRowCount) % 3, pt[1]);
+                Assert.IsTrue (Enumerable.SequenceEqual (pt, pt0));
                 ++actualCount;
             }
-            Assert.AreEqual (6, actualCount);
+
+            Assert.AreEqual (expectRowCount, actualCount);
+            Assert.AreEqual (startRank, pt0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, pt0));
         }
 
 

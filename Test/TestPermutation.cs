@@ -894,81 +894,98 @@ namespace CombinatoricsTest
         [TestMethod]
         public void UnitPn_GetRows()
         {
+            var expect = new int[][]
+            {
+                new int[] { 0,1,2 }, new int[] { 0,2,1 }, new int[] { 1,0,2 },
+                new int[] { 1,2,0 }, new int[] { 2,0,1 }, new int[] { 2,1,0 }
+            };
+
             int order = 3;
             long startRank = 2;
-            Permutation source = new Permutation (choices:order, picks:order, rank:startRank);
+            var pn0 = new Permutation (choices:order, picks:order, rank:startRank);
+            Assert.AreEqual (expect.Length, pn0.RowCount);
+            var beginData = new int[3];
+            pn0.CopyTo (beginData);
 
-            long actualCount = 0;
-            long? firstRank = null;
-            long? lastRank = null;
+            Assert.AreEqual (expect.Length, pn0.RowCount);
 
-            foreach (Permutation p in source.GetRows())
+            int actualCount = 0;
+            foreach (Permutation pn in pn0.GetRows())
             {
-                if (! firstRank.HasValue)
-                    firstRank = p.Rank;
-
+                long expectRank = (actualCount + startRank) % expect.Length;
+                Assert.AreEqual (expectRank, pn.Rank);
+                Assert.AreEqual (expectRank, pn0.Rank);
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[expectRank], pn0));
+                Assert.IsTrue (Enumerable.SequenceEqual (pn, pn0));
                 ++actualCount;
-                lastRank = p.Rank;
             }
 
-            Assert.AreEqual (Combinatoric.Factorial (order), actualCount);
-            Assert.AreEqual (startRank, firstRank);
-            Assert.AreEqual (1, lastRank);
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, pn0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, pn0));
         }
 
 
         [TestMethod]
         public void UnitPn_GetRowsForAllChoices()
         {
-            int[][] expected = new int[][]
+            var expect = new int[][]
             {
                 new int[] { 0 },
-                new int[] { 0, 1 }, new int[] { 1, 0 },
-                new int[] { 0, 1, 2 }, new int[] { 0, 2, 1 }, new int[] { 1, 0, 2 },
-                new int[] { 1, 2, 0 }, new int[] { 2, 0, 1 }, new int[] { 2, 1, 0 }
+                new int[] { 0,1 }, new int[] { 1,0 },
+                new int[] { 0,1,2 }, new int[] { 0,2,1 }, new int[] { 1,0,2 },
+                new int[] { 1,2,0 }, new int[] { 2,0,1 }, new int[] { 2,1,0 }
             };
 
+            long startRank = 2;
+            var pn0 = new Permutation (3, 2, startRank);
+            var beginData = new int[pn0.Picks];
+            pn0.CopyTo (beginData);
+            var beginChoices = pn0.Choices;
+
             int actualCount = 0;
-            foreach (Permutation px in new Permutation (3).GetRowsForAllChoices())
+            foreach (Permutation pn in pn0.GetRowsForAllChoices())
             {
-                int[] expectedSet = expected[actualCount];
-                int exlen = expectedSet.Length;
-                Assert.AreEqual (exlen, px.Choices);
-
-                for (int i = 0; i < exlen; ++i)
-                    Assert.AreEqual (expectedSet[i], px[i]);
-
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[actualCount], pn));
+                Assert.IsTrue (Enumerable.SequenceEqual (pn, pn0));
                 ++actualCount;
             }
-            Assert.AreEqual (expected.Length, actualCount);
+
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, pn0.Rank);
+            Assert.AreEqual (beginChoices, pn0.Choices);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, pn0));
         }
 
 
         [TestMethod]
         public void UnitPn_GetRowsForAllPicks()
         {
-            int[][] expected = new int[][]
+            var expect = new int[][]
             {
                 new int[] { 0 }, new int[] { 1 }, new int[] { 2 },
-                new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 0 },
-                new int[] { 1, 2 }, new int[] { 2, 0 }, new int[] { 2, 1 },
-                new int[] { 0, 1, 2 }, new int[] { 0, 2, 1 }, new int[] { 1, 0, 2 },
-                new int[] { 1, 2, 0 }, new int[] { 2, 0, 1 }, new int[] { 2, 1, 0 }
+                new int[] { 0,1 }, new int[] { 0,2 }, new int[] { 1,0 },
+                new int[] { 1,2 }, new int[] { 2,0 }, new int[] { 2,1 },
+                new int[] { 0,1,2 }, new int[] { 0,2,1 }, new int[] { 1,0,2 },
+                new int[] { 1,2,0 }, new int[] { 2,0,1 }, new int[] { 2,1,0 }
             };
 
+            long startRank = 2;
+            var pn0 = new Permutation (3, 3, startRank);
+            var beginData = new int[pn0.Picks];
+            pn0.CopyTo (beginData);
+
             int actualCount = 0;
-            foreach (Permutation pn in new Permutation (3).GetRowsForAllPicks())
+            foreach (Permutation pn in pn0.GetRowsForAllPicks())
             {
-                int[] expectedSet = expected[actualCount];
-                int exlen = expectedSet.Length;
-                Assert.AreEqual (exlen, pn.Picks);
-
-                for (int i = 0; i < exlen; ++i)
-                    Assert.AreEqual (expectedSet[i], pn[i]);
-
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[actualCount], pn));
+                Assert.IsTrue (Enumerable.SequenceEqual (pn, pn0));
                 ++actualCount;
             }
-            Assert.AreEqual (expected.Length, actualCount);
+
+            Assert.AreEqual (expect.Length, actualCount);
+            Assert.AreEqual (startRank, pn0.Rank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, pn0));
         }
 
 
@@ -1004,16 +1021,25 @@ namespace CombinatoricsTest
 #endif
             for (int n = 1; n < maxWidth; ++n)
             {
-                long rc = n == 0? 0 : Combinatoric.Factorial (n);
+                long rc = n == 0 ? 0 : Combinatoric.Factorial (n);
                 var mat = new int[rc][];
 
                 int pcRank = 0;
-                foreach (var pn in new Permutation (n).GetRowsOfPlainChanges())
+                var pn0 = new Permutation (n);
+                var beginData = new int[n];
+                pn0.CopyTo (beginData);
+
+                foreach (var pn in pn0.GetRowsOfPlainChanges())
                 {
                     mat[pcRank] = new int[n];
                     pn.CopyTo (mat[pcRank]);
                     ++pcRank;
+
+                    Assert.AreEqual (pn.Rank, pn0.Rank);
+                    Assert.IsTrue (Enumerable.SequenceEqual (pn, pn0));
                 }
+                Assert.AreEqual (0, pn0.Rank);
+                Assert.IsTrue (Enumerable.SequenceEqual (beginData, pn0));
 
                 var isUsed = new bool[rc];
                 var lexPerm0 = new Permutation (mat[0]);
