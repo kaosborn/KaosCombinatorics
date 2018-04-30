@@ -529,17 +529,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Combination> GetRows()
         {
-            if (RowCount > 0)
-            {
-                long startRank = rank;
-                for (Combination current = (Combination) MemberwiseClone();;)
+            if (RowCount != 0)
+                for (var beginRank = Rank;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == startRank)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == beginRank)
                         break;
                 }
-            }
         }
 
 
@@ -553,24 +550,28 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Combination> GetRowsForAllPicks()
         {
-            for (int k = 1; k <= Picks; ++k)
-            {
-                Combination current = (Combination) MemberwiseClone();
+            var beginRank = this.rank;
+            var beginData = this.data;
 
-                current.data = new int[k];
-                for (int ei = 0; ei < current.data.Length; ++ei)
-                    current.data[ei] = ei;
-                current.rowCount = Combinatoric.BinomialCoefficient (choices, k);
-                current.rank = 0;
+            for (int p = 1; p <= beginData.Length; ++p)
+            {
+                this.data = new int[p];
+                for (int e = 0; e < p; ++e)
+                    this.data[e] = e;
+                this.rank = 0;
+                this.rowCount = Combinatoric.BinomialCoefficient (Choices, p);
 
                 for (;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == 0)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == 0)
                         break;
                 }
             }
+
+            this.data = beginData;
+            this.rank = beginRank;
         }
 
 

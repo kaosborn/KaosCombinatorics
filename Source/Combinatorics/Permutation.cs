@@ -888,17 +888,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Permutation> GetRows()
         {
-            if (RowCount > 0)
-            {
-                long startRank = Rank;
-                for (Permutation current = (Permutation) MemberwiseClone();;)
+            if (RowCount != 0)
+                for (var beginRank = Rank;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == startRank)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == beginRank)
                         break;
                 }
-            }
         }
 
 
@@ -912,24 +909,30 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Permutation> GetRowsForAllChoices()
         {
-            for (int w = 1; w <= Choices; ++w)
+            var beginRank = Rank;
+            var beginChoices = Choices;
+            var beginData = this.data;
+
+            for (int c = 1; c <= beginChoices; ++c)
             {
-                Permutation current = (Permutation) MemberwiseClone();
-                current.data = new int[w];
-                for (int ei = 0; ei < current.data.Length; ++ei)
-                    current.data[ei] = ei;
-                current.choices = w;
-                current.CalcRowCount();
-                current.rank = 0;
+                this.data = new int[c];
+                for (int e = 0; e < c; ++e)
+                    this.data[e] = e;
+                this.choices = c;
+                this.rank = 0;
+                CalcRowCount();
 
                 for (;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == 0)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == 0)
                         break;
                 }
             }
+
+            this.data = beginData;
+            this.rank = beginRank;
         }
 
 
@@ -943,23 +946,28 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Permutation> GetRowsForAllPicks()
         {
-            for (int w = 1; w <= Picks; ++w)
+            var beginRank = this.rank;
+            var beginData = this.data;
+
+            for (int p = 1; p <= beginData.Length; ++p)
             {
-                Permutation current = (Permutation) MemberwiseClone();
-                current.data = new int[w];
-                for (int ei = 0; ei < current.data.Length; ++ei)
-                    current.data[ei] = ei;
-                current.CalcRowCount();
-                current.rank = 0;
+                this.data = new int[p];
+                for (int e = 0; e < p; ++e)
+                    this.data[e] = e;
+                this.rank = 0;
+                CalcRowCount();
 
                 for (;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == 0)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == 0)
                         break;
                 }
             }
+
+            this.data = beginData;
+            this.rank = beginRank;
         }
 
 
@@ -997,19 +1005,16 @@ namespace Kaos.Combinatorics
 
             if (RowCount > 0)
             {
-                Permutation current = (Permutation) MemberwiseClone();
-
-                long startRank = Rank;
-                for (long plainRank = CalcPlainRank (data);;)
+                long plainRank = CalcPlainRank (this.data);
+                for (var beginRank = Rank;;)
                 {
-                    yield return current;
+                    yield return this;
 
                     plainRank = (plainRank + 1) % RowCount;
+                    CalcPlainUnrank (this.data, plainRank);
+                    CalcRank();
 
-                    CalcPlainUnrank (current.data, plainRank);
-                    current.CalcRank();
-
-                    if (current.Rank == startRank)
+                    if (Rank == beginRank)
                         yield break;
                 }
             }

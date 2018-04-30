@@ -422,19 +422,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Product> GetRows()
         {
-            if (RowCount > 0)
-            {
-                long startRank = Rank;
-                for (Product current = (Product) MemberwiseClone();;)
+            if (RowCount != 0)
+                for (var beginRank = Rank;;)
                 {
-                    yield return current;
-                    ++current.rank;
-                    if (current.rank == current.rowCount)
-                        current.rank = 0;
-                    if (current.Rank == startRank)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == beginRank)
                         yield break;
                 }
-            }
         }
 
 

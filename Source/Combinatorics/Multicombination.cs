@@ -534,17 +534,14 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerable<Multicombination> GetRows()
         {
-            if (RowCount > 0)
-            {
-                long startRank = rank;
-                for (Multicombination current = (Multicombination) MemberwiseClone (); ;)
+            if (RowCount != 0)
+                for (var beginRank = Rank;;)
                 {
-                    yield return current;
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == startRank)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == beginRank)
                         break;
                 }
-            }
         }
 
 
@@ -575,22 +572,26 @@ namespace Kaos.Combinatorics
             if (startPicks == 0)
                 startPicks = 1;
 
-            for (int k = startPicks; k <= stopPicks; ++k)
+            var beginRank = this.rank;
+            var beginData = this.data;
+
+            for (int p = startPicks; p <= stopPicks; ++p)
             {
-                Multicombination current = (Multicombination) MemberwiseClone();
-                current.data = new int[k];
-                current.CalcRowCount();
-                current.rank = 0;
+                this.data = new int[p];
+                this.rank = 0;
+                CalcRowCount();
 
                 for (;;)
                 {
-                    yield return current;
-
-                    current.Rank = current.Rank + 1;
-                    if (current.Rank == 0)
+                    yield return this;
+                    Rank = Rank + 1;
+                    if (Rank == 0)
                         break;
                 }
             }
+
+            this.data = beginData;
+            this.rank = beginRank;
         }
 
 
