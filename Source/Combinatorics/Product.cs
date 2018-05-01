@@ -241,6 +241,33 @@ namespace Kaos.Combinatorics
         #region Properties
 
         /// <summary>
+        /// Get an element of the <see cref="Product"/> at the supplied column.
+        /// </summary>
+        /// <param name="index">Index value.</param>
+        /// <returns>Sequence value at <em>index</em>.</returns>
+        /// <example>
+        /// <code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs" />
+        /// </example>
+        /// <exception cref="IndexOutOfRangeException">
+        /// When <em>index</em> not in range (0..<see cref="Width"/>-1).
+        /// </exception>
+        /// <exception cref="DivideByZeroException">
+        /// When <see cref="RowCount"/> is 0.
+        /// </exception>
+        public int this[int index]
+        {
+            get
+            {
+                long rankToElement = Rank;
+                if (index > 0)
+                    rankToElement %= factors[index - 1];
+
+                return (int) (rankToElement / factors[index]);
+            }
+        }
+
+
+        /// <summary>
         /// Row index of the join in the lexicographically ordered <see cref="Product"/> table.
         /// </summary>
         /// <remarks>
@@ -282,33 +309,6 @@ namespace Kaos.Combinatorics
         /// Number of columns in the <see cref="Product"/>.
         /// </summary>
         public int Width => sizes.Length;
-
-
-        /// <summary>
-        /// Get an element of the <see cref="Product"/> at the supplied column.
-        /// </summary>
-        /// <param name="index">Index value.</param>
-        /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Width"/>-1).
-        /// </exception>
-        /// <exception cref="DivideByZeroException">
-        /// When <see cref="RowCount"/> is 0.
-        /// </exception>
-        public int this[int index]
-        {
-            get
-            {
-                long rankToElement = Rank;
-                if (index > 0)
-                    rankToElement %= factors[index - 1];
-
-                return (int) (rankToElement / factors[index]);
-            }
-        }
 
         #endregion
 

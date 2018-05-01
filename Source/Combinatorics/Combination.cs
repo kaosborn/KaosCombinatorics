@@ -294,14 +294,10 @@ namespace Kaos.Combinatorics
             this.rowCount = Picks == 0? 0 : Combinatoric.BinomialCoefficient (choices, Picks);
 
             for (int ki = 0; ki < Picks; ++ki)
-            {
                 if (this[ki] < 0 || this[ki] >= choices)
                     throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
-
-                if (ki > 0)
-                    if (this[ki] == this[ki-1])
-                        throw new ArgumentOutOfRangeException (nameof (source), "Elements must be unique.");
-            }
+                else if (ki > 0 && this[ki] == this[ki-1])
+                    throw new ArgumentOutOfRangeException (nameof (source), "Elements must be unique.");
 
             //
             // Perform ranking:
@@ -321,6 +317,24 @@ namespace Kaos.Combinatorics
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Get a element of the <see cref="Combination"/> at the supplied column.
+        /// </summary>
+        /// <param name="index">Zero-based index value.</param>
+        /// <returns>Sequence value at <em>index</em>.</returns>
+        /// <example>
+        /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
+        /// </example>
+        /// <exception cref="IndexOutOfRangeException">
+        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
+        /// </exception>
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
+
 
         /// <summary>
         /// The available number of integers to choose from.
@@ -396,24 +410,6 @@ namespace Kaos.Combinatorics
         /// </summary>
         public long RowCount => rowCount;
 
-
-        /// <summary>
-        /// Get a element of the <see cref="Combination"/> at the supplied column.
-        /// </summary>
-        /// <param name="index">Zero-based index value.</param>
-        /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
-        public int this[int index]
-        {
-            get { return data[index]; }
-            private set { data[index] = value; }
-        }
-
         #endregion
 
         #region Instance methods
@@ -443,11 +439,7 @@ namespace Kaos.Combinatorics
                 if (result == 0)
                 {
                     long rankDiff = this.Rank - other.Rank;
-
-                    if (rankDiff == 0)
-                        result = 0;
-                    else
-                        result = rankDiff < 0 ? -1 : 1;
+                    result = rankDiff == 0 ? 0 : rankDiff < 0 ? -1 : 1;
                 }
             }
 
@@ -565,13 +557,11 @@ namespace Kaos.Combinatorics
                 this.rank = 0;
                 this.rowCount = Combinatoric.BinomialCoefficient (Choices, p);
 
-                for (;;)
+                do
                 {
                     yield return this;
                     Rank = Rank + 1;
-                    if (Rank == 0)
-                        break;
-                }
+                } while (Rank != 0);
             }
 
             this.data = beginData;

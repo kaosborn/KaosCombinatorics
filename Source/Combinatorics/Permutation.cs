@@ -533,6 +533,24 @@ namespace Kaos.Combinatorics
 
         #region Properties
 
+        /// <summary>
+        /// Get an element of the <see cref="Permutation"/> at the supplied column.
+        /// </summary>
+        /// <param name="index">Index value.</param>
+        /// <returns>Sequence value at <em>index</em>.</returns>
+        /// <example>
+        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
+        /// </example>
+        /// <exception cref="IndexOutOfRangeException">
+        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
+        /// </exception>
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
+
+
         /// <summary
         /// >Number of available choices for the elements of the <see cref="Permutation"/>.
         /// </summary>
@@ -697,24 +715,6 @@ namespace Kaos.Combinatorics
                 this.data.CopyTo (elements, 0);
                 return CalcSwapCount (elements, Choices);
             }
-        }
-
-
-        /// <summary>
-        /// Get an element of the <see cref="Permutation"/> at the supplied column.
-        /// </summary>
-        /// <param name="index">Index value.</param>
-        /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
-        public int this[int index]
-        {
-            get { return data[index]; }
-            private set { data[index] = value; }
         }
 
         #endregion
@@ -926,13 +926,11 @@ namespace Kaos.Combinatorics
                 this.rank = 0;
                 CalcRowCount();
 
-                for (;;)
+                do
                 {
                     yield return this;
                     Rank = Rank + 1;
-                    if (Rank == 0)
-                        break;
-                }
+                } while (Rank != 0);
             }
 
             this.data = beginData;
@@ -961,13 +959,11 @@ namespace Kaos.Combinatorics
                 this.rank = 0;
                 CalcRowCount();
 
-                for (;;)
+                do
                 {
                     yield return this;
                     Rank = Rank + 1;
-                    if (Rank == 0)
-                        break;
-                }
+                } while (Rank != 0);
             }
 
             this.data = beginData;

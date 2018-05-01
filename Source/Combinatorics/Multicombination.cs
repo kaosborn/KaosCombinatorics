@@ -169,8 +169,8 @@ namespace Kaos.Combinatorics
 
             this.data = new int[choices];
             this.choices = choices;
-            CalcRowCount();
             this.rank = 0;
+            CalcRowCount();
         }
 
 
@@ -328,6 +328,24 @@ namespace Kaos.Combinatorics
         #region Properties
 
         /// <summary>
+        /// Get a element of the <see cref="Multicombination"/> at the supplied column.
+        /// </summary>
+        /// <param name="index">Zero-based index value.</param>
+        /// <returns>Sequence value at <em>index</em>.</returns>
+        /// <example>
+        /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
+        /// </example>
+        /// <exception cref="IndexOutOfRangeException">
+        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
+        /// </exception>
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
+
+
+        /// <summary>
         /// The available number of integers to choose from.
         /// </summary>
         /// <remarks>
@@ -400,24 +418,6 @@ namespace Kaos.Combinatorics
         /// Count of distinct sequences in the <see cref="Multicombination"/> table.
         /// </summary>
         public long RowCount => rowCount;
-
-
-        /// <summary>
-        /// Get a element of the <see cref="Multicombination"/> at the supplied column.
-        /// </summary>
-        /// <param name="index">Zero-based index value.</param>
-        /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
-        public int this[int index]
-        {
-            get { return data[index]; }
-            private set { data[index] = value; }
-        }
 
         #endregion
 
@@ -573,25 +573,20 @@ namespace Kaos.Combinatorics
             if (Choices == 0)
                 yield break;
 
-            if (startPicks == 0)
-                startPicks = 1;
-
             var beginRank = this.rank;
             var beginData = this.data;
 
-            for (int p = startPicks; p <= stopPicks; ++p)
+            for (int p = Math.Max (1, startPicks); p <= stopPicks; ++p)
             {
                 this.data = new int[p];
                 this.rank = 0;
                 CalcRowCount();
 
-                for (;;)
+                do
                 {
                     yield return this;
                     Rank = Rank + 1;
-                    if (Rank == 0)
-                        break;
-                }
+                } while (Rank != 0);
             }
 
             this.data = beginData;
