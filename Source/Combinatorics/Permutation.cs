@@ -258,7 +258,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[choices];
             for (int ei = 0; ei < choices; ++ei)
-                this.data[ei] = ei;
+                this[ei] = ei;
 
             this.choices = choices;
             this.rowCount = choices == 0? 0 : Combinatoric.Factorial (choices);
@@ -435,9 +435,9 @@ namespace Kaos.Combinatorics
         {
             int isUsed = 0;
             int toGo = Choices;
-            rank = 0;
+            this.rank = 0;
 
-            foreach (int e1 in data)
+            foreach (int e1 in this.data)
             {
                 isUsed |= 1 << e1;
 
@@ -446,11 +446,11 @@ namespace Kaos.Combinatorics
                     if ((isUsed & 1 << e2) == 0)
                         ++digit;
 
-                rank += digit * Combinatoric.Factorial (--toGo);
+                this.rank += digit * Combinatoric.Factorial (--toGo);
             }
 
             if (toGo != 0)
-                rank /= Combinatoric.Factorial (toGo);
+                this.rank /= Combinatoric.Factorial (toGo);
         }
 
 
@@ -658,7 +658,7 @@ namespace Kaos.Combinatorics
                         if ((isUsed & 1 << newAtom) == 0)
                             if (--factoradic[fi] < 0)
                             {
-                                data[Choices - fi - 1] = newAtom;
+                                this[Choices - fi - 1] = newAtom;
                                 isUsed |= 1 << newAtom;
                                 break;
                             }
@@ -694,7 +694,7 @@ namespace Kaos.Combinatorics
             get
             {
                 var elements = new int[Picks];
-                data.CopyTo (elements, 0);
+                this.data.CopyTo (elements, 0);
                 return CalcSwapCount (elements, Choices);
             }
         }
@@ -711,7 +711,11 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
         /// </exception>
-        public int this[int index] => data[index];
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
 
         #endregion
 
@@ -740,17 +744,17 @@ namespace Kaos.Combinatorics
             if (Picks != Choices)
                 throw new InvalidOperationException ("Choices and Picks must be equal.");
 
-            if (nodeIndex < 0 || nodeIndex >= data.Length)
+            if (nodeIndex < 0 || nodeIndex >= Picks)
                 throw new ArgumentOutOfRangeException (nameof (nodeIndex), "Value is out of range.");
 
-            Array.Sort (data, nodeIndex + 1, data.Length - nodeIndex - 1);
-            for (int tailIndex = nodeIndex+1; tailIndex < data.Length; ++tailIndex)
+            Array.Sort (this.data, nodeIndex + 1, Picks - nodeIndex - 1);
+            for (int tailIndex = nodeIndex+1; tailIndex < Picks; ++tailIndex)
             {
-                int swap = data[tailIndex];
-                if (swap > data[nodeIndex])
+                int swap = this[tailIndex];
+                if (swap > this[nodeIndex])
                 {
-                    data[tailIndex] = data[nodeIndex];
-                    data[nodeIndex] = swap;
+                    this[tailIndex] = this[nodeIndex];
+                    this[nodeIndex] = swap;
                     CalcRank();
                     return nodeIndex;
                 }
@@ -761,28 +765,28 @@ namespace Kaos.Combinatorics
                 if (--nodeIndex < 0)
                     return nodeIndex;
 
-                int tail = data[nodeIndex+1];
+                int tail = this[nodeIndex+1];
                 for (int tailIndex = nodeIndex+2; tailIndex < data.Length; ++tailIndex)
-                    if (data[tailIndex] < data[nodeIndex])
-                        data[tailIndex-1] = data[tailIndex];
+                    if (this[tailIndex] < this[nodeIndex])
+                        this[tailIndex-1] = this[tailIndex];
                     else
                     {
-                        data[tailIndex-1] = data[nodeIndex];
-                        data[nodeIndex] = data[tailIndex];
-                        while (++tailIndex < data.Length)
-                            data[tailIndex-1] = data[tailIndex];
-                        data[tailIndex-1] = tail;
+                        this[tailIndex-1] = this[nodeIndex];
+                        this[nodeIndex] = this[tailIndex];
+                        while (++tailIndex < Picks)
+                            this[tailIndex-1] = this[tailIndex];
+                        this[tailIndex-1] = tail;
                         CalcRank();
                         return nodeIndex;
                     }
-                if (tail > data[nodeIndex])
+                if (tail > this[nodeIndex])
                 {
-                    data[data.Length-1] = data[nodeIndex];
-                    data[nodeIndex] = tail;
+                    this[Picks-1] = this[nodeIndex];
+                    this[nodeIndex] = tail;
                     CalcRank();
                     return nodeIndex;
                 }
-                data[data.Length-1] = tail;
+                this[Picks-1] = tail;
             }
         }
 
@@ -824,10 +828,10 @@ namespace Kaos.Combinatorics
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
 
-            if (array.Length < data.Length)
+            if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            data.CopyTo (array, 0);
+            this.data.CopyTo (array, 0);
         }
 
 
@@ -864,7 +868,7 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            foreach (int element in data)
+            foreach (int element in this.data)
                 yield return element;
         }
 
@@ -917,7 +921,7 @@ namespace Kaos.Combinatorics
             {
                 this.data = new int[c];
                 for (int e = 0; e < c; ++e)
-                    this.data[e] = e;
+                    this[e] = e;
                 this.choices = c;
                 this.rank = 0;
                 CalcRowCount();
@@ -953,7 +957,7 @@ namespace Kaos.Combinatorics
             {
                 this.data = new int[p];
                 for (int e = 0; e < p; ++e)
-                    this.data[e] = e;
+                    this[e] = e;
                 this.rank = 0;
                 CalcRowCount();
 
@@ -1038,7 +1042,7 @@ namespace Kaos.Combinatorics
 
             for (int ei = 0;;)
             {
-                result.Append (data[ei]);
+                result.Append (this[ei]);
 
                 ++ei;
                 if (ei >= Picks)

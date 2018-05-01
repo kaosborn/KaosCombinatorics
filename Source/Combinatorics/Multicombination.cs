@@ -300,7 +300,7 @@ namespace Kaos.Combinatorics
             if (RowCount == 0)
                 return;
 
-            int comboElement = this.data[0];
+            int comboElement = this[0];
             int ji = 0;
             for (int ki = 0;;)
             {
@@ -312,7 +312,7 @@ namespace Kaos.Combinatorics
                     break;
 
                 ji = comboElement + 1;
-                comboElement = this.data[ki] - this.data[ki-1] + ji;
+                comboElement = this[ki] - this[ki-1] + ji;
             }
         }
 
@@ -388,7 +388,7 @@ namespace Kaos.Combinatorics
                         if (trialCount <= diminishingRank)
                         {
                             diminishingRank -= trialCount;
-                            data[Picks - ki] = Choices - combinaticAtom + ki - 2;
+                            this[Picks - ki] = Choices - combinaticAtom + ki - 2;
                             break;
                         }
                     }
@@ -413,7 +413,11 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
         /// </exception>
-        public int this[int index] => data[index];
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
 
         #endregion
 
@@ -467,10 +471,10 @@ namespace Kaos.Combinatorics
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
 
-            if (array.Length < data.Length)
+            if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            data.CopyTo (array, 0);
+            this.data.CopyTo (array, 0);
         }
 
 
@@ -510,7 +514,7 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            foreach (int element in data)
+            foreach (int element in this.data)
                 yield return element;
         }
 
@@ -612,7 +616,7 @@ namespace Kaos.Combinatorics
 
             for (int ei = 0;;)
             {
-                result.Append (data[ei]);
+                result.Append (this[ei]);
 
                 ++ei;
                 if (ei >= Picks)

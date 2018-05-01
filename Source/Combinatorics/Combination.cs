@@ -148,7 +148,7 @@ namespace Kaos.Combinatorics
             this.data = new int[source.data.Length];
             source.data.CopyTo (this.data, 0);
 
-            this.choices = source.choices;
+            this.choices = source.Choices;
             this.rowCount = source.RowCount;
             this.rank = source.rank;
         }
@@ -167,8 +167,8 @@ namespace Kaos.Combinatorics
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
 
             this.data = new int[choices];
-            for (int ki = 0; ki < this.data.Length; ++ki)
-                this.data[ki] = ki;
+            for (int ki = 0; ki < choices; ++ki)
+                this[ki] = ki;
 
             this.choices = choices;
             this.rowCount = choices == 0? 0 : 1;
@@ -206,7 +206,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[picks];
             for (int ki = 0; ki < picks; ++ki)
-                this.data[ki] = ki;
+                this[ki] = ki;
 
             this.choices = choices;
             this.rowCount = picks == 0? 0 : Combinatoric.BinomialCoefficient (choices, picks);
@@ -295,11 +295,11 @@ namespace Kaos.Combinatorics
 
             for (int ki = 0; ki < Picks; ++ki)
             {
-                if (this.data[ki] < 0 || this.data[ki] >= choices)
+                if (this[ki] < 0 || this[ki] >= choices)
                     throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
 
                 if (ki > 0)
-                    if (this.data[ki] == this.data[ki-1])
+                    if (this[ki] == this[ki-1])
                         throw new ArgumentOutOfRangeException (nameof (source), "Elements must be unique.");
             }
 
@@ -311,10 +311,10 @@ namespace Kaos.Combinatorics
             int ji = 0;
             for (int ki = 0; ki < Picks; ++ki)
             {
-                for (; ji < this.data[ki]; ++ji)
+                for (; ji < this[ki]; ++ji)
                     this.rank += Combinatoric.BinomialCoefficient (Choices - ji - 1, Picks - ki - 1);
 
-                ji = this.data[ki] + 1;
+                ji = this[ki] + 1;
             }
         }
 
@@ -383,7 +383,7 @@ namespace Kaos.Combinatorics
                         if (trialCount <= diminishingRank)
                         {
                             diminishingRank -= trialCount;
-                            data[Picks - ki] = Choices - combinaticAtom - 1;
+                            this[Picks - ki] = Choices - combinaticAtom - 1;
                             break;
                         }
                     }
@@ -408,7 +408,11 @@ namespace Kaos.Combinatorics
         /// <exception cref="IndexOutOfRangeException">
         /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
         /// </exception>
-        public int this[int index] => data[index];
+        public int this[int index]
+        {
+            get { return data[index]; }
+            private set { data[index] = value; }
+        }
 
         #endregion
 
@@ -465,7 +469,7 @@ namespace Kaos.Combinatorics
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            data.CopyTo (array, 0);
+            this.data.CopyTo (array, 0);
         }
 
 
@@ -505,7 +509,7 @@ namespace Kaos.Combinatorics
         /// </example>
         public IEnumerator<int> GetEnumerator()
         {
-            foreach (int element in data)
+            foreach (int element in this.data)
                 yield return element;
         }
 
@@ -557,7 +561,7 @@ namespace Kaos.Combinatorics
             {
                 this.data = new int[p];
                 for (int e = 0; e < p; ++e)
-                    this.data[e] = e;
+                    this[e] = e;
                 this.rank = 0;
                 this.rowCount = Combinatoric.BinomialCoefficient (Choices, p);
 
@@ -592,7 +596,7 @@ namespace Kaos.Combinatorics
 
             for (int ei = 0;;)
             {
-                result.Append (data[ei]);
+                result.Append (this[ei]);
 
                 ++ei;
                 if (ei >= Picks)
