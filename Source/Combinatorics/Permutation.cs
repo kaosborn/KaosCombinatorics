@@ -396,17 +396,17 @@ namespace Kaos.Combinatorics
         private void Construct (int[] source)
         {
             if (source.Length > MaxChoices)
-                throw new ArgumentOutOfRangeException (nameof (source), "Too many values.");
+                throw new ArgumentOutOfRangeException (nameof (source), "Too many elements.");
 
             int isUsed = 0;
             foreach (int element in source)
             {
                 if (element < 0 || element >= Choices)
-                    throw new ArgumentOutOfRangeException (nameof (source), "Value is out of range.");
+                    throw new ArgumentOutOfRangeException (nameof (source), "Element is out of range.");
 
                 int flag = 1 << element;
                 if ((isUsed & flag) != 0)
-                    throw new ArgumentException ("Value is repeated.", nameof (source));
+                    throw new ArgumentException ("Elements must be unique.", nameof (source));
                 isUsed |= flag;
             }
 
