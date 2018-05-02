@@ -130,13 +130,13 @@ namespace Kaos.Combinatorics
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
 
-            this.sizes = new int[source.sizes.Length];
-            this.factors = new long[source.factors.Length];
+            this.sizes = new int[source.Width];
+            this.factors = new long[source.Width];
 
             source.sizes.CopyTo (this.sizes, 0);
             source.factors.CopyTo (this.factors, 0);
-            this.rowCount = source.rowCount;
-            this.rank = source.rank;
+            this.rowCount = source.RowCount;
+            this.rank = source.Rank;
         }
 
 

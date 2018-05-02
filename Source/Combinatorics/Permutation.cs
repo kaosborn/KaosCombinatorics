@@ -229,12 +229,12 @@ namespace Kaos.Combinatorics
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
 
-            this.data = new int[source.data.Length];
+            this.data = new int[source.Picks];
             source.data.CopyTo (this.data, 0);
 
-            this.choices = source.choices;
-            this.rowCount = source.rowCount;
-            this.rank = source.rank;
+            this.choices = source.Choices;
+            this.rowCount = source.RowCount;
+            this.rank = source.Rank;
         }
 
 
@@ -421,12 +421,12 @@ namespace Kaos.Combinatorics
         private void CalcRowCount()
         {
             if (Picks == 0)
-                rowCount = 0;
+                this.rowCount = 0;
             else
             {
-                rowCount = Combinatoric.Factorial (Choices);
+                this.rowCount = Combinatoric.Factorial (Choices);
                 if (Choices != Picks)
-                    rowCount /= Combinatoric.Factorial (Choices - Picks);
+                    this.rowCount /= Combinatoric.Factorial (Choices - Picks);
             }
         }
 
