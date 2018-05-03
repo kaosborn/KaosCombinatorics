@@ -842,7 +842,8 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj) => Equals (obj as Permutation);
+        public override bool Equals (object obj)
+            => Equals (obj as Permutation);
 
 
         /// <summary>
@@ -853,7 +854,8 @@ namespace Kaos.Combinatorics
         /// <b>true</b> if <em>other</em> has the same value as this instance;
         /// otherwise, <b>false</b>.
         /// </returns>
-        public bool Equals (Permutation other) => (object) other != null && other.Rank == Rank && other.Picks == Picks;
+        public bool Equals (Permutation other)
+            => (object) other != null && other.Rank == Rank && other.Picks == Picks;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
@@ -1093,12 +1095,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied <see cref="Permutation"/>s are equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator == (Permutation param1, Permutation param2)
-        {
-            if ((object) param1 == null)
-                return (object) param2 == null;
-            else
-                return param1.Equals (param2);
-        }
+            => (object) param1 == null ? (object) param2 == null : param1.Equals (param2);
 
 
         /// <summary>Indicate whether 2 <see cref="Permutation"/>s are not equal.</summary>
@@ -1107,7 +1104,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied sequences are not equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Permutation param1, Permutation param2)
-        { return ! (param1 == param2); }
+            => (object) param1 == null ? (object) param2 != null : !param1.Equals (param2);
 
 
         /// <summary>Indicate whether the left <see cref="Permutation"/> is less than
@@ -1117,12 +1114,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator < (Permutation param1, Permutation param2)
-        {
-            if ((object) param1 == null)
-                return (object) param2 != null;
-            else
-                return param1.CompareTo (param2) < 0;
-        }
+            => (object) param1 == null ? (object) param2 != null : param1.CompareTo (param2) < 0;
 
 
         /// <summary>Indicate whether the left <see cref="Permutation"/> is greater than
@@ -1132,7 +1124,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than or equal to
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator >= (Permutation param1, Permutation param2)
-        { return ! (param1 < param2); }
+            => (object) param1 == null ? (object) param2 == null : param1.CompareTo (param2) >= 0;
 
 
         /// <summary>Indicate whether the left <see cref="Permutation"/> is greater than
@@ -1142,12 +1134,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator > (Permutation param1, Permutation param2)
-        {
-            if ((object) param1 == null)
-                return false;
-            else
-                return param1.CompareTo (param2) > 0;
-        }
+            => (object) param1 == null ? false : param1.CompareTo (param2) > 0;
 
 
         /// <summary>Indicate whether the left permutation is less than or equal to
@@ -1157,7 +1144,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator <= (Permutation param1, Permutation param2)
-        { return ! (param1 > param2); }
+            => (object) param1 == null ? true : param1.CompareTo (param2) <= 0;
 
 
         /// <summary>

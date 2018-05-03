@@ -370,7 +370,8 @@ namespace Kaos.Combinatorics
         /// <returns>
         /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
         /// </returns>
-        public override bool Equals (object obj) => Equals (obj as Product);
+        public override bool Equals (object obj)
+            => Equals (obj as Product);
 
 
         /// <summary>
@@ -381,7 +382,8 @@ namespace Kaos.Combinatorics
         /// <b>true</b> if <em>other</em> has the same value as this object;
         /// otherwise, <b>false</b>.
         /// </returns>
-        public bool Equals (Product other) => (object) other != null && other.Rank == Rank && other.Width == Width;
+        public bool Equals (Product other)
+            => (object) other != null && other.Rank == Rank && other.Width == Width;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
@@ -518,12 +520,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied sequences are equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator == (Product param1, Product param2)
-        {
-            if ((object) param1 == null)
-                return (object) param2 == null;
-            else
-                return param1.Equals (param2);
-        }
+            => (object) param1 == null ? (object) param2 == null : param1.Equals (param2);
 
 
         /// <summary>Indicate whether 2 <see cref="Product"/>s are not equal.</summary>
@@ -532,7 +529,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if supplied sequences are not equal;
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Product param1, Product param2)
-        { return ! (param1 == param2); }
+            => (object) param1 == null ? (object) param2 != null : ! param1.Equals (param2);
 
 
         /// <summary>Indicate whether the left <see cref="Product"/> is less than
@@ -542,12 +539,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator < (Product param1, Product param2)
-        {
-            if ((object) param1 == null)
-                return (object) param2 != null;
-            else
-                return param1.CompareTo (param2) < 0;
-        }
+            => (object) param1 == null ? (object) param2 != null : param1.CompareTo (param2) < 0;
 
 
         /// <summary>Indicate whether the left <see cref="Product"/> is greater than
@@ -557,7 +549,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than or
         /// equal to the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator >= (Product param1, Product param2)
-        { return ! (param1 < param2); }
+            => (object) param1 == null ? (object) param2 == null : param1.CompareTo (param2) >= 0;
 
 
         /// <summary>Indicate whether the left <see cref="Product"/> is greater than
@@ -567,12 +559,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator > (Product param1, Product param2)
-        {
-            if ((object) param1 == null)
-                return false;
-            else
-                return param1.CompareTo (param2) > 0;
-        }
+            => (object) param1 == null ? false : param1.CompareTo (param2) > 0;
 
 
         /// <summary>Indicate whether the left <see cref="Product"/> is less than or equal to
@@ -582,7 +569,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator <= (Product param1, Product param2)
-        { return ! (param1 > param2); }
+            => (object) param1 == null ? true : param1.CompareTo (param2) <= 0;
 
         #endregion
     }
