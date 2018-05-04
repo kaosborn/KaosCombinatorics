@@ -1009,6 +1009,36 @@ namespace CombinatoricsTest
             }
         }
 
+        [TestMethod]
+        public void UnitPn_GetRowsOfPlainChanges()
+        {
+            var expect= new int[][]
+            {
+                new int[] { 0,1,2 }, new int[] { 0,2,1 }, new int[] { 2,0,1 },
+                new int[] { 2,1,0 }, new int[] { 1,2,0 }, new int[] { 1,0,2 }
+            };
+
+            long startPlainRank = 3;
+            var pn0 = new Permutation (3);
+            pn0.PlainRank = startPlainRank;
+            var beginData = new int[pn0.Picks];
+            pn0.CopyTo (beginData);
+
+            int actualCount = 0;
+            foreach (var pn in pn0.GetRowsOfPlainChanges())
+            {
+                long expectRank = (actualCount + startPlainRank) % expect.Length;
+                Assert.AreEqual (expectRank, pn.PlainRank);
+                Assert.AreEqual (expectRank, pn0.PlainRank);
+                Assert.IsTrue (Enumerable.SequenceEqual (expect[expectRank], pn));
+                Assert.IsTrue (Enumerable.SequenceEqual (pn, pn0));
+                ++actualCount;
+            }
+
+            Assert.AreEqual (startPlainRank, pn0.PlainRank);
+            Assert.IsTrue (Enumerable.SequenceEqual (beginData, pn0));
+        }
+
 
         [TestMethod]
         public void StressPn_GetRowsOfPlainChanges()
