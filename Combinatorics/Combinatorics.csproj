@@ -33,7 +33,7 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.0\KaosCombinatorics.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <Import Project="..\Source\Combinatorics\Combinatorics.projitems" Label="Shared" />
