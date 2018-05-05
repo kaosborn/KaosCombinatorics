@@ -653,22 +653,20 @@ namespace CombinatoricsTest
 
         [TestMethod]
         [ExpectedException (typeof (ArgumentException))]
-        public void CrashPt_Permute_Argument()
+        public void CrashPt_Permute_ArgumentA()
         {
             Product pt = new Product (new int[] { 2, 3 });
             object[][] source = new object[][] { new string[] { "A", "B" } };
             List<object> j = Product.Permute (pt, source);
         }
 
-
         [TestMethod]
-        [ExpectedException (typeof (ArgumentOutOfRangeException))]
-        public void CrashPt_Permute_ArgumentOutOfRange()
+        [ExpectedException (typeof (ArgumentException))]
+        public void CrashPt_Permute_ArgumentB()
         {
-            Product pt = new Product (new int[] { 3 });
-            pt.Rank = 2;
-            object[][] source = new object[][] { new string[] { "A", "B" } };
-            List<object> j = Product.Permute (pt, source);
+            var pt = new Product (new int[] { 3 });
+            var source = new object[][] { new string[] { "A", "B" } };
+            List<object> zz = Product.Permute (pt, source);
         }
 
 

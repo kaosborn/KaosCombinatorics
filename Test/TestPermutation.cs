@@ -1152,7 +1152,7 @@ namespace CombinatoricsTest
         [ExpectedException (typeof (ArgumentException))]
         public void CrashPn_Permute_Argument()
         {
-            Permutation source = new Permutation (4);
+            Permutation source = new Permutation (4, 3);
             string[] pattern = new string[] { "A", "B", "C" };
 
             List<string> target = Permutation.Permute (source, pattern);
