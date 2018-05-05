@@ -209,8 +209,8 @@ namespace Kaos.Combinatorics
                 this[ki] = ki;
 
             this.choices = choices;
-            this.rowCount = picks == 0? 0 : Combinatoric.BinomialCoefficient (choices, picks);
             this.rank = 0;
+            CalcRowCount();
         }
 
 
@@ -252,7 +252,7 @@ namespace Kaos.Combinatorics
 
             this.data = new int[picks];
             this.choices = choices;
-            this.rowCount = picks == 0? 0 : Combinatoric.BinomialCoefficient (choices, picks);
+            CalcRowCount();
             Rank = rank;
         }
 
@@ -291,7 +291,7 @@ namespace Kaos.Combinatorics
             Array.Sort (this.data);
 
             this.choices = choices;
-            this.rowCount = Picks == 0? 0 : Combinatoric.BinomialCoefficient (choices, Picks);
+            CalcRowCount();
 
             for (int ki = 0; ki < Picks; ++ki)
                 if (this[ki] < 0 || this[ki] >= choices)
@@ -312,6 +312,15 @@ namespace Kaos.Combinatorics
 
                 ji = this[ki] + 1;
             }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void CalcRowCount()
+        {
+            this.rowCount = Picks == 0 ? 0 : Combinatoric.BinomialCoefficient (Choices, Picks);
         }
 
         #endregion
@@ -556,7 +565,7 @@ namespace Kaos.Combinatorics
                 for (int e = 0; e < p; ++e)
                     this[e] = e;
                 this.rank = 0;
-                this.rowCount = Combinatoric.BinomialCoefficient (Choices, p);
+                CalcRowCount();
 
                 do
                 {
