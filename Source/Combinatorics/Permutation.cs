@@ -1078,7 +1078,7 @@ namespace Kaos.Combinatorics
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
 
-            if (source.Count < arrangement.Picks)
+            if (source.Count < arrangement.Choices)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
             var result = new List<T> (arrangement.Picks);

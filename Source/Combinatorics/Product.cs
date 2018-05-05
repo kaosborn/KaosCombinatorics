@@ -506,6 +506,10 @@ namespace Kaos.Combinatorics
             if (source.Count < arrangement.Width)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 
+            for (int ix = 0; ix < arrangement.Width; ++ix)
+                if (source[ix].Count < arrangement.Size (ix))
+                    throw new ArgumentException ("Not enough supplied values.", nameof (source));
+
             var result = new List<T> (arrangement.Width);
             for (int ix = 0; ix < arrangement.Width; ++ix)
                 result.Add (source[ix][arrangement[ix]]);
