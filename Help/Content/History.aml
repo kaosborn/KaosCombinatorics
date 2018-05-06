@@ -112,7 +112,86 @@
       </content>
     </section>
 
-    <relatedTopics>
+    <section>
+      <title>KaosCombinatorics version Next (2018-??-??)</title>
+      <content>
+        <para><legacyBold><legacyItalic>Summary</legacyItalic></legacyBold></para>
+        <list class="bullet">
+          <listItem>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</listItem>
+          <listItem>Updates behavior of iterators to produce consistent operand side effects</listItem>
+          <listItem>Changes thrown exceptions</listItem>
+        </list>
+        <para><legacyBold><legacyItalic>Details</legacyItalic></legacyBold></para>
+        <para><legacyBold>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</legacyBold></para>
+        <para>
+          The <codeInline>Permutation</codeInline> class has seen the elimination of some temporary memory allocations in constructors taking <codeInline>int[]</codeInline>, the <codeInline>Rank</codeInline> setter, and backtracking.
+          This change also comes with slight performance improvements.
+        </para>
+        <para><legacyBold>Updates behavior of iterators to produce consistent operand side effects</legacyBold></para>
+        <para>
+          Previous versions of iterators produced inconsistent side affects to their operands.
+          New behavior is to synchronize the operand to the values yielded and restore their operand to its original state after the iteration is complete.
+        </para>
+        <para>All iterators are affected:</para>
+        <list class="bullet">
+          <listItem><codeInline>Combination.GetRows</codeInline>, <codeInline>Combination.GetRowsForAllPicks</codeInline></listItem>
+          <listItem><codeInline>Multicombination.GetRows</codeInline>, <codeInline>Multicombination.GetRowsForPicks</codeInline></listItem>
+          <listItem><codeInline>Permutation.GetRows</codeInline>, <codeInline>Permutation.GetRowsForAllChoices</codeInline>, <codeInline>Permutation.GetRowsForAllPicks</codeInline>, <codeInline>Permutation.GetRowsOfPlainChanges</codeInline></listItem>
+          <listItem><codeInline>Product.GetRows</codeInline></listItem>
+        </list>
+        <para>There is no impact for the typical scenario where the operand is not directly accessible as in this snippet:</para>
+        <code language="cs">
+          foreach (var cn in new Combination (choices:3, picks:2).GetRowsForAllPicks())
+              Console.WriteLine (cn);
+
+          /* Output:
+
+          { 0 }
+          { 1 }
+          { 2 }
+          { 0, 1 }
+          { 0, 2 }
+          { 1, 2 }
+
+          */
+        </code>
+        <para>This change only impacts the atypical scenario where the operand is accessible independent of the yielded result such as in this snippet:</para>
+        <code language="cs">
+          var cn0 = new Combination (choices:3, picks:2);
+          foreach (var cn in cn0.GetRowsForAllPicks())
+              Console.WriteLine ($"cn={cn} cn0={cn0}");
+          Console.WriteLine ($"After complete, cn0={cn0}");
+
+          /* Output:
+
+          cn={ 0 } cn0={ 0 }
+          cn={ 1 } cn0={ 1 }
+          cn={ 2 } cn0={ 2 }
+          cn={ 0, 1 } cn0={ 0, 1 }
+          cn={ 0, 2 } cn0={ 0, 2 }
+          cn={ 1, 2 } cn0={ 1, 2 }
+          After complete, cn0={ 0, 1 }
+
+          */
+        </code>
+        <para><legacyBold>Changes thrown exceptions</legacyBold></para>
+        <para>
+          Minor changes have been made to exception throwing in:
+        </para>
+        <list class="bullet">
+          <listItem>Methods <codeInline>Permutation.Permute</codeInline>, <codeInline>Product.Permute</codeInline></listItem>
+          <listItem>Constructors <codeInline>Permutation (int[])</codeInline>, <codeInline>Permutation (int[], int)</codeInline></listItem>
+        </list>
+        <para>
+          Where <codeInline>Permute</codeInline> methods threw <codeInline>IndexOutOfRangeException</codeInline> they now throw <codeInline>ArgumentException</codeInline> with a fail fast approach.
+        </para>
+        <para>
+          Where <codeInline>Permutation</codeInline> constructors taking an element array threw <codeInline>IndexOutOfRangeException</codeInline> they now throw <codeInline>ArgumentException</codeInline>.
+        </para>
+      </content>
+    </section>
+
+  <relatedTopics>
       <link xlink:href="0908d812-b502-4da7-a452-66e043c6bb70"/>
     </relatedTopics>
 
