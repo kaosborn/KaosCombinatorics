@@ -411,7 +411,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Iterate thru all rows of the <see cref="Product"/> table for 
+        /// Iterate thru all rows of the <see cref="Product"/> table
         /// for every value of <see cref="Rank"/> ascending.
         /// </summary>
         /// <returns>An iterator for a <see cref="Product"/> table.</returns>
@@ -491,9 +491,9 @@ namespace Kaos.Combinatorics
         /// <code source="..\Examples\Product\PtExample03\PtExample03.cs" lang="cs" />
         /// </example>
         /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
-        /// <exception cref="ArgumentException">When not enough source sets.</exception>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When supplied source list is too small.
+        /// <exception cref="ArgumentException">
+        /// When length of <em>source</em> is less than <em>arrangement</em>.<see cref="Width"/>;
+        /// when a <em>source</em> list is too small.
         /// </exception>
         public static List<T> Permute<T> (Product arrangement, IList<IList<T>> source)
         {

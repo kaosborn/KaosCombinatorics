@@ -627,7 +627,7 @@ namespace Kaos.Combinatorics
         /// When <em>arrangement</em> or <em>source</em> is <b>null</b>.
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// When length of <em>source</em> is less than <see cref="Picks"/>.
+        /// When length of <em>source</em> is less than <em>arrangement</em>.<see cref="Choices"/>.
         /// </exception>
         public static List<T> Permute<T> (Combination arrangement, IList<T> source)
         {

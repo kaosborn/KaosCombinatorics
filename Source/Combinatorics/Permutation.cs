@@ -1068,8 +1068,8 @@ namespace Kaos.Combinatorics
         /// <code source="..\Examples\Permutation\PnExample03\PnExample03.cs" lang="cs" />
         /// </example>
         /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">When length of
-        /// <em>source</em> is less than <see cref="Picks"/>.</exception>
+        /// <exception cref="ArgumentException">When length of
+        /// <em>source</em> is less than arrangement.<see cref="Choices"/>.</exception>
         public static List<T> Permute<T> (Permutation arrangement, IList<T> source)
         {
             if (arrangement == null)
