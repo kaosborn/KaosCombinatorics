@@ -25,7 +25,7 @@ namespace Kaos.Combinatorics
         };
 
         /// <exclude />
-        static public int FactorialLength { get { return factorial.Length; } }
+        static public int FactorialLength => factorial.Length;
 
         static private List<long[]> pascalsTriangle = null;
         static private int pascalsTriangleMaxN = -1;
@@ -112,12 +112,12 @@ namespace Kaos.Combinatorics
                 k = n - k;
 
             int factor = n - k;
-            long bc = 1;
+            long result = 1;
 
             for (int ki = 1; ki <= k; ++ki)
-                bc = checked (bc * unchecked (++factor)) / ki;
+                result = checked (result * unchecked (++factor)) / ki;
 
-            return bc;
+            return result;
         }
 
 
@@ -147,10 +147,7 @@ namespace Kaos.Combinatorics
         /// </para>
         /// </example>
         /// <exception cref="IndexOutOfRangeException">When <em>value</em> not in range (0..20).</exception>
-        static public long Factorial (int value)
-        {
-            return factorial[value];
-        }
+        static public long Factorial (int value) => factorial[value];
 
         #endregion
     }
