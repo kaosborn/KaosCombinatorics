@@ -744,10 +744,14 @@ namespace Kaos.Combinatorics
             int result = this.Picks - other.Picks;
 
             if (result == 0)
-                if (this.Rank > other.Rank)
-                    result = 1;
-                else if (this.Rank < other.Rank)
-                    result = -1;
+            {
+                result = this.Choices - other.Choices;
+                if (result == 0)
+                {
+                    long rankDiff = this.Rank - other.Rank;
+                    result = rankDiff == 0 ? 0 : rankDiff < 0 ? -1 : 1;
+                }
+            }
 
             return result;
         }
@@ -779,7 +783,7 @@ namespace Kaos.Combinatorics
         /// <param name="other">Target of the comparison.</param>
         /// <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
         public bool Equals (Permutation other)
-            => (object) other != null && other.Rank == Rank && other.Picks == Picks;
+            => (object) other != null && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
 
         /// <summary>Get an object-based enumerator of the elements.</summary>
