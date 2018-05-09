@@ -754,35 +754,40 @@ namespace CombinatoricsTest
         [TestMethod]
         public void UnitPn_oCompareTo()
         {
-            var objectSortedList = new System.Collections.SortedList();
-            objectSortedList.Add (new Permutation (choices:8, picks:8, rank:2), 0);
-            objectSortedList.Add (new Permutation (choices:8, picks:8, rank:6), 2);
-            objectSortedList.Add (new Permutation (choices:8, picks:8, rank:4), 1);
+            Permutation p0 = null;
+            var p874 = new Permutation (8, 7, 4);
+            var p882 = new Permutation (8, 8, 2);
+            var p884 = new Permutation (8, 8, 4);
+            var p984 = new Permutation (9, 8, 4);
 
-            int expectedIndex = 0;
-            foreach (System.Collections.DictionaryEntry item in objectSortedList)
-            {
-                int actualIndex = (int) item.Value;
-                Assert.AreEqual (expectedIndex, actualIndex);
-                expectedIndex++;
-            }
-
-            Assert.AreEqual (3, expectedIndex);
+            Assert.IsTrue (p884.CompareTo ((object) p0) > 0);
+            Assert.IsTrue (p884.CompareTo ((object) p874) > 0);
+            Assert.IsTrue (p874.CompareTo ((object) p884) < 0);
+            Assert.IsTrue (p884.CompareTo ((object) p882) > 0);
+            Assert.IsTrue (p882.CompareTo ((object) p884) < 0);
+            Assert.IsTrue (p884.CompareTo ((object) p984) < 0);
+            Assert.IsTrue (p984.CompareTo ((object) p884) > 0);
+            Assert.IsTrue (p984.CompareTo ((object) p984) == 0);
         }
 
 
         [TestMethod]
         public void UnitPn_CompareTo()
         {
-            Permutation p0 = null;
-            Permutation p520 = new Permutation (choices:5, picks:5, rank:0);
-            Permutation p521 = new Permutation (choices:5, picks:5, rank:1);
+            var p0 = (Permutation) null;
+            var p520 = new Permutation (choices:5, picks:2, rank:0);
+            var p521 = new Permutation (choices:5, picks:2, rank:1);
+            var p531 = new Permutation (choices:5, picks:3, rank:1);
+            var p631 = new Permutation (choices:6, picks:3, rank:1);
 
-            int actual1 = p520.CompareTo (p0);
-            Assert.IsTrue (actual1 > 0);
-
-            int actual2 = p520.CompareTo (p521);
-            Assert.IsTrue (actual2 < 0);
+            Assert.IsTrue (p520.CompareTo (p0) > 0);
+            Assert.IsTrue (p520.CompareTo (p521) < 0);
+            Assert.IsTrue (p521.CompareTo (p520) > 0);
+            Assert.IsTrue (p521.CompareTo (p531) < 0);
+            Assert.IsTrue (p531.CompareTo (p521) > 0);
+            Assert.IsTrue (p531.CompareTo (p631) < 0);
+            Assert.IsTrue (p631.CompareTo (p531) > 0);
+            Assert.IsTrue (p631.CompareTo (p631) == 0);
         }
 
 
@@ -802,6 +807,7 @@ namespace CombinatoricsTest
             Permutation p30b = new Permutation (3);
             Permutation p31 = new Permutation (choices:3, picks:3, rank:1);
             Permutation p4 = new Permutation (4);
+            Permutation p431 = new Permutation (choices:4, picks:3, rank:1);
 
             object j0 = (object) p0;
             object j30b = (object) p30b;
@@ -812,22 +818,27 @@ namespace CombinatoricsTest
             Assert.IsTrue (p30a.Equals (j30b));
             Assert.IsFalse (p30a.Equals (j31));
             Assert.IsFalse (p30a.Equals (j4));
+            Assert.IsFalse (p431.Equals (p31));
         }
 
 
         [TestMethod]
         public void UnitPn_Equals()
         {
-            Permutation p0 = null;
-            Permutation p30a = new Permutation (3);
-            Permutation p30b = new Permutation (3);
-            Permutation p31 = new Permutation (choices:3, picks:3, rank:1);
-            Permutation p4 = new Permutation (4);
+            var p0 = (Permutation) null;
+            var p530 = new Permutation (5, 3, 0);
+            var p531 = new Permutation (5, 3, 1);
+            var p541 = new Permutation (5, 4, 1);
+            var p641 = new Permutation (6, 4, 1);
 
-            Assert.IsFalse (p30a.Equals (p0));
-            Assert.IsTrue (p30a.Equals (p30b));
-            Assert.IsFalse (p30a.Equals (p31));
-            Assert.IsFalse (p30a.Equals (p4));
+            Assert.IsFalse (p530.Equals (p0));
+            Assert.IsFalse (p530.Equals (p531));
+            Assert.IsFalse (p531.Equals (p530));
+            Assert.IsFalse (p531.Equals (p541));
+            Assert.IsFalse (p541.Equals (p531));
+            Assert.IsFalse (p541.Equals (p641));
+            Assert.IsFalse (p641.Equals (p541));
+            Assert.IsTrue (p641.Equals (p641));
         }
 
 
