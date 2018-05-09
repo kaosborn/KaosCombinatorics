@@ -11,12 +11,8 @@ using System.Collections.Generic;
 
 namespace Kaos.Combinatorics
 {
-    /// <summary>
-    /// Provides static methods for combinatorics.
-    /// </summary>
-    /// <remarks>
-    /// This class cannot be instantiated.
-    /// </remarks>
+    /// <summary>Provides static methods for combinatorics.</summary>
+    /// <remarks>This class cannot be instantiated.</remarks>
     public static class Combinatoric
     {
         #region Private static fields
@@ -65,14 +61,10 @@ namespace Kaos.Combinatorics
 
         #region Public static methods
 
-        /// <summary>
-        /// Returns the binomial coefficient of the supplied values.
-        /// </summary>
+        /// <summary>Returns the binomial coefficient of the supplied values.</summary>
         /// <param name="n">Number of choices.</param>
         /// <param name="k">Number of picks.</param>
-        /// <returns>
-        /// The binomial coefficient of <em>n</em> choose <em>k</em>.
-        /// </returns>
+        /// <returns>The binomial coefficient of <em>n</em> choose <em>k</em>.</returns>
         /// <remarks>
         /// The result is equal to row <em>n</em>, column <em>k</em> of Pascal's triangle
         /// with counting starting at 0.
@@ -154,9 +146,7 @@ namespace Kaos.Combinatorics
         /// empty product, this library returns 0 rows.
         /// </para>
         /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>value</em> not in range (0..20).
-        /// </exception>
+        /// <exception cref="IndexOutOfRangeException">When <em>value</em> not in range (0..20).</exception>
         static public long Factorial (int value)
         {
             return factorial[value];

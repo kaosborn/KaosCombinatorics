@@ -265,7 +265,7 @@ namespace CombinatoricsTest
             for (int choices = 1; choices <= maxChoices; ++choices)
                 for (int picks = 0; picks <= choices + 2; ++picks)
                 {
-                    long maxRank = picks == 0? 0 : Combinatoric.BinomialCoefficient (picks + choices - 1, picks);
+                    long maxRank = picks == 0 ? 0 : Combinatoric.BinomialCoefficient (picks + choices - 1, picks);
 
                     for (long rank = 0; rank < maxRank; ++rank)
                     {

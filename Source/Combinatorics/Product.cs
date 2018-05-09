@@ -108,9 +108,7 @@ namespace Kaos.Combinatorics
 
         #region Constructors
 
-        /// <summary>
-        /// Initializes an empty product instance.
-        /// </summary>
+        /// <summary>Initializes an empty product instance.</summary>
         public Product()
         {
             this.sizes = new int[0];
@@ -120,9 +118,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new instance that is copied from the supplied product.
-        /// </summary>
+        /// <summary>Initializes a new instance that is copied from the supplied product.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         public Product (Product source)
@@ -140,22 +136,12 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new product of <see cref="Rank"/> 0 with the supplied <em>sizes</em> of columns.
-        /// </summary>
+        /// <summary>Initializes a new product of <see cref="Rank"/> 0 with the supplied <em>sizes</em> of columns.</summary>
         /// <param name="sizes">Size of each column.</param>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentNullException">
-        /// When <em>sizes</em> is <b>null</b>.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When any column size less than 0.
-        /// </exception>
-        /// <exception cref="OverflowException">
-        /// When product is too big.
-        /// </exception>
+        /// <example><code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentNullException">When <em>sizes</em> is <b>null</b>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When any column size less than 0.</exception>
+        /// <exception cref="OverflowException">When product is too big.</exception>
         public Product (int[] sizes)
         {
             if (sizes == null)
@@ -178,10 +164,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new product of the supplied <em>rank</em>
-        /// with the supplied <em>sizes</em> of columns.
-        /// </summary>
+        /// <summary>Initializes a new product of the supplied <em>rank</em>with the supplied <em>sizes</em> of columns.</summary>
         /// <remarks>
         /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
         /// it will be normalized to the valid range.
@@ -189,41 +172,25 @@ namespace Kaos.Combinatorics
         /// </remarks>
         /// <param name="sizes">Size of each column.</param>
         /// <param name="rank">Row index in the ordered <see cref="Product"/> table.</param>
-        /// <exception cref="ArgumentNullException"
-        /// >When <em>sizes</em> is <b>null</b>.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException"
-        /// >When any column size less than 0.
-        /// </exception>
+        /// <exception cref="ArgumentNullException">When <em>sizes</em> is <b>null</b>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When any column size less than 0.</exception>
         public Product (int[] sizes, long rank) : this (sizes)
         {
             Rank = rank;
         }
 
 
-        /// <summary>
-        /// Initializes a new product of the supplied values
-        /// with the supplied <em>sizes</em> of columns.
-        /// </summary>
+        /// <summary>Initializes a new product of the supplied values with the supplied <em>sizes</em> of columns.</summary>
         /// <param name="sizes">Size of each column.</param>
         /// <param name="source">Integer values for the columns.</param>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentNullException">
-        /// When <em>sizes</em> or <em>source</em> is <b>null</b>.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// When <em>source</em> length does not match <em>sizes</em> length.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When any column size less than zero; when <em>source</em> contains invalid values.
-        /// </exception>
+        /// <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentNullException">When <em>sizes</em> or <em>source</em> is <b>null</b>.</exception>
+        /// <exception cref="ArgumentException">When <em>source</em> length does not match <em>sizes</em> length.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When any column size less than zero; when <em>source</em> contains invalid values.</exception>
         public Product (int[] sizes, int[] source) : this (sizes)
         {
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (sizes.Length != source.Length)
                 throw new ArgumentException ("Length is not valid.", nameof (source));
 
@@ -240,20 +207,12 @@ namespace Kaos.Combinatorics
 
         #region Properties
 
-        /// <summary>
-        /// Get an element of the <see cref="Product"/> at the supplied column.
-        /// </summary>
+        /// <summary>Get an element of the <see cref="Product"/> at the supplied column.</summary>
         /// <param name="index">Index value.</param>
         /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Width"/>-1).
-        /// </exception>
-        /// <exception cref="DivideByZeroException">
-        /// When <see cref="RowCount"/> is 0.
-        /// </exception>
+        /// <example><code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs"/></example>
+        /// <exception cref="IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="Width"/>-1).</exception>
+        /// <exception cref="DivideByZeroException">When <see cref="RowCount"/> is 0.</exception>
         public int this[int index]
         {
             get
@@ -261,21 +220,14 @@ namespace Kaos.Combinatorics
                 long rankToElement = Rank;
                 if (index > 0)
                     rankToElement %= factors[index - 1];
-
                 return (int) (rankToElement / factors[index]);
             }
         }
 
 
-        /// <summary>
-        /// Row index of the join in the lexicographically ordered <see cref="Product"/> table.
-        /// </summary>
-        /// <remarks>
-        /// Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).
-        /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs" />
-        /// </example>
+        /// <summary>Row index of the join in the lexicographically ordered <see cref="Product"/> table.</summary>
+        /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
+        /// <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
         public long Rank
         {
             get { return rank; }
@@ -293,40 +245,32 @@ namespace Kaos.Combinatorics
                             rank += RowCount;
                     }
                     else
-                        rank = value < RowCount? value : value % RowCount;
+                        rank = value < RowCount ? value : value % RowCount;
                 }
             }
         }
 
 
-        /// <summary>
-        /// Count of distinct joins in the <see cref="Product"/> table.
-        /// </summary>
+        /// <summary>Count of distinct joins in the <see cref="Product"/> table.</summary>
         public long RowCount => rowCount;
 
 
-        /// <summary>
-        /// Number of columns in the <see cref="Product"/>.
-        /// </summary>
+        /// <summary>Number of columns in the <see cref="Product"/>.</summary>
         public int Width => sizes.Length;
 
         #endregion
 
         #region Instance methods
 
-        /// <summary>Compare 2 <see cref="Product"/>s.</summary>
+        /// <summary>Compare two <see cref="Product"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>obj</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj) => CompareTo (obj as Product);
 
 
-        /// <summary>Compare 2 <see cref="Product"/>s.</summary>
+        /// <summary>Compare two <see cref="Product"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>other</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
         public int CompareTo (Product other)
         {
             if ((object) other == null)
@@ -344,9 +288,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Copy the entire sequence to the supplied destination.
-        /// </summary>
+        /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">When not enough space in <em>array</em>.</exception>
@@ -354,7 +296,6 @@ namespace Kaos.Combinatorics
         {
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
-
             if (array.Length < Width)
                 throw new ArgumentException ("Destination array is not long enough.");
 
@@ -363,25 +304,16 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Indicate whether 2 <see cref="Product"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Product"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
             => Equals (obj as Product);
 
 
-        /// <summary>
-        /// Indicate whether 2 <see cref="Product"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Product"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>other</em> has the same value as this object;
-        /// otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>other</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public bool Equals (Product other)
             => (object) other != null && other.Rank == Rank && other.Width == Width;
 
@@ -392,12 +324,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Product"/>.</summary>
-        /// <returns>
-        /// An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Product"/>.
-        /// </returns>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs" />
-        /// </example>
+        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Product"/>.</returns>
+        /// <example><code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
             for (int ei = 0; ei < Width; ++ei)
@@ -410,18 +338,13 @@ namespace Kaos.Combinatorics
         public override int GetHashCode() => unchecked ((int) rank);
 
 
-        /// <summary>
-        /// Iterate thru all rows of the <see cref="Product"/> table
-        /// for every value of <see cref="Rank"/> ascending.
-        /// </summary>
+        /// <summary>Iterate thru all rows of the <see cref="Product"/> table for every value of <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Product"/> table.</returns>
         /// <remarks>
         /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs"/></example>
         public IEnumerable<Product> GetRows()
         {
             if (RowCount != 0)
@@ -435,25 +358,17 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Get the size of a column.
-        /// </summary>
+        /// <summary>Get the size of a column.</summary>
         /// <param name="column">Column index.</param>
         /// <returns>Number of distinct values (starting at 0) that a column may take.</returns>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>column</em> not in range (0..<see cref="Width"/>-1).
-        /// </exception>
+        /// <exception cref="IndexOutOfRangeException">When <em>column</em> not in range (0..<see cref="Width"/>-1).</exception>
         public int Size (int column) => sizes[column];
 
 
-        /// <summary>
-        /// Provide readable form of the <see cref="Product"/> row.
-        /// </summary>
+        /// <summary>Provide readable form of the <see cref="Product"/> row.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
         /// <remarks>Result is enclosed in braces and separated by commas.</remarks>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
         public override string ToString()
         {
             if (RowCount == 0)
@@ -480,16 +395,12 @@ namespace Kaos.Combinatorics
 
         #region Static methods
 
-        /// <summary>
-        /// Apply a <see cref="Product"/> sequence to select from the supplied lists or arrays.
-        /// </summary>
+        /// <summary>Apply a <see cref="Product"/> sequence to select from the supplied lists or arrays.</summary>
         /// <typeparam name="T">Type of items to rearrange.</typeparam>
         /// <param name="arrangement">New arrangement for items.</param>
         /// <param name="source">List of List of Items or arrays to rarrange.</param>
         /// <returns>List of rearranged items.</returns>
-        /// <example>
-        /// <code source="..\Examples\Product\PtExample03\PtExample03.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Product\PtExample03\PtExample03.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">
         /// When length of <em>source</em> is less than <em>arrangement</em>.<see cref="Width"/>;

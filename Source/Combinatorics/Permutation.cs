@@ -207,9 +207,7 @@ namespace Kaos.Combinatorics
 
         #region Constructors
 
-        /// <summary>
-        /// Initializes an empty permutation instance.
-        /// </summary>
+        /// <summary>Initializes an empty permutation instance.</summary>
         public Permutation()
         {
             this.data = new int[0];
@@ -219,9 +217,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new instance that is copied from the supplied permutation.
-        /// </summary>
+        /// <summary>Initializes a new instance that is copied from the supplied permutation.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         public Permutation (Permutation source)
@@ -238,21 +234,14 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new permutation of <see cref="Rank"/> 0 with the supplied number of elements.
-        /// </summary>
+        /// <summary>Initializes a new permutation of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>choices</em> is less than 0 or greater than 20.
-        /// </exception>
+        /// <example><code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>choices</em> is less than 0 or greater than 20.</exception>
         public Permutation (int choices)
         {
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (choices > MaxChoices)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is greater than maximum allowed.");
 
@@ -261,7 +250,7 @@ namespace Kaos.Combinatorics
                 this[ei] = ei;
 
             this.choices = choices;
-            this.rowCount = choices == 0? 0 : Combinatoric.Factorial (choices);
+            this.rowCount = choices == 0 ? 0 : Combinatoric.Factorial (choices);
             this.rank = 0;
         }
 
@@ -276,9 +265,7 @@ namespace Kaos.Combinatorics
         /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
         /// will instantiate a <em>k</em>-permutation also known as a variation.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample06\PnExample06.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample06\PnExample06.cs" lang="cs"/></example>
         /// <exception cref="ArgumentOutOfRangeException">
         /// When <em>picks</em> less than 0 or greater than <em>choices</em>;
         /// when <em>choices</em> greater than 20.
@@ -307,7 +294,7 @@ namespace Kaos.Combinatorics
         /// <param name="rank">Row index in the ordered <see cref="Permutation"/> table.</param>
         /// <example>
         /// This is an example of a <em>k</em>-permutation.
-        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
+        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/>
         /// </example>
         /// <exception cref="ArgumentOutOfRangeException">
         /// When <em>picks</em> less than 0 or greater than <em>choices</em>;
@@ -317,10 +304,8 @@ namespace Kaos.Combinatorics
         {
             if (picks < 0)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
-
             if (picks > choices)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
-
             if (choices > MaxChoices)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is greater than maximum allowed.");
 
@@ -331,21 +316,15 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new permutation from the elements supplied in <em>source</em>.
-        /// </summary>
+        /// <summary>Initializes a new permutation from the elements supplied in <em>source</em>.</summary>
         /// <param name="source">Array of integers.</param>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// When length of <em>source</em> is greater than 20 or contains invalid data;
         /// When <em>source</em> contains out of range values.
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// When <em>source</em> contains repeated values.
-        /// </exception>
+        /// <exception cref="ArgumentException">When <em>source</em> contains repeated values.</exception>
         public Permutation (int[] source)
         {
             if (source == null)
@@ -357,8 +336,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Initializes a new permutation from the elements supplied in <em>source</em>
-        /// picked from the supplied number of <em>choices</em>.
+        /// Initializes a new permutation from the elements supplied in <em>source</em> picked
+        /// from the supplied number of <em>choices</em>.
         /// </summary>
         /// <remarks>
         /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
@@ -372,14 +351,11 @@ namespace Kaos.Combinatorics
         /// When <em>source</em> contains out of range values;
         /// When <em>choices</em> is less than 0 or greater than 20.
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// When <em>source</em> contains repeated values.
-        /// </exception>
+        /// <exception cref="ArgumentException">When <em>source</em> contains repeated values.</exception>
         public Permutation (int[] source, int choices)
         {
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (choices < 0 || choices > MaxChoices)
                 throw new ArgumentOutOfRangeException (nameof (choices));
 
@@ -505,7 +481,7 @@ namespace Kaos.Combinatorics
                             break;
                     }
 
-                pr = pr * (ei + 1) + (pr % 2 == 0? ei - xr + 1 : xr - 1);
+                pr = pr * (ei + 1) + (pr % 2 == 0 ? ei - xr + 1 : xr - 1);
             }
 
             return pr;
@@ -521,7 +497,7 @@ namespace Kaos.Combinatorics
             {
                 int yd = (int) (Combinatoric.Factorial (elements.Length) / Combinatoric.Factorial (ei+1));
                 int yi = (int) ((plainRank / yd) % ((ei + 1) * 2));
-                int ip = yi <= ei? ei - yi : yi - ei - 1;
+                int ip = yi <= ei ? ei - yi : yi - ei - 1;
 
                 for (int si = ei; si > ip; --si)
                     elements[si] = elements[si-1];
@@ -533,17 +509,11 @@ namespace Kaos.Combinatorics
 
         #region Properties
 
-        /// <summary>
-        /// Get an element of the <see cref="Permutation"/> at the supplied column.
-        /// </summary>
+        /// <summary>Get an element of the <see cref="Permutation"/> at the supplied column.</summary>
         /// <param name="index">Index value.</param>
         /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
+        /// <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
+        /// <exception cref="IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="Picks"/>-1).</exception>
         public int this[int index]
         {
             get { return data[index]; }
@@ -551,9 +521,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary
-        /// >Number of available choices for the elements of the <see cref="Permutation"/>.
-        /// </summary>
+        /// <summary>Number of available choices for the elements of the <see cref="Permutation"/>.</summary>
         /// <remarks>
         /// If no <em>picks</em> value was specified when constructing this
         /// <see cref="Permutation"/>, then this is also the number of elements.
@@ -561,19 +529,12 @@ namespace Kaos.Combinatorics
         public int Choices => choices;
 
 
-        /// <summary
-        /// >Number of elements in the <see cref="Permutation"/>.
-        /// </summary>
-        /// <remarks>
-        /// Also known as <em>k</em>. If value is less than <em>Choices</em>,
-        /// then this is a <em>k</em>-permutation.
-        /// </remarks>
+        /// <summary>Number of elements in the <see cref="Permutation"/>.</summary>
+        /// <remarks>Also known as <em>k</em>. If value is less than <em>Choices</em>, this is a <em>k</em>-permutation.</remarks>
         public int Picks => data.Length;
 
 
-        /// <summary>
-        /// Row index of the sequence in the plain ordered <see cref="Permutation"/> table.
-        /// </summary>
+        /// <summary>Row index of the sequence in the plain ordered <see cref="Permutation"/> table.</summary>
         /// <remarks>
         /// <para>
         /// Plain changes produces a table where adjacent rows differ by only a single swap of
@@ -584,12 +545,8 @@ namespace Kaos.Combinatorics
         /// Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).
         /// </para>
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="InvalidOperationException">
-        /// When <em>Choices</em> not equal to <em>Picks</em>.
-        /// </exception>
+        /// <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
+        /// <exception cref="InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
         /// <seealso cref="GetRowsOfPlainChanges"/>
         public long PlainRank
         {
@@ -624,16 +581,9 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Row index of the sequence in the lexicographically ordered
-        /// <see cref="Permutation"/> table.
-        /// </summary>
-        /// <remarks>
-        /// Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).
-        /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs" />
-        /// </example>
+        /// <summary>Row index of the sequence in the lexicographically ordered <see cref="Permutation"/> table.</summary>
+        /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
+        /// <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
         public long Rank
         {
             get { return rank; }
@@ -684,15 +634,12 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Returns number of distinct possible arrangements of this <see cref="Permutation"/>.
-        /// </summary>
+        /// <summary>Returns number of distinct possible arrangements of this <see cref="Permutation"/>.</summary>
         public long RowCount => rowCount;
 
 
         /// <summary>
-        /// Returns number of element swaps needed to transform this <see cref="Permutation"/>
-        /// into <see cref="Rank"/> 0.
+        /// Returns number of element swaps needed to transform this <see cref="Permutation"/> into <see cref="Rank"/> 0.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -704,9 +651,7 @@ namespace Kaos.Combinatorics
         /// <see cref="PlainRank"/> of 0.
         /// </para>
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
         public int Swaps
         {
             get
@@ -721,29 +666,20 @@ namespace Kaos.Combinatorics
 
         #region Instance methods
 
-        /// <summary>
-        /// Advance <see cref="Rank"/> a minimum while changing element at <em>nodeIndex</em>.
-        /// </summary>
+        /// <summary>Advance <see cref="Rank"/> a minimum while changing element at <em>nodeIndex</em>.</summary>
         /// <returns>Lowest index of actual changed element if successful; else <b>-1</b>.</returns>
         /// <remarks>
         /// This method provides support for backtracking algorithms by pruning permutations that
         /// cannot be completed to a solution.
         /// </remarks>
         /// <param name="nodeIndex">Element to change.</param>
-        /// <example>
-        /// <code source="..\Examples\Queens\PnBacktrack\PnBacktrack.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="InvalidOperationException">
-        /// When <em>Choices</em> not equal to <em>Picks</em>.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>nodeIndex</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
+        /// <example><code source="..\Examples\Queens\PnBacktrack\PnBacktrack.cs" lang="cs"/></example>
+        /// <exception cref="InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>nodeIndex</em> not in range (0..<see cref="Picks"/>-1).</exception>
         public int Backtrack (int nodeIndex)
         {
             if (Picks != Choices)
                 throw new InvalidOperationException ("Choices and Picks must be equal.");
-
             if (nodeIndex < 0 || nodeIndex >= Picks)
                 throw new ArgumentOutOfRangeException (nameof (nodeIndex), "Value is out of range.");
 
@@ -817,9 +753,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Copy the entire sequence to the supplied destination.
-        /// </summary>
+        /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">When not enough space in <em>array</em>.</exception>
@@ -827,7 +761,6 @@ namespace Kaos.Combinatorics
         {
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
-
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
@@ -835,25 +768,16 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Indicate whether 2 <see cref="Permutation"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Permutation"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
             => Equals (obj as Permutation);
 
 
-        /// <summary>
-        /// Indicate whether 2 <see cref="Permutation"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Permutation"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>other</em> has the same value as this instance;
-        /// otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
         public bool Equals (Permutation other)
             => (object) other != null && other.Rank == Rank && other.Picks == Picks;
 
@@ -865,9 +789,7 @@ namespace Kaos.Combinatorics
 
         /// <summary>Enumerate all elements of a <see cref="Permutation"/>.</summary>
         /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Permutation"/>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
             foreach (int element in this.data)
@@ -889,9 +811,7 @@ namespace Kaos.Combinatorics
         /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs"/></example>
         public IEnumerable<Permutation> GetRows()
         {
             if (RowCount != 0)
@@ -910,9 +830,7 @@ namespace Kaos.Combinatorics
         /// <see cref="Choices"/> value in the range (1..<see cref="Choices"/>).
         /// </summary>
         /// <returns>An iterator for a series of <see cref="Permutation"/> tables.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
         public IEnumerable<Permutation> GetRowsForAllChoices()
         {
             var beginRank = Rank;
@@ -945,9 +863,7 @@ namespace Kaos.Combinatorics
         /// <see cref="Picks"/> value in the range (1..<see cref="Picks"/>).
         /// </summary>
         /// <returns>An iterator for a series of <see cref="Permutation"/> tables.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
         public IEnumerable<Permutation> GetRowsForAllPicks()
         {
             var beginRank = this.rank;
@@ -975,7 +891,7 @@ namespace Kaos.Combinatorics
 
         /// <summary>
         /// Iterate thru all rows of the <see cref="Permutation"/> table
-        /// while swapping only 2 values in each result.
+        /// while swapping only two values in each result.
         /// </summary>
         /// <returns>An iterator for a <see cref="Permutation"/> table.</returns>
         /// <remarks>
@@ -993,12 +909,8 @@ namespace Kaos.Combinatorics
         /// </ul>
         /// </para>
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="InvalidOperationException">
-        /// When <em>Choices</em> not equal to <em>Picks</em>.
-        /// </exception>
+        /// <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
+        /// <exception cref="InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
         /// <seealso cref="PlainRank"/>
         public IEnumerable<Permutation> GetRowsOfPlainChanges()
         {
@@ -1023,14 +935,10 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Provide a readable form of the <see cref="Permutation"/> sequence.
-        /// </summary>
+        /// <summary>Provide a readable form of the <see cref="Permutation"/> sequence.</summary>
         /// <returns>A <b>string</b> that represents the sequence.</returns>
         /// <remarks>Result is enclosed in braces and separated by commas.</remarks>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
         public override string ToString()
         {
             if (RowCount == 0)
@@ -1057,27 +965,20 @@ namespace Kaos.Combinatorics
 
         #region Static methods
 
-        /// <summary>
-        /// Apply a <see cref="Permutation"/> sequence to rearrange the supplied list or array.
-        /// </summary>
+        /// <summary>Apply a <see cref="Permutation"/> sequence to rearrange the supplied list or array.</summary>
         /// <typeparam name="T">Type of items to rearrange.</typeparam>
         /// <param name="arrangement">New arrangement for items.</param>
         /// <param name="source">list of items to rearrange.</param>
         /// <returns>Rearranged objects.</returns>
-        /// <example>
-        /// <code source="..\Examples\Permutation\PnExample03\PnExample03.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Permutation\PnExample03\PnExample03.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
-        /// <exception cref="ArgumentException">When length of
-        /// <em>source</em> is less than arrangement.<see cref="Choices"/>.</exception>
+        /// <exception cref="ArgumentException">When length of <em>source</em> is less than arrangement.<see cref="Choices"/>.</exception>
         public static List<T> Permute<T> (Permutation arrangement, IList<T> source)
         {
             if (arrangement == null)
                 throw new ArgumentNullException (nameof (arrangement));
-
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (source.Count < arrangement.Choices)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 

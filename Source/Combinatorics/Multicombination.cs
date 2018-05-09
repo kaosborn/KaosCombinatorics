@@ -124,9 +124,7 @@ namespace Kaos.Combinatorics
 
         #region Constructors
 
-        /// <summary>
-        /// Initializes an empty multicombination instance.
-        /// </summary>
+        /// <summary>Initializes an empty multicombination instance.</summary>
         public Multicombination()
         {
             this.data = new int[0];
@@ -136,9 +134,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new instance that is copied from the supplied multicombination.
-        /// </summary>
+        /// <summary>Initializes a new instance that is copied from the supplied multicombination.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         public Multicombination (Multicombination source)
@@ -155,13 +151,9 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new multicombination of <see cref="Rank"/> 0 with the supplied number of elements.
-        /// </summary>
+        /// <summary>Initializes a new multicombination of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>choices</em> less than 0.
-        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>choices</em> less than 0.</exception>
         public Multicombination (int choices)
         {
             if (choices < 0)
@@ -184,21 +176,15 @@ namespace Kaos.Combinatorics
         /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
         /// will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When negative value supplied; when <em>choices</em> is zero and <em>picks</em> is nonzero.
-        /// </exception>
+        /// <example><code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When negative value supplied; when <em>choices</em> is 0 and <em>picks</em> is not 0.</exception>
         /// <exception cref="OverflowException">When the numbers are just too big.</exception>
         public Multicombination (int choices, int picks)
         {
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (picks < 0)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
-
             if (choices == 0 && picks > 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is zero and picks is nonzero.");
 
@@ -227,21 +213,15 @@ namespace Kaos.Combinatorics
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
         /// <param name="rank">Row index in the ordered <see cref="Multicombination"/> table.</param>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When negative value supplied; when <em>choices</em> is 0 and <em>picks</em> is not 0.
-        /// </exception>
+        /// <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When negative value supplied; when <em>choices</em> is 0 and <em>picks</em> is not 0.</exception>
         /// <exception cref="OverflowException">When too many <em>choices</em>.</exception>
         public Multicombination (int choices, int picks, long rank)
         {
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (picks < 0)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
-
             if (choices == 0 && picks > 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is zero and picks is nonzero.");
 
@@ -253,8 +233,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Initializes a new multicombination from elements supplied in <em>source</em>
-        /// picked from the supplied number of <em>choices</em>.
+        /// Initializes a new multicombination from elements supplied in <em>source</em> picked
+        /// from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="source">Array of integers.</param>
@@ -262,22 +242,15 @@ namespace Kaos.Combinatorics
         /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
         /// will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>source</em> contains invalid data;
-        /// when <em>choices</em> is 0 and <em>source</em> is not empty.
-        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>source</em> contains invalid data; when <em>choices</em> is 0 and <em>source</em> is not empty.</exception>
         public Multicombination (int choices, int[] source)
         {
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (choices == 0 && source.Length > 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is zero and picks is nonzero.");
 
@@ -327,17 +300,11 @@ namespace Kaos.Combinatorics
 
         #region Properties
 
-        /// <summary>
-        /// Get a element of the <see cref="Multicombination"/> at the supplied column.
-        /// </summary>
+        /// <summary>Get a element of the <see cref="Multicombination"/> at the supplied column.</summary>
         /// <param name="index">Zero-based index value.</param>
         /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
+        /// <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
+        /// <exception cref="IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="Picks"/>-1).</exception>
         public int this[int index]
         {
             get { return data[index]; }
@@ -345,33 +312,19 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// The available number of integers to choose from.
-        /// </summary>
-        /// <remarks>
-        /// Also known as <em>n</em>.
-        /// </remarks>
+        /// <summary>The available number of integers to choose from.</summary>
+        /// <remarks>Also known as <em>n</em>.</remarks>
         public int Choices => choices;
 
 
-        /// <summary>
-        /// Number of elements in the <see cref="Multicombination"/>.
-        /// </summary>
-        /// <remarks>
-        /// Also known as <em>k</em>.
-        /// </remarks>
+        /// <summary>Number of elements in the <see cref="Multicombination"/>.</summary>
+        /// <remarks>Also known as <em>k</em>.</remarks>
         public int Picks => data.Length;
 
 
-        /// <summary>
-        /// Row index in the ordered <see cref="Multicombination"/> table.
-        /// </summary>
-        /// <remarks>
-        /// Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).
-        /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs" />
-        /// </example>
+        /// <summary>Row index in the ordered <see cref="Multicombination"/> table.</summary>
+        /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
+        /// <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
         public long Rank
         {
             get { return rank; }
@@ -388,7 +341,7 @@ namespace Kaos.Combinatorics
                         rank += RowCount;
                 }
                 else
-                    rank = value < RowCount? value : value % RowCount;
+                    rank = value < RowCount ? value : value % RowCount;
 
                 //
                 // Perform unranking:
@@ -414,9 +367,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Count of distinct sequences in the <see cref="Multicombination"/> table.
-        /// </summary>
+        /// <summary>Count of distinct sequences in the <see cref="Multicombination"/> table.</summary>
         public long RowCount => rowCount;
 
         #endregion
@@ -425,17 +376,13 @@ namespace Kaos.Combinatorics
 
         /// <summary>Compare two <see cref="Multicombination"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>obj</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj) => CompareTo (obj as Multicombination);
 
 
         /// <summary>Compare two <see cref="Multicombination"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>other</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
         public int CompareTo (Multicombination other)
         {
             if ((object) other == null)
@@ -460,9 +407,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Copy the entire sequence to the supplied destination.
-        /// </summary>
+        /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">When not enough space in <em>array</em>.</exception>
@@ -470,7 +415,6 @@ namespace Kaos.Combinatorics
         {
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
-
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
@@ -478,25 +422,16 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Indicate whether two <see cref="Multicombination"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Multicombination"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
             => Equals (obj as Multicombination);
 
 
-        /// <summary>
-        /// Indicate whether two <see cref="Multicombination"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Multicombination"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>other</em> has the same value as this instance;
-        /// otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
         public bool Equals (Multicombination other)
             => (object) other != null && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
@@ -507,12 +442,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Multicombination"/>.</summary>
-        /// <returns>
-        /// An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Multicombination"/>.
-        /// </returns>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs" />
-        /// </example>
+        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Multicombination"/>.</returns>
+        /// <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
             foreach (int element in this.data)
@@ -526,17 +457,14 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Iterate thru all rows of the <see cref="Multicombination"/> table
-        /// for every value of <see cref="Rank"/> ascending.
+        /// Iterate thru all rows of the <see cref="Multicombination"/> table for every value of <see cref="Rank"/> ascending.
         /// </summary>
         /// <returns>An iterator for a <see cref="Multicombination"/> table.</returns>
         /// <remarks>
         /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs"/></example>
         public IEnumerable<Multicombination> GetRows()
         {
             if (RowCount != 0)
@@ -551,21 +479,15 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Iterate thru all rows of all <see cref="Multicombination"/> tables for every
-        /// pick in the range (<em>startPicks</em>..<em>stopPicks</em>).
+        /// Iterate thru all rows of all <see cref="Multicombination"/> tables for every pick
+        /// in the range (<em>startPicks</em>..<em>stopPicks</em>).
         /// </summary>
         /// <returns>An iterator for a series of <see cref="Multicombination"/> tables.</returns>
-        /// <remarks>
-        /// Unlike <see cref="Combination"/>, <see cref="Picks"/> may exceed <see cref="Choices"/>.
-        /// </remarks>
+        /// <remarks>Unlike <see cref="Combination"/>, <see cref="Picks"/> may exceed <see cref="Choices"/>.</remarks>
         /// <param name="startPicks">Number of picks for first table.</param>
         /// <param name="stopPicks">Number of picks for last table.</param>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample02\McExample02.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>startPicks</em> is less than 0 or greater than <em>stopPicks</em>.
-        /// </exception>
+        /// <example><code source="..\Examples\Multicombination\McExample02\McExample02.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>startPicks</em> is less than 0 or greater than <em>stopPicks</em>.</exception>
         public IEnumerable<Multicombination> GetRowsForPicks (int startPicks, int stopPicks)
         {
             if (startPicks < 0 || startPicks > stopPicks)
@@ -595,14 +517,10 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Provide a readable form of the <see cref="Multicombination"/> sequence.
-        /// </summary>
+        /// <summary>Provide a readable form of the <see cref="Multicombination"/> sequence.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
         /// <remarks>Result is enclosed in braces and separated by commas.</remarks>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
         public override string ToString()
         {
             if (RowCount == 0)
@@ -629,30 +547,20 @@ namespace Kaos.Combinatorics
 
         #region Static methods
 
-        /// <summary>
-        /// Apply a <see cref="Multicombination"/> sequence to rearrange the supplied list or array.
-        /// </summary>
+        /// <summary>Apply a <see cref="Multicombination"/> sequence to rearrange the supplied list or array.</summary>
         /// <typeparam name="T">Type of items to rearrange.</typeparam>
         /// <param name="arrangement">New arrangement for items.</param>
         /// <param name="source">List of items to rearrange.</param>
         /// <returns>List of rearranged items.</returns>
-        /// <example>
-        /// <code source="..\Examples\Multicombination\McExample03\McExample03.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentNullException">
-        /// When <em>arrangement</em> or <em>source</em> is <b>null</b>.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// When length of <em>source</em> is less than arrangement.<see cref="Choices"/>.
-        /// </exception>
+        /// <example><code source="..\Examples\Multicombination\McExample03\McExample03.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+        /// <exception cref="ArgumentException">When length of <em>source</em> is less than arrangement.<see cref="Choices"/>.</exception>
         public static List<T> Permute<T> (Multicombination arrangement, IList<T> source)
         {
             if (arrangement == null)
                 throw new ArgumentNullException (nameof (arrangement));
-
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (source.Count < arrangement.Choices)
                 throw new ArgumentException ("Not enough supplied values.", nameof (source));
 

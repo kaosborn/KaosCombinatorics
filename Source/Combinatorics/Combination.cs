@@ -135,9 +135,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new instance that is copied from the supplied combination.
-        /// </summary>
+        /// <summary>Initializes a new instance that is copied from the supplied combination.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         public Combination (Combination source)
@@ -154,13 +152,9 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Initializes a new combination of <see cref="Rank"/> 0 with the supplied number of elements.
-        /// </summary>
+        /// <summary>Initializes a new combination of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When <em>choices</em> less than 0.
-        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>choices</em> less than 0.</exception>
         public Combination (int choices)
         {
             if (choices < 0)
@@ -171,7 +165,7 @@ namespace Kaos.Combinatorics
                 this[ki] = ki;
 
             this.choices = choices;
-            this.rowCount = choices == 0? 0 : 1;
+            this.rowCount = choices == 0 ? 0 : 1;
             this.rank = 0;
         }
 
@@ -186,21 +180,15 @@ namespace Kaos.Combinatorics
         /// Supplying a value for <em>choices</em> that is greater than <em>picks</em>
         /// will instantiate a <em>k</em>-combination also known as a pick-combination.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When negative value supplied; when <em>picks</em> greater than <em>choices</em>.
-        /// </exception>
+        /// <example><code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When negative value supplied; when <em>picks</em> greater than <em>choices</em>.</exception>
         /// <exception cref="OverflowException">When the numbers are just too big.</exception>
         public Combination (int choices, int picks)
         {
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (picks < 0)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
-
             if (picks > choices)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
 
@@ -232,21 +220,15 @@ namespace Kaos.Combinatorics
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="picks">Number of elements in the sequence.</param>
         /// <param name="rank">Row index in the ordered <see cref="Combination"/> table.</param>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// When negative value supplied; when <em>picks</em> greater than <em>choices</em>.
-        /// </exception>
+        /// <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentOutOfRangeException">When negative value supplied; when <em>picks</em> greater than <em>choices</em>.</exception>
         /// <exception cref="OverflowException">When too many <em>choices</em>.</exception>
         public Combination (int choices, int picks, long rank)
         {
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (picks < 0)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is less than zero.");
-
             if (picks > choices)
                 throw new ArgumentOutOfRangeException (nameof (picks), "Value is greater than choices.");
 
@@ -258,8 +240,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Initializes a new combination from elements supplied in <em>source</em>
-        /// picked from the supplied number of <em>choices</em>.
+        /// Initializes a new combination from elements supplied in <em>source</em> picked
+        /// from the supplied number of <em>choices</em>.
         /// </summary>
         /// <param name="choices">Number of values to pick from.</param>
         /// <param name="source">Array of integers.</param>
@@ -267,22 +249,17 @@ namespace Kaos.Combinatorics
         /// Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
         /// will instantiate a <em>k</em>-combination also known as a pick-combination.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// When length of <em>source</em> is greater than <em>picks</em>;
-        /// when <em>source</em> contains invalid data.
+        /// When length of <em>source</em> is greater than <em>picks</em>; when <em>source</em> contains invalid data.
         /// </exception>
         public Combination (int choices, int[] source)
         {
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
-
             if (choices < 0)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than zero.");
-
             if (choices < source.Length)
                 throw new ArgumentOutOfRangeException (nameof (choices), "Value is less than picks.");
 
@@ -327,17 +304,11 @@ namespace Kaos.Combinatorics
 
         #region Properties
 
-        /// <summary>
-        /// Get a element of the <see cref="Combination"/> at the supplied column.
-        /// </summary>
+        /// <summary>Get a element of the <see cref="Combination"/> at the supplied column.</summary>
         /// <param name="index">Zero-based index value.</param>
         /// <returns>Sequence value at <em>index</em>.</returns>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="IndexOutOfRangeException">
-        /// When <em>index</em> not in range (0..<see cref="Picks"/>-1).
-        /// </exception>
+        /// <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
+        /// <exception cref="IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="Picks"/>-1).</exception>
         public int this[int index]
         {
             get { return data[index]; }
@@ -345,33 +316,19 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// The available number of integers to choose from.
-        /// </summary>
-        /// <remarks>
-        /// Also known as <em>n</em>.
-        /// </remarks>
+        /// <summary>The available number of integers to choose from.</summary>
+        /// <remarks>Also known as <em>n</em>.</remarks>
         public int Choices => choices;
 
 
-        /// <summary>
-        /// Number of elements in the <see cref="Combination"/>.
-        /// </summary>
-        /// <remarks>
-        /// Also known as <em>k</em>.
-        /// </remarks>
+        /// <summary>Number of elements in the <see cref="Combination"/>.</summary>
+        /// <remarks>Also known as <em>k</em>.</remarks>
         public int Picks => data.Length;
 
 
-        /// <summary>
-        /// Row index in the ordered <see cref="Combination"/> table.
-        /// </summary>
-        /// <remarks>
-        /// Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).
-        /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs" />
-        /// </example>
+        /// <summary>Row index in the ordered <see cref="Combination"/> table.</summary>
+        /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
+        /// <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
         public long Rank
         {
             get { return rank; }
@@ -388,7 +345,7 @@ namespace Kaos.Combinatorics
                         rank += RowCount;
                 }
                 else
-                    rank = value < RowCount? value : value % RowCount;
+                    rank = value < RowCount ? value : value % RowCount;
 
                 //
                 // Perform unranking:
@@ -414,9 +371,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Count of distinct sequences in the <see cref="Combination"/> table.
-        /// </summary>
+        /// <summary>Count of distinct sequences in the <see cref="Combination"/> table.</summary>
         public long RowCount => rowCount;
 
         #endregion
@@ -425,17 +380,13 @@ namespace Kaos.Combinatorics
 
         /// <summary>Compare two <see cref="Combination"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>obj</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj) => CompareTo (obj as Combination);
 
 
         /// <summary>Compare two <see cref="Combination"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// A signed integer indicating the sort order of this instance to <em>other</em>.
-        /// </returns>
+        /// <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
         public int CompareTo (Combination other)
         {
             if ((object) other == null)
@@ -456,9 +407,7 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Copy the entire sequence to the supplied destination.
-        /// </summary>
+        /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">When not enough space in <em>array</em>.</exception>
@@ -466,7 +415,6 @@ namespace Kaos.Combinatorics
         {
             if (array == null)
                 throw new ArgumentNullException (nameof (array));
-
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
@@ -474,25 +422,16 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Indicate whether two <see cref="Combination"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Combination"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
             => Equals (obj as Combination);
 
 
-        /// <summary>
-        /// Indicate whether two <see cref="Combination"/>s have the same value.
-        /// </summary>
+        /// <summary>Indicate whether two <see cref="Combination"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
-        /// <returns>
-        /// <b>true</b> if <em>other</em> has the same value as this instance;
-        /// otherwise, <b>false</b>.
-        /// </returns>
+        /// <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
         public bool Equals (Combination other)
             => (object) other != null && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
@@ -503,12 +442,8 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Combination"/>.</summary>
-        /// <returns>
-        /// An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Combination"/>.
-        /// </returns>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs" />
-        /// </example>
+        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Combination"/>.</returns>
+        /// <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
             foreach (int element in this.data)
@@ -522,17 +457,14 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Iterate thru all rows of the <see cref="Combination"/> table
-        /// for every value of <see cref="Rank"/> ascending.
+        /// Iterate thru all rows of the <see cref="Combination"/> table for every value of <see cref="Rank"/> ascending.
         /// </summary>
         /// <returns>An iterator for a <see cref="Combination"/> table.</returns>
         /// <remarks>
         /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs"/></example>
         public IEnumerable<Combination> GetRows()
         {
             if (RowCount != 0)
@@ -547,13 +479,10 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>
-        /// Iterate thru all rows of all <see cref="Combination"/> tables for every
-        /// pick in the range (1..<see cref="Picks"/>).
+        /// Iterate thru all rows of all <see cref="Combination"/> tables for every pick in the range (1..<see cref="Picks"/>).
         /// </summary>
         /// <returns>An iterator for a series of <see cref="Combination"/> tables.</returns>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample02\CnExample02.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Combination\CnExample02\CnExample02.cs" lang="cs"/></example>
         public IEnumerable<Combination> GetRowsForAllPicks()
         {
             var beginRank = this.rank;
@@ -579,14 +508,10 @@ namespace Kaos.Combinatorics
         }
 
 
-        /// <summary>
-        /// Provide a readable form of the <see cref="Combination"/> sequence.
-        /// </summary>
+        /// <summary>Provide a readable form of the <see cref="Combination"/> sequence.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
         /// <remarks>Result is enclosed in braces and separated by commas.</remarks>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs" />
-        /// </example>
+        /// <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
         public override string ToString()
         {
             if (RowCount == 0)
@@ -613,27 +538,18 @@ namespace Kaos.Combinatorics
 
         #region Static methods
 
-        /// <summary>
-        /// Apply a <see cref="Combination"/> sequence to rearrange the supplied list or array.
-        /// </summary>
+        /// <summary>Apply a <see cref="Combination"/> sequence to rearrange the supplied list or array.</summary>
         /// <typeparam name="T">Type of items to rearrange.</typeparam>
         /// <param name="arrangement">New arrangement for items.</param>
         /// <param name="source">List of items to rearrange.</param>
         /// <returns>List of rearranged items.</returns>
-        /// <example>
-        /// <code source="..\Examples\Combination\CnExample03\CnExample03.cs" lang="cs" />
-        /// </example>
-        /// <exception cref="ArgumentNullException">
-        /// When <em>arrangement</em> or <em>source</em> is <b>null</b>.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// When length of <em>source</em> is less than <em>arrangement</em>.<see cref="Choices"/>.
-        /// </exception>
+        /// <example><code source="..\Examples\Combination\CnExample03\CnExample03.cs" lang="cs"/></example>
+        /// <exception cref="ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+        /// <exception cref="ArgumentException">When length of <em>source</em> is less than <em>arrangement</em>.<see cref="Choices"/>.</exception>
         public static List<T> Permute<T> (Combination arrangement, IList<T> source)
         {
             if (arrangement == null)
                 throw new ArgumentNullException (nameof (arrangement));
-
             if (source == null)
                 throw new ArgumentNullException (nameof (source));
 
