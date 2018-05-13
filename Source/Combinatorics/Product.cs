@@ -186,7 +186,7 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
         /// <exception cref="ArgumentNullException">When <em>sizes</em> or <em>source</em> is <b>null</b>.</exception>
         /// <exception cref="ArgumentException">When <em>source</em> length does not match <em>sizes</em> length.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">When any column size less than zero; when <em>source</em> contains invalid values.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When any column size less than 0; when <em>source</em> contains invalid values.</exception>
         public Product (int[] sizes, int[] source) : this (sizes)
         {
             if (source == null)
@@ -324,7 +324,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Product"/>.</summary>
-        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Product"/>.</returns>
+        /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Product"/>.</returns>
         /// <example><code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
@@ -338,10 +338,10 @@ namespace Kaos.Combinatorics
         public override int GetHashCode() => unchecked ((int) rank);
 
 
-        /// <summary>Iterate thru all rows of the <see cref="Product"/> table for every value of <see cref="Rank"/> ascending.</summary>
+        /// <summary>Iterate thru all rows of the <see cref="Product"/> table for every <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Product"/> table.</returns>
         /// <remarks>
-        /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
+        /// If the start row is not <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
         /// <example><code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs"/></example>

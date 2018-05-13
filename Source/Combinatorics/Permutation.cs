@@ -792,7 +792,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Permutation"/>.</summary>
-        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Permutation"/>.</returns>
+        /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Permutation"/>.</returns>
         /// <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
@@ -806,13 +806,10 @@ namespace Kaos.Combinatorics
         public override int GetHashCode() => unchecked ((int) Rank);
 
 
-        /// <summary>
-        /// Iterate thru all rows of the <see cref="Permutation"/> table
-        /// for every value of <see cref="Rank"/> ascending.
-        /// </summary>
+        /// <summary>Iterate thru all rows of the <see cref="Permutation"/> table for every <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Permutation"/> table.</returns>
         /// <remarks>
-        /// If the start row is not of <see cref="Rank"/> 0, the iteration will wrap around
+        /// If the start row is not <see cref="Rank"/> 0, the iteration will wrap around
         /// so that <see cref="RowCount"/> items are always produced.
         /// </remarks>
         /// <example><code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs"/></example>

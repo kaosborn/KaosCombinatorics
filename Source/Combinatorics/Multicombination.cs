@@ -442,7 +442,7 @@ namespace Kaos.Combinatorics
 
 
         /// <summary>Enumerate all elements of a <see cref="Multicombination"/>.</summary>
-        /// <returns>An <c>IEnumerator&lt;int&gt;</c> for this <see cref="Multicombination"/>.</returns>
+        /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Multicombination"/>.</returns>
         /// <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
@@ -487,7 +487,7 @@ namespace Kaos.Combinatorics
         /// <param name="startPicks">Number of picks for first table.</param>
         /// <param name="stopPicks">Number of picks for last table.</param>
         /// <example><code source="..\Examples\Multicombination\McExample02\McExample02.cs" lang="cs"/></example>
-        /// <exception cref="ArgumentOutOfRangeException">When <em>startPicks</em> is less than 0 or greater than <em>stopPicks</em>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">When <em>startPicks</em> less than 0 or greater than <em>stopPicks</em>.</exception>
         public IEnumerable<Multicombination> GetRowsForPicks (int startPicks, int stopPicks)
         {
             if (startPicks < 0 || startPicks > stopPicks)
