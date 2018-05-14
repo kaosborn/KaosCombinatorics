@@ -117,9 +117,10 @@
       <content>
         <para><legacyBold><legacyItalic>Summary</legacyItalic></legacyBold></para>
         <list class="bullet">
-          <listItem>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</listItem>
-          <listItem>Updates behavior of iterators to produce consistent operand side effects</listItem>
-          <listItem>Changes thrown exceptions</listItem>
+          <listItem>Optimizes <codeInline>Permutation</codeInline> class for speed and allocations.</listItem>
+          <listItem>Changes <codeInline>Permutation</codeInline> comparisons to include the <codeInline>Choices</codeInline> property.</listItem>
+          <listItem>Changes iterator behavior to produce consistent operand side effects.</listItem>
+          <listItem>Changes thrown exceptions.</listItem>
         </list>
         <para><legacyBold><legacyItalic>Details</legacyItalic></legacyBold></para>
         <para><legacyBold>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</legacyBold></para>
@@ -127,7 +128,18 @@
           The <codeInline>Permutation</codeInline> class has seen the elimination of some temporary memory allocations in constructors taking <codeInline>int[]</codeInline>, the <codeInline>Rank</codeInline> setter, and backtracking.
           This change also comes with slight performance improvements.
         </para>
-        <para><legacyBold>Updates behavior of iterators to produce consistent operand side effects</legacyBold></para>
+        <para><legacyBold>Change <codeInline>Permutation</codeInline> comparisons to include the <codeInline>Choices</codeInline> property</legacyBold></para>
+        <para>
+          Previously, comparison of permutations did not compare the <codeInline>Choices</codeInline> property as in this snippet:
+        </para>
+        <code language="cs">
+          Console.WriteLine (new Permutation(4,3,0) == new Permutation(5,3,0));
+          /* Output: true */
+        </code>
+        <para>
+          This issue has been fixed and this example now correctly returns <codeInline>false</codeInline>.
+        </para>
+        <para><legacyBold>Update behavior of iterators to produce consistent operand side effects</legacyBold></para>
         <para>
           Previous versions of iterators produced inconsistent side affects to their operands.
           New behavior is to synchronize the operand to the values yielded and restore their operand to its original state after the iteration is complete.
@@ -174,7 +186,7 @@
 
           */
         </code>
-        <para><legacyBold>Changes thrown exceptions</legacyBold></para>
+        <para><legacyBold>Change thrown exceptions</legacyBold></para>
         <para>
           Minor changes have been made to exception throwing in:
         </para>
