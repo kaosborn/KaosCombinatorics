@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E7F15A7C-80B8-42CD-8609-1FAB0657BC92}"
 EndProject
@@ -101,6 +101,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Combinatorics", "Source\Combinatorics\Combinatorics.shproj", "{2310BE6C-9775-4E31-BC54-CA64CA9B31E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorics450", "Combinatorics450\Combinatorics450.csproj", "{DE3CBF9F-7D77-477C-8571-AE0D8C795F8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test450", "Test450\Test450.csproj", "{37950E4F-F817-43D4-B537-E87746FBC2B5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -258,6 +260,10 @@ Global
 		{DE3CBF9F-7D77-477C-8571-AE0D8C795F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3CBF9F-7D77-477C-8571-AE0D8C795F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3CBF9F-7D77-477C-8571-AE0D8C795F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37950E4F-F817-43D4-B537-E87746FBC2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37950E4F-F817-43D4-B537-E87746FBC2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37950E4F-F817-43D4-B537-E87746FBC2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37950E4F-F817-43D4-B537-E87746FBC2B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
