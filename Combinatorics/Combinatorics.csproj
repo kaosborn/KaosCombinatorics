@@ -9,7 +9,7 @@
     <Company>github.com/kaosborn</Company>
     <Product>KaosCombinatorics</Product>
     <Description>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products that are ordered and ranked.</Description>
-    <PackageLicenseUrl>https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
     <Copyright>Copyright © 2009-2019 github.com/kaosborn</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -30,11 +30,19 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <PackageTags>combination combinatorics multicombination discreet math numerics permutation permute product variation backtracking</PackageTags>
     <AssemblyName>KaosCombinatorics</AssemblyName>
     <PackageIconUrl>https://raw.githubusercontent.com/kaosborn/KaosCombinatorics/master/Images/KaosCombinatorics-064.png</PackageIconUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
   <Import Project="..\Source\KaosCombinatorics\KaosCombinatorics.projitems" Label="Shared" />
 
