@@ -96,16 +96,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{86ACCB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{E835685C-5C46-482B-AB7B-C7EDEE82771E}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Combinatorics", "Source\Combinatorics\Combinatorics.shproj", "{2310BE6C-9775-4E31-BC54-CA64CA9B31E1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combinatorics450", "Combinatorics450\Combinatorics450.csproj", "{DE3CBF9F-7D77-477C-8571-AE0D8C795F8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test450", "Test450\Test450.csproj", "{37950E4F-F817-43D4-B537-E87746FBC2B5}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KaosCombinatorics", "Source\KaosCombinatorics\KaosCombinatorics.shproj", "{70047566-8A60-46F6-950F-079930F569B7}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Source\Combinatorics\Combinatorics.projitems*{2310be6c-9775-4e31-bc54-ca64ca9b31e1}*SharedItemsImports = 13
-		Source\Combinatorics\Combinatorics.projitems*{de3cbf9f-7d77-477c-8571-ae0d8c795f8a}*SharedItemsImports = 4
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{de3cbf9f-7d77-477c-8571-ae0d8c795f8a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -301,7 +301,7 @@ Global
 		{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
-		{2310BE6C-9775-4E31-BC54-CA64CA9B31E1} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
+		{70047566-8A60-46F6-950F-079930F569B7} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0224A9F-09EE-4562-8513-B59A2B23A404}

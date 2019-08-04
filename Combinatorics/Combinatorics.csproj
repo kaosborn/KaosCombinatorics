@@ -36,6 +36,6 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
-  <Import Project="..\Source\Combinatorics\Combinatorics.projitems" Label="Shared" />
+  <Import Project="..\Source\KaosCombinatorics\KaosCombinatorics.projitems" Label="Shared" />
 
 </Project>
