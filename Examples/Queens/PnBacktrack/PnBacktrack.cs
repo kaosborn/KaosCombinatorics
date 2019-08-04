@@ -64,10 +64,7 @@ namespace ExampleApp
         }
 
         public override string ToString()
-        {
-            return String.Join (" ",
-                Enumerable.Range (0, Choices).Select (x => ((char) ('a'+x)).ToString()+(this[x]+1)));
-        }
+         => String.Join (" ", Enumerable.Range (0, Choices).Select (x => ((char) ('a'+x)).ToString()+(this[x]+1)));
     }
 
     class PnBacktrack

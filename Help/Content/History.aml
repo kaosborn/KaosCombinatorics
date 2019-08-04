@@ -133,7 +133,7 @@
           Previously, comparison of permutations did not compare the <codeInline>Choices</codeInline> property as in this snippet:
         </para>
         <code language="cs">
-          Console.WriteLine (new Permutation(4,3,0) == new Permutation(5,3,0));
+          Console.WriteLine (new Permutation(choices:4,picks:3,rank:0)==new Permutation(choices:5,picks:3,rank:0));
           /* Output: true */
         </code>
         <para>
