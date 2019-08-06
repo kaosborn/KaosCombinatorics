@@ -43,6 +43,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <Import Project="..\Source\Combinatorics\Combinatorics.projitems" Label="Shared" />
+  <Import Project="..\Source\KaosCombinatorics\KaosCombinatorics.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
