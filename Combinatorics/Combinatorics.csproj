@@ -31,6 +31,9 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <AssemblyName>KaosCombinatorics</AssemblyName>
     <PackageIconUrl>https://raw.githubusercontent.com/kaosborn/KaosCombinatorics/master/Images/KaosCombinatorics-064.png</PackageIconUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>Combinatorics.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
