@@ -349,10 +349,10 @@ namespace Kaos.Combinatorics
         public IEnumerable<Product> GetRows()
         {
             if (RowCount != 0)
-                for (var beginRank = Rank;;)
+                for (long beginRank = Rank;;)
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                     if (Rank == beginRank)
                         yield break;
                 }

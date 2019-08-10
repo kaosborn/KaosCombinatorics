@@ -329,7 +329,7 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
         public long Rank
         {
-            get { return rank; }
+            get => rank;
             set
             {
                 if (RowCount == 0)
@@ -417,7 +417,7 @@ namespace Kaos.Combinatorics
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            this.data.CopyTo (array, 0);
+            data.CopyTo (array, 0);
         }
 
 
@@ -467,10 +467,10 @@ namespace Kaos.Combinatorics
         public IEnumerable<Combination> GetRows()
         {
             if (RowCount != 0)
-                for (var beginRank = Rank;;)
+                for (long beginRank = Rank;;)
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                     if (Rank == beginRank)
                         break;
                 }
@@ -484,8 +484,8 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Combination\CnExample02\CnExample02.cs" lang="cs"/></example>
         public IEnumerable<Combination> GetRowsForAllPicks()
         {
-            var beginRank = rank;
-            var beginData = data;
+            long beginRank = rank;
+            int[] beginData = data;
 
             for (int p = 1; p <= beginData.Length; ++p)
             {
@@ -498,7 +498,7 @@ namespace Kaos.Combinatorics
                 do
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                 } while (Rank != 0);
             }
 

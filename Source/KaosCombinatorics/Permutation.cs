@@ -568,12 +568,12 @@ namespace Kaos.Combinatorics
                 // Normalize the new rank.
                 if (value < 0)
                 {
-                    value = value % RowCount;
+                    value %= RowCount;
                     if (value < 0)
                         value += RowCount;
                 }
                 else if (value >= RowCount)
-                    value = value % RowCount;
+                    value %= RowCount;
 
                 CalcPlainUnrank (data, value);
                 CalcRank();
@@ -818,10 +818,10 @@ namespace Kaos.Combinatorics
         public IEnumerable<Permutation> GetRows()
         {
             if (RowCount != 0)
-                for (var beginRank = Rank;;)
+                for (long beginRank = Rank;;)
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                     if (Rank == beginRank)
                         break;
                 }
@@ -836,9 +836,9 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
         public IEnumerable<Permutation> GetRowsForAllChoices()
         {
-            var beginRank = Rank;
-            var beginChoices = Choices;
-            var beginData = this.data;
+            long beginRank = Rank;
+            int beginChoices = Choices;
+            int[] beginData = data;
 
             for (int c = 1; c <= beginChoices; ++c)
             {
@@ -852,7 +852,7 @@ namespace Kaos.Combinatorics
                 do
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                 } while (Rank != 0);
             }
 
@@ -869,8 +869,8 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
         public IEnumerable<Permutation> GetRowsForAllPicks()
         {
-            var beginRank = rank;
-            var beginData = data;
+            long beginRank = rank;
+            int[] beginData = data;
 
             for (int p = 1; p <= beginData.Length; ++p)
             {
@@ -883,7 +883,7 @@ namespace Kaos.Combinatorics
                 do
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                 } while (Rank != 0);
             }
 

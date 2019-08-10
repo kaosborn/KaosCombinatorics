@@ -420,7 +420,7 @@ namespace Kaos.Combinatorics
             if (array.Length < Picks)
                 throw new ArgumentException ("Destination array is not long enough.");
 
-            this.data.CopyTo (array, 0);
+            data.CopyTo (array, 0);
         }
 
 
@@ -449,7 +449,7 @@ namespace Kaos.Combinatorics
         /// <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
         public IEnumerator<int> GetEnumerator()
         {
-            foreach (int element in this.data)
+            foreach (int element in data)
                 yield return element;
         }
 
@@ -472,10 +472,10 @@ namespace Kaos.Combinatorics
         public IEnumerable<Multicombination> GetRows()
         {
             if (RowCount != 0)
-                for (var beginRank = Rank;;)
+                for (long beginRank = Rank;;)
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                     if (Rank == beginRank)
                         break;
                 }
@@ -500,24 +500,24 @@ namespace Kaos.Combinatorics
             if (Choices == 0)
                 yield break;
 
-            var beginRank = this.rank;
-            var beginData = this.data;
+            long beginRank = rank;
+            int[] beginData = data;
 
             for (int p = Math.Max (1, startPicks); p <= stopPicks; ++p)
             {
-                this.data = new int[p];
-                this.rank = 0;
+                data = new int[p];
+                rank = 0;
                 CalcRowCount();
 
                 do
                 {
                     yield return this;
-                    Rank = Rank + 1;
+                    Rank += 1;
                 } while (Rank != 0);
             }
 
-            this.data = beginData;
-            this.rank = beginRank;
+            data = beginData;
+            rank = beginRank;
         }
 
 
