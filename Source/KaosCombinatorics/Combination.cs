@@ -116,10 +116,10 @@ namespace Kaos.Combinatorics
         IEquatable<Combination>,
         IEnumerable<int>
     {
-        private int[] data;     // The picks for the current rank. Length is 'k'.
-        private int choices;    // Number of possible values 'n'.
-        private long rowCount;  // Row count of the table of k-combinations.
-        private long rank;      // Row index.
+        private int[] data;           // The picks for the current rank. Length is 'k'.
+        private readonly int choices; // Number of possible values 'n'.
+        private long rowCount;        // Row count of the table of k-combinations.
+        private long rank;            // Row index.
 
         #region Constructors
 

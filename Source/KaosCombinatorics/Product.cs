@@ -101,10 +101,10 @@ namespace Kaos.Combinatorics
         IEquatable<Product>,
         IEnumerable<int>
     {
-        private int[] sizes;    // Size of each column.
-        private long[] factors; // Running multiple of sizes.
-        private long rowCount;  // Row count of the table of products.
-        private long rank;      // Row index.
+        private readonly int[] sizes;    // Size of each column.
+        private readonly long[] factors; // Running multiple of sizes.
+        private readonly long rowCount;  // Row count of the table of products.
+        private long rank;               // Row index.
 
         #region Constructors
 

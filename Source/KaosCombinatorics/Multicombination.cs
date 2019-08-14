@@ -117,10 +117,10 @@ namespace Kaos.Combinatorics
         IEquatable<Multicombination>,
         IEnumerable<int>
     {
-        private int[] data;     // The picks for the current rank. Length is 'k'.
-        private int choices;    // Number of possible values 'n'.
-        private long rowCount;  // Row count of the table of k-multicombinations.
-        private long rank;      // Row index.
+        private int[] data;           // The picks for the current rank. Length is 'k'.
+        private readonly int choices; // Number of possible values 'n'.
+        private long rowCount;        // Row count of the table of k-multicombinations.
+        private long rank;            // Row index.
 
         #region Constructors
 
@@ -387,7 +387,7 @@ namespace Kaos.Combinatorics
         /// <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
         public int CompareTo (Multicombination other)
         {
-            if ((object) other == null)
+            if (other is null)
                 return 1;
 
             int result = this.Picks - other.Picks;
