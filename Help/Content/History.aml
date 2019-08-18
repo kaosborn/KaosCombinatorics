@@ -121,6 +121,7 @@
           <listItem>Changes <codeInline>Permutation</codeInline> comparisons to include the <codeInline>Choices</codeInline> property.</listItem>
           <listItem>Changes iterator behavior to produce consistent operand side effects.</listItem>
           <listItem>Changes thrown exceptions.</listItem>
+          <listItem>Applies strong name to assembly.</listItem>
         </list>
         <para><legacyBold><legacyItalic>Details</legacyItalic></legacyBold></para>
         <para><legacyBold>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</legacyBold></para>
@@ -139,7 +140,7 @@
         <para>
           This issue has been fixed and this example now correctly returns <codeInline>false</codeInline>.
         </para>
-        <para><legacyBold>Update behavior of iterators to produce consistent operand side effects</legacyBold></para>
+        <para><legacyBold>Change iterator behavior to produce consistent operand side effects</legacyBold></para>
         <para>
           Previous versions of iterators produced inconsistent side affects to their operands.
           New behavior is to synchronize the operand to the values yielded and restore their operand to its original state after the iteration is complete.
@@ -199,6 +200,13 @@
         </para>
         <para>
           Where <codeInline>Permutation</codeInline> constructors taking an element array threw <codeInline>IndexOutOfRangeException</codeInline> they now throw <codeInline>ArgumentException</codeInline>.
+        </para>
+        <para>
+          <legacyBold>Apply strong name to assembly</legacyBold>
+        </para>
+        <para>
+          Strong names signing is necessary for installation into the Global Assembly Cache.
+          As a convenience, an installer has been provided for this purpose.
         </para>
       </content>
     </section>
