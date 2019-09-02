@@ -96,11 +96,11 @@ Output is a Microsoft Help v1 file with a `.chm` extension and (optionally) a st
 
 * `Images` - SVG files with renderings.
 
-* 'Install' - Builds a GAC installer.
+* `Install` - Builds a GAC installer.
 
 * `Source` - All source code in a shared project.
 
-* `Test450` - MSTest unit tests and short running stress tests.
+* `Test450` - MSTest unit tests and limited stress tests.
 Line and branch coverage is 100%.
 
 ### Build requirements
@@ -108,7 +108,7 @@ Line and branch coverage is 100%.
 #### https://github.com/kaosborn/KaosCombinatorics/
 
 Complete source is hosted at GitHub.
-All downloads linked to here are free.
+The following linked downloads are free.
 
 #### https://www.visualstudio.com/downloads/
 
