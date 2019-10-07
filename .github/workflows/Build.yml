@@ -1,0 +1,24 @@
+name: Build
+on: push
+jobs:
+  Job1:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Build libraries
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        dotnet restore
+        msbuild -t:Combinatorics450 -p:Configuration=Release -p:Platform="Any CPU"
+        msbuild -t:Combinatorics -p:Configuration=Release -p:Platform="Any CPU"
+    - name: Build executables
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        msbuild -t:Bench\ConCore -p:Configuration=Release -p:Platform="Any CPU"
+        msbuild -t:Bench\ConFull400 -p:Configuration=Release -p:Platform="Any CPU"
+    - uses: actions/upload-artifact@v1
+      with:
+        name: RunnerOutput-ReleaseBuild
+        path: Combinatorics\bin\Release

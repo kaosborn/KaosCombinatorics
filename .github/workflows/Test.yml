@@ -1,0 +1,41 @@
+name: Test
+on: push
+jobs:
+  Job1:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Initialize
+      run: |
+        md TestResults\KaosCombinatorics-CoverageReport
+        dotnet restore
+        dotnet add Test450 package -v 4.3.0 ReportGenerator
+    - name: Build standard suite
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        msbuild -t:Combinatorics450 -p:Configuration=Debug -p:Platform="Any CPU"
+        msbuild -t:Test450 -p:Configuration=Debug -p:Platform="Any CPU"
+    - name: Run standard suite
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        vstest.console Test450\bin\Debug\Test450.dll
+    - name: Build coverage suite
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        msbuild -t:Combinatorics450 -p:Configuration=Release -p:Platform="Any CPU"
+        msbuild -t:Test450 -p:Configuration=Release -p:Platform="Any CPU"
+    - name: Run coverage suite
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        "%VSINSTALLDIR%\Team Tools\Dynamic Code Coverage Tools\CodeCoverage" collect -output:TestResults\KaosCombinatorics.coverage "%VSINSTALLDIR%\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console" Test450\bin\Release\Test450.dll
+    - name: Run coverage analysis
+      run: |
+        call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
+        "%VSINSTALLDIR%\Team Tools\Dynamic Code Coverage Tools\CodeCoverage" analyze -output:TestResults\KaosCombinatorics.coveragexml TestResults\KaosCombinatorics.coverage
+        dotnet "%USERPROFILE%\.nuget\packages\reportgenerator\4.3.0\tools\netcoreapp2.1\ReportGenerator.dll" -reports:TestResults\KaosCombinatorics.coveragexml -targetdir:TestResults\KaosCombinatorics-CoverageReport
+    - uses: actions/upload-artifact@v1
+      with:
+        name: RunnerOutput-Coverage
+        path: TestResults\KaosCombinatorics-CoverageReport
