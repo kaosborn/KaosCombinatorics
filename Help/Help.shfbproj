@@ -14,7 +14,7 @@
     <Name>Help</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>.\KaosCombinatorics-Help\</OutputPath>
     <HtmlHelpName>KaosCombinatorics</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
@@ -63,6 +63,7 @@
     </NamespaceSummaries>
     <ProjectSummary>Free to use and share.</ProjectSummary>
     <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2019 Kasey O. %28github.com/kaosborn%29</CopyrightText>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
