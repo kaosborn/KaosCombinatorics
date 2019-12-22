@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
     <Copyright>Copyright © 2009-2019 github.com/kaosborn</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products that are ordered and ranked. These sequences of integers may be used to permute (rearrange) other lists of objects. Features ranking, unranking, backtracking, plain changes, and more.
 
