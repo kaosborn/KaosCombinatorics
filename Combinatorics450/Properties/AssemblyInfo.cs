@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("KaosCombinatorics")]
-[assembly: AssemblyCopyright("Copyright © 2009-2019 github.com/kaosborn")]
+[assembly: AssemblyCopyright("Copyright © 2009-2020 github.com/kaosborn")]
 [assembly: AssemblyTrademark("freeware")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
