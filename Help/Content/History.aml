@@ -7,8 +7,8 @@
       <title>KwCombinatorics version 1.2 (2009-03-03)</title>
       <content>
         <list class="bullet">
-          <listItem>Implements generic IEquatable interface.</listItem>
-          <listItem>Implements proper null tests for comparison operators.</listItem>
+          <listItem><para>Implements generic IEquatable interface.</para></listItem>
+          <listItem><para>Implements proper null tests for comparison operators.</para></listItem>
         </list>
       </content>
     </section>
@@ -17,7 +17,7 @@
       <title>KwCombinatorics version 1.3 (2012-01-05)</title>
       <content>
         <list class="bullet">
-          <listItem>Updates build environment to Visual Studio 2010.</listItem>
+          <listItem><para>Updates build environment to Visual Studio 2010.</para></listItem>
         </list>
       </content>
     </section>
@@ -26,10 +26,10 @@
       <title>KwCombinatorics version 1.4 (2012-03-23)</title>
       <content>
         <list class="bullet">
-          <listItem>Adds increment, decrement operators for all classes.</listItem>
-          <listItem>Fixes bugs on empty sequences.</listItem>
-          <listItem>Renames many parameters.</listItem>
-          <listItem>Adds minor optimizations.</listItem>
+          <listItem><para>Adds increment, decrement operators for all classes.</para></listItem>
+          <listItem><para>Fixes bugs on empty sequences.</para></listItem>
+          <listItem><para>Renames many parameters.</para></listItem>
+          <listItem><para>Adds minor optimizations.</para></listItem>
         </list>
       </content>
     </section>
@@ -38,9 +38,9 @@
       <title>KwCombinatorics version 2.2 (2012-04-01)</title>
       <content>
         <list class="bullet">
-          <listItem>Adds Multicombination.GetRowsForPicks (startPicks, stopPicks).</listItem>
-          <listItem>Adds CopyTo (array) to all combinatorics.</listItem>
-          <listItem>Removes Multicombination.GetRows (picks, startRank).</listItem>
+          <listItem><para>Adds Multicombination.GetRowsForPicks (startPicks, stopPicks).</para></listItem>
+          <listItem><para>Adds CopyTo (array) to all combinatorics.</para></listItem>
+          <listItem><para>Removes Multicombination.GetRows (picks, startRank).</para></listItem>
         </list>
       </content>
     </section>
@@ -49,13 +49,13 @@
       <title>KwCombinatorics version 2.3 (2012-04-17)</title>
       <content>
         <list class="bullet">
-          <listItem>Adds Permutation.Backtrack method.</listItem>
-          <listItem>Multicombination ranking constructor accepts unsorted data.</listItem>
-          <listItem>Combination ranking constructor accepts unsorted data.</listItem>
-          <listItem>Fixes numeric overflow bug in Combination.Rank setter.</listItem>
-          <listItem>Fixes missing numeric overflow checks in Product constructors.</listItem>
-          <listItem>Fixes missing bounds checks in Product ranking constructor.</listItem>
-          <listItem>Removes increment and decrement operators.</listItem>
+          <listItem><para>Adds Permutation.Backtrack method.</para></listItem>
+          <listItem><para>Multicombination ranking constructor accepts unsorted data.</para></listItem>
+          <listItem><para>Combination ranking constructor accepts unsorted data.</para></listItem>
+          <listItem><para>Fixes numeric overflow bug in Combination.Rank setter.</para></listItem>
+          <listItem><para>Fixes missing numeric overflow checks in Product constructors.</para></listItem>
+          <listItem><para>Fixes missing bounds checks in Product ranking constructor.</para></listItem>
+          <listItem><para>Removes increment and decrement operators.</para></listItem>
         </list>
       </content>
     </section>
@@ -64,9 +64,9 @@
       <title>KwCombinatorics version 2.4 (2012-07-01)</title>
       <content>
         <list class="bullet">
-          <listItem>Optimizes Combination.Rank setter.</listItem>
-          <listItem>>Optimizes Multicombination.Rank setter.</listItem>
-          <listItem>Adds methods Combinatoric.BinomialCoefficient, Combinatoric.Factorial.</listItem>
+          <listItem><para>Optimizes Combination.Rank setter.</para></listItem>
+          <listItem><para>Optimizes Multicombination.Rank setter.</para></listItem>
+          <listItem><para>Adds methods Combinatoric.BinomialCoefficient, Combinatoric.Factorial.</para></listItem>
         </list>
       </content>
     </section>
@@ -79,18 +79,18 @@
           There are also several breaking changes to improve API readability.
         </para>
         <list class="bullet">
-          <listItem>Adds Permutation.Choices property to support k-permutations.</listItem>
-          <listItem>Adds Permutation constructors to support k-permutations.</listItem>
-          <listItem>Adds property Permutation.PlainChange.</listItem>
-          <listItem>Adds property Permutation.Swaps.</listItem>
-          <listItem>Adds method Permutation.GetRowsForAllPicks.</listItem>
-          <listItem>Adds method Permutation.GetRowsOfPlainChanges.</listItem>
-          <listItem>Renames all Height properties to RowCount.</listItem>
-          <listItem>Renames Permutation.Width to Picks.</listItem>
-          <listItem>Renames Permutation.MaxWidth to MaxChoices.</listItem>
-          <listItem>Renames Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</listItem>
-          <listItem>Removes Permutation (int, long) constructor.</listItem>
-          <listItem>Removes ICloneable base class and Clone methods from all combinatorics.</listItem>
+          <listItem><para>Adds Permutation.Choices property to support k-permutations.</para></listItem>
+          <listItem><para>Adds Permutation constructors to support k-permutations.</para></listItem>
+          <listItem><para>Adds property Permutation.PlainChange.</para></listItem>
+          <listItem><para>Adds property Permutation.Swaps.</para></listItem>
+          <listItem><para>Adds method Permutation.GetRowsForAllPicks.</para></listItem>
+          <listItem><para>Adds method Permutation.GetRowsOfPlainChanges.</para></listItem>
+          <listItem><para>Renames all Height properties to RowCount.</para></listItem>
+          <listItem><para>Renames Permutation.Width to Picks.</para></listItem>
+          <listItem><para>Renames Permutation.MaxWidth to MaxChoices.</para></listItem>
+          <listItem><para>Renames Permutation.GetRowsForAllWidths to GetRowsForAllChoices.</para></listItem>
+          <listItem><para>Removes Permutation (int, long) constructor.</para></listItem>
+          <listItem><para>Removes ICloneable base class and Clone methods from all combinatorics.</para></listItem>
         </list>
       </content>
     </section>
@@ -105,9 +105,9 @@
           Binary now hosted at NuGet.org.
         </para>
         <list class="bullet">
-          <listItem>Renames namespace from Kw to Kaos.</listItem>
-          <listItem>Changes binary to .NET Standard 1.0 multitargeted to .NET 3.5, .NET 4.0.</listItem>
-          <listItem>Updates build environment to Visual Studio 2017.</listItem>
+          <listItem><para>Renames namespace from Kw to Kaos.</para></listItem>
+          <listItem><para>Changes binary to .NET Standard 1.0 multitargeted to .NET 3.5, .NET 4.0.</para></listItem>
+          <listItem><para>Updates build environment to Visual Studio 2017.</para></listItem>
         </list>
       </content>
     </section>
@@ -117,11 +117,11 @@
       <content>
         <para><legacyBold><legacyItalic>Summary</legacyItalic></legacyBold></para>
         <list class="bullet">
-          <listItem>Optimizes <codeInline>Permutation</codeInline> class for speed and allocations.</listItem>
-          <listItem>Changes <codeInline>Permutation</codeInline> comparisons to include the <codeInline>Choices</codeInline> property.</listItem>
-          <listItem>Changes iterator behavior to produce consistent operand side effects.</listItem>
-          <listItem>Changes thrown exceptions.</listItem>
-          <listItem>Applies strong name to assembly.</listItem>
+          <listItem><para>Optimizes <codeInline>Permutation</codeInline> class for speed and allocations.</para></listItem>
+          <listItem><para>Changes <codeInline>Permutation</codeInline> comparisons to include the <codeInline>Choices</codeInline> property.</para></listItem>
+          <listItem><para>Changes iterator behavior to produce consistent operand side effects.</para></listItem>
+          <listItem><para>Changes thrown exceptions.</para></listItem>
+          <listItem><para>Applies strong name to assembly.</para></listItem>
         </list>
         <para><legacyBold><legacyItalic>Details</legacyItalic></legacyBold></para>
         <para><legacyBold>Optimize <codeInline>Permutation</codeInline> class for speed and allocations</legacyBold></para>
@@ -147,10 +147,10 @@
         </para>
         <para>All iterators are affected:</para>
         <list class="bullet">
-          <listItem><codeInline>Combination.GetRows</codeInline>, <codeInline>Combination.GetRowsForAllPicks</codeInline></listItem>
-          <listItem><codeInline>Multicombination.GetRows</codeInline>, <codeInline>Multicombination.GetRowsForPicks</codeInline></listItem>
-          <listItem><codeInline>Permutation.GetRows</codeInline>, <codeInline>Permutation.GetRowsForAllChoices</codeInline>, <codeInline>Permutation.GetRowsForAllPicks</codeInline>, <codeInline>Permutation.GetRowsOfPlainChanges</codeInline></listItem>
-          <listItem><codeInline>Product.GetRows</codeInline></listItem>
+          <listItem><para><codeInline>Combination.GetRows</codeInline>, <codeInline>Combination.GetRowsForAllPicks</codeInline></para></listItem>
+          <listItem><para><codeInline>Multicombination.GetRows</codeInline>, <codeInline>Multicombination.GetRowsForPicks</codeInline></para></listItem>
+          <listItem><para><codeInline>Permutation.GetRows</codeInline>, <codeInline>Permutation.GetRowsForAllChoices</codeInline>, <codeInline>Permutation.GetRowsForAllPicks</codeInline>, <codeInline>Permutation.GetRowsOfPlainChanges</codeInline></para></listItem>
+          <listItem><para><codeInline>Product.GetRows</codeInline></para></listItem>
         </list>
         <para>There is no impact for the typical scenario where the operand is not directly accessible as in this snippet:</para>
         <code language="cs">
@@ -192,8 +192,8 @@
           Minor changes have been made to exception throwing in:
         </para>
         <list class="bullet">
-          <listItem>Methods <codeInline>Permutation.Permute</codeInline>, <codeInline>Product.Permute</codeInline></listItem>
-          <listItem>Constructors <codeInline>Permutation (int[])</codeInline>, <codeInline>Permutation (int[], int)</codeInline></listItem>
+          <listItem><para>Methods <codeInline>Permutation.Permute</codeInline>, <codeInline>Product.Permute</codeInline></para></listItem>
+          <listItem><para>Constructors <codeInline>Permutation (int[])</codeInline>, <codeInline>Permutation (int[], int)</codeInline></para></listItem>
         </list>
         <para>
           Where <codeInline>Permute</codeInline> methods threw <codeInline>IndexOutOfRangeException</codeInline> they now throw <codeInline>ArgumentException</codeInline> with a fail fast approach.

@@ -14,29 +14,37 @@
       </para>
       <list class="bullet">
         <listItem>
+          <para>
             <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Combination</codeEntityReference> -
             an ascending sequence of distinct picks from a supplied range.
+          </para>
         </listItem>
         <listItem>
+          <para>
             <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Multicombination</codeEntityReference> -
             an ascending sequence of repeating picks from a supplied range.
+          </para>
         </listItem>
         <listItem>
+          <para>
             <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Permutation</codeEntityReference> -
             a specific arrangement of distinct picks from a supplied range.
+          </para>
         </listItem>
         <listItem>
+          <para>
             <codeEntityReference qualifyHint="false">T:Kaos.Combinatorics.Product</codeEntityReference> -
             a join of values taken from a supplied array of ranges.
+          </para>
         </listItem>
       </list>
       <para>
         This library is built as a .NET Standard project with multitargeting to:
       </para>
       <list class="bullet">
-        <listItem>.NET Standard 1.0</listItem>
-        <listItem>.NET Framework 4.0</listItem>
-        <listItem>.NET Framework 3.5</listItem>
+        <listItem><para>.NET Standard 1.0</para></listItem>
+        <listItem><para>.NET Framework 4.0</para></listItem>
+        <listItem><para>.NET Framework 3.5</para></listItem>
       </list>
     </introduction>
     
@@ -46,23 +54,25 @@
         <para>To install using Package Manager:</para>
         <list class="bullet">
           <listItem>
-            <legacyBold><codeInline>Install-Package Kaos.Combinatorics -Version 5.0.0</codeInline></legacyBold>
+            <para><legacyBold><codeInline>Install-Package Kaos.Combinatorics -Version 5.0.0</codeInline></legacyBold></para>
           </listItem>
         </list>
         <para>To install using the .NET CLI:</para>
         <list class="bullet">
           <listItem>
-            <legacyBold><codeInline>dotnet add package Kaos.Combinatorics --version 5.0.0 </codeInline></legacyBold>
+            <para><legacyBold><codeInline>dotnet add package Kaos.Combinatorics --version 5.0.0 </codeInline></legacyBold></para>
           </listItem>
         </list>
         <para>To install using the Visual Studio gallery:</para>
         <list class="ordered">
-          <listItem>Click <legacyBold>Manage NuGet Packages</legacyBold>.</listItem>
-          <listItem>Select package source of <legacyBold>nuget.org</legacyBold>.</listItem>
-          <listItem>Click <legacyBold>Browse</legacyBold> and input <legacyBold>Kaos.Combinatorics</legacyBold>.</listItem>
+          <listItem><para>Click <legacyBold>Manage NuGet Packages</legacyBold>.</para></listItem>
+          <listItem><para>Select package source of <legacyBold>nuget.org</legacyBold>.</para></listItem>
+          <listItem><para>Click <legacyBold>Browse</legacyBold> and input <legacyBold>Kaos.Combinatorics</legacyBold>.</para></listItem>
           <listItem>
+            <para>
               The package should appear. Click <legacyBold>Install</legacyBold>.
               As a multitargeted package, the appropriate binary will be installed for your program.
+            </para>
           </listItem>
         </list>
         <para>To install using a direct reference to a <codeInline>.dll</codeInline> binary:</para>
@@ -71,16 +81,20 @@
             <para>Download the <codeInline>.nuget</codeInline> package from either:</para>
             <list class="bullet">
               <listItem>
-                <externalLink>
+                <para>
+                  <externalLink>
                   <linkText>https://www.nuget.org/packages/Kaos.Combinatorics/</linkText>
                   <linkUri>https://www.nuget.org/packages/Kaos.Combinatorics/</linkUri>
-                </externalLink>
+                  </externalLink>
+                </para>
               </listItem>
               <listItem>
-                <externalLink>
-                  <linkText>https://github.com/kaosborn/KaosCombinatorics/releases/</linkText>
-                  <linkUri>https://github.com/kaosborn/KaosCombinatorics/releases/</linkUri>
-                </externalLink>
+                <para>
+                  <externalLink>
+                    <linkText>https://github.com/kaosborn/KaosCombinatorics/releases/</linkText>
+                    <linkUri>https://github.com/kaosborn/KaosCombinatorics/releases/</linkUri>
+                  </externalLink>
+                </para>
               </listItem>
             </list>
           </listItem>
@@ -99,10 +113,12 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
         <para>For complete documentation:</para>
         <list class="bullet">
           <listItem>
-            <externalLink>
-              <linkText>https://kaosborn.github.io/help/KaosCombinatorics/</linkText>
-              <linkUri>https://kaosborn.github.io/help/KaosCombinatorics/</linkUri>
-            </externalLink>
+            <para>
+              <externalLink>
+                <linkText>https://kaosborn.github.io/help/KaosCombinatorics/</linkText>
+                <linkUri>https://kaosborn.github.io/help/KaosCombinatorics/</linkUri>
+              </externalLink>
+            </para>
           </listItem>
         </list>
         <para>
@@ -111,19 +127,23 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
         </para>
         <list class="bullet">
           <listItem>
-            <externalLink>
-              <linkText>https://github.com/kaosborn/KaosCombinatorics/releases/</linkText>
-              <linkUri>https://github.com/kaosborn/KaosCombinatorics/releases/</linkUri>
-            </externalLink>
+            <para>
+              <externalLink>
+                <linkText>https://github.com/kaosborn/KaosCombinatorics/releases/</linkText>
+                <linkUri>https://github.com/kaosborn/KaosCombinatorics/releases/</linkUri>
+              </externalLink>
+            </para>
           </listItem>
         </list>
         <para>Examples may be viewed here:</para>
         <list class="bullet">
           <listItem>
-            <externalLink>
-              <linkText>https://github.com/kaosborn/KaosCombinatorics/wiki/</linkText>
-              <linkUri>https://github.com/kaosborn/KaosCombinatorics/wiki/</linkUri>
-            </externalLink>
+            <para>
+              <externalLink>
+                <linkText>https://github.com/kaosborn/KaosCombinatorics/wiki/</linkText>
+                <linkUri>https://github.com/kaosborn/KaosCombinatorics/wiki/</linkUri>
+              </externalLink>
+            </para>
           </listItem>
         </list>
       </content>
@@ -135,37 +155,43 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
         <para>
           Complete source code with embedded XML documentation is hosted at GitHub.
           This repository is a single Visual Studio solution with additional files in the root:
-          <list class="bullet">
-            <listItem>
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
               <externalLink>
                 <linkText>https://github.com/kaosborn/KaosCombinatorics/</linkText>
                 <linkUri>https://github.com/kaosborn/KaosCombinatorics/</linkUri>
               </externalLink>
-            </listItem>
-          </list>
-        </para>
+            </para>
+          </listItem>
+        </list>
         <para>
           Building the library requires Visual Studio 2017 or greater:
-          <list class="bullet">
-            <listItem>
-            <externalLink>
-              <linkText>https://www.visualstudio.com/downloads/</linkText>
-              <linkUri>https://www.visualstudio.com/downloads/</linkUri>
-            </externalLink>
-            </listItem>
-          </list>
         </para>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>https://www.visualstudio.com/downloads/</linkText>
+                <linkUri>https://www.visualstudio.com/downloads/</linkUri>
+              </externalLink>
+            </para>
+          </listItem>
+        </list>
         <para>
           Building documentation requires Sandcastle Help File Builder:
-          <list class="bullet">
-            <listItem>
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
               <externalLink>
                 <linkText>https://github.com/EWSoftware/SHFB/releases/</linkText>
                 <linkUri>https://github.com/EWSoftware/SHFB/releases/</linkUri>
               </externalLink>
-            </listItem>
-          </list>
-        </para>
+            </para>
+          </listItem>
+        </list>
       </content>
     </section>
 
