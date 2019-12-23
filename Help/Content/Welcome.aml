@@ -51,22 +51,32 @@
     <section>
       <title>Library installation</title>
     <content>
+        <para>
+          Beginning with version 6, NuGet package hosting is provided GitHub Package Registry.
+          See GitHub for NuGet configuration documentation on getting packages from:
+        </para>
+        <para>
+          <externalLink>
+            <linkText>https://github.com/kaosborn/KaosCombinatorics/packages/</linkText>
+            <linkUri>https://github.com/kaosborn/KaosCombinatorics/packages/</linkUri>
+          </externalLink>
+        </para>
         <para>To install using Package Manager:</para>
         <list class="bullet">
           <listItem>
-            <para><legacyBold><codeInline>Install-Package Kaos.Combinatorics -Version 5.0.0</codeInline></legacyBold></para>
+            <para><legacyBold><codeInline>Install-Package Kaos.Combinatorics -Version 6.0.0</codeInline></legacyBold></para>
           </listItem>
         </list>
         <para>To install using the .NET CLI:</para>
         <list class="bullet">
           <listItem>
-            <para><legacyBold><codeInline>dotnet add package Kaos.Combinatorics --version 5.0.0 </codeInline></legacyBold></para>
+            <para><legacyBold><codeInline>dotnet add package Kaos.Combinatorics --version 6.0.0 </codeInline></legacyBold></para>
           </listItem>
         </list>
-        <para>To install using the Visual Studio gallery:</para>
+        <para>To install from local source using the Visual Studio gallery:</para>
         <list class="ordered">
           <listItem><para>Click <legacyBold>Manage NuGet Packages</legacyBold>.</para></listItem>
-          <listItem><para>Select package source of <legacyBold>nuget.org</legacyBold>.</para></listItem>
+          <listItem><para>Set <legacyBold>Package source</legacyBold> to your local nuget repository.</para></listItem>
           <listItem><para>Click <legacyBold>Browse</legacyBold> and input <legacyBold>Kaos.Combinatorics</legacyBold>.</para></listItem>
           <listItem>
             <para>
@@ -78,29 +88,24 @@
         <para>To install using a direct reference to a <codeInline>.dll</codeInline> binary:</para>
         <list class="ordered">
           <listItem>
-            <para>Download the <codeInline>.nuget</codeInline> package from either:</para>
+            <para>Download the <codeInline>.nuget</codeInline> package from:</para>
             <list class="bullet">
               <listItem>
                 <para>
                   <externalLink>
-                  <linkText>https://www.nuget.org/packages/Kaos.Combinatorics/</linkText>
-                  <linkUri>https://www.nuget.org/packages/Kaos.Combinatorics/</linkUri>
-                  </externalLink>
-                </para>
-              </listItem>
-              <listItem>
-                <para>
-                  <externalLink>
-                    <linkText>https://github.com/kaosborn/KaosCombinatorics/releases/</linkText>
-                    <linkUri>https://github.com/kaosborn/KaosCombinatorics/releases/</linkUri>
+                    <linkText>https://github.com/kaosborn/KaosCombinatorics/packages/</linkText>
+                    <linkUri>https://github.com/kaosborn/KaosCombinatorics/packages/</linkUri>
                   </externalLink>
                 </para>
               </listItem>
             </list>
           </listItem>
           <listItem>
-            <para>As archives, individual binaries may be extracted from the <codeInline>.nuget</codeInline> package for specific platforms.
-A project may then reference the extracted platform-specific <codeInline>.dll</codeInline> directly.</para>
+            <para>
+              As archives, individual binaries may be extracted from the <codeInline>.nuget</codeInline> package for specific platforms.
+              This may require changing the file extension from <codeInline>.nuget</codeInline> to <codeInline>.zip</codeInline> to access the contents.
+              A project may then reference the extracted platform-specific <codeInline>.dll</codeInline> directly.
+            </para>
           </listItem>
         </list>
     </content>
@@ -122,8 +127,8 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
           </listItem>
         </list>
         <para>
-          An offline version is available as a <codeInline>.chm</codeInline> file.
-          This file may need to be unblocked using the file properties dialog:
+          Identical documentation is available as a Microsoft Help v1 file below.
+          This downloaded <codeInline>.chm</codeInline> file may require unblocking thru its file properties dialog.
         </para>
         <list class="bullet">
           <listItem>
@@ -135,7 +140,7 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
             </para>
           </listItem>
         </list>
-        <para>Examples may be viewed here:</para>
+        <para>Finally, examples are repeated in the repository wiki:</para>
         <list class="bullet">
           <listItem>
             <para>
@@ -175,6 +180,19 @@ A project may then reference the extracted platform-specific <codeInline>.dll</c
               <externalLink>
                 <linkText>https://www.visualstudio.com/downloads/</linkText>
                 <linkUri>https://www.visualstudio.com/downloads/</linkUri>
+              </externalLink>
+            </para>
+          </listItem>
+        </list>
+        <para>
+          Building the <codeInline>.msi</codeInline> GAC installer requires the Microsoft Visual Studio Installer Projects extension:
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects</linkText>
+                <linkUri>https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects</linkUri>
               </externalLink>
             </para>
           </listItem>

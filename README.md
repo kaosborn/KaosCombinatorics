@@ -1,10 +1,5 @@
 ![logo](Images/KaosCombinatorics-248.png)
 
-<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml">
-<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Build/badge.svg"></a>
-<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml">
-<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg"></a>
-
 # KaosCombinatorics
 
 KaosCombinatorics is a .NET library that provides classes
@@ -32,56 +27,67 @@ This library is built as a .NET Standard project multitargeted to:
 * .NET Framework 4.0.
 * .NET Framework 3.5.
 
-### Roadmap
-
-The next version of this product will be available via GitHub Package Registry.
-The current build is a release candidate for vNext in 2019.
-
 ### Library installation
 
-To install v5 using Package Manager:
+Beginning with version 6, NuGet package hosting is provided GitHub Package Registry.
+See GitHub for NuGet configuration documentation on getting packages from:
 
-* **`Install-Package Kaos.Combinatorics -Version 5.0.0`**
+https://github.com/kaosborn/KaosCombinatorics/packages/
 
-To install v5 using the .NET CLI:
+#### To install using Package Manager:
 
-* **`dotnet add package Kaos.Combinatorics --version 5.0.0`**
+**`Install-Package Kaos.Combinatorics -Version 6.0.0`**
 
-To install v5 using the Visual Studio gallery:
+#### To install using the .NET CLI:
 
-1. Click **Manage NuGet Packages**.
-2. Select package source of **nuget.org**.
+**`dotnet add package Kaos.Combinatorics --version 6.0.0`**
+
+#### To install from local source using the Visual Studio gallery
+
+1. In Solution Explorer, Click **Manage NuGet Packages** for your project.
+2. Set *Package source* to your local nuget repository.
 3. Click **Browse** and input **Kaos.Combinatorics**.
 4. The package should appear. Click **Install**.
-As a multitargeted package, the appropriate binary will be installed for your program.
 
-To install using a direct reference to a `.dll` binary:
+As a multitargeted package, the appropriate binary will be installed for your project.
 
-1. Download the `.nuget` package from either:
+Note that (at the time of this writing) if a *Package source* of **nuget.org** is used,
+the previous version 5 of this library will be installed instead of the current version 6.
 
-   * https://www.nuget.org/packages/Kaos.Combinatorics/
-   * https://github.com/kaosborn/KaosCombinatorics/releases/
+#### Install using a direct reference to a `.dll` binary:
+
+1. Download the `.nuget` package from:
+
+https://github.com/kaosborn/KaosCombinatorics/releases/
 
 2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
+This may require changing the file extension from `.nuget` to `.zip` to access the contents.
 A project may then reference the extracted platform-specific `.dll` directly.
+
+#### Build from source
+
+This project may be built from source.
+There are no external dependencies.
+Starting with v6, the target binary is signed with a strong name to support GAC installation.
+To distribute your build of this library,
+you must disable compiling with a strong name (or supply your own key pair).
+Do this by modifying the *Combinatorics* project properties and unchecking *Sign the assembly* in the *Singing* tab.
 
 ### Documentation
 
-Installing the NuGet package will provide IntelliSense and object browser documentation as a `.xml` file.
-Below are other sources of help.
+Installing the NuGet package will provide IntelliSense and object browser documentation via its `.xml` file.
+For complete online documentation:
 
-#### https://kaosborn.github.io/help/KaosCombinatorics/
+* https://kaosborn.github.io/help/KaosCombinatorics/
 
-Complete documentation is hosted at GitHub.
+Identical documentation is available as a Microsoft Help v1 file below.
+This downloaded `.chm` file may require unblocking thru its file properties dialog.
 
-#### https://github.com/kaosborn/KaosCombinatorics/releases/
+* https://github.com/kaosborn/KaosCombinatorics/releases/
 
-Offline documentation is provided for each release.
-This downloaded `.chm` file may need to be unblocked by using its file properties dialog.
+Finally, examples are repeated in the repository wiki:
 
-#### https://github.com/kaosborn/KaosCombinatorics/wiki/
-
-Examples are also shown in the site wiki.
+* https://github.com/kaosborn/KaosCombinatorics/wiki/
 
 ### Repository top-level folders
 
@@ -89,12 +95,14 @@ This repository is a single Visual Studio solution with additional files in the 
 
 * `Bench` - Console programs that exercise this library.
 
-* `Combinatorics` - The NuGet package.
+* `Combinatorics` - The target NuGet package.
 Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
 This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
 
-* `Examples` - Console programs for documentation embedding.
+* `Combinatorics450` - A .NET 4.5 build of the class library for test & development.
+
+* `Examples` - Console programs for documentation.
 
 * `Help` - [Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB)
 project that produces documentation from embedded XML comments.
@@ -111,19 +119,12 @@ Line and branch coverage is 100%.
 
 ### Build requirements
 
-#### https://github.com/kaosborn/KaosCombinatorics/
+ All links in this section are to free software.
 
-Complete source is hosted at GitHub.
-The following linked downloads are free.
+* https://github.com/kaosborn/KaosCombinatorics/ - Complete source is hosted at GitHub.
 
-#### https://www.visualstudio.com/downloads/
+* https://www.visualstudio.com/downloads/ - Building the solution requires Visual Studio 2017 Community Edition or greater.
 
-Building the solution requires Visual Studio 2017 Community Edition or greater.
+* https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects - Building the `.msi` GAC installer requires the Microsoft Visual Studio Installer Projects extension.
 
-#### https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects
-
-Building the `.msi` GAC installer requires the Microsoft Visual Studio Installer Projects extension.
-
-#### https://github.com/EWSoftware/SHFB/releases/
-
-Building `.chm` or web documentation requires Sandcastle Help File Builder.
+* https://github.com/EWSoftware/SHFB/releases/ - Building `.chm` or web documentation requires Sandcastle Help File Builder.
