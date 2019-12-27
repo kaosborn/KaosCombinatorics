@@ -36,22 +36,22 @@ https://github.com/kaosborn/KaosCombinatorics/packages/
 
 #### To install using Package Manager:
 
-**`Install-Package Kaos.Combinatorics -Version 6.0.0`**
+**`Install-Package Kaos.Combinatorics -Version 5.0.0.12-rc.4`**
 
 #### To install using the .NET CLI:
 
-**`dotnet add package Kaos.Combinatorics --version 6.0.0`**
+**`dotnet add package Kaos.Combinatorics --version 5.0.0.12-rc.4`**
 
 #### To install from local source using the Visual Studio gallery
 
-1. In Solution Explorer, Click **Manage NuGet Packages** for your project.
+1. In Solution Explorer, Click *Manage NuGet Packages* for your project.
 2. Set *Package source* to your local nuget repository.
-3. Click **Browse** and input **Kaos.Combinatorics**.
-4. The package should appear. Click **Install**.
+3. Click *Browse* and input **Kaos.Combinatorics**.
+4. The package should appear. Click *Install*.
 
 As a multitargeted package, the appropriate binary will be installed for your project.
 
-Note that (at the time of this writing) if a *Package source* of **nuget.org** is used,
+Note that (at the time of this writing) if a *Package source* of *nuget.org* is used,
 the previous version 5 of this library will be installed instead of the current version 6.
 
 #### Install using a direct reference to a `.dll` binary:
@@ -68,7 +68,7 @@ A project may then reference the extracted platform-specific `.dll` directly.
 
 This project may be built from source.
 There are no external dependencies.
-Starting with v6, the target binary is signed with a strong name to support GAC installation.
+Starting with v6, the target .NET binary is built as a strong-named assembly to support GAC installation.
 To distribute your build of this library,
 you must disable compiling with a strong name (or supply your own key pair).
 Do this by modifying the *Combinatorics* project properties and unchecking *Sign the assembly* in the *Singing* tab.
