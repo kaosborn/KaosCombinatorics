@@ -36,8 +36,8 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <AssemblyOriginatorKeyFile>Combinatorics.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
