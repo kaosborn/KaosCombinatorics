@@ -1,0 +1,1456 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KaosCombinatorics</name>
+    </assembly>
+    <members>
+        <member name="T:Kaos.Combinatorics.Combination">
+            <summary>
+            Represents an ascending sequence of distinct picks from a supplied range.
+            </summary>
+            <remarks>
+            <para>
+            The defining variables of a combination
+            are <em>n</em> which is the number of possible choices
+            and <em>k</em> which is the number of distinct picks from those choices.
+            When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-combination
+            also known as a pick-combination.
+            Combinations are contrasted to multicombinations where the values in the sequence may repeat.
+            </para>
+            <para>
+            The <see cref="T:Kaos.Combinatorics.Combination"/> class produces <em>k</em>-combinations with ascending elements.
+            While sequence order of the elements is not a general requirement of combinations,
+            producing an ascending sequence allows ranking the sequences into an ordered table.
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Combination.Picks"/> property to get the number of elements (<em>k</em>)
+            of a <see cref="T:Kaos.Combinatorics.Combination"/> taken from a possible number of
+            <see cref="P:Kaos.Combinatorics.Combination.Choices"/> (<em>n</em>).
+            
+            Use the <see cref="P:Kaos.Combinatorics.Combination.RowCount"/> property to get the number of distinct possible
+            <see cref="T:Kaos.Combinatorics.Combination"/> sequences.
+            
+            Use the <see cref="P:Kaos.Combinatorics.Combination.Item(System.Int32)">indexer</see>
+            to get a specified element of the sequence.
+            
+            Use the <see cref="M:Kaos.Combinatorics.Combination.GetEnumerator">default enumerator</see> to iterate thru
+            the elements of a <see cref="T:Kaos.Combinatorics.Combination"/>.
+            
+            Use the <see cref="M:Kaos.Combinatorics.Combination.Permute``1(Kaos.Combinatorics.Combination,System.Collections.Generic.IList{``0})">Permute</see> method to pick objects from a supplied array
+            of choices based on the current sequence.
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Combination.Rank"/> property to get or set the row index in a lexicographically
+            ordered <see cref="T:Kaos.Combinatorics.Combination"/> table of all possible sequences in an ascending order.
+            
+            Use <see cref="M:Kaos.Combinatorics.Combination.GetRows"/> to iterate thru all possible sequences
+            of the <see cref="T:Kaos.Combinatorics.Combination"/> ordered by <see cref="P:Kaos.Combinatorics.Combination.Rank"/>.
+            
+            Use <see cref="M:Kaos.Combinatorics.Combination.GetRowsForAllPicks"/> to iterate
+            thru every table of all picks in the range (1..<see cref="P:Kaos.Combinatorics.Combination.Picks"/>).
+            </para>
+            <para>
+            The default appearance of a <see cref="T:Kaos.Combinatorics.Combination"/> row is a list of
+            integers (starting at 0) enclosed in braces. The appearance may be tailored 3 ways:
+            <ul>
+              <li>
+                Map each element to a different value using the
+                <see cref="M:Kaos.Combinatorics.Combination.GetEnumerator">default enumerator</see> or the
+                <see cref="P:Kaos.Combinatorics.Multicombination.Item(System.Int32)">indexer</see>.
+              </li>
+              <li>
+                Use the <see cref="M:Kaos.Combinatorics.Combination.Permute``1(Kaos.Combinatorics.Combination,System.Collections.Generic.IList{``0})">Permute</see> method and output the rearranged values.
+              </li>
+              <li>
+                Define a subclass of <see cref="T:Kaos.Combinatorics.Combination"/> and override
+                <see cref="M:System.Object.ToString">ToString()</see>.
+                (See <see cref="M:Kaos.Combinatorics.Combination.GetRowsForAllPicks"/> for an example.)
+              </li>
+            </ul>
+            </para>
+            <para>
+            For more information about <em>k</em>-combinations, see:
+            </para>
+            <para>
+            <em>https://en.wikipedia.org/wiki/Combination</em>
+            </para>
+            </remarks>
+            <example>
+            <para>
+            Iterating thru <c>new Combination (6, 3).GetRows()</c> produces:
+            </para>
+            <para>
+            <c>{ 0, 1, 2 }</c><br/>
+            <c>{ 0, 1, 3 }</c><br/>
+            <c>{ 0, 1, 4 }</c><br/>
+            <c>{ 0, 1, 5 }</c><br/>
+            <c>{ 0, 2, 3 }</c><br/>
+            <c>{ 0, 2, 4 }</c><br/>
+            <c>{ 0, 2, 5 }</c><br/>
+            <c>{ 0, 3, 4 }</c><br/>
+            <c>{ 0, 3, 5 }</c><br/>
+            <c>{ 0, 4, 5 }</c><br/>
+            <c>{ 1, 2, 3 }</c><br/>
+            <c>{ 1, 2, 4 }</c><br/>
+            <c>{ 1, 2, 5 }</c><br/>
+            <c>{ 1, 3, 4 }</c><br/>
+            <c>{ 1, 3, 5 }</c><br/>
+            <c>{ 1, 4, 5 }</c><br/>
+            <c>{ 2, 3, 4 }</c><br/>
+            <c>{ 2, 3, 5 }</c><br/>
+            <c>{ 2, 4, 5 }</c><br/>
+            <c>{ 3, 4, 5 }</c>
+            </para>
+            </example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor">
+            <summary>
+            Initializes an empty combination instance.
+            </summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor(Kaos.Combinatorics.Combination)">
+            <summary>Initializes a new instance that is copied from the supplied combination.</summary>
+            <param name="source">Instance to copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor(System.Int32)">
+            <summary>Initializes a new combination of <see cref="P:Kaos.Combinatorics.Combination.Rank"/> 0 with the supplied number of elements.</summary>
+            <param name="choices">Number of elements in the sequence.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>choices</em> less than 0.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new combination of <see cref="P:Kaos.Combinatorics.Combination.Rank"/> 0
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-combination also known as a pick-combination.
+            </remarks>
+            <example><code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When negative value supplied; when <em>picks</em> greater than <em>choices</em>.</exception>
+            <exception cref="T:System.OverflowException">When the numbers are just too big.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor(System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Initializes a new combination of the supplied <em>rank</em>
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <remarks>
+            <para>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-combination also known as a pick-combination.
+            <para>
+            </para>
+            If the supplied <em>rank</em> is out of the range (0..<see cref="P:Kaos.Combinatorics.Combination.RowCount"/>-1),
+            it will be normalized to the valid range.
+            For example, a value of -1 will produce the last row in the ordered table.
+            </para>
+            </remarks>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <param name="rank">Row index in the ordered <see cref="T:Kaos.Combinatorics.Combination"/> table.</param>
+            <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When negative value supplied; when <em>picks</em> greater than <em>choices</em>.</exception>
+            <exception cref="T:System.OverflowException">When too many <em>choices</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.#ctor(System.Int32,System.Int32[])">
+            <summary>
+            Initializes a new combination from elements supplied in <em>source</em> picked
+            from the supplied number of <em>choices</em>.
+            </summary>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="source">Array of integers.</param>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+            will instantiate a <em>k</em>-combination also known as a pick-combination.
+            </remarks>
+            <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When length of <em>source</em> is greater than <em>picks</em>; when <em>source</em> contains invalid data.
+            </exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combination.Item(System.Int32)">
+            <summary>Get a element of the <see cref="T:Kaos.Combinatorics.Combination"/> at the supplied column.</summary>
+            <param name="index">Zero-based index value.</param>
+            <returns>Sequence value at <em>index</em>.</returns>
+            <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="P:Kaos.Combinatorics.Combination.Picks"/>-1).</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combination.Choices">
+            <summary>The available number of integers to choose from.</summary>
+            <remarks>Also known as <em>n</em>.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combination.Picks">
+            <summary>Number of elements in the <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <remarks>Also known as <em>k</em>.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combination.Rank">
+            <summary>Row index in the ordered <see cref="T:Kaos.Combinatorics.Combination"/> table.</summary>
+            <remarks>Any assigned value out of range will be normalized to (0..<see cref="P:Kaos.Combinatorics.Combination.RowCount"/>-1).</remarks>
+            <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combination.RowCount">
+            <summary>Count of distinct sequences in the <see cref="T:Kaos.Combinatorics.Combination"/> table.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.CompareTo(System.Object)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Combination"/>s.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.CompareTo(Kaos.Combinatorics.Combination)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Combination"/>s.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.CopyTo(System.Int32[])">
+            <summary>Copy the entire sequence to the supplied destination.</summary>
+            <param name="array">Destination of copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When not enough space in <em>array</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.Equals(System.Object)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Combination"/>s have the same value.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.Equals(Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Combination"/>s have the same value.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Get an object-based enumerator of the elements.</summary>
+            <returns>Object-based elemental enumerator.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.GetEnumerator">
+            <summary>Enumerate all elements of a <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for this <see cref="T:Kaos.Combinatorics.Combination"/>.</returns>
+            <example><code source="..\Examples\Combination\CnExample05\CnExample05.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.GetHashCode">
+            <summary>Get the hash oode of the <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.GetRows">
+            <summary>Iterate thru all rows of the <see cref="T:Kaos.Combinatorics.Combination"/> table for every <see cref="P:Kaos.Combinatorics.Combination.Rank"/> ascending.</summary>
+            <returns>An iterator for a <see cref="T:Kaos.Combinatorics.Combination"/> table.</returns>
+            <remarks>
+            If the start row is not <see cref="P:Kaos.Combinatorics.Combination.Rank"/> 0, the iteration will wrap around
+            so that <see cref="P:Kaos.Combinatorics.Combination.RowCount"/> items are always produced.
+            </remarks>
+            <example><code source="..\Examples\Combination\CnExample01\CnExample01.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.GetRowsForAllPicks">
+            <summary>
+            Iterate thru all rows of all <see cref="T:Kaos.Combinatorics.Combination"/> tables for every pick in the range (1..<see cref="P:Kaos.Combinatorics.Combination.Picks"/>).
+            </summary>
+            <returns>An iterator for a series of <see cref="T:Kaos.Combinatorics.Combination"/> tables.</returns>
+            <example><code source="..\Examples\Combination\CnExample02\CnExample02.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.ToString">
+            <summary>Provide a readable form of the <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</summary>
+            <returns>A <c>string</c> that represents the sequence.</returns>
+            <remarks>Result is enclosed in braces and separated by commas.</remarks>
+            <example><code source="..\Examples\Combination\CnExample04\CnExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.Permute``1(Kaos.Combinatorics.Combination,System.Collections.Generic.IList{``0})">
+            <summary>Apply a <see cref="T:Kaos.Combinatorics.Combination"/> sequence to rearrange the supplied list or array.</summary>
+            <typeparam name="T">Type of items to rearrange.</typeparam>
+            <param name="arrangement">New arrangement for items.</param>
+            <param name="source">List of items to rearrange.</param>
+            <returns>List of rearranged items.</returns>
+            <example><code source="..\Examples\Combination\CnExample03\CnExample03.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When length of <em>source</em> is less than <em>arrangement</em>.<see cref="P:Kaos.Combinatorics.Combination.Choices"/>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_Equality(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Combination"/>s are equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_Inequality(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Combination"/>s are not equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are not equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_LessThan(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Combination"/> is less than
+            the right <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_GreaterThanOrEqual(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Combination"/> is greater than
+            or equal to the right <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than or equal to
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_GreaterThan(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Combination"/> is greater than
+            the right <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combination.op_LessThanOrEqual(Kaos.Combinatorics.Combination,Kaos.Combinatorics.Combination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Combination"/> is less than or equal
+            to the right <see cref="T:Kaos.Combinatorics.Combination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Combination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than or equal to
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="T:Kaos.Combinatorics.Combinatoric">
+            <summary>Provides static methods for combinatorics.</summary>
+            <remarks>This class cannot be instantiated.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Combinatoric.FactorialLength">
+            <exclude />
+        </member>
+        <member name="M:Kaos.Combinatorics.Combinatoric.BinomialCoefficient(System.Int32,System.Int32)">
+            <summary>Returns the binomial coefficient of the supplied values.</summary>
+            <param name="n">Number of choices.</param>
+            <param name="k">Number of picks.</param>
+            <returns>The binomial coefficient of <em>n</em> choose <em>k</em>.</returns>
+            <remarks>
+            The result is equal to row <em>n</em>, column <em>k</em> of Pascal's triangle
+            with counting starting at 0.
+            </remarks>
+            <example>
+            <para>
+            The number of rows in a <see cref="T:Kaos.Combinatorics.Combination"/> table of <em>k</em> picks
+            from <em>n</em> choices is:<br />
+            <br />
+            <c>Combinatoric.BinomialCoefficient (n, k)</c>
+            </para>
+            <para>
+            The number of rows in a <see cref="T:Kaos.Combinatorics.Multicombination"/> table of <em>k</em> picks
+            from <em>n</em> choices is:<br />
+            <br />
+            <c>Combinatoric.BinomialCoefficient (k+n-1, k)</c>
+            </para>
+            <para>
+            An exception to the above formulas is the special case where the number of elements
+            is 0. While mathematics treats this result as 1 row containing the empty product,
+            this library returns 0 rows.
+            </para>
+            </example>
+            <exception cref="T:System.OverflowException">When the numbers are just too big.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Combinatoric.Factorial(System.Int32)">
+            <summary>Returns the factorial of the supplied value.</summary>
+            <param name="value">Non-negative integer.</param>
+            <returns>
+            For increasing <em>value</em> starting at 0, returns
+            1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 
+            479001600, 6227020800, 87178291200, 1307674368000, 20922789888000,
+            355687428096000, 6402373705728000, 121645100408832000, 2432902008176640000.
+            </returns>
+            <example>
+            <para>
+            The number of rows in a <see cref="T:Kaos.Combinatorics.Permutation"/> table of <em>n</em> choices is:<br />
+            <br />
+            <c>Combinatoric.Factorial (n)</c><br />
+            <br />
+            The number of rows in a <see cref="T:Kaos.Combinatorics.Permutation"/> table of <em>k</em> picks
+            from <em>n</em> choices is:<br />
+            <br />
+            <c>Combinatoric.Factorial (n) / Combinatoric.Factorial (n-k)</c>
+            </para>
+            <para>
+            An exception to the above formulas is the special case where the number of elements
+            in the permutation is 0. While mathematics treats this result as 1 row containing the
+            empty product, this library returns 0 rows.
+            </para>
+            </example>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>value</em> not in range (0..20).</exception>
+        </member>
+        <member name="T:Kaos.Combinatorics.Multicombination">
+             <summary>
+             Represents an ascending sequence of repeating picks from a supplied range.
+             </summary>
+             <remarks>
+             <para>
+             The defining variables of a multicombination
+             are <em>n</em> which is the number of possible choices
+             and <em>k</em> which is the number of repeatable picks from those choices.
+             When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-multicombination
+             also known as a <em>k</em>-combination with repetition.
+             Multicombinations are contrasted to combinations where the values in the sequence do not repeat.
+             </para>
+             <para>
+             The <see cref="T:Kaos.Combinatorics.Multicombination"/> class produces <em>k</em>-multicombinations with
+             ascending elements that may repeat as many as <em>k</em> times. 
+             While sequence order of the elements is not a general requirement of multicombinations,
+             producing an ascending sequence allows ranking the rows into an ordered table.
+             </para>
+             <para>
+             Use the <see cref="P:Kaos.Combinatorics.Multicombination.Picks"/> property to get the number of elements (<em>k</em>)
+             of a <see cref="T:Kaos.Combinatorics.Multicombination"/> taken from a possible number of
+             <see cref="P:Kaos.Combinatorics.Multicombination.Choices"/> (<em>n</em>).
+             Use the <see cref="P:Kaos.Combinatorics.Multicombination.RowCount"/> property to get the number of distinct possible
+             <see cref="T:Kaos.Combinatorics.Multicombination"/> sequences.
+             
+             Use the <see cref="P:Kaos.Combinatorics.Multicombination.Item(System.Int32)">indexer</see>
+             to get a specified element of the sequence.
+            
+             Use the <see cref="M:Kaos.Combinatorics.Multicombination.GetEnumerator">default enumerator</see> to iterate thru
+             the elements of a <see cref="T:Kaos.Combinatorics.Multicombination"/>.
+             
+             Use the <see cref="M:Kaos.Combinatorics.Multicombination.Permute``1(Kaos.Combinatorics.Multicombination,System.Collections.Generic.IList{``0})">Permute</see> method to pick objects from a supplied array
+             of choices based on the current sequence.
+             </para>
+             <para>
+             Use the <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/> property to get or set the row index in a lexicographically
+             ordered <see cref="T:Kaos.Combinatorics.Multicombination"/> table of all possible non-descending sequences.
+             
+             Use <see cref="M:Kaos.Combinatorics.Multicombination.GetRows"/> to iterate thru all possible sequences of the
+             <see cref="T:Kaos.Combinatorics.Multicombination"/> ordered by <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/>.
+             
+             Use <see cref="M:Kaos.Combinatorics.Multicombination.GetRowsForPicks(System.Int32,System.Int32)">GetRowsForPicks (startPick, stopPick)</see> to iterate
+             thru every table of all picks in the range (<em>startPick</em>..<em>stopPick</em>).
+             </para>
+             <para>
+             The default appearance of a <see cref="T:Kaos.Combinatorics.Multicombination"/> row is a list of
+             integers (starting at 0) enclosed in braces. The appearance may be tailored 3 ways:
+             <ul>
+               <li>
+                 Map each element to a different value using the
+                 <see cref="M:Kaos.Combinatorics.Multicombination.GetEnumerator">default enumerator</see> or the
+                 <see cref="P:Kaos.Combinatorics.Multicombination.Item(System.Int32)">indexer</see>.
+               </li>
+               <li>
+                 Use the <see cref="M:Kaos.Combinatorics.Multicombination.Permute``1(Kaos.Combinatorics.Multicombination,System.Collections.Generic.IList{``0})">Permute</see> method and output the rearranged values.
+               </li>
+               <li>
+                 Define a subclass of <see cref="T:Kaos.Combinatorics.Multicombination"/> and override
+                 <see cref="M:System.Object.ToString">ToString()</see>.
+                 (See the <see cref="M:Kaos.Combinatorics.Multicombination.GetRowsForPicks(System.Int32,System.Int32)">GetRowsForPicks</see> method
+                 for an example.)
+               </li>
+             </ul>
+             </para>
+             <para>
+             For more information about <em>k</em>-multicombinations, see:
+             </para>
+             <para>
+             <em>https://en.wikipedia.org/wiki/Combination#Number_of_combinations_with_repetition</em>
+             </para>
+             </remarks>
+             <example>
+             <para>
+             Iterating thru <c>new Multicombination (4, 3).GetRows()</c> produces:
+             </para>
+             <para>
+             <c>{ 0, 0, 0 }</c><br/>
+             <c>{ 0, 0, 1 }</c><br/>
+             <c>{ 0, 0, 2 }</c><br/>
+             <c>{ 0, 0, 3 }</c><br/>
+             <c>{ 0, 1, 1 }</c><br/>
+             <c>{ 0, 1, 2 }</c><br/>
+             <c>{ 0, 1, 3 }</c><br/>
+             <c>{ 0, 2, 2 }</c><br/>
+             <c>{ 0, 2, 3 }</c><br/>
+             <c>{ 0, 3, 3 }</c><br/>
+             <c>{ 1, 1, 1 }</c><br/>
+             <c>{ 1, 1, 2 }</c><br/>
+             <c>{ 1, 1, 3 }</c><br/>
+             <c>{ 1, 2, 2 }</c><br/>
+             <c>{ 1, 2, 3 }</c><br/>
+             <c>{ 1, 3, 3 }</c><br/>
+             <c>{ 2, 2, 2 }</c><br/>
+             <c>{ 2, 2, 3 }</c><br/>
+             <c>{ 2, 3, 3 }</c><br/>
+             <c>{ 3, 3, 3 }</c>
+             </para>
+             </example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor">
+            <summary>Initializes an empty multicombination instance.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor(Kaos.Combinatorics.Multicombination)">
+            <summary>Initializes a new instance that is copied from the supplied multicombination.</summary>
+            <param name="source">Instance to copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor(System.Int32)">
+            <summary>Initializes a new multicombination of <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/> 0 with the supplied number of elements.</summary>
+            <param name="choices">Number of elements in the sequence.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>choices</em> less than 0.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new multicombination of <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/> 0
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+            </remarks>
+            <example><code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When negative value supplied; when <em>choices</em> is 0 and <em>picks</em> is not 0.</exception>
+            <exception cref="T:System.OverflowException">When the numbers are just too big.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor(System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Initializes a new multicombination of the supplied <em>rank</em>
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <remarks>
+            <para>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+            </para>
+            <para>
+            If the supplied <em>rank</em> is out of the range (0..<see cref="P:Kaos.Combinatorics.Multicombination.RowCount"/>-1),
+            it will be normalized to the valid range.
+            For example, a value of -1 will produce the last row in the ordered table.
+            </para>
+            </remarks>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <param name="rank">Row index in the ordered <see cref="T:Kaos.Combinatorics.Multicombination"/> table.</param>
+            <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When negative value supplied; when <em>choices</em> is 0 and <em>picks</em> is not 0.</exception>
+            <exception cref="T:System.OverflowException">When too many <em>choices</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.#ctor(System.Int32,System.Int32[])">
+            <summary>
+            Initializes a new multicombination from elements supplied in <em>source</em> picked
+            from the supplied number of <em>choices</em>.
+            </summary>
+            <param name="choices">Number of values to pick from.</param>
+            <param name="source">Array of integers.</param>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+            will instantiate a <em>k</em>-multicombination also known as a <em>k</em>-combination with repetition.
+            </remarks>
+            <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>source</em> contains invalid data; when <em>choices</em> is 0 and <em>source</em> is not empty.</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Multicombination.Item(System.Int32)">
+            <summary>Get a element of the <see cref="T:Kaos.Combinatorics.Multicombination"/> at the supplied column.</summary>
+            <param name="index">Zero-based index value.</param>
+            <returns>Sequence value at <em>index</em>.</returns>
+            <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="P:Kaos.Combinatorics.Multicombination.Picks"/>-1).</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Multicombination.Choices">
+            <summary>The available number of integers to choose from.</summary>
+            <remarks>Also known as <em>n</em>.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Multicombination.Picks">
+            <summary>Number of elements in the <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <remarks>Also known as <em>k</em>.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Multicombination.Rank">
+            <summary>Row index in the ordered <see cref="T:Kaos.Combinatorics.Multicombination"/> table.</summary>
+            <remarks>Any assigned value out of range will be normalized to (0..<see cref="P:Kaos.Combinatorics.Multicombination.RowCount"/>-1).</remarks>
+            <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="P:Kaos.Combinatorics.Multicombination.RowCount">
+            <summary>Count of distinct sequences in the <see cref="T:Kaos.Combinatorics.Multicombination"/> table.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.CompareTo(System.Object)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Multicombination"/>s.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.CompareTo(Kaos.Combinatorics.Multicombination)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Multicombination"/>s.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.CopyTo(System.Int32[])">
+            <summary>Copy the entire sequence to the supplied destination.</summary>
+            <param name="array">Destination of copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When not enough space in <em>array</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.Equals(System.Object)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Multicombination"/>s have the same value.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.Equals(Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Multicombination"/>s have the same value.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Get an object-based enumerator of the elements.</summary>
+            <returns>Object-based elemental enumerator.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.GetEnumerator">
+            <summary>Enumerate all elements of a <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for this <see cref="T:Kaos.Combinatorics.Multicombination"/>.</returns>
+            <example><code source="..\Examples\Multicombination\McExample05\McExample05.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.GetHashCode">
+            <summary>Get the hash oode of the <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.GetRows">
+            <summary>
+            Iterate thru all rows of the <see cref="T:Kaos.Combinatorics.Multicombination"/> table for every value of <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/> ascending.
+            </summary>
+            <returns>An iterator for a <see cref="T:Kaos.Combinatorics.Multicombination"/> table.</returns>
+            <remarks>
+            If the start row is not of <see cref="P:Kaos.Combinatorics.Multicombination.Rank"/> 0, the iteration will wrap around
+            so that <see cref="P:Kaos.Combinatorics.Multicombination.RowCount"/> items are always produced.
+            </remarks>
+            <example><code source="..\Examples\Multicombination\McExample01\McExample01.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.GetRowsForPicks(System.Int32,System.Int32)">
+            <summary>
+            Iterate thru all rows of all <see cref="T:Kaos.Combinatorics.Multicombination"/> tables for every pick
+            in the range (<em>startPicks</em>..<em>stopPicks</em>).
+            </summary>
+            <returns>An iterator for a series of <see cref="T:Kaos.Combinatorics.Multicombination"/> tables.</returns>
+            <remarks>Unlike <see cref="T:Kaos.Combinatorics.Combination"/>, <see cref="P:Kaos.Combinatorics.Multicombination.Picks"/> may exceed <see cref="P:Kaos.Combinatorics.Multicombination.Choices"/>.</remarks>
+            <param name="startPicks">Number of picks for first table.</param>
+            <param name="stopPicks">Number of picks for last table.</param>
+            <example><code source="..\Examples\Multicombination\McExample02\McExample02.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>startPicks</em> less than 0 or greater than <em>stopPicks</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.ToString">
+            <summary>Provide a readable form of the <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</summary>
+            <returns>A <c>string</c> that represents the sequence.</returns>
+            <remarks>Result is enclosed in braces and separated by commas.</remarks>
+            <example><code source="..\Examples\Multicombination\McExample04\McExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.Permute``1(Kaos.Combinatorics.Multicombination,System.Collections.Generic.IList{``0})">
+            <summary>Apply a <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence to rearrange the supplied list or array.</summary>
+            <typeparam name="T">Type of items to rearrange.</typeparam>
+            <param name="arrangement">New arrangement for items.</param>
+            <param name="source">List of items to rearrange.</param>
+            <returns>List of rearranged items.</returns>
+            <example><code source="..\Examples\Multicombination\McExample03\McExample03.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When length of <em>source</em> is less than arrangement.<see cref="P:Kaos.Combinatorics.Multicombination.Choices"/>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_Equality(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Multicombination"/>s are equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_Inequality(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Multicombination"/>s are not equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are not equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_LessThan(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Multicombination"/> is less than
+            the right <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_GreaterThanOrEqual(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Multicombination"/> is greater than
+            or equal to the right <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than or equal to
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_GreaterThan(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Multicombination"/> is greater than
+            the right <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Multicombination.op_LessThanOrEqual(Kaos.Combinatorics.Multicombination,Kaos.Combinatorics.Multicombination)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Multicombination"/> is less than
+            or equal to the right <see cref="T:Kaos.Combinatorics.Multicombination"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Multicombination"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than or equal to
+            the right sequence; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="T:Kaos.Combinatorics.Permutation">
+            <summary>
+            Represents a specific arrangement of distinct picks from a supplied range.
+            </summary>
+            <remarks>
+            <para>
+            The defining variables of a permutation
+            are <em>n</em> which is the number of possible choices
+            and <em>k</em> which is the number of distinct picks from those choices.
+            When <em>k</em> is less than <em>n</em>, this is a <em>k</em>-permutation
+            also known as a variation.
+            Permutations are contrasted to combinations where the arrangement is generally not significant (except for ranking).
+            </para>
+            <para>
+            The <see cref="T:Kaos.Combinatorics.Permutation"/> class uses the inherent sequencing of the elements
+            to arrange the rows into an lexicographically ordered table.
+            
+            Support for <em>k</em>-permutations is provided by supplying a <em>picks</em> value
+            that is less than the supplied <em>choices</em> value to the appropriate constructors.
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.Choices"/> property to get the number of elements to choose from.
+            
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.Picks"/> property to get the number of elements of a
+            <see cref="T:Kaos.Combinatorics.Permutation"/>.
+            
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.RowCount"/> property to get the number of distinct possible
+            sequences of a <see cref="T:Kaos.Combinatorics.Permutation"/>.
+            
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.Item(System.Int32)">indexer</see>
+            to get a specified element of the sequence.
+            
+            Use the <see cref="M:Kaos.Combinatorics.Permutation.GetEnumerator">default enumerator</see> to iterate thru
+            the elements of a <see cref="T:Kaos.Combinatorics.Permutation"/>.
+            
+            Use the <see cref="M:Kaos.Combinatorics.Permutation.Permute``1(Kaos.Combinatorics.Permutation,System.Collections.Generic.IList{``0})">Permute</see> method to
+            rearrange a supplied array based on the current sequence.
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> property to get or set the row index in a lexicographically
+            ordered <see cref="T:Kaos.Combinatorics.Permutation"/> table of all possible sequences.
+            
+            Use <see cref="M:Kaos.Combinatorics.Permutation.GetRows"/> to iterate thru all possible sequences
+            of the <see cref="T:Kaos.Combinatorics.Permutation"/> ordered by <see cref="P:Kaos.Combinatorics.Permutation.Rank"/>.
+            
+            Use <see cref="M:Kaos.Combinatorics.Permutation.GetRowsForAllChoices"/> to iterate
+            thru every table of all choices in the range (1..<see cref="P:Kaos.Combinatorics.Permutation.Choices"/>).
+            
+            Use <see cref="M:Kaos.Combinatorics.Permutation.GetRowsForAllPicks"/> to iterate
+            thru every table of all picks in the range (1..<see cref="P:Kaos.Combinatorics.Permutation.Picks"/>).
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.PlainRank"/> property to get or set the row index in a table
+            ordered for plain changes where adjacent rows differ by only a single swap of
+            2 adjacent elements.
+            
+            Use <see cref="M:Kaos.Combinatorics.Permutation.GetRowsOfPlainChanges"/> to iterate thru all possible sequences
+            of a <see cref="T:Kaos.Combinatorics.Permutation"/> ordered by <see cref="P:Kaos.Combinatorics.Permutation.PlainRank"/>.
+            </para>
+            <para>
+            Use the <see cref="P:Kaos.Combinatorics.Permutation.Swaps"/> property to get the number of element swaps that would
+            transform a row into the sequence of <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0.
+            
+            Use the <see cref="M:Kaos.Combinatorics.Permutation.Backtrack(System.Int32)">Backtrack</see> method to minimally advance
+            <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> while changing a specified element.
+            </para>
+            <para>
+            The default appearance of a <see cref="T:Kaos.Combinatorics.Permutation"/> row is a list of integers
+            (starting at 0) enclosed in braces. The appearance may be tailored 3 ways:
+            <ul>
+              <li>
+                Map each element to a different value using the
+                <see cref="M:Kaos.Combinatorics.Permutation.GetEnumerator">default enumerator</see> or the
+                <see cref="P:Kaos.Combinatorics.Permutation.Item(System.Int32)">indexer</see>.
+              </li>
+              <li>
+                Use the <see cref="M:Kaos.Combinatorics.Permutation.Permute``1(Kaos.Combinatorics.Permutation,System.Collections.Generic.IList{``0})">Permute</see> method and output the rearranged values.
+              </li>
+              <li>
+                Define a subclass of <see cref="T:Kaos.Combinatorics.Permutation"/> and override
+                <see cref="M:System.Object.ToString">ToString()</see>.
+                (See <see cref="M:Kaos.Combinatorics.Permutation.GetRowsForAllPicks"/> for an example.)
+              </li>
+            </ul>
+            </para>
+            <para>
+            For more information about permutations and <em>k</em>-permutations, see:
+            </para>
+            <para>
+            <em>https://en.wikipedia.org/wiki/Permutation</em><br/>
+            <em>https://en.wikipedia.org/wiki/Eight_queens_puzzle</em>
+            </para>
+            </remarks>
+            <example>
+            <para>
+            Iterating thru <c>new Permutation (4).GetRows()</c> produces:
+            </para>
+            <para>
+            <c>{ 0, 1, 2, 3 }</c><br/>
+            <c>{ 0, 1, 3, 2 }</c><br/>
+            <c>{ 0, 2, 1, 3 }</c><br/>
+            <c>{ 0, 2, 3, 1 }</c><br/>
+            <c>{ 0, 3, 1, 2 }</c><br/>
+            <c>{ 0, 3, 2, 1 }</c><br/>
+            <c>{ 1, 0, 2, 3 }</c><br/>
+            <c>{ 1, 0, 3, 2 }</c><br/>
+            <c>{ 1, 2, 0, 3 }</c><br/>
+            <c>{ 1, 2, 3, 0 }</c><br/>
+            <c>{ 1, 3, 0, 2 }</c><br/>
+            <c>{ 1, 3, 2, 0 }</c><br/>
+            <c>{ 2, 0, 1, 3 }</c><br/>
+            <c>{ 2, 0, 3, 1 }</c><br/>
+            <c>{ 2, 1, 0, 3 }</c><br/>
+            <c>{ 2, 1, 3, 0 }</c><br/>
+            <c>{ 2, 3, 0, 1 }</c><br/>
+            <c>{ 2, 3, 1, 0 }</c><br/>
+            <c>{ 3, 0, 1, 2 }</c><br/>
+            <c>{ 3, 0, 2, 1 }</c><br/>
+            <c>{ 3, 1, 0, 2 }</c><br/>
+            <c>{ 3, 1, 2, 0 }</c><br/>
+            <c>{ 3, 2, 0, 1 }</c><br/>
+            <c>{ 3, 2, 1, 0 }</c>
+            </para>
+            <para>
+            Iterating thru <c>new Permutation (4, 3).GetRows()</c> produces:
+            </para>
+            <para>
+            <c>{ 0, 1, 2 }</c><br/>
+            <c>{ 0, 1, 3 }</c><br/>
+            <c>{ 0, 2, 1 }</c><br/>
+            <c>{ 0, 2, 3 }</c><br/>
+            <c>{ 0, 3, 1 }</c><br/>
+            <c>{ 0, 3, 2 }</c><br/>
+            <c>{ 1, 0, 2 }</c><br/>
+            <c>{ 1, 0, 3 }</c><br/>
+            <c>{ 1, 2, 0 }</c><br/>
+            <c>{ 1, 2, 3 }</c><br/>
+            <c>{ 1, 3, 0 }</c><br/>
+            <c>{ 1, 3, 2 }</c><br/>
+            <c>{ 2, 0, 1 }</c><br/>
+            <c>{ 2, 0, 3 }</c><br/>
+            <c>{ 2, 1, 0 }</c><br/>
+            <c>{ 2, 1, 3 }</c><br/>
+            <c>{ 2, 3, 0 }</c><br/>
+            <c>{ 2, 3, 1 }</c><br/>
+            <c>{ 3, 0, 1 }</c><br/>
+            <c>{ 3, 0, 2 }</c><br/>
+            <c>{ 3, 1, 0 }</c><br/>
+            <c>{ 3, 1, 2 }</c><br/>
+            <c>{ 3, 2, 0 }</c><br/>
+            <c>{ 3, 2, 1 }</c>
+            </para>
+            <para>
+            Iterating thru <c>new Permutation (4).GetRowsOfPlainChanges()</c> produces:
+            </para>
+            <para>
+            <c>{ 0, 1, 2, 3 }</c><br/>
+            <c>{ 0, 1, 3, 2 }</c><br/>
+            <c>{ 0, 3, 1, 2 }</c><br/>
+            <c>{ 3, 0, 1, 2 }</c><br/>
+            <c>{ 3, 0, 2, 1 }</c><br/>
+            <c>{ 0, 3, 2, 1 }</c><br/>
+            <c>{ 0, 2, 3, 1 }</c><br/>
+            <c>{ 0, 2, 1, 3 }</c><br/>
+            <c>{ 2, 0, 1, 3 }</c><br/>
+            <c>{ 2, 0, 3, 1 }</c><br/>
+            <c>{ 2, 3, 0, 1 }</c><br/>
+            <c>{ 3, 2, 0, 1 }</c><br/>
+            <c>{ 3, 2, 1, 0 }</c><br/>
+            <c>{ 2, 3, 1, 0 }</c><br/>
+            <c>{ 2, 1, 3, 0 }</c><br/>
+            <c>{ 2, 1, 0, 3 }</c><br/>
+            <c>{ 1, 2, 0, 3 }</c><br/>
+            <c>{ 1, 2, 3, 0 }</c><br/>
+            <c>{ 1, 3, 2, 0 }</c><br/>
+            <c>{ 3, 1, 2, 0 }</c><br/>
+            <c>{ 3, 1, 0, 2 }</c><br/>
+            <c>{ 1, 3, 0, 2 }</c><br/>
+            <c>{ 1, 0, 3, 2 }</c><br/>
+            <c>{ 1, 0, 2, 3 }</c>
+            </para>
+            </example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor">
+            <summary>Initializes an empty permutation instance.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(Kaos.Combinatorics.Permutation)">
+            <summary>Initializes a new instance that is copied from the supplied permutation.</summary>
+            <param name="source">Instance to copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(System.Int32)">
+            <summary>Initializes a new permutation of <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0 with the supplied number of elements.</summary>
+            <param name="choices">Number of elements in the sequence.</param>
+            <example><code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>choices</em> is less than 0 or greater than 20.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new permutation of <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <param name="choices">Number of values to choose from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-permutation also known as a variation.
+            </remarks>
+            <example><code source="..\Examples\Permutation\PnExample06\PnExample06.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When <em>picks</em> less than 0 or greater than <em>choices</em>;
+            when <em>choices</em> greater than 20.
+            </exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Initializes a new permutation of the supplied <em>rank</em>
+            with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
+            </summary>
+            <remarks>
+            <para>
+            Supplying a value for <em>choices</em> that is greater than <em>picks</em>
+            will instantiate a <em>k</em>-permutation also known as a variation.
+            </para>
+            <para>
+            If <em>rank</em> is out of the range (0..<see cref="P:Kaos.Combinatorics.Permutation.RowCount"/>-1),
+            it will be normalized to the valid range.
+            For example, a value of -1 will produce the last row in the ordered table.
+            </para>
+            </remarks>
+            <param name="choices">Number of values to choose from.</param>
+            <param name="picks">Number of elements in the sequence.</param>
+            <param name="rank">Row index in the ordered <see cref="T:Kaos.Combinatorics.Permutation"/> table.</param>
+            <example>
+            This is an example of a <em>k</em>-permutation.
+            <code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/>
+            </example>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When <em>picks</em> less than 0 or greater than <em>choices</em>;
+            when <em>choices</em> greater than 20.
+            </exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(System.Int32[])">
+            <summary>Initializes a new permutation from the elements supplied in <em>source</em>.</summary>
+            <param name="source">Array of integers.</param>
+            <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When length of <em>source</em> is greater than 20 or contains invalid data;
+            When <em>source</em> contains out of range values.
+            </exception>
+            <exception cref="T:System.ArgumentException">When <em>source</em> contains repeated values.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.#ctor(System.Int32[],System.Int32)">
+            <summary>
+            Initializes a new permutation from the elements supplied in <em>source</em> picked
+            from the supplied number of <em>choices</em>.
+            </summary>
+            <remarks>
+            Supplying a value for <em>choices</em> that is greater than the number of elements in <em>source</em>
+            will instantiate a <em>k</em>-permutation.
+            </remarks>
+            <param name="source">Array of integers with elements in the range (0..<em>choices</em>-1).</param>
+            <param name="choices">Number of values that <em>source</em> may pick from.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When length of <em>source</em> is greater than 20 or contains invalid data;
+            When <em>source</em> contains out of range values;
+            When <em>choices</em> is less than 0 or greater than 20.
+            </exception>
+            <exception cref="T:System.ArgumentException">When <em>source</em> contains repeated values.</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.Item(System.Int32)">
+            <summary>Get an element of the <see cref="T:Kaos.Combinatorics.Permutation"/> at the supplied column.</summary>
+            <param name="index">Index value.</param>
+            <returns>Sequence value at <em>index</em>.</returns>
+            <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="P:Kaos.Combinatorics.Permutation.Picks"/>-1).</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.Choices">
+            <summary>Number of available choices for the elements of the <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <remarks>
+            If no <em>picks</em> value was specified when constructing this
+            <see cref="T:Kaos.Combinatorics.Permutation"/>, then this is also the number of elements.
+            </remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.Picks">
+            <summary>Number of elements in the <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <remarks>Also known as <em>k</em>. If value is less than <em>Choices</em>, this is a <em>k</em>-permutation.</remarks>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.PlainRank">
+            <summary>Row index of the sequence in the plain ordered <see cref="T:Kaos.Combinatorics.Permutation"/> table.</summary>
+            <remarks>
+            <para>
+            Plain changes produces a table where adjacent rows differ by only a single swap of
+            2 adjacent elements. The table always begins with the same row that begins the
+            lexicographically ordered table of the same <see cref="P:Kaos.Combinatorics.Permutation.Choices"/>.
+            </para>
+            <para>
+            Any assigned value out of range will be normalized to (0..<see cref="P:Kaos.Combinatorics.Permutation.RowCount"/>-1).
+            </para>
+            </remarks>
+            <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
+            <exception cref="T:System.InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
+            <seealso cref="M:Kaos.Combinatorics.Permutation.GetRowsOfPlainChanges"/>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.Rank">
+            <summary>Row index of the sequence in the lexicographically ordered <see cref="T:Kaos.Combinatorics.Permutation"/> table.</summary>
+            <remarks>Any assigned value out of range will be normalized to (0..<see cref="P:Kaos.Combinatorics.Permutation.RowCount"/>-1).</remarks>
+            <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.RowCount">
+            <summary>Returns number of distinct possible arrangements of this <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.Swaps">
+            <summary>
+            Returns number of element swaps needed to transform this <see cref="T:Kaos.Combinatorics.Permutation"/> into <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0.
+            </summary>
+            <remarks>
+            <para>
+            If additional swaps are applied resulting again in a row of <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0,
+            those additional swaps will always be a multiple of 2.
+            </para>
+            <para>
+            Any <see cref="T:Kaos.Combinatorics.Permutation"/> with a <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> of 0 always has a
+            <see cref="P:Kaos.Combinatorics.Permutation.PlainRank"/> of 0.
+            </para>
+            </remarks>
+            <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.Backtrack(System.Int32)">
+            <summary>Advance <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> a minimum while changing element at <em>nodeIndex</em>.</summary>
+            <returns>Lowest index of actual changed element if successful; else <b>-1</b>.</returns>
+            <remarks>
+            This method provides support for backtracking algorithms by pruning permutations that
+            cannot be completed to a solution.
+            </remarks>
+            <param name="nodeIndex">Element to change.</param>
+            <example><code source="..\Examples\Queens\PnBacktrack\PnBacktrack.cs" lang="cs"/></example>
+            <exception cref="T:System.InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When <em>nodeIndex</em> not in range (0..<see cref="P:Kaos.Combinatorics.Permutation.Picks"/>-1).</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.CompareTo(System.Object)">
+            <summary>Compare 2 <see cref="T:Kaos.Combinatorics.Permutation"/>s.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.CompareTo(Kaos.Combinatorics.Permutation)">
+            <summary>Compare 2 <see cref="T:Kaos.Combinatorics.Permutation"/>s.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.CopyTo(System.Int32[])">
+            <summary>Copy the entire sequence to the supplied destination.</summary>
+            <param name="array">Destination of copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When not enough space in <em>array</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.Equals(System.Object)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Permutation"/>s have the same value.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.Equals(Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Permutation"/>s have the same value.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns><b>true</b> if <em>other</em> has the same value as this instance; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Get an object-based enumerator of the elements.</summary>
+            <returns>Object-based elemental enumerator.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetEnumerator">
+            <summary>Enumerate all elements of a <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for this <see cref="T:Kaos.Combinatorics.Permutation"/>.</returns>
+            <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetHashCode">
+            <summary>Get the hash oode of the <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetRows">
+            <summary>Iterate thru all rows of the <see cref="T:Kaos.Combinatorics.Permutation"/> table for every <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> ascending.</summary>
+            <returns>An iterator for a <see cref="T:Kaos.Combinatorics.Permutation"/> table.</returns>
+            <remarks>
+            If the start row is not <see cref="P:Kaos.Combinatorics.Permutation.Rank"/> 0, the iteration will wrap around
+            so that <see cref="P:Kaos.Combinatorics.Permutation.RowCount"/> items are always produced.
+            </remarks>
+            <example><code source="..\Examples\Permutation\PnExample01\PnExample01.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetRowsForAllChoices">
+            <summary>
+            Iterate thru all rows of all <see cref="T:Kaos.Combinatorics.Permutation"/> tables for every
+            <see cref="P:Kaos.Combinatorics.Permutation.Choices"/> value in the range (1..<see cref="P:Kaos.Combinatorics.Permutation.Choices"/>).
+            </summary>
+            <returns>An iterator for a series of <see cref="T:Kaos.Combinatorics.Permutation"/> tables.</returns>
+            <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetRowsForAllPicks">
+            <summary>
+            Iterate thru all rows of all <see cref="T:Kaos.Combinatorics.Permutation"/> tables for every
+            <see cref="P:Kaos.Combinatorics.Permutation.Picks"/> value in the range (1..<see cref="P:Kaos.Combinatorics.Permutation.Picks"/>).
+            </summary>
+            <returns>An iterator for a series of <see cref="T:Kaos.Combinatorics.Permutation"/> tables.</returns>
+            <example><code source="..\Examples\Permutation\PnExample02\PnExample02.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.GetRowsOfPlainChanges">
+            <summary>
+            Iterate thru all rows of the <see cref="T:Kaos.Combinatorics.Permutation"/> table
+            while swapping only two values in each result.
+            </summary>
+            <returns>An iterator for a <see cref="T:Kaos.Combinatorics.Permutation"/> table.</returns>
+            <remarks>
+            <para>
+            The results of this iterator are commonly known as "plain changes".
+            </para>
+            <para>
+            Usage note:
+            <ul>
+              <li>
+                Using this iterator will not perform as fast as using a class that is
+                designed and optimized for generating plain changes without the overhead
+                of calculating the lexicographical rank for each row.
+              </li>
+            </ul>
+            </para>
+            </remarks>
+            <example><code source="..\Examples\Permutation\PnExample07\PnExample07.cs" lang="cs"/></example>
+            <exception cref="T:System.InvalidOperationException">When <em>Choices</em> not equal to <em>Picks</em>.</exception>
+            <seealso cref="P:Kaos.Combinatorics.Permutation.PlainRank"/>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.ToString">
+            <summary>Provide a readable form of the <see cref="T:Kaos.Combinatorics.Permutation"/> sequence.</summary>
+            <returns>A <b>string</b> that represents the sequence.</returns>
+            <remarks>Result is enclosed in braces and separated by commas.</remarks>
+            <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.Permute``1(Kaos.Combinatorics.Permutation,System.Collections.Generic.IList{``0})">
+            <summary>Apply a <see cref="T:Kaos.Combinatorics.Permutation"/> sequence to rearrange the supplied list or array.</summary>
+            <typeparam name="T">Type of items to rearrange.</typeparam>
+            <param name="arrangement">New arrangement for items.</param>
+            <param name="source">list of items to rearrange.</param>
+            <returns>Rearranged objects.</returns>
+            <example><code source="..\Examples\Permutation\PnExample03\PnExample03.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When length of <em>source</em> is less than arrangement.<see cref="P:Kaos.Combinatorics.Permutation.Choices"/>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_Equality(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Permutation"/>s are equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if supplied <see cref="T:Kaos.Combinatorics.Permutation"/>s are equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_Inequality(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Permutation"/>s are not equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if supplied sequences are not equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_LessThan(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Permutation"/> is less than
+            the right <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if the left sequence is less than
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_GreaterThanOrEqual(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Permutation"/> is greater than
+            or equal to the right <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if the left sequence is greater than or equal to
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_GreaterThan(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Permutation"/> is greater than
+            the right <see cref="T:Kaos.Combinatorics.Permutation"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if the left sequence is greater than
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Permutation.op_LessThanOrEqual(Kaos.Combinatorics.Permutation,Kaos.Combinatorics.Permutation)">
+            <summary>Indicate whether the left permutation is less than or equal to
+            the right permutation.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Permutation"/>.</param>
+            <returns><b>true</b> if the left sequence is less than or equal to
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="P:Kaos.Combinatorics.Permutation.MaxChoices">
+            <summary>
+            Returns the maximum number of elements that may be in a <see cref="T:Kaos.Combinatorics.Permutation"/>.
+            </summary>
+            <returns>
+            The maximum number of elements that may be in any <see cref="T:Kaos.Combinatorics.Permutation"/>
+            due to Int64 computational limitations.
+            </returns>
+        </member>
+        <member name="T:Kaos.Combinatorics.Product">
+             <summary>
+             Represents a join of values taken from a supplied array of ranges.
+             </summary>
+             <remarks>
+             <para>
+             A cartesian product is a set of sets where each subset is constructed by picking
+             one element from each of a given number of sets. This process of joining elements to
+             form new sets is repeated until all possible distinct joins are made.
+             </para>
+             <para>
+             The <see cref="T:Kaos.Combinatorics.Product"/> class uses an array of integers as input where each integer
+             is the size of each of the composing sets. The joined sets are represented as rows in
+             a table where each element is a value in the range of these supplied sizes. Rows are
+             constructed by looping thru the rightmost ranges fastest so that the resulting table
+             is lexicographically ordered.
+             </para>
+             <para>
+             Use the <see cref="P:Kaos.Combinatorics.Product.Width"/> property to get the number of joined elements.
+             
+             Use the <see cref="P:Kaos.Combinatorics.Product.RowCount"/> property to get the number of distinct joins
+             in the <see cref="T:Kaos.Combinatorics.Product"/> table.
+            
+             Use the <see cref="P:Kaos.Combinatorics.Product.Item(System.Int32)">indexer</see>
+             to get an element of the row.
+             
+             Use the <see cref="M:Kaos.Combinatorics.Product.GetEnumerator">default enumerator</see> to iterate thru
+             the elements of a <see cref="T:Kaos.Combinatorics.Product"/> row.
+            
+             Use the <see cref="M:Kaos.Combinatorics.Product.Permute``1(Kaos.Combinatorics.Product,System.Collections.Generic.IList{System.Collections.Generic.IList{``0}})">Permute</see>
+             method to rearrange a supplied list based on the values in a row.
+             </para>
+             <para>
+             Use the <see cref="P:Kaos.Combinatorics.Product.Rank"/> property to get or set the row index in the ordered
+             <see cref="T:Kaos.Combinatorics.Product"/> table of joins.
+             
+             Use <see cref="M:Kaos.Combinatorics.Product.GetRows"/> to iterate thru all possible joins
+              of the<see cref="T:Kaos.Combinatorics.Product"/> ordered by <see cref="P:Kaos.Combinatorics.Product.Rank"/>.
+             </para>
+             <para>
+             The default appearance of a <see cref="T:Kaos.Combinatorics.Product"/> row is a list of integers
+             (starting at 0) enclosed in braces. The appearance may be tailored 3 ways:
+             <ul>
+               <li>
+                 Map each element to a different value using the
+                 <see cref="M:Kaos.Combinatorics.Product.GetEnumerator">default enumerator</see> or the
+                 <see cref="P:Kaos.Combinatorics.Product.Item(System.Int32)">indexer</see>.
+               </li>
+               <li>
+                 Use the <see cref="M:Kaos.Combinatorics.Product.Permute``1(Kaos.Combinatorics.Product,System.Collections.Generic.IList{System.Collections.Generic.IList{``0}})">Permute</see> method and output the rearranged values.
+               </li>
+               <li>
+                 Define a subclass of <see cref="T:Kaos.Combinatorics.Product"/> and override
+                 <see cref="M:System.Object.ToString">ToString()</see>.
+               </li>
+             </ul>
+             </para>
+             <para>
+             For more information about cartesian products, see:
+             </para>
+             <para>
+             <em>https://en.wikipedia.org/wiki/Cartesian_product</em>
+             </para>
+             </remarks>
+             <example>
+             <para>
+             Iterating thru <c>new Product (new int[] { 2, 3, 2 }).GetRows()</c> produces:
+             </para>
+             <para>
+             <c>{ 0, 0, 0 }</c><br/>
+             <c>{ 0, 0, 1 }</c><br/>
+             <c>{ 0, 1, 0 }</c><br/>
+             <c>{ 0, 1, 1 }</c><br/>
+             <c>{ 0, 2, 0 }</c><br/>
+             <c>{ 0, 2, 1 }</c><br/>
+             <c>{ 1, 0, 0 }</c><br/>
+             <c>{ 1, 0, 1 }</c><br/>
+             <c>{ 1, 1, 0 }</c><br/>
+             <c>{ 1, 1, 1 }</c><br/>
+             <c>{ 1, 2, 0 }</c><br/>
+             <c>{ 1, 2, 1 }</c>
+             </para>
+             </example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.#ctor">
+            <summary>Initializes an empty product instance.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.#ctor(Kaos.Combinatorics.Product)">
+            <summary>Initializes a new instance that is copied from the supplied product.</summary>
+            <param name="source">Instance to copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.#ctor(System.Int32[])">
+            <summary>Initializes a new product of <see cref="P:Kaos.Combinatorics.Product.Rank"/> 0 with the supplied <em>sizes</em> of columns.</summary>
+            <param name="sizes">Size of each column.</param>
+            <example><code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>sizes</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When any column size less than 0.</exception>
+            <exception cref="T:System.OverflowException">When product is too big.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.#ctor(System.Int32[],System.Int64)">
+            <summary>Initializes a new product of the supplied <em>rank</em>with the supplied <em>sizes</em> of columns.</summary>
+            <remarks>
+            If the supplied <em>rank</em> is out of the range (0..<see cref="P:Kaos.Combinatorics.Product.RowCount"/>-1),
+            it will be normalized to the valid range.
+            For example, a value of -1 will produce the last row in the ordered table.
+            </remarks>
+            <param name="sizes">Size of each column.</param>
+            <param name="rank">Row index in the ordered <see cref="T:Kaos.Combinatorics.Product"/> table.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>sizes</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When any column size less than 0.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.#ctor(System.Int32[],System.Int32[])">
+            <summary>Initializes a new product of the supplied values with the supplied <em>sizes</em> of columns.</summary>
+            <param name="sizes">Size of each column.</param>
+            <param name="source">Integer values for the columns.</param>
+            <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>sizes</em> or <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When <em>source</em> length does not match <em>sizes</em> length.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When any column size less than 0; when <em>source</em> contains invalid values.</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Product.Item(System.Int32)">
+            <summary>Get an element of the <see cref="T:Kaos.Combinatorics.Product"/> at the supplied column.</summary>
+            <param name="index">Index value.</param>
+            <returns>Sequence value at <em>index</em>.</returns>
+            <example><code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs"/></example>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>index</em> not in range (0..<see cref="P:Kaos.Combinatorics.Product.Width"/>-1).</exception>
+            <exception cref="T:System.DivideByZeroException">When <see cref="P:Kaos.Combinatorics.Product.RowCount"/> is 0.</exception>
+        </member>
+        <member name="P:Kaos.Combinatorics.Product.Rank">
+            <summary>Row index of the join in the lexicographically ordered <see cref="T:Kaos.Combinatorics.Product"/> table.</summary>
+            <remarks>Any assigned value out of range will be normalized to (0..<see cref="P:Kaos.Combinatorics.Product.RowCount"/>-1).</remarks>
+            <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="P:Kaos.Combinatorics.Product.RowCount">
+            <summary>Count of distinct joins in the <see cref="T:Kaos.Combinatorics.Product"/> table.</summary>
+        </member>
+        <member name="P:Kaos.Combinatorics.Product.Width">
+            <summary>Number of columns in the <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.CompareTo(System.Object)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Product"/>s.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.CompareTo(Kaos.Combinatorics.Product)">
+            <summary>Compare two <see cref="T:Kaos.Combinatorics.Product"/>s.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.CopyTo(System.Int32[])">
+            <summary>Copy the entire sequence to the supplied destination.</summary>
+            <param name="array">Destination of copy.</param>
+            <exception cref="T:System.ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">When not enough space in <em>array</em>.</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.Equals(System.Object)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Product"/>s have the same value.</summary>
+            <param name="obj">Target of the comparison.</param>
+            <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.Equals(Kaos.Combinatorics.Product)">
+            <summary>Indicate whether two <see cref="T:Kaos.Combinatorics.Product"/>s have the same value.</summary>
+            <param name="other">Target of the comparison.</param>
+            <returns><b>true</b> if <em>other</em> has the same value as this object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Get an object-based enumerator of the elements.</summary>
+            <returns>Object-based elemental enumerator.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.GetEnumerator">
+            <summary>Enumerate all elements of a <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerator`1"/> for this <see cref="T:Kaos.Combinatorics.Product"/>.</returns>
+            <example><code source="..\Examples\Product\PtExample05\PtExample05.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.GetHashCode">
+            <summary>Get the hash oode of the <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.GetRows">
+            <summary>Iterate thru all rows of the <see cref="T:Kaos.Combinatorics.Product"/> table for every <see cref="P:Kaos.Combinatorics.Product.Rank"/> ascending.</summary>
+            <returns>An iterator for a <see cref="T:Kaos.Combinatorics.Product"/> table.</returns>
+            <remarks>
+            If the start row is not <see cref="P:Kaos.Combinatorics.Product.Rank"/> 0, the iteration will wrap around
+            so that <see cref="P:Kaos.Combinatorics.Product.RowCount"/> items are always produced.
+            </remarks>
+            <example><code source="..\Examples\Product\PtExample01\PtExample01.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.Size(System.Int32)">
+            <summary>Get the size of a column.</summary>
+            <param name="column">Column index.</param>
+            <returns>Number of distinct values (starting at 0) that a column may take.</returns>
+            <exception cref="T:System.IndexOutOfRangeException">When <em>column</em> not in range (0..<see cref="P:Kaos.Combinatorics.Product.Width"/>-1).</exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.ToString">
+            <summary>Provide readable form of the <see cref="T:Kaos.Combinatorics.Product"/> row.</summary>
+            <returns>A <c>string</c> that represents the sequence.</returns>
+            <remarks>Result is enclosed in braces and separated by commas.</remarks>
+            <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.Permute``1(Kaos.Combinatorics.Product,System.Collections.Generic.IList{System.Collections.Generic.IList{``0}})">
+            <summary>Apply a <see cref="T:Kaos.Combinatorics.Product"/> sequence to select from the supplied lists or arrays.</summary>
+            <typeparam name="T">Type of items to rearrange.</typeparam>
+            <param name="arrangement">New arrangement for items.</param>
+            <param name="source">List of List of Items or arrays to rarrange.</param>
+            <returns>List of rearranged items.</returns>
+            <example><code source="..\Examples\Product\PtExample03\PtExample03.cs" lang="cs"/></example>
+            <exception cref="T:System.ArgumentNullException">When <em>arrangement</em> or <em>source</em> is <b>null</b>.</exception>
+            <exception cref="T:System.ArgumentException">
+            When length of <em>source</em> is less than <em>arrangement</em>.<see cref="P:Kaos.Combinatorics.Product.Width"/>;
+            when a <em>source</em> list is too small.
+            </exception>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_Equality(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Product"/>s are equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_Inequality(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether 2 <see cref="T:Kaos.Combinatorics.Product"/>s are not equal.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if supplied sequences are not equal;
+            otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_LessThan(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Product"/> is less than
+            the right <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_GreaterThanOrEqual(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Product"/> is greater than
+            or equal to the right <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than or
+            equal to the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_GreaterThan(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Product"/> is greater than
+            the right <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is greater than
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Kaos.Combinatorics.Product.op_LessThanOrEqual(Kaos.Combinatorics.Product,Kaos.Combinatorics.Product)">
+            <summary>Indicate whether the left <see cref="T:Kaos.Combinatorics.Product"/> is less than or equal to
+            the right <see cref="T:Kaos.Combinatorics.Product"/>.</summary>
+            <param name="param1">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <param name="param2">A <see cref="T:Kaos.Combinatorics.Product"/> sequence.</param>
+            <returns><b>true</b> if the left sequence is less than or equal to
+            the right sequence otherwise, <b>false</b>.</returns>
+        </member>
+    </members>
+</doc>
