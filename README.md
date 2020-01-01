@@ -36,11 +36,11 @@ https://github.com/kaosborn/KaosCombinatorics/packages/
 
 #### To install using Package Manager:
 
-**`Install-Package Kaos.Combinatorics -Version 5.0.0.12-rc.4`**
+**`Install-Package Kaos.Combinatorics -Version 6.0.0.0`**
 
 #### To install using the .NET CLI:
 
-**`dotnet add package Kaos.Combinatorics --version 5.0.0.12-rc.4`**
+**`dotnet add package Kaos.Combinatorics --version 6.0.0.0`**
 
 #### To install from local source using the Visual Studio gallery
 
@@ -58,7 +58,7 @@ the previous version 5 of this library will be installed instead of the current 
 
 1. Download the `.nuget` package from:
 
-https://github.com/kaosborn/KaosCombinatorics/releases/
+https://github.com/kaosborn/KaosCombinatorics/packages/
 
 2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
 This may require changing the file extension from `.nuget` to `.zip` to access the contents.
