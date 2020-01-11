@@ -1,5 +1,8 @@
 ![logo](Images/KaosCombinatorics-248.png)
 
+<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml">
+<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg"></a>
+
 # KaosCombinatorics
 
 KaosCombinatorics is a .NET library that provides classes
