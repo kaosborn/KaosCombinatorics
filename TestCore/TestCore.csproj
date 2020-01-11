@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Version>0.1.0.0</Version>
+
+    <Authors>Kasey O.</Authors>
+
+    <Product>KaosCombinatorics</Product>
+
+    <Description>Test suite (MSTest)</Description>
+
+    <Company>github.com/kaosborn</Company>
+
+    <RootNamespace>CombinatoricsTest</RootNamespace>
+
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+
+    <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics</RepositoryUrl>
+
+    <RepositoryType>Git</RepositoryType>
+
+    <Copyright>Copyright © 2009-2020 github.com/kaosborn</Copyright>
+
+    <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Combinatorics\Combinatorics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
