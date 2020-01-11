@@ -1,0 +1,25 @@
+name: Test
+on: push
+jobs:
+  Job1:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Initialize
+      run: |
+        mkdir BuildResults
+        mkdir BuildResults\KaosCombinatorics-Debug
+    - name: Build library
+      run: |
+        dotnet msbuild -nologo -restore -p:Configuration=Debug Combinatorics
+        copy Combinatorics\bin\Debug\*.nupkg BuildResults\KaosCombinatorics-Debug
+    - name: Build standard suite
+      run: dotnet msbuild -nologo -restore -p:Configuration=Debug TestCore
+    - name: Run standard suite
+      run: dotnet vstest TestCore\bin\Debug\netcoreapp3.1\TestCore.dll
+    - uses: actions/upload-artifact@v1
+      with:
+        name: RunnerOutput-Debug
+        path: BuildResults\KaosCombinatorics-Debug
