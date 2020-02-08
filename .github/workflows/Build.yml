@@ -1,0 +1,25 @@
+name: Build
+on: push
+jobs:
+  Job1:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Initialize
+      run: |
+        mkdir TestResults
+        dotnet tool install dotnet-reportgenerator-globaltool --global
+    - name: Build library
+      run: |
+        dotnet msbuild -nologo -restore -p:Configuration=Release Combinatorics
+        copy Combinatorics\bin\Release\*.nupkg TestResults\
+    - name: Run coverage suite
+      run: dotnet test -c Release -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=..\TestResults\lcov TestCore
+    - name: Generate coverage report
+      run: reportgenerator.exe -reports:.\TestResults\lcov.info -targetdir:.\TestResults\CoverageReport\
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Combinatorics-Build
+        path: TestResults
