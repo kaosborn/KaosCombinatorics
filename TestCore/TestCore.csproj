@@ -26,9 +26,15 @@
     <Copyright>Copyright © 2009-2020 github.com/kaosborn</Copyright>
 
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
     <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
@@ -45,6 +51,8 @@
     </None>
   </ItemGroup>
 
-  <Import Project="..\Source\KaosCombinatorics\KaosCombinatorics.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\Combinatorics\Combinatorics.csproj" />
+  </ItemGroup>
 
 </Project>
