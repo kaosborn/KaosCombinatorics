@@ -55,4 +55,6 @@
     <ProjectReference Include="..\Combinatorics\Combinatorics.csproj" />
   </ItemGroup>
 
+  <Import Project="..\KaosTestCombinatorics\KaosTestCombinatorics.projitems" Label="Shared" />
+
 </Project>

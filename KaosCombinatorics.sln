@@ -100,9 +100,12 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Install", "Install\Install.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCore", "TestCore\TestCore.csproj", "{A8AECC34-0EB1-4914-8579-ACF7B24FC395}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KaosTestCombinatorics", "KaosTestCombinatorics\KaosTestCombinatorics.shproj", "{C23BCD47-D5B6-4FFF-8E9C-16CD2BB36E68}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
+		KaosTestCombinatorics\KaosTestCombinatorics.projitems*{c23bcd47-d5b6-4fff-8e9c-16cd2bb36e68}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -292,6 +295,7 @@ Global
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{70047566-8A60-46F6-950F-079930F569B7} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
+		{C23BCD47-D5B6-4FFF-8E9C-16CD2BB36E68} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0224A9F-09EE-4562-8513-B59A2B23A404}

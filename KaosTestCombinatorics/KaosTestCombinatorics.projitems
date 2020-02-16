@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c23bcd47-d5b6-4fff-8e9c-16cd2bb36e68</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>KaosTestCombinatorics</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TestCombination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestCombinatoric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestMulticombination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestPermutation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestProduct.cs" />
+  </ItemGroup>
+</Project>
