@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kaos.Combinatorics;
 
-namespace CombinatoricsTest
+namespace Kaos.Test.Combinatorics
 {
     [TestClass]
     public class TestCombinatoric
