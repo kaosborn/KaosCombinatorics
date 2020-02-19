@@ -2,6 +2,8 @@
 
 <a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml">
 <img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg"></a>
+<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml">
+<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Build/badge.svg"></a>
 
 # KaosCombinatorics
 
@@ -28,11 +30,11 @@ This library is built as a .NET Standard project multitargeted to:
 
 * .NET Standard 1.0.
 * .NET Framework 4.0.
-* .NET Framework 3.5.
+* .NET Framework 3.5. (targeting ends with v6.0 of this library)
 
 ### Library installation
 
-Beginning with version 6, NuGet package hosting is provided GitHub Package Registry.
+Beginning with version 6, NuGet package hosting is provided by GitHub Package Registry.
 See GitHub for NuGet configuration documentation on getting packages from:
 
 https://github.com/kaosborn/KaosCombinatorics/packages/
@@ -103,8 +105,6 @@ Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
 This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
 
-* `Combinatorics450` - A .NET 4.5 build of the class library for test & development.
-
 * `Examples` - Console programs for documentation.
 
 * `Help` - [Sandcastle Help File Builder](https://github.com/EWSoftware/SHFB)
@@ -115,9 +115,9 @@ Output is a Microsoft Help v1 file with a `.chm` extension and (optionally) a st
 
 * `Install` - Builds a GAC installer.
 
-* `Source` - All source code in a shared project.
+* `Source` - All source code in shared projects.
 
-* `Test450` - MSTest unit tests and limited stress tests.
+* `TestCore` - MSTest unit tests and limited stress tests.
 Line and branch coverage is 100%.
 
 ### Build requirements
