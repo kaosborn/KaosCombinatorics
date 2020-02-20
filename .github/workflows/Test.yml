@@ -7,7 +7,15 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
-    - name: Build standard suite
-      run: dotnet msbuild -nologo -restore -p:Configuration=Debug TestCore
+    - name: Initialize
+      run: mkdir TestResults
+    - name: Build library
+      run: |
+        dotnet msbuild -nologo -restore -p:Configuration=Debug Combinatorics
+        copy Combinatorics\bin\Debug\*.nupkg TestResults\
     - name: Run standard suite
-      run: dotnet vstest TestCore\bin\Debug\netcoreapp3.1\TestCore.dll
+      run: dotnet test -c Debug TestCore
+    - uses: actions/upload-artifact@v1
+      with:
+        name: KaosCombinatorics-Test
+        path: TestResults
