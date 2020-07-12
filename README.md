@@ -26,11 +26,11 @@ or by supplying the rank to a constructor.
 Ranking is where the elements of a combinatoric are supplied as an array of integers to a constructor.
 The Rank property will then contain its position in the ordered table.
 
-This library is built as a .NET Standard project multitargeted to:
+This library is multitargeted to:
 
 * .NET Standard 1.0.
 * .NET Framework 4.0.
-* .NET Framework 3.5. (targeting ends with v6.0 of this library)
+* .NET Framework 3.5. (ends with v6.0 of this library)
 
 ### Library installation
 
@@ -47,7 +47,7 @@ https://github.com/kaosborn/KaosCombinatorics/packages/
 
 **`dotnet add package Kaos.Combinatorics --version 6.0.0.0`**
 
-#### To install from local source using the Visual Studio gallery
+#### To install from local source using Visual Studio gallery
 
 1. In Solution Explorer, Click *Manage NuGet Packages* for your project.
 2. Set *Package source* to your local nuget repository.
@@ -81,7 +81,7 @@ Do this by modifying the *Combinatorics* project properties and unchecking *Sign
 ### Documentation
 
 Installing the NuGet package will provide IntelliSense and object browser documentation via its `.xml` file.
-For complete online documentation:
+For complete documentation, see:
 
 * https://kaosborn.github.io/help/KaosCombinatorics/
 
@@ -103,7 +103,7 @@ This repository is a single Visual Studio solution with additional files in the 
 * `Combinatorics` - The target NuGet package.
 Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
-This library is multitargeted to .NET Standard 1.0, .NET 4.0 and .NET 3.5.
+This library is multitargeted to .NET Standard 1.0, .NET 4.0.
 
 * `Examples` - Console programs for documentation.
 
@@ -122,7 +122,7 @@ Line and branch coverage is 100%.
 
 ### Build requirements
 
- All links in this section are to free software.
+All links in this section are to free software.
 
 * https://github.com/kaosborn/KaosCombinatorics/ - Complete source is hosted at GitHub.
 
