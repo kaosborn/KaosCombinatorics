@@ -105,7 +105,9 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
+		KaosTestCombinatorics\KaosTestCombinatorics.projitems*{a8aecc34-0eb1-4914-8579-acf7b24fc395}*SharedItemsImports = 5
 		KaosTestCombinatorics\KaosTestCombinatorics.projitems*{c23bcd47-d5b6-4fff-8e9c-16cd2bb36e68}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{c95fe743-22df-475c-92f9-6daea6900b85}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
