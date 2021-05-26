@@ -8,14 +8,12 @@ jobs:
       with:
         fetch-depth: 1
     - name: Initialize
-      run: mkdir TestResults
-    - name: Build library
-      run: |
-        dotnet msbuild -nologo -restore -p:Configuration=Debug Combinatorics
-        copy Combinatorics\bin\Debug\*.nupkg TestResults\
+      run: dotnet tool install dotnet-reportgenerator-globaltool --global
     - name: Run standard suite
-      run: dotnet test -c Debug TestCore
+      run: dotnet test --collect:"XPlat Code Coverage" --results-directory .\TestResults TestCore
+    - name: Generate coverage report
+      run: reportgenerator.exe -reports:.\TestResults\**\coverage.cobertura.xml -reporttypes:html -targetdir:.\TestResults\CovRep
     - uses: actions/upload-artifact@v1
       with:
         name: KaosCombinatorics-Test
-        path: TestResults
+        path: .\TestResults

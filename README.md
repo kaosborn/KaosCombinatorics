@@ -1,9 +1,8 @@
 ![logo](Images/KaosCombinatorics-248.png)
 
-<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml">
-<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg"></a>
-<a href="https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml">
-<img src="https://github.com/kaosborn/KaosCombinatorics/workflows/Build/badge.svg"></a>
+[![Test](https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml)
+[![Build](https://github.com/kaosborn/KaosCombinatorics/workflows/Build/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE)
 
 # KaosCombinatorics
 
@@ -131,3 +130,7 @@ All links in this section are to free software.
 * https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects - Building the `.msi` GAC installer requires the Microsoft Visual Studio Installer Projects extension.
 
 * https://github.com/EWSoftware/SHFB/releases/ - Building `.chm` or web documentation requires Sandcastle Help File Builder.
+
+### License
+
+All work here falls under the [MIT License](/LICENSE.txt).

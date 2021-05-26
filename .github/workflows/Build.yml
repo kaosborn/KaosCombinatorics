@@ -8,18 +8,12 @@ jobs:
       with:
         fetch-depth: 1
     - name: Initialize
-      run: |
-        mkdir TestResults
-        dotnet tool install dotnet-reportgenerator-globaltool --global
+      run: mkdir RunResults
     - name: Build library
-      run: |
-        dotnet msbuild -nologo -restore -p:Configuration=Release Combinatorics
-        copy Combinatorics\bin\Release\*.nupkg TestResults\
-    - name: Run coverage suite
-      run: dotnet test -c Release -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=..\TestResults\lcov TestCore
-    - name: Generate coverage report
-      run: reportgenerator.exe -reports:.\TestResults\lcov.info -targetdir:.\TestResults\CoverageReport\
+      run: dotnet build -c Release Combinatorics
+    - name: Copy build artifacts
+        move .\Combinatorics\bin\Release\*.nupkg .\RunResults
     - uses: actions/upload-artifact@v1
       with:
         name: KaosCombinatorics-Build
-        path: TestResults
+        path: .\RunResults
