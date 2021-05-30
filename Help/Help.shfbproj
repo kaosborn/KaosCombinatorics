@@ -13,7 +13,7 @@
     <RootNamespace>Help</RootNamespace>
     <Name>Help</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
     <OutputPath>.\KaosCombinatorics-Help\</OutputPath>
     <HtmlHelpName>KaosCombinatorics</HtmlHelpName>
     <Language>en-US</Language>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;net40</TargetFrameworks>
+    <TargetFramework>netstandard1.0</TargetFramework>
     <RootNamespace>Kaos.Combinatorics</RootNamespace>
     <PackageId>Kaos.Combinatorics</PackageId>
     <Version>6.0.0.1</Version>
@@ -30,7 +30,7 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
     <PackageTags>combination combinatorics multicombination discreet math numerics permutation permute product variation backtracking</PackageTags>
     <AssemblyName>KaosCombinatorics</AssemblyName>
     <PackageIconUrl>https://raw.githubusercontent.com/kaosborn/KaosCombinatorics/master/Images/KaosCombinatorics-064.png</PackageIconUrl>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>Combinatorics.snk</AssemblyOriginatorKeyFile>
@@ -41,7 +41,7 @@ https://kaosborn.github.io/help/KaosCombinatorics/</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE.txt">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

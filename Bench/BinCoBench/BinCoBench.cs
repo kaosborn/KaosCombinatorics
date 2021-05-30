@@ -17,7 +17,7 @@ using System.Diagnostics;
 
 namespace BenchApp
 {
-    partial class BinCoBench01
+    partial class BinCoBench
     {
         public delegate long BinCoRoutine (int n, int k);
 
@@ -34,9 +34,9 @@ namespace BenchApp
             var timeB = GetExecTime (BinomialCoefficientPlanB);
             var timeC = GetExecTime (BinomialCoefficientPlanC);
 
-            Console.WriteLine ("Plan A: maxFullRow={0}, time={1}ms", maxFullRowA, timeA);
-            Console.WriteLine ("Plan B: maxFullRow={0}, time={1}ms", maxFullRowB, timeB);
-            Console.WriteLine ("Plan C: maxFullRow={0}, time={1}ms", maxFullRowC, timeC);
+            Console.WriteLine ($"Plan A: maxFullRow={maxFullRowA}, time={timeA}ms");
+            Console.WriteLine ($"Plan B: maxFullRow={maxFullRowB}, time={timeB}ms");
+            Console.WriteLine ($"Plan C: maxFullRow={maxFullRowC}, time={timeC}ms");
         }
 
 
@@ -71,7 +71,7 @@ namespace BenchApp
                 for (int n = 0; n < nMax; ++n)
                     for (int k = 0; k < n; ++k)
                     {
-                        long result = routine (n, k);
+                        long _ = routine (n, k);
                     }
 
             watch.Stop();
@@ -99,7 +99,7 @@ namespace BenchApp
 
                     if (result1 != result2)
                     {
-                        Console.WriteLine ("Conflicting values at n={0}, k={1}", n, k);
+                        Console.WriteLine ($"Conflicting values at n={n}, k={k}");
                         return false;
                     }
                 }

@@ -39,13 +39,9 @@
         </listItem>
       </list>
       <para>
-        This library is built as a .NET Standard project with multitargeting to:
+        The <codeInline>.nuget</codeInline> build of this library targets .NET Standard 1.0 providing direct support for any version of .NET Core and .NET Framework 4.5 or greater.
+        Earlier versions than .NET Framework 4.5 may use this library by directly including the source shared project.
       </para>
-      <list class="bullet">
-        <listItem><para>.NET Standard 1.0</para></listItem>
-        <listItem><para>.NET Framework 4.0</para></listItem>
-        <listItem><para>.NET Framework 3.5</para></listItem>
-      </list>
     </introduction>
     
     <section>

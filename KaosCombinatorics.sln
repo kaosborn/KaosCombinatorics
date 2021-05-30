@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queens", "Queens", "{CB353C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bench", "Bench", "{A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinCoBench01", "Bench\BinCoBench01\BinCoBench01.csproj", "{B84FFF86-0F97-4845-B09C-4704C033C48A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Combinatorics", "Combinatorics\Combinatorics.csproj", "{C95FE743-22DF-475C-92F9-6DAEA6900B85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample05", "Examples\Combination\CnExample05\CnExample05.csproj", "{A6786BB8-E92D-422C-94C7-CF64CA95C161}"
@@ -83,8 +81,6 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Help", "Help\Help.shfbproj"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFull400", "Bench\ConFull400\ConFull400.csproj", "{55E31108-49D3-49E2-935E-64FE8EEDA1A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConCore", "Bench\ConCore\ConCore.csproj", "{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{86ACCB1D-B00D-4E9C-8C90-FCDD12D1D50D}"
 	ProjectSection(SolutionItems) = preProject
 		Images\KaosCombinatorics-064.png = Images\KaosCombinatorics-064.png
@@ -102,22 +98,50 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCore", "TestCore\TestCo
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KaosTestCombinatorics", "Source\KaosTestCombinatorics\KaosTestCombinatorics.shproj", "{F332CC6B-518F-412F-8B08-13D1BAD172A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinCoBench", "Bench\BinCoBench\BinCoBench.csproj", "{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{107dde75-d993-46c5-b3a6-c7ca93bead42}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{14e11e84-c6d7-44cb-99da-9128d6d8884c}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{23c150ea-dc2b-4682-96d6-3c0807341c91}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2c14ab00-b335-4f2a-a445-31231126a81b}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2db85a13-7411-40fd-aaf3-1d2774255ada}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{38becc28-c1a7-49cd-8315-144da842e50d}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3b01fc9f-106c-4b30-9765-209d68519514}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3dc11a0e-52f3-4ec8-89f5-dbc80bf8dd68}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{476990b9-c144-49cc-b5f2-f61debb9470b}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{49edec46-7069-43a4-b260-b6e06c9aa60f}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{4d16bc9b-5593-4478-8b71-4c9b5947dfed}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{55e31108-49d3-49e2-935e-64fe8eeda1a8}*SharedItemsImports = 4
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{69ec47e5-f44e-4630-8d31-81189b21b98e}*SharedItemsImports = 5
 		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{797fc998-8d82-411c-b0f9-6d869974f406}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{7b3042b7-cbb1-493f-884f-3db34d8b3cab}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{8c826297-6da0-456c-9c66-ca6067ec8ffa}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{9f019e3d-10c2-4698-9d11-40a0aeb94ff4}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a2b64e9e-ca34-4b6a-9661-e192b6eaf7ca}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a6786bb8-e92d-422c-94c7-cf64ca95c161}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a7e2d14a-d8fd-454e-b3b1-d43b46c19d38}*SharedItemsImports = 5
 		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{a8aecc34-0eb1-4914-8579-acf7b24fc395}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{bd9d5b10-db72-450d-8334-d0abdfb5a1b6}*SharedItemsImports = 5
 		Source\KaosCombinatorics\KaosCombinatorics.projitems*{c95fe743-22df-475c-92f9-6daea6900b85}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d1a30832-0115-4ad8-986d-5d72a298f514}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d5fa2ec4-6899-4ccb-8859-d36c972ec8f6}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{ddf43cbd-cffb-4241-ae96-a414c9a45fdb}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{dfff8d7f-23dd-485b-87b9-b6e8e5f20cfb}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{e8f56af2-eb47-4ffa-ba82-80981053f201}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{efebd06e-40b0-40aa-9a30-ebf9ee8c2ea0}*SharedItemsImports = 5
 		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{f332cc6b-518f-412f-8b08-13d1bad172a8}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f850f58e-3d9d-4fd0-b559-a88d0da9b336}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f871dd46-39b1-4775-8d6f-5cf6825b43f6}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{fe76bf35-aa2a-4d42-a6ec-e88e2fedadff}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B84FFF86-0F97-4845-B09C-4704C033C48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B84FFF86-0F97-4845-B09C-4704C033C48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B84FFF86-0F97-4845-B09C-4704C033C48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B84FFF86-0F97-4845-B09C-4704C033C48A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C95FE743-22DF-475C-92F9-6DAEA6900B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C95FE743-22DF-475C-92F9-6DAEA6900B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C95FE743-22DF-475C-92F9-6DAEA6900B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -244,16 +268,16 @@ Global
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67BF1FE9-BFD8-4458-B1F8-13EC18923CA3}.Debug|Any CPU.ActiveCfg = Debug
 		{67BF1FE9-BFD8-4458-B1F8-13EC18923CA3}.Release|Any CPU.ActiveCfg = Release
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,7 +288,6 @@ Global
 		{78746592-084C-4DD4-B53A-414220933BA1} = {E7F15A7C-80B8-42CD-8609-1FAB0657BC92}
 		{3666D332-7A9C-47A6-931A-4C6A57EB1B2D} = {E7F15A7C-80B8-42CD-8609-1FAB0657BC92}
 		{CB353C04-4C0E-4A7C-97C6-6DB9C04842D4} = {E7F15A7C-80B8-42CD-8609-1FAB0657BC92}
-		{B84FFF86-0F97-4845-B09C-4704C033C48A} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{A6786BB8-E92D-422C-94C7-CF64CA95C161} = {7191C314-D333-41B0-86E5-DB7D251F84BB}
 		{3B01FC9F-106C-4B30-9765-209D68519514} = {7191C314-D333-41B0-86E5-DB7D251F84BB}
 		{7B3042B7-CBB1-493F-884F-3DB34D8B3CAB} = {7191C314-D333-41B0-86E5-DB7D251F84BB}
@@ -295,9 +318,9 @@ Global
 		{38BECC28-C1A7-49CD-8315-144DA842E50D} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{55E31108-49D3-49E2-935E-64FE8EEDA1A8} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
-		{2EDA1CF4-600E-49D3-B8BC-E6488B0135E7} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{70047566-8A60-46F6-950F-079930F569B7} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
 		{F332CC6B-518F-412F-8B08-13D1BAD172A8} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
+		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0224A9F-09EE-4562-8513-B59A2B23A404}

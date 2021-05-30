@@ -25,11 +25,8 @@ or by supplying the rank to a constructor.
 Ranking is where the elements of a combinatoric are supplied as an array of integers to a constructor.
 The Rank property will then contain its position in the ordered table.
 
-This library is multitargeted to:
-
-* .NET Standard 1.0.
-* .NET Framework 4.0.
-* .NET Framework 3.5. (ends with v6.0 of this library)
+Versions of this library prior to v6 were a multitargeted NuGet package.
+The current version targets .NET Standard 1.0 only.
 
 ### Library installation
 
@@ -46,29 +43,22 @@ https://github.com/kaosborn/KaosCombinatorics/packages/
 
 **`dotnet add package Kaos.Combinatorics --version 6.0.0.0`**
 
-#### To install from local source using Visual Studio gallery
+#### To install from local package source using Visual Studio gallery
 
 1. In Solution Explorer, Click *Manage NuGet Packages* for your project.
 2. Set *Package source* to your local nuget repository.
 3. Click *Browse* and input **Kaos.Combinatorics**.
 4. The package should appear. Click *Install*.
 
-As a multitargeted package, the appropriate binary will be installed for your project.
-
-Note that (at the time of this writing) if a *Package source* of *nuget.org* is used,
+Note: if a *Package source* of *nuget.org* is used,
 the previous version 5 of this library will be installed instead of the current version 6.
 
-#### Install using a direct reference to a `.dll` binary:
+#### Install by source code reference
 
-1. Download the `.nuget` package from:
+Rather than referencing a compiled library, the shared project source code may be referenced.
+Do this by adding a project reference to the `KaosCombinatorics.shproj` file.
 
-https://github.com/kaosborn/KaosCombinatorics/packages/
-
-2. As archives, individual binaries may be extracted from the `.nuget` package for specific platforms.
-This may require changing the file extension from `.nuget` to `.zip` to access the contents.
-A project may then reference the extracted platform-specific `.dll` directly.
-
-#### Build from source
+#### Building KaosCombinatorics from source
 
 This project may be built from source.
 There are no external dependencies.

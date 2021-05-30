@@ -43,13 +43,8 @@
     <Compile Include="ConFull400.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Combinatorics\Combinatorics.csproj">
-      <Project>{c95fe743-22df-475c-92f9-6daea6900b85}</Project>
-      <Name>Combinatorics</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <Import Project="..\..\Source\KaosCombinatorics\KaosCombinatorics.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

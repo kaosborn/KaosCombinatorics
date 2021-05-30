@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
 
 namespace BenchApp
 {
-    partial class BinCoBench01
+    partial class BinCoBench
     {
         //
         // Binomial coefficient plan A: Factorial formula with common factors cancelled

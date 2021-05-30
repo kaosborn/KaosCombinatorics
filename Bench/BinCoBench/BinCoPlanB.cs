@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BenchApp
 {
-    partial class BinCoBench01
+    partial class BinCoBench
     {
         //
         // Binomial coefficient plan B: Multiplicative formula

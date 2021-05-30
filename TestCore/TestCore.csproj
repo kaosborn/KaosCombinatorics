@@ -17,7 +17,7 @@
 
     <RootNamespace>CombinatoricsTest</RootNamespace>
 
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
 
     <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics</RepositoryUrl>
 
@@ -45,14 +45,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <ProjectReference Include="..\Combinatorics\Combinatorics.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Combinatorics\Combinatorics.csproj" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <Import Project="..\Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems" Label="Shared" />

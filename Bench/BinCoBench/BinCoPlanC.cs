@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BenchApp
 {
-    partial class BinCoBench01
+    partial class BinCoBench
     {
         //
         // Binomial coefficient plan C: Stored table with fallback to plan B
@@ -42,9 +42,7 @@ namespace BenchApp
         // Returns as many complete rows of Pascal's triangle as possible.
         static private List<long[]> BuildPascalsTriangle()
         {
-            var result = new List<long[]>();
-
-            result.Add (new long[] { 1 });
+            var result = new List<long[]> { new long[] { 1 } };
             try
             {
                 for (int n = 1; ; ++n)
