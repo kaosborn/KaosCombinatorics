@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Combination.cs
 //
-// Copyright © 2009-2020 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
@@ -134,7 +134,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-
         /// <summary>Initializes a new instance that is copied from the supplied combination.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -150,7 +149,6 @@ namespace Kaos.Combinatorics
             this.rowCount = source.RowCount;
             this.rank = source.Rank;
         }
-
 
         /// <summary>Initializes a new combination of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
@@ -168,7 +166,6 @@ namespace Kaos.Combinatorics
             this.rowCount = choices == 0 ? 0 : 1;
             this.rank = 0;
         }
-
 
         /// <summary>
         /// Initializes a new combination of <see cref="Rank"/> 0
@@ -200,7 +197,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
             CalcRowCount();
         }
-
 
         /// <summary>
         /// Initializes a new combination of the supplied <em>rank</em>
@@ -237,7 +233,6 @@ namespace Kaos.Combinatorics
             CalcRowCount();
             Rank = rank;
         }
-
 
         /// <summary>
         /// Initializes a new combination from elements supplied in <em>source</em> picked
@@ -382,7 +377,6 @@ namespace Kaos.Combinatorics
         public int CompareTo (object obj)
          => CompareTo (obj as Combination);
 
-
         /// <summary>Compare two <see cref="Combination"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
         /// <returns>A signed integer indicating the sort order of this instance to <em>other</em>.</returns>
@@ -405,7 +399,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
@@ -420,13 +413,11 @@ namespace Kaos.Combinatorics
             data.CopyTo (array, 0);
         }
 
-
         /// <summary>Indicate whether two <see cref="Combination"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
          => Equals (obj as Combination);
-
 
         /// <summary>Indicate whether two <see cref="Combination"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -434,12 +425,10 @@ namespace Kaos.Combinatorics
         public bool Equals (Combination other)
          => other is object && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
-
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
          => GetEnumerator();
-
 
         /// <summary>Enumerate all elements of a <see cref="Combination"/>.</summary>
         /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Combination"/>.</returns>
@@ -450,12 +439,10 @@ namespace Kaos.Combinatorics
                 yield return element;
         }
 
-
         /// <summary>Get the hash oode of the <see cref="Combination"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
          => unchecked ((int) Rank);
-
 
         /// <summary>Iterate thru all rows of the <see cref="Combination"/> table for every <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Combination"/> table.</returns>
@@ -475,7 +462,6 @@ namespace Kaos.Combinatorics
                         break;
                 }
         }
-
 
         /// <summary>
         /// Iterate thru all rows of all <see cref="Combination"/> tables for every pick in the range (1..<see cref="Picks"/>).
@@ -505,7 +491,6 @@ namespace Kaos.Combinatorics
             data = beginData;
             rank = beginRank;
         }
-
 
         /// <summary>Provide a readable form of the <see cref="Combination"/> sequence.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
@@ -562,7 +547,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Indicate whether 2 <see cref="Combination"/>s are equal.</summary>
         /// <param name="param1">A <see cref="Combination"/> sequence.</param>
         /// <param name="param2">A <see cref="Combination"/> sequence.</param>
@@ -571,7 +555,6 @@ namespace Kaos.Combinatorics
         public static bool operator == (Combination param1, Combination param2)
          => param1 is null ? param2 is null : param1.Equals (param2);
 
-
         /// <summary>Indicate whether 2 <see cref="Combination"/>s are not equal.</summary>
         /// <param name="param1">A <see cref="Combination"/> sequence.</param>
         /// <param name="param2">A <see cref="Combination"/> sequence.</param>
@@ -579,7 +562,6 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Combination param1, Combination param2)
          => param1 is null ? param2 is object : ! param1.Equals (param2);
-
 
         /// <summary>Indicate whether the left <see cref="Combination"/> is less than
         /// the right <see cref="Combination"/>.</summary>
@@ -590,7 +572,6 @@ namespace Kaos.Combinatorics
         public static bool operator < (Combination param1, Combination param2)
          => param1 is null ? param2 is object : param1.CompareTo (param2) < 0;
 
-
         /// <summary>Indicate whether the left <see cref="Combination"/> is greater than
         /// or equal to the right <see cref="Combination"/>.</summary>
         /// <param name="param1">A <see cref="Combination"/> sequence.</param>
@@ -600,7 +581,6 @@ namespace Kaos.Combinatorics
         public static bool operator >= (Combination param1, Combination param2)
          => param1 is null ? param2 is null : param1.CompareTo (param2) >= 0;
 
-
         /// <summary>Indicate whether the left <see cref="Combination"/> is greater than
         /// the right <see cref="Combination"/>.</summary>
         /// <param name="param1">A <see cref="Combination"/> sequence.</param>
@@ -608,8 +588,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator > (Combination param1, Combination param2)
-         => param1 is null ? false : param1.CompareTo (param2) > 0;
-
+         => ! (param1 is null) && param1.CompareTo (param2) > 0;
 
         /// <summary>Indicate whether the left <see cref="Combination"/> is less than or equal
         /// to the right <see cref="Combination"/>.</summary>
@@ -618,7 +597,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator <= (Combination param1, Combination param2)
-         => param1 is null ? true : param1.CompareTo (param2) <= 0;
+         => param1 is null || param1.CompareTo (param2) <= 0;
 
         #endregion
     }

@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Permutation.cs
 //
-// Copyright © 2009-2020 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
@@ -216,7 +216,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-
         /// <summary>Initializes a new instance that is copied from the supplied permutation.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -232,7 +231,6 @@ namespace Kaos.Combinatorics
             this.rowCount = source.RowCount;
             this.rank = source.Rank;
         }
-
 
         /// <summary>Initializes a new permutation of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
@@ -254,7 +252,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-
         /// <summary>
         /// Initializes a new permutation of <see cref="Rank"/> 0
         /// with the supplied number of <em>picks</em> from the supplied number of <em>choices</em>.
@@ -272,7 +269,6 @@ namespace Kaos.Combinatorics
         /// </exception>
         public Permutation (int choices, int picks) : this (choices, picks, 0)
         { }
-
 
         /// <summary>
         /// Initializes a new permutation of the supplied <em>rank</em>
@@ -315,7 +311,6 @@ namespace Kaos.Combinatorics
             Rank = rank;
         }
 
-
         /// <summary>Initializes a new permutation from the elements supplied in <em>source</em>.</summary>
         /// <param name="source">Array of integers.</param>
         /// <example><code source="..\Examples\Permutation\PnExample04\PnExample04.cs" lang="cs"/></example>
@@ -333,7 +328,6 @@ namespace Kaos.Combinatorics
             this.choices = source.Length;
             Construct (source);
         }
-
 
         /// <summary>
         /// Initializes a new permutation from the elements supplied in <em>source</em> picked
@@ -393,7 +387,6 @@ namespace Kaos.Combinatorics
             CalcRank();
         }
 
-
         private void CalcRowCount()
         {
             if (Picks == 0)
@@ -405,7 +398,6 @@ namespace Kaos.Combinatorics
                     rowCount /= Combinatoric.Factorial (Choices - Picks);
             }
         }
-
 
         private void CalcRank()
         {
@@ -428,7 +420,6 @@ namespace Kaos.Combinatorics
             if (toGo != 0)
                 rank /= Combinatoric.Factorial (toGo);
         }
-
 
         // On exit: returns swap count, array is garbled
         private static int CalcSwapCount (int[] array, int choices)
@@ -464,7 +455,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         private static long CalcPlainRank (int[] elements)
         {
             int n = elements.Length;
@@ -486,7 +476,6 @@ namespace Kaos.Combinatorics
 
             return pr;
         }
-
 
         // On entry: elements allocated for choices.
         // On exit: result will be in elements.
@@ -520,7 +509,6 @@ namespace Kaos.Combinatorics
             private set => data[index] = value;
         }
 
-
         /// <summary>Number of available choices for the elements of the <see cref="Permutation"/>.</summary>
         /// <remarks>
         /// If no <em>picks</em> value was specified when constructing this
@@ -528,11 +516,9 @@ namespace Kaos.Combinatorics
         /// </remarks>
         public int Choices => choices;
 
-
         /// <summary>Number of elements in the <see cref="Permutation"/>.</summary>
         /// <remarks>Also known as <em>k</em>. If value is less than <em>Choices</em>, this is a <em>k</em>-permutation.</remarks>
         public int Picks => data.Length;
-
 
         /// <summary>Row index of the sequence in the plain ordered <see cref="Permutation"/> table.</summary>
         /// <remarks>
@@ -579,7 +565,6 @@ namespace Kaos.Combinatorics
                 CalcRank();
             }
         }
-
 
         /// <summary>Row index of the sequence in the lexicographically ordered <see cref="Permutation"/> table.</summary>
         /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
@@ -633,10 +618,8 @@ namespace Kaos.Combinatorics
             }
         }
 
-
         /// <summary>Returns number of distinct possible arrangements of this <see cref="Permutation"/>.</summary>
         public long RowCount => rowCount;
-
 
         /// <summary>
         /// Returns number of element swaps needed to transform this <see cref="Permutation"/> into <see cref="Rank"/> 0.
@@ -726,13 +709,11 @@ namespace Kaos.Combinatorics
             }
         }
 
-
         /// <summary>Compare 2 <see cref="Permutation"/>s.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj)
          => CompareTo (obj as Permutation);
-
 
         /// <summary>Compare 2 <see cref="Permutation"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -757,7 +738,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
@@ -772,13 +752,11 @@ namespace Kaos.Combinatorics
             this.data.CopyTo (array, 0);
         }
 
-
         /// <summary>Indicate whether two <see cref="Permutation"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
          => Equals (obj as Permutation);
-
 
         /// <summary>Indicate whether two <see cref="Permutation"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -791,7 +769,6 @@ namespace Kaos.Combinatorics
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
          => GetEnumerator();
 
-
         /// <summary>Enumerate all elements of a <see cref="Permutation"/>.</summary>
         /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Permutation"/>.</returns>
         /// <example><code source="..\Examples\Permutation\PnExample05\PnExample05.cs" lang="cs"/></example>
@@ -801,12 +778,10 @@ namespace Kaos.Combinatorics
                 yield return element;
         }
 
-
         /// <summary>Get the hash oode of the <see cref="Permutation"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
          => unchecked ((int) Rank);
-
 
         /// <summary>Iterate thru all rows of the <see cref="Permutation"/> table for every <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Permutation"/> table.</returns>
@@ -826,7 +801,6 @@ namespace Kaos.Combinatorics
                         break;
                 }
         }
-
 
         /// <summary>
         /// Iterate thru all rows of all <see cref="Permutation"/> tables for every
@@ -860,7 +834,6 @@ namespace Kaos.Combinatorics
             rank = beginRank;
         }
 
-
         /// <summary>
         /// Iterate thru all rows of all <see cref="Permutation"/> tables for every
         /// <see cref="Picks"/> value in the range (1..<see cref="Picks"/>).
@@ -890,7 +863,6 @@ namespace Kaos.Combinatorics
             data = beginData;
             rank = beginRank;
         }
-
 
         /// <summary>
         /// Iterate thru all rows of the <see cref="Permutation"/> table
@@ -936,7 +908,6 @@ namespace Kaos.Combinatorics
                 }
             }
         }
-
 
         /// <summary>Provide a readable form of the <see cref="Permutation"/> sequence.</summary>
         /// <returns>A <b>string</b> that represents the sequence.</returns>
@@ -992,7 +963,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Indicate whether 2 <see cref="Permutation"/>s are equal.</summary>
         /// <param name="param1">A <see cref="Permutation"/>.</param>
         /// <param name="param2">A <see cref="Permutation"/>.</param>
@@ -1001,7 +971,6 @@ namespace Kaos.Combinatorics
         public static bool operator == (Permutation param1, Permutation param2)
          => param1 is null ? param2 is null : param1.Equals (param2);
 
-
         /// <summary>Indicate whether 2 <see cref="Permutation"/>s are not equal.</summary>
         /// <param name="param1">A <see cref="Permutation"/>.</param>
         /// <param name="param2">A <see cref="Permutation"/>.</param>
@@ -1009,7 +978,6 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Permutation param1, Permutation param2)
          => param1 is null ? param2 is object : ! param1.Equals (param2);
-
 
         /// <summary>Indicate whether the left <see cref="Permutation"/> is less than
         /// the right <see cref="Permutation"/>.</summary>
@@ -1020,7 +988,6 @@ namespace Kaos.Combinatorics
         public static bool operator < (Permutation param1, Permutation param2)
          => param1 is null ? param2 is object : param1.CompareTo (param2) < 0;
 
-
         /// <summary>Indicate whether the left <see cref="Permutation"/> is greater than
         /// or equal to the right <see cref="Permutation"/>.</summary>
         /// <param name="param1">A <see cref="Permutation"/>.</param>
@@ -1030,7 +997,6 @@ namespace Kaos.Combinatorics
         public static bool operator >= (Permutation param1, Permutation param2)
          => param1 is null ? param2 is null : param1.CompareTo (param2) >= 0;
 
-
         /// <summary>Indicate whether the left <see cref="Permutation"/> is greater than
         /// the right <see cref="Permutation"/>.</summary>
         /// <param name="param1">A <see cref="Permutation"/>.</param>
@@ -1038,8 +1004,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator > (Permutation param1, Permutation param2)
-         => param1 is null ? false : param1.CompareTo (param2) > 0;
-
+         => ! (param1 is null) && param1.CompareTo (param2) > 0;
 
         /// <summary>Indicate whether the left permutation is less than or equal to
         /// the right permutation.</summary>
@@ -1048,8 +1013,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator <= (Permutation param1, Permutation param2)
-         => param1 is null ? true : param1.CompareTo (param2) <= 0;
-
+         => param1 is null || param1.CompareTo (param2) <= 0;
 
         /// <summary>
         /// Returns the maximum number of elements that may be in a <see cref="Permutation"/>.

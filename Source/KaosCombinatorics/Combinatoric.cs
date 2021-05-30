@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Combinatoric.cs
 //
-// Copyright © 2009-2020 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
@@ -120,7 +120,6 @@ namespace Kaos.Combinatorics
 
             return result;
         }
-
 
         /// <summary>Returns the factorial of the supplied value.</summary>
         /// <param name="value">Non-negative integer.</param>

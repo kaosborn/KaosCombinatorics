@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Product.cs
 //
-// Copyright © 2009-2020 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
@@ -117,7 +117,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-
         /// <summary>Initializes a new instance that is copied from the supplied product.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -134,7 +133,6 @@ namespace Kaos.Combinatorics
             this.rowCount = source.RowCount;
             this.rank = source.Rank;
         }
-
 
         /// <summary>Initializes a new product of <see cref="Rank"/> 0 with the supplied <em>sizes</em> of columns.</summary>
         /// <param name="sizes">Size of each column.</param>
@@ -163,7 +161,6 @@ namespace Kaos.Combinatorics
             sizes.CopyTo (this.sizes, 0);
         }
 
-
         /// <summary>Initializes a new product of the supplied <em>rank</em>with the supplied <em>sizes</em> of columns.</summary>
         /// <remarks>
         /// If the supplied <em>rank</em> is out of the range (0..<see cref="RowCount"/>-1),
@@ -176,7 +173,6 @@ namespace Kaos.Combinatorics
         /// <exception cref="ArgumentOutOfRangeException">When any column size less than 0.</exception>
         public Product (int[] sizes, long rank) : this (sizes)
          => Rank = rank;
-
 
         /// <summary>Initializes a new product of the supplied values with the supplied <em>sizes</em> of columns.</summary>
         /// <param name="sizes">Size of each column.</param>
@@ -222,7 +218,6 @@ namespace Kaos.Combinatorics
             }
         }
 
-
         /// <summary>Row index of the join in the lexicographically ordered <see cref="Product"/> table.</summary>
         /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
         /// <example><code source="..\Examples\Product\PtExample04\PtExample04.cs" lang="cs"/></example>
@@ -248,10 +243,8 @@ namespace Kaos.Combinatorics
             }
         }
 
-
         /// <summary>Count of distinct joins in the <see cref="Product"/> table.</summary>
         public long RowCount => rowCount;
-
 
         /// <summary>Number of columns in the <see cref="Product"/>.</summary>
         public int Width => sizes.Length;
@@ -265,7 +258,6 @@ namespace Kaos.Combinatorics
         /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj)
          => CompareTo (obj as Product);
-
 
         /// <summary>Compare two <see cref="Product"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -286,7 +278,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
@@ -302,13 +293,11 @@ namespace Kaos.Combinatorics
                 array[ei] = this[ei];
         }
 
-
         /// <summary>Indicate whether two <see cref="Product"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
          => Equals (obj as Product);
-
 
         /// <summary>Indicate whether two <see cref="Product"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -316,12 +305,10 @@ namespace Kaos.Combinatorics
         public bool Equals (Product other)
          => other is object && other.Rank == Rank && other.Width == Width;
 
-
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
          => GetEnumerator();
-
 
         /// <summary>Enumerate all elements of a <see cref="Product"/>.</summary>
         /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Product"/>.</returns>
@@ -332,12 +319,10 @@ namespace Kaos.Combinatorics
                 yield return this[ei];
         }
 
-
         /// <summary>Get the hash oode of the <see cref="Product"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
          => unchecked ((int) rank);
-
 
         /// <summary>Iterate thru all rows of the <see cref="Product"/> table for every <see cref="Rank"/> ascending.</summary>
         /// <returns>An iterator for a <see cref="Product"/> table.</returns>
@@ -358,14 +343,12 @@ namespace Kaos.Combinatorics
                 }
         }
 
-
         /// <summary>Get the size of a column.</summary>
         /// <param name="column">Column index.</param>
         /// <returns>Number of distinct values (starting at 0) that a column may take.</returns>
         /// <exception cref="IndexOutOfRangeException">When <em>column</em> not in range (0..<see cref="Width"/>-1).</exception>
         public int Size (int column)
          => sizes[column];
-
 
         /// <summary>Provide readable form of the <see cref="Product"/> row.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
@@ -430,7 +413,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Indicate whether 2 <see cref="Product"/>s are equal.</summary>
         /// <param name="param1">A <see cref="Product"/> sequence.</param>
         /// <param name="param2">A <see cref="Product"/> sequence.</param>
@@ -439,7 +421,6 @@ namespace Kaos.Combinatorics
         public static bool operator == (Product param1, Product param2)
          => param1 is null ? param2 is null : param1.Equals (param2);
 
-
         /// <summary>Indicate whether 2 <see cref="Product"/>s are not equal.</summary>
         /// <param name="param1">A <see cref="Product"/> sequence.</param>
         /// <param name="param2">A <see cref="Product"/> sequence.</param>
@@ -447,7 +428,6 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Product param1, Product param2)
          => param1 is null ? param2 is object : ! param1.Equals (param2);
-
 
         /// <summary>Indicate whether the left <see cref="Product"/> is less than
         /// the right <see cref="Product"/>.</summary>
@@ -458,7 +438,6 @@ namespace Kaos.Combinatorics
         public static bool operator < (Product param1, Product param2)
          => param1 is null ? param2 is object : param1.CompareTo (param2) < 0;
 
-
         /// <summary>Indicate whether the left <see cref="Product"/> is greater than
         /// or equal to the right <see cref="Product"/>.</summary>
         /// <param name="param1">A <see cref="Product"/> sequence.</param>
@@ -468,7 +447,6 @@ namespace Kaos.Combinatorics
         public static bool operator >= (Product param1, Product param2)
          => param1 is null ? param2 is null : param1.CompareTo (param2) >= 0;
 
-
         /// <summary>Indicate whether the left <see cref="Product"/> is greater than
         /// the right <see cref="Product"/>.</summary>
         /// <param name="param1">A <see cref="Product"/> sequence.</param>
@@ -476,8 +454,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator > (Product param1, Product param2)
-         => param1 is null ? false : param1.CompareTo (param2) > 0;
-
+         => ! (param1 is null) && param1.CompareTo (param2) > 0;
 
         /// <summary>Indicate whether the left <see cref="Product"/> is less than or equal to
         /// the right <see cref="Product"/>.</summary>
@@ -486,7 +463,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence otherwise, <b>false</b>.</returns>
         public static bool operator <= (Product param1, Product param2)
-         => param1 is null ? true : param1.CompareTo (param2) <= 0;
+         => param1 is null || param1.CompareTo (param2) <= 0;
 
         #endregion
     }

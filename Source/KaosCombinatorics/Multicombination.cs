@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Multicombination.cs
 //
-// Copyright © 2009-2020 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 
@@ -133,7 +133,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
         }
 
-
         /// <summary>Initializes a new instance that is copied from the supplied multicombination.</summary>
         /// <param name="source">Instance to copy.</param>
         /// <exception cref="ArgumentNullException">When <em>source</em> is <b>null</b>.</exception>
@@ -150,7 +149,6 @@ namespace Kaos.Combinatorics
             this.rank = source.Rank;
         }
 
-
         /// <summary>Initializes a new multicombination of <see cref="Rank"/> 0 with the supplied number of elements.</summary>
         /// <param name="choices">Number of elements in the sequence.</param>
         /// <exception cref="ArgumentOutOfRangeException">When <em>choices</em> less than 0.</exception>
@@ -164,7 +162,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
             CalcRowCount();
         }
-
 
         /// <summary>
         /// Initializes a new multicombination of <see cref="Rank"/> 0
@@ -193,7 +190,6 @@ namespace Kaos.Combinatorics
             this.rank = 0;
             CalcRowCount();
         }
-
 
         /// <summary>
         /// Initializes a new multicombination of the supplied <em>rank</em>
@@ -230,7 +226,6 @@ namespace Kaos.Combinatorics
             CalcRowCount();
             Rank = rank;
         }
-
 
         /// <summary>
         /// Initializes a new multicombination from elements supplied in <em>source</em> picked
@@ -311,16 +306,13 @@ namespace Kaos.Combinatorics
             private set => data[index] = value;
         }
 
-
         /// <summary>The available number of integers to choose from.</summary>
         /// <remarks>Also known as <em>n</em>.</remarks>
         public int Choices => choices;
 
-
         /// <summary>Number of elements in the <see cref="Multicombination"/>.</summary>
         /// <remarks>Also known as <em>k</em>.</remarks>
         public int Picks => data.Length;
-
 
         /// <summary>Row index in the ordered <see cref="Multicombination"/> table.</summary>
         /// <remarks>Any assigned value out of range will be normalized to (0..<see cref="RowCount"/>-1).</remarks>
@@ -366,7 +358,6 @@ namespace Kaos.Combinatorics
             }
         }
 
-
         /// <summary>Count of distinct sequences in the <see cref="Multicombination"/> table.</summary>
         public long RowCount
          => rowCount;
@@ -380,7 +371,6 @@ namespace Kaos.Combinatorics
         /// <returns>A signed integer indicating the sort order of this instance to <em>obj</em>.</returns>
         public int CompareTo (object obj)
          => CompareTo (obj as Multicombination);
-
 
         /// <summary>Compare two <see cref="Multicombination"/>s.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -408,7 +398,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Copy the entire sequence to the supplied destination.</summary>
         /// <param name="array">Destination of copy.</param>
         /// <exception cref="ArgumentNullException">When <em>array</em> is <b>null</b>.</exception>
@@ -423,13 +412,11 @@ namespace Kaos.Combinatorics
             data.CopyTo (array, 0);
         }
 
-
         /// <summary>Indicate whether two <see cref="Multicombination"/>s have the same value.</summary>
         /// <param name="obj">Target of the comparison.</param>
         /// <returns><b>true</b> if <em>obj</em> has the same value as this object; otherwise, <b>false</b>.</returns>
         public override bool Equals (object obj)
          => Equals (obj as Multicombination);
-
 
         /// <summary>Indicate whether two <see cref="Multicombination"/>s have the same value.</summary>
         /// <param name="other">Target of the comparison.</param>
@@ -437,12 +424,10 @@ namespace Kaos.Combinatorics
         public bool Equals (Multicombination other)
          => other is object && other.Rank == Rank && other.Choices == Choices && other.Picks == Picks;
 
-
         /// <summary>Get an object-based enumerator of the elements.</summary>
         /// <returns>Object-based elemental enumerator.</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
          => GetEnumerator();
-
 
         /// <summary>Enumerate all elements of a <see cref="Multicombination"/>.</summary>
         /// <returns>An <see cref="System.Collections.Generic.IEnumerator{T}"/> for this <see cref="Multicombination"/>.</returns>
@@ -453,12 +438,10 @@ namespace Kaos.Combinatorics
                 yield return element;
         }
 
-
         /// <summary>Get the hash oode of the <see cref="Multicombination"/>.</summary>
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
          => unchecked ((int) Rank);
-
 
         /// <summary>
         /// Iterate thru all rows of the <see cref="Multicombination"/> table for every value of <see cref="Rank"/> ascending.
@@ -480,7 +463,6 @@ namespace Kaos.Combinatorics
                         break;
                 }
         }
-
 
         /// <summary>
         /// Iterate thru all rows of all <see cref="Multicombination"/> tables for every pick
@@ -519,7 +501,6 @@ namespace Kaos.Combinatorics
             data = beginData;
             rank = beginRank;
         }
-
 
         /// <summary>Provide a readable form of the <see cref="Multicombination"/> sequence.</summary>
         /// <returns>A <c>string</c> that represents the sequence.</returns>
@@ -575,7 +556,6 @@ namespace Kaos.Combinatorics
             return result;
         }
 
-
         /// <summary>Indicate whether 2 <see cref="Multicombination"/>s are equal.</summary>
         /// <param name="param1">A <see cref="Multicombination"/> sequence.</param>
         /// <param name="param2">A <see cref="Multicombination"/> sequence.</param>
@@ -584,7 +564,6 @@ namespace Kaos.Combinatorics
         public static bool operator == (Multicombination param1, Multicombination param2)
          => param1 is null ? param2 is null : param1.Equals (param2);
 
-
         /// <summary>Indicate whether 2 <see cref="Multicombination"/>s are not equal.</summary>
         /// <param name="param1">A <see cref="Multicombination"/> sequence.</param>
         /// <param name="param2">A <see cref="Multicombination"/> sequence.</param>
@@ -592,7 +571,6 @@ namespace Kaos.Combinatorics
         /// otherwise, <b>false</b>.</returns>
         public static bool operator != (Multicombination param1, Multicombination param2)
          => param1 is null ? param2 is object : ! param1.Equals (param2);
-
 
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is less than
         /// the right <see cref="Multicombination"/>.</summary>
@@ -603,7 +581,6 @@ namespace Kaos.Combinatorics
         public static bool operator < (Multicombination param1, Multicombination param2)
          => param1 is null ? param2 is object : param1.CompareTo (param2) < 0;
 
-
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is greater than
         /// or equal to the right <see cref="Multicombination"/>.</summary>
         /// <param name="param1">A <see cref="Multicombination"/> sequence.</param>
@@ -613,7 +590,6 @@ namespace Kaos.Combinatorics
         public static bool operator >= (Multicombination param1, Multicombination param2)
          => param1 is null ? param2 is null : param1.CompareTo (param2) >= 0;
 
-
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is greater than
         /// the right <see cref="Multicombination"/>.</summary>
         /// <param name="param1">A <see cref="Multicombination"/> sequence.</param>
@@ -621,8 +597,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is greater than
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator > (Multicombination param1, Multicombination param2)
-         => param1 is null ? false : param1.CompareTo (param2) > 0;
-
+         => ! (param1 is null) && param1.CompareTo (param2) > 0;
 
         /// <summary>Indicate whether the left <see cref="Multicombination"/> is less than
         /// or equal to the right <see cref="Multicombination"/>.</summary>
@@ -631,7 +606,7 @@ namespace Kaos.Combinatorics
         /// <returns><b>true</b> if the left sequence is less than or equal to
         /// the right sequence; otherwise, <b>false</b>.</returns>
         public static bool operator <= (Multicombination param1, Multicombination param2)
-         => param1 is null ? true : param1.CompareTo (param2) <= 0;
+         => param1 is null || param1.CompareTo (param2) <= 0;
 
         #endregion
     }

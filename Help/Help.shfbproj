@@ -63,7 +63,7 @@
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
     </NamespaceSummaries>
     <ProjectSummary>Free to use and share.</ProjectSummary>
-    <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2020 Kasey O. %28github.com/kaosborn%29</CopyrightText>
+    <CopyrightText>[v{%40HelpFileVersion}] Copyright &amp;#169%3b 2009-2021 Kasey O. %28github.com/kaosborn%29</CopyrightText>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
