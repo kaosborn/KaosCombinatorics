@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
@@ -23,7 +23,7 @@
 
     <RepositoryType>Git</RepositoryType>
 
-    <Copyright>Copyright © 2009-2021 github.com/kaosborn</Copyright>
+    <Copyright>Copyright © 2009-2024 github.com/kaosborn</Copyright>
 
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
 

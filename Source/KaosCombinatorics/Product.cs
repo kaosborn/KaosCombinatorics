@@ -2,7 +2,7 @@
 // Project: KaosCombinatorics
 // File: Product.cs
 //
-// Copyright © 2009-2021 Kasey Osborn (github.com/kaosborn)
+// Copyright © 2009-2024 Kasey Osborn (github.com/kaosborn)
 // MIT License - Use and redistribute freely
 //
 

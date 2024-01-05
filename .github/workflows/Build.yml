@@ -18,7 +18,7 @@ jobs:
       run: copy .\Combinatorics\bin\Release\*.nupkg .\RunResults
     - name: Run executables
       run: |
-        .\Examples\Queens\PnBacktrackSlim\bin\Release\netcoreapp3.1\PnBacktrackSlim.exe > .\RunResults\PnBacktrackSlim.txt
+        .\Examples\Queens\PnBacktrackSlim\bin\Release\net8.0\PnBacktrackSlim.exe > .\RunResults\PnBacktrackSlim.txt
     - uses: actions/upload-artifact@v1
       with:
         name: KaosCombinatorics-Build

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <RootNamespace>Kaos.Combinatorics</RootNamespace>
     <PackageId>Kaos.Combinatorics</PackageId>
     <Version>6.0.0.1</Version>
@@ -11,10 +11,10 @@
     <Description>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products that are ordered and ranked.</Description>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/kaosborn/KaosCombinatorics/</PackageProjectUrl>
-    <Copyright>Copyright © 2009-2021 github.com/kaosborn</Copyright>
+    <Copyright>Copyright © 2009-2024 github.com/kaosborn</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/kaosborn/KaosCombinatorics</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>A .NET library that provides classes for generating combinations, k-combinations, multicombinations, k-multicombinations, permutations, k-permutations, and products that are ordered and ranked. These sequences of integers may be used to permute (rearrange) other lists of objects. Features ranking, unranking, backtracking, plain changes, and more.
 
 Primary types provided are:

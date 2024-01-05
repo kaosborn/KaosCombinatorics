@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29123.88
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E7F15A7C-80B8-42CD-8609-1FAB0657BC92}"
 EndProject
@@ -19,67 +19,65 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bench", "Bench", "{A4E3380B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Combinatorics", "Combinatorics\Combinatorics.csproj", "{C95FE743-22DF-475C-92F9-6DAEA6900B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample05", "Examples\Combination\CnExample05\CnExample05.csproj", "{A6786BB8-E92D-422C-94C7-CF64CA95C161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnExample05", "Examples\Combination\CnExample05\CnExample05.csproj", "{A6786BB8-E92D-422C-94C7-CF64CA95C161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample04", "Examples\Combination\CnExample04\CnExample04.csproj", "{3B01FC9F-106C-4B30-9765-209D68519514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnExample04", "Examples\Combination\CnExample04\CnExample04.csproj", "{3B01FC9F-106C-4B30-9765-209D68519514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample03", "Examples\Combination\CnExample03\CnExample03.csproj", "{7B3042B7-CBB1-493F-884F-3DB34D8B3CAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnExample03", "Examples\Combination\CnExample03\CnExample03.csproj", "{7B3042B7-CBB1-493F-884F-3DB34D8B3CAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample02", "Examples\Combination\CnExample02\CnExample02.csproj", "{3DC11A0E-52F3-4EC8-89F5-DBC80BF8DD68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnExample02", "Examples\Combination\CnExample02\CnExample02.csproj", "{3DC11A0E-52F3-4EC8-89F5-DBC80BF8DD68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnExample01", "Examples\Combination\CnExample01\CnExample01.csproj", "{14E11E84-C6D7-44CB-99DA-9128D6D8884C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnExample01", "Examples\Combination\CnExample01\CnExample01.csproj", "{14E11E84-C6D7-44CB-99DA-9128D6D8884C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McExample05", "Examples\Multicombination\McExample05\McExample05.csproj", "{2C14AB00-B335-4F2A-A445-31231126A81B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McExample05", "Examples\Multicombination\McExample05\McExample05.csproj", "{2C14AB00-B335-4F2A-A445-31231126A81B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McExample04", "Examples\Multicombination\McExample04\McExample04.csproj", "{2DB85A13-7411-40FD-AAF3-1D2774255ADA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McExample04", "Examples\Multicombination\McExample04\McExample04.csproj", "{2DB85A13-7411-40FD-AAF3-1D2774255ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McExample03", "Examples\Multicombination\McExample03\McExample03.csproj", "{D1A30832-0115-4AD8-986D-5D72A298F514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McExample03", "Examples\Multicombination\McExample03\McExample03.csproj", "{D1A30832-0115-4AD8-986D-5D72A298F514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McExample02", "Examples\Multicombination\McExample02\McExample02.csproj", "{BD9D5B10-DB72-450D-8334-D0ABDFB5A1B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McExample02", "Examples\Multicombination\McExample02\McExample02.csproj", "{BD9D5B10-DB72-450D-8334-D0ABDFB5A1B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McExample01", "Examples\Multicombination\McExample01\McExample01.csproj", "{476990B9-C144-49CC-B5F2-F61DEBB9470B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "McExample01", "Examples\Multicombination\McExample01\McExample01.csproj", "{476990B9-C144-49CC-B5F2-F61DEBB9470B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample07", "Examples\Permutation\PnExample07\PnExample07.csproj", "{69EC47E5-F44E-4630-8D31-81189B21B98E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample07", "Examples\Permutation\PnExample07\PnExample07.csproj", "{69EC47E5-F44E-4630-8D31-81189B21B98E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample06", "Examples\Permutation\PnExample06\PnExample06.csproj", "{8C826297-6DA0-456C-9C66-CA6067EC8FFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample06", "Examples\Permutation\PnExample06\PnExample06.csproj", "{8C826297-6DA0-456C-9C66-CA6067EC8FFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample05", "Examples\Permutation\PnExample05\PnExample05.csproj", "{107DDE75-D993-46C5-B3A6-C7CA93BEAD42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample05", "Examples\Permutation\PnExample05\PnExample05.csproj", "{107DDE75-D993-46C5-B3A6-C7CA93BEAD42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample04", "Examples\Permutation\PnExample04\PnExample04.csproj", "{F850F58E-3D9D-4FD0-B559-A88D0DA9B336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample04", "Examples\Permutation\PnExample04\PnExample04.csproj", "{F850F58E-3D9D-4FD0-B559-A88D0DA9B336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample03", "Examples\Permutation\PnExample03\PnExample03.csproj", "{797FC998-8D82-411C-B0F9-6D869974F406}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample03", "Examples\Permutation\PnExample03\PnExample03.csproj", "{797FC998-8D82-411C-B0F9-6D869974F406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample02", "Examples\Permutation\PnExample02\PnExample02.csproj", "{4D16BC9B-5593-4478-8B71-4C9B5947DFED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample02", "Examples\Permutation\PnExample02\PnExample02.csproj", "{4D16BC9B-5593-4478-8B71-4C9B5947DFED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnExample01", "Examples\Permutation\PnExample01\PnExample01.csproj", "{DDF43CBD-CFFB-4241-AE96-A414C9A45FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnExample01", "Examples\Permutation\PnExample01\PnExample01.csproj", "{DDF43CBD-CFFB-4241-AE96-A414C9A45FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtExample05", "Examples\Product\PtExample05\PtExample05.csproj", "{9F019E3D-10C2-4698-9D11-40A0AEB94FF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtExample05", "Examples\Product\PtExample05\PtExample05.csproj", "{9F019E3D-10C2-4698-9D11-40A0AEB94FF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtExample04", "Examples\Product\PtExample04\PtExample04.csproj", "{F871DD46-39B1-4775-8D6F-5CF6825B43F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtExample04", "Examples\Product\PtExample04\PtExample04.csproj", "{F871DD46-39B1-4775-8D6F-5CF6825B43F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtExample03", "Examples\Product\PtExample03\PtExample03.csproj", "{23C150EA-DC2B-4682-96D6-3C0807341C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtExample03", "Examples\Product\PtExample03\PtExample03.csproj", "{23C150EA-DC2B-4682-96D6-3C0807341C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtExample02", "Examples\Product\PtExample02\PtExample02.csproj", "{FE76BF35-AA2A-4D42-A6EC-E88E2FEDADFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtExample02", "Examples\Product\PtExample02\PtExample02.csproj", "{FE76BF35-AA2A-4D42-A6EC-E88E2FEDADFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtExample01", "Examples\Product\PtExample01\PtExample01.csproj", "{DFFF8D7F-23DD-485B-87B9-B6E8E5F20CFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtExample01", "Examples\Product\PtExample01\PtExample01.csproj", "{DFFF8D7F-23DD-485B-87B9-B6E8E5F20CFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnBacktrack", "Examples\Queens\PnBacktrack\PnBacktrack.csproj", "{D5FA2EC4-6899-4CCB-8859-D36C972EC8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnBacktrack", "Examples\Queens\PnBacktrack\PnBacktrack.csproj", "{D5FA2EC4-6899-4CCB-8859-D36C972EC8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtBruteForceSlim", "Examples\Queens\PtBruteForceSlim\PtBruteForceSlim.csproj", "{49EDEC46-7069-43A4-B260-B6E06C9AA60F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtBruteForceSlim", "Examples\Queens\PtBruteForceSlim\PtBruteForceSlim.csproj", "{49EDEC46-7069-43A4-B260-B6E06C9AA60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtBruteForce", "Examples\Queens\PtBruteForce\PtBruteForce.csproj", "{A2B64E9E-CA34-4B6A-9661-E192B6EAF7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PtBruteForce", "Examples\Queens\PtBruteForce\PtBruteForce.csproj", "{A2B64E9E-CA34-4B6A-9661-E192B6EAF7CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnRooksFirst", "Examples\Queens\PnRooksFirst\PnRooksFirst.csproj", "{A7E2D14A-D8FD-454E-B3B1-D43B46C19D38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnRooksFirst", "Examples\Queens\PnRooksFirst\PnRooksFirst.csproj", "{A7E2D14A-D8FD-454E-B3B1-D43B46C19D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnRooksFirstSlim", "Examples\Queens\PnRooksFirstSlim\PnRooksFirstSlim.csproj", "{E8F56AF2-EB47-4FFA-BA82-80981053F201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnRooksFirstSlim", "Examples\Queens\PnRooksFirstSlim\PnRooksFirstSlim.csproj", "{E8F56AF2-EB47-4FFA-BA82-80981053F201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PnBacktrackSlim", "Examples\Queens\PnBacktrackSlim\PnBacktrackSlim.csproj", "{38BECC28-C1A7-49CD-8315-144DA842E50D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PnBacktrackSlim", "Examples\Queens\PnBacktrackSlim\PnBacktrackSlim.csproj", "{38BECC28-C1A7-49CD-8315-144DA842E50D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnLudicrous", "Examples\Queens\CnLudicrous\CnLudicrous.csproj", "{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CnLudicrous", "Examples\Queens\CnLudicrous\CnLudicrous.csproj", "{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Help", "Help\Help.shfbproj", "{4C7A3553-E6BB-46FB-BFBC-76D0F5CAAE7A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFull400", "Bench\ConFull400\ConFull400.csproj", "{55E31108-49D3-49E2-935E-64FE8EEDA1A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{86ACCB1D-B00D-4E9C-8C90-FCDD12D1D50D}"
 	ProjectSection(SolutionItems) = preProject
@@ -92,51 +90,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{E83568
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KaosCombinatorics", "Source\KaosCombinatorics\KaosCombinatorics.shproj", "{70047566-8A60-46F6-950F-079930F569B7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Install", "Install\Install.vdproj", "{67BF1FE9-BFD8-4458-B1F8-13EC18923CA3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCore", "TestCore\TestCore.csproj", "{A8AECC34-0EB1-4914-8579-ACF7B24FC395}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KaosTestCombinatorics", "Source\KaosTestCombinatorics\KaosTestCombinatorics.shproj", "{F332CC6B-518F-412F-8B08-13D1BAD172A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinCoBench", "Bench\BinCoBench\BinCoBench.csproj", "{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConFull480", "Bench\ConFull480\ConFull480.csproj", "{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31}"
+EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{107dde75-d993-46c5-b3a6-c7ca93bead42}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{14e11e84-c6d7-44cb-99da-9128d6d8884c}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{23c150ea-dc2b-4682-96d6-3c0807341c91}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2c14ab00-b335-4f2a-a445-31231126a81b}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2db85a13-7411-40fd-aaf3-1d2774255ada}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{38becc28-c1a7-49cd-8315-144da842e50d}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3b01fc9f-106c-4b30-9765-209d68519514}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3dc11a0e-52f3-4ec8-89f5-dbc80bf8dd68}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{476990b9-c144-49cc-b5f2-f61debb9470b}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{49edec46-7069-43a4-b260-b6e06c9aa60f}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{4d16bc9b-5593-4478-8b71-4c9b5947dfed}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{55e31108-49d3-49e2-935e-64fe8eeda1a8}*SharedItemsImports = 4
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{69ec47e5-f44e-4630-8d31-81189b21b98e}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{797fc998-8d82-411c-b0f9-6d869974f406}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{7b3042b7-cbb1-493f-884f-3db34d8b3cab}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{8c826297-6da0-456c-9c66-ca6067ec8ffa}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{9f019e3d-10c2-4698-9d11-40a0aeb94ff4}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a2b64e9e-ca34-4b6a-9661-e192b6eaf7ca}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a6786bb8-e92d-422c-94c7-cf64ca95c161}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a7e2d14a-d8fd-454e-b3b1-d43b46c19d38}*SharedItemsImports = 5
-		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{a8aecc34-0eb1-4914-8579-acf7b24fc395}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{bd9d5b10-db72-450d-8334-d0abdfb5a1b6}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{c95fe743-22df-475c-92f9-6daea6900b85}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d1a30832-0115-4ad8-986d-5d72a298f514}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d5fa2ec4-6899-4ccb-8859-d36c972ec8f6}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{ddf43cbd-cffb-4241-ae96-a414c9a45fdb}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{dfff8d7f-23dd-485b-87b9-b6e8e5f20cfb}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{e8f56af2-eb47-4ffa-ba82-80981053f201}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{efebd06e-40b0-40aa-9a30-ebf9ee8c2ea0}*SharedItemsImports = 5
-		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{f332cc6b-518f-412f-8b08-13d1bad172a8}*SharedItemsImports = 13
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f850f58e-3d9d-4fd0-b559-a88d0da9b336}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f871dd46-39b1-4775-8d6f-5cf6825b43f6}*SharedItemsImports = 5
-		Source\KaosCombinatorics\KaosCombinatorics.projitems*{fe76bf35-aa2a-4d42-a6ec-e88e2fedadff}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -264,12 +226,6 @@ Global
 		{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C7A3553-E6BB-46FB-BFBC-76D0F5CAAE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C7A3553-E6BB-46FB-BFBC-76D0F5CAAE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55E31108-49D3-49E2-935E-64FE8EEDA1A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67BF1FE9-BFD8-4458-B1F8-13EC18923CA3}.Debug|Any CPU.ActiveCfg = Debug
-		{67BF1FE9-BFD8-4458-B1F8-13EC18923CA3}.Release|Any CPU.ActiveCfg = Release
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8AECC34-0EB1-4914-8579-ACF7B24FC395}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -278,6 +234,10 @@ Global
 		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -317,12 +277,48 @@ Global
 		{E8F56AF2-EB47-4FFA-BA82-80981053F201} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{38BECC28-C1A7-49CD-8315-144DA842E50D} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
 		{EFEBD06E-40B0-40AA-9A30-EBF9EE8C2EA0} = {CB353C04-4C0E-4A7C-97C6-6DB9C04842D4}
-		{55E31108-49D3-49E2-935E-64FE8EEDA1A8} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 		{70047566-8A60-46F6-950F-079930F569B7} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
 		{F332CC6B-518F-412F-8B08-13D1BAD172A8} = {E835685C-5C46-482B-AB7B-C7EDEE82771E}
 		{8B0575B4-E320-48CF-BD60-3FD3AC8B9A62} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
+		{3831EF59-8D02-4E2A-B77F-D9E07ED4DA31} = {A4E3380B-0B8B-4F0A-B158-E2F9F35AF89C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0224A9F-09EE-4562-8513-B59A2B23A404}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{107dde75-d993-46c5-b3a6-c7ca93bead42}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{14e11e84-c6d7-44cb-99da-9128d6d8884c}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{23c150ea-dc2b-4682-96d6-3c0807341c91}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2c14ab00-b335-4f2a-a445-31231126a81b}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{2db85a13-7411-40fd-aaf3-1d2774255ada}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3831ef59-8d02-4e2a-b77f-d9e07ed4da31}*SharedItemsImports = 4
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{38becc28-c1a7-49cd-8315-144da842e50d}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3b01fc9f-106c-4b30-9765-209d68519514}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{3dc11a0e-52f3-4ec8-89f5-dbc80bf8dd68}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{476990b9-c144-49cc-b5f2-f61debb9470b}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{49edec46-7069-43a4-b260-b6e06c9aa60f}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{4d16bc9b-5593-4478-8b71-4c9b5947dfed}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{69ec47e5-f44e-4630-8d31-81189b21b98e}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{70047566-8a60-46f6-950f-079930f569b7}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{797fc998-8d82-411c-b0f9-6d869974f406}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{7b3042b7-cbb1-493f-884f-3db34d8b3cab}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{8c826297-6da0-456c-9c66-ca6067ec8ffa}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{9f019e3d-10c2-4698-9d11-40a0aeb94ff4}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a2b64e9e-ca34-4b6a-9661-e192b6eaf7ca}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a6786bb8-e92d-422c-94c7-cf64ca95c161}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{a7e2d14a-d8fd-454e-b3b1-d43b46c19d38}*SharedItemsImports = 5
+		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{a8aecc34-0eb1-4914-8579-acf7b24fc395}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{bd9d5b10-db72-450d-8334-d0abdfb5a1b6}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{c95fe743-22df-475c-92f9-6daea6900b85}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d1a30832-0115-4ad8-986d-5d72a298f514}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{d5fa2ec4-6899-4ccb-8859-d36c972ec8f6}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{ddf43cbd-cffb-4241-ae96-a414c9a45fdb}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{dfff8d7f-23dd-485b-87b9-b6e8e5f20cfb}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{e8f56af2-eb47-4ffa-ba82-80981053f201}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{efebd06e-40b0-40aa-9a30-ebf9ee8c2ea0}*SharedItemsImports = 5
+		Source\KaosTestCombinatorics\KaosTestCombinatorics.projitems*{f332cc6b-518f-412f-8b08-13d1bad172a8}*SharedItemsImports = 13
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f850f58e-3d9d-4fd0-b559-a88d0da9b336}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{f871dd46-39b1-4775-8d6f-5cf6825b43f6}*SharedItemsImports = 5
+		Source\KaosCombinatorics\KaosCombinatorics.projitems*{fe76bf35-aa2a-4d42-a6ec-e88e2fedadff}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

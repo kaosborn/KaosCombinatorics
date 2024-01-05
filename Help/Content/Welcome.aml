@@ -39,8 +39,8 @@
         </listItem>
       </list>
       <para>
-        The <codeInline>.nuget</codeInline> build of this library targets .NET Standard 1.0 providing direct support for any version of .NET Core and .NET Framework 4.5 or greater.
-        Earlier versions than .NET Framework 4.5 may use this library by directly including the source shared project.
+        The <codeInline>.nuget</codeInline> build of this library targets .NET Standard 1.2 providing direct support for .NET and .NET Framework 4.8.
+        Earlier versions than .NET Framework 4.8 may use this library by directly including the source shared project.
       </para>
     </introduction>
     
@@ -168,7 +168,7 @@
           </listItem>
         </list>
         <para>
-          Building the library requires Visual Studio 2017 or greater:
+          Building the library requires Visual Studio 2022 or greater:
         </para>
         <list class="bullet">
           <listItem>
@@ -176,19 +176,6 @@
               <externalLink>
                 <linkText>https://www.visualstudio.com/downloads/</linkText>
                 <linkUri>https://www.visualstudio.com/downloads/</linkUri>
-              </externalLink>
-            </para>
-          </listItem>
-        </list>
-        <para>
-          Building the <codeInline>.msi</codeInline> GAC installer requires the Microsoft Visual Studio Installer Projects extension:
-        </para>
-        <list class="bullet">
-          <listItem>
-            <para>
-              <externalLink>
-                <linkText>https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects</linkText>
-                <linkUri>https://marketplace.visualstudio.com/items?itemName=visualstudioclient.MicrosoftVisualStudio2017InstallerProjects</linkUri>
               </externalLink>
             </para>
           </listItem>

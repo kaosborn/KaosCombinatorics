@@ -1,7 +1,7 @@
 ![logo](Images/KaosCombinatorics-248.png)
 
-[![Test](https://github.com/kaosborn/KaosCombinatorics/workflows/Test/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml)
-[![Build](https://github.com/kaosborn/KaosCombinatorics/workflows/Build/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml)
+[![Test](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/Test.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Test.yml)
+[![Build](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/Build.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/Build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE)
 
 # KaosCombinatorics
@@ -26,7 +26,7 @@ Ranking is where the elements of a combinatoric are supplied as an array of inte
 The Rank property will then contain its position in the ordered table.
 
 Versions of this library prior to v6 were a multitargeted NuGet package.
-The current version targets .NET Standard 1.0 only.
+The latest released version targets .NET Standard 1.0 only.
 
 ### Library installation
 
@@ -92,7 +92,6 @@ This repository is a single Visual Studio solution with additional files in the 
 * `Combinatorics` - The target NuGet package.
 Building the Release configuration of the project contained in this folder
 will produce a `.nuget` file and documentation for distribution.
-This library is multitargeted to .NET Standard 1.0, .NET 4.0.
 
 * `Examples` - Console programs for documentation.
 
@@ -123,4 +122,4 @@ All links in this section are to free software.
 
 ### License
 
-All work here falls under the [MIT License](/LICENSE.txt).
+All work here falls under the [MIT License](/LICENSE).
