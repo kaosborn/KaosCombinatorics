@@ -14,7 +14,7 @@
     <Name>Help</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
-    <OutputPath>.\KaosCombinatorics-Help\</OutputPath>
+    <OutputPath>RunResults\</OutputPath>
     <HtmlHelpName>KaosCombinatorics</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
