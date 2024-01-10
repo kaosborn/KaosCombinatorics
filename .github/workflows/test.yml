@@ -1,0 +1,21 @@
+name: test
+on: push
+jobs:
+  Job1:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Initialize
+      run: |
+        md TestResults
+        dotnet tool install dotnet-reportgenerator-globaltool --global
+    - name: Run standard suite
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=..\TestResults\ TestCore
+    - name: Generate coverage report
+      run: reportgenerator.exe -reports:TestResults\coverage.cobertura.xml -reporttypes:html -targetdir:TestResults\CovRep
+    - uses: actions/upload-artifact@v1
+      with:
+        name: KaosCombinatorics-Test
+        path: TestResults
