@@ -1,4 +1,4 @@
-name: build
+name: Build
 on: push
 jobs:
   Job1:
@@ -14,11 +14,11 @@ jobs:
     - name: Build executables
       run: |
         dotnet build -c Release Examples\Queens\PnBacktrackSlim
-    - name: Copy build artifacts
-      run: copy Combinatorics\bin\Release\*.nupkg RunResults
     - name: Run executables
       run: |
         .\Examples\Queens\PnBacktrackSlim\bin\Release\net8.0\PnBacktrackSlim.exe > RunResults\PnBacktrackSlim.txt
+    - name: Copy build artifacts
+      run: copy Combinatorics\bin\Release\*.nupkg RunResults
     - uses: actions/upload-artifact@v1
       with:
         name: KaosCombinatorics-Build

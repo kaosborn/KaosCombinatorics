@@ -1,7 +1,7 @@
 ![logo](Images/KaosCombinatorics-248.png)
 
-[![Test](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/test.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/test.yml)
-[![Build](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/build.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/.github/workflows/build.yml)
+[![Test](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/test.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/test.yml)
+[![Build](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/build.yml/badge.svg)](https://github.com/kaosborn/KaosCombinatorics/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kaosborn/KaosCombinatorics/blob/master/LICENSE)
 
 # KaosCombinatorics

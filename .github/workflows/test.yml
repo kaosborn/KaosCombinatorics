@@ -1,4 +1,4 @@
-name: test
+name: Test
 on: push
 jobs:
   Job1:
@@ -17,5 +17,5 @@ jobs:
       run: reportgenerator.exe -reports:TestResults\coverage.cobertura.xml -reporttypes:html -targetdir:TestResults\CovRep
     - uses: actions/upload-artifact@v1
       with:
-        name: KaosCombinatorics-Test
+        name: KaosCombinatorics-TestResults
         path: TestResults
