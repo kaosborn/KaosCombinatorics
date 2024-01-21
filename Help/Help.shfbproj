@@ -27,8 +27,8 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.0\KaosCombinatorics.dll" />
-      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.0\KaosCombinatorics.xml" />
+      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.3\KaosCombinatorics.dll" />
+      <DocumentationSource sourceFile="..\Combinatorics\bin\Release\netstandard1.3\KaosCombinatorics.xml" />
     </DocumentationSources>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
