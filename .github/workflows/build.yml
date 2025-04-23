@@ -4,7 +4,7 @@ jobs:
   Job1:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 1
     - name: Initialize
@@ -19,7 +19,7 @@ jobs:
         .\Examples\Queens\PnBacktrackSlim\bin\Release\net8.0\PnBacktrackSlim.exe > RunResults\PnBacktrackSlim.txt
     - name: Copy build artifacts
       run: copy Combinatorics\bin\Release\*.nupkg RunResults
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: KaosCombinatorics-Build
         path: RunResults
